@@ -6,3 +6,4 @@ doxy.dat
 TestResults
 */obj
 */bin
+*/Properties/AssemblyInfo.cs
