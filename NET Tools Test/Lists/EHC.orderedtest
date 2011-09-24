@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<OrderedTest name="EHC" storage="d:\daten\visual studio 2008\projects\net tools\net tools test\lists\ehc.orderedtest" id="48602258-ff97-42e5-918a-ed452d56df31" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
+  <Css projectStructure="" iteration="" />
+  <Execution timeOut="2147483647" />
+  <Owners>
+    <Owner name="" />
+  </Owners>
+  <TestLinks>
+    <TestLink id="d643cc49-14f3-83a5-6f8a-81e9a5dcc101" name="EHCNullContent" storage="..\bin\debug\net tools test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="28481fce-bf8f-2cd9-fb7f-9cf7db2037d9" name="EHCTestFalseType" storage="..\bin\debug\net tools test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="fb20245d-0d1f-1f94-b8cd-79e8e284dc65" name="EHCTestIsEquals" storage="..\bin\debug\net tools test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="479df58a-b2db-73fa-7f05-9afcf7c8bf14" name="EHCTestNotEquals" storage="..\bin\debug\net tools test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="541e61d6-afd3-629a-adec-7325d56661ea" name="EHCTestNullReference" storage="..\bin\debug\net tools test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="ff68b462-4132-7e85-887c-e49d29ab7bde" name="EHCTestReferenceEquals" storage="..\bin\debug\net tools test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+  </TestLinks>
+</OrderedTest>

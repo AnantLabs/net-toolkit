@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0553E847-1E09-4E12-8C6B-86E1E533FBA0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NET.Tools.Forms</RootNamespace>
+    <AssemblyName>NET.Tools.Forms.Controls</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\NET.Tools.Forms.Controls.XML</DocumentationFile>
+    <NoWarn>1591,1587</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>bin\Release\NET.Tools.Forms.Controls.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>1591,1587</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ColorComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColorComboBox.Designer.cs">
+      <DependentUpon>ColorComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectoryComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DirectoryComboBox.Designer.cs">
+      <DependentUpon>DirectoryComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectoryTree.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DirectoryTree.Designer.cs">
+      <DependentUpon>DirectoryTree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DriveComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DriveComboBox.Designer.cs">
+      <DependentUpon>DriveComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileFilter.cs" />
+    <Compile Include="FileFilterComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FileFilterComboBox.Designer.cs">
+      <DependentUpon>FileFilterComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileSystemManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FileSystemManager.Designer.cs">
+      <DependentUpon>FileSystemManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FolderComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FontComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FontComboBox.Designer.cs">
+      <DependentUpon>FontComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FontPaintComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Frames\LoginDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frames\LoginDialog.Designer.cs">
+      <DependentUpon>LoginDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frames\PasswordChangeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frames\PasswordChangeDialog.Designer.cs">
+      <DependentUpon>PasswordChangeDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frames\PictureDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frames\PictureDialog.Designer.cs">
+      <DependentUpon>PictureDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Header.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Header.Designer.cs">
+      <DependentUpon>Header.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HighLightingRecord.cs" />
+    <Compile Include="HighLightingTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IFileDialog.cs" />
+    <Compile Include="ImageComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IPictureDialog.cs" />
+    <Compile Include="LabeledTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LabeledTextBox.Designer.cs">
+      <DependentUpon>LabeledTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TextManager.cs" />
+    <Compile Include="LoginDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OpenPictureDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PasswordChangeDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RefreshPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SavePictureDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Separator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Separator.Designer.cs">
+      <DependentUpon>Separator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TimeLine.cs">
+    </Compile>
+    <Compile Include="TimeLine.Designer.cs">
+      <DependentUpon>TimeLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIEditors\Frames\BrushEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIEditors\Frames\BrushEditor.Designer.cs">
+      <DependentUpon>BrushEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIEditors\Frames\DriveInfoSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIEditors\Frames\DriveInfoSelector.Designer.cs">
+      <DependentUpon>DriveInfoSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIEditors\Frames\FileFilterEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIEditors\Frames\FileFilterEditor.Designer.cs">
+      <DependentUpon>FileFilterEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIEditors\Frames\FileFilterFrame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIEditors\Frames\FileFilterFrame.Designer.cs">
+      <DependentUpon>FileFilterFrame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIEditors\Frames\HighLightingEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIEditors\Frames\HighLightingEditor.Designer.cs">
+      <DependentUpon>HighLightingEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIEditors\Frames\HighLightingFrame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIEditors\Frames\HighLightingFrame.Designer.cs">
+      <DependentUpon>HighLightingFrame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIEditors\UIBrushEditor.cs" />
+    <Compile Include="UIEditors\UIDirectoryInfoEditor.cs" />
+    <Compile Include="UIEditors\UIDriveInfoEditor.cs" />
+    <Compile Include="UIEditors\UIFileFilterEditor.cs" />
+    <Compile Include="UIEditors\UIFileInfoEditor.cs" />
+    <Compile Include="UIEditors\UIHighLightingEditor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ColorComboBox.resx">
+      <DependentUpon>ColorComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectoryComboBox.resx">
+      <DependentUpon>DirectoryComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectoryTree.resx">
+      <DependentUpon>DirectoryTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DriveComboBox.resx">
+      <DependentUpon>DriveComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileFilterComboBox.resx">
+      <DependentUpon>FileFilterComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileSystemManager.de.resx">
+      <DependentUpon>FileSystemManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileSystemManager.resx">
+      <DependentUpon>FileSystemManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FontComboBox.resx">
+      <DependentUpon>FontComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frames\LoginDialog.de.resx">
+      <DependentUpon>LoginDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frames\LoginDialog.resx">
+      <DependentUpon>LoginDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frames\PasswordChangeDialog.de.resx">
+      <DependentUpon>PasswordChangeDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frames\PasswordChangeDialog.resx">
+      <DependentUpon>PasswordChangeDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frames\PictureDialog.de.resx">
+      <DependentUpon>PictureDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frames\PictureDialog.resx">
+      <DependentUpon>PictureDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Header.de.resx">
+      <DependentUpon>Header.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Header.resx">
+      <DependentUpon>Header.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LabeledTextBox.resx">
+      <DependentUpon>LabeledTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Text.de.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Text.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Separator.resx">
+      <DependentUpon>Separator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TimeLine.resx">
+      <DependentUpon>TimeLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIEditors\Frames\BrushEditor.resx">
+      <DependentUpon>BrushEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIEditors\Frames\DriveInfoSelector.de.resx">
+      <DependentUpon>DriveInfoSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIEditors\Frames\DriveInfoSelector.resx">
+      <DependentUpon>DriveInfoSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIEditors\Frames\FileFilterEditor.de.resx">
+      <DependentUpon>FileFilterEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIEditors\Frames\FileFilterEditor.resx">
+      <DependentUpon>FileFilterEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIEditors\Frames\FileFilterFrame.de.resx">
+      <DependentUpon>FileFilterFrame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIEditors\Frames\FileFilterFrame.resx">
+      <DependentUpon>FileFilterFrame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIEditors\Frames\HighLightingEditor.de.resx">
+      <DependentUpon>HighLightingEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIEditors\Frames\HighLightingEditor.resx">
+      <DependentUpon>HighLightingEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIEditors\Frames\HighLightingFrame.de.resx">
+      <DependentUpon>HighLightingFrame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIEditors\Frames\HighLightingFrame.resx">
+      <DependentUpon>HighLightingFrame.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NET.Tools.Forms.Dialogs\NET.Tools.Forms.Dialogs.csproj">
+      <Project>{2E199803-3EF7-4209-8F49-AC9A65354888}</Project>
+      <Name>NET.Tools.Forms.Dialogs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.Forms.Tools\NET.Tools.Forms.Tools.csproj">
+      <Project>{50BE0370-034F-4F9D-B767-0BCFA2B8A434}</Project>
+      <Name>NET.Tools.Forms.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools\NET.Tools.csproj">
+      <Project>{EC6EAAA0-F4F1-419C-A9D5-9F2D3EF67120}</Project>
+      <Name>NET.Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DD005.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DD004.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folder079.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folder108.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DD011.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DD016.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\H&amp;D087.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CP051.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User016.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User022.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User020.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User018.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

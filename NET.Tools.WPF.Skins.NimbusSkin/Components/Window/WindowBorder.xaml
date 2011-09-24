@@ -1,0 +1,44 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Style TargetType="{x:Type Border}" x:Key="WindowBorder">
+        <Setter Property="BorderThickness" Value="5,23,5,5"/>
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#F0F1F2" Offset="0"/>
+                    <GradientStop Color="#AAAFB9" Offset=".05"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="CornerRadius" Value=".1"/>
+    </Style>
+
+    <Style TargetType="{x:Type Border}" x:Key="WindowBorderInactive">
+        <Setter Property="BorderThickness" Value="5,23,5,5"/>
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#AAAEB7" Offset="0"/>
+                    <GradientStop Color="#BFC3CA" Offset=".05"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="CornerRadius" Value=".1"/>
+    </Style>
+
+    <Style TargetType="{x:Type Border}" x:Key="WindowInnerBorder">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#D6D9DF" Offset="0"/>
+                    <GradientStop Color="#D0D3D9" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="#6C7280"/>
+        <Setter Property="CornerRadius" Value="0"/>
+    </Style> 
+    
+</ResourceDictionary>

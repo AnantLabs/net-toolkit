@@ -1,0 +1,199 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <DrawingBrush x:Key="Disabled">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing>
+                    <GeometryDrawing.Brush>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#99FFFFE0" Offset="0"/>
+                            <GradientStop Color="#99F0E68C" Offset=".5"/>
+                        </LinearGradientBrush>
+                    </GeometryDrawing.Brush>
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry>
+                            <PathFigure IsClosed="True" IsFilled="True" StartPoint="0,0">
+                                <BezierSegment Point1="0,0" Point2="50,5" Point3="100,0"/>
+                                <BezierSegment Point1="100,0" Point2="95,20" Point3="95,30"/>
+                                <LineSegment Point="5,30"/>
+                                <BezierSegment Point1="5,30" Point2="5,20" Point3="0,0"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <!--********************************************************************************************-->
+    
+    <Style TargetType="{x:Type TabControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabControl}">
+                    <Grid KeyboardNavigation.TabNavigation="Local">
+                        <TabPanel IsItemsHost="True" Name="Header" VerticalAlignment="Top" Background="Transparent" Height="35"
+                                  KeyboardNavigation.TabIndex="1" Panel.ZIndex="0"/>
+                        <Border Name="Border" Margin="0,30,10,10" 
+                                KeyboardNavigation.TabNavigation="Local"
+                                KeyboardNavigation.DirectionalNavigation="Contained"
+                                KeyboardNavigation.TabIndex="2">
+                            <Border.Background>
+                                <ImageBrush ImageSource="../Resources/Images/paper.jpg" Stretch="None"/>
+                            </Border.Background>
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="10" Opacity=".7"/>
+                            </Border.Effect>
+                            <ContentPresenter Name="PART_SelectedContentHost" Margin="5" ContentSource="SelectedContent"/>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="{x:Type TabItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabItem}">
+                    <Border BorderThickness="0" Margin="0,5,0,0" Name="Border">
+                        <Border.Background>
+                            <DrawingBrush>
+                                <DrawingBrush.Drawing>
+                                    <DrawingGroup>
+                                        <GeometryDrawing>
+                                            <GeometryDrawing.Brush>
+                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                    <GradientStop Color="LightYellow" Offset="0" x:Name="Corner"/>
+                                                    <GradientStop Color="Khaki" Offset=".5"/>
+                                                </LinearGradientBrush>
+                                            </GeometryDrawing.Brush>
+                                            <GeometryDrawing.Geometry>
+                                                <PathGeometry>
+                                                    <PathFigure IsClosed="True" IsFilled="True" StartPoint="0,0">
+                                                        <BezierSegment Point1="0,0" Point2="50,5" Point3="100,0"/>
+                                                        <BezierSegment Point1="100,0" Point2="95,20" Point3="95,30"/>
+                                                        <LineSegment Point="5,30"/>
+                                                        <BezierSegment Point1="5,30" Point2="5,20" Point3="0,0"/>
+                                                    </PathFigure>
+                                                </PathGeometry>
+                                            </GeometryDrawing.Geometry>
+                                        </GeometryDrawing>
+                                    </DrawingGroup>
+                                </DrawingBrush.Drawing>
+                            </DrawingBrush>
+                        </Border.Background>
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" Opacity=".7"/>
+                        </Border.Effect>
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" RecognizesAccessKey="True" Margin="10,5,10,0" Name="Content">
+                            <ContentPresenter.Effect>
+                                <DropShadowEffect BlurRadius="0" Opacity=".7" ShadowDepth="0"/>
+                            </ContentPresenter.Effect>
+                        </ContentPresenter>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="true"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation
+                                            Storyboard.TargetName="Border"
+                                            Storyboard.TargetProperty="Margin"
+                                            AutoReverse="False"
+                                            Duration="0:0:0.2"
+                                            To="0"/>
+                                        <ColorAnimation
+                                            Storyboard.TargetProperty="Foreground.Color"
+                                            AutoReverse="False"
+                                            Duration="0:0:0.2"
+                                            To="DarkBlue"/>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="Content"
+                                            Storyboard.TargetProperty="Effect.ShadowDepth"
+                                            AutoReverse="False"
+                                            Duration="0:0:0.2"
+                                            To="5"/>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="Content"
+                                            Storyboard.TargetProperty="Effect.BlurRadius"
+                                            AutoReverse="False"
+                                            Duration="0:0:0.2"
+                                            To="5"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation
+                                            Storyboard.TargetName="Border"
+                                            Storyboard.TargetProperty="Margin"
+                                            AutoReverse="False"
+                                            Duration="0:0:0.2"
+                                            To="0,5,0,0"/>
+                                        <ColorAnimation
+                                            Storyboard.TargetProperty="Foreground.Color"
+                                            AutoReverse="False"
+                                            Duration="0:0:0.2"
+                                            To="#555555"/>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="Content"
+                                            Storyboard.TargetProperty="Effect.ShadowDepth"
+                                            AutoReverse="False"
+                                            Duration="0:0:0.2"
+                                            To="0"/>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="Content"
+                                            Storyboard.TargetProperty="Effect.BlurRadius"
+                                            AutoReverse="False"
+                                            Duration="0:0:0.2"
+                                            To="0"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+                        
+                        <EventTrigger RoutedEvent="Border.MouseEnter" SourceName="Border">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Corner"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.5"
+                                        To="DarkKhaki"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Border.MouseLeave" SourceName="Border">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Corner"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.5"
+                                        To="LightYellow"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="#99000000"/>
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource Disabled}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="FontFamily" Value="../Resources/Fonts/#Handschrift MARTIN"/>
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="Foreground" Value="#555555"/>
+    </Style>
+    
+</ResourceDictionary>

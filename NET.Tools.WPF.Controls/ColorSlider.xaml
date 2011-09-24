@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="NET.Tools.WPF.ColorSlider"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    MinHeight="125">    
+    <Grid>
+        <Slider Margin="12,12,12,0" Name="sldRed" Height="22" VerticalAlignment="Top" Maximum="1" LargeChange="0.1" TickFrequency="0.01" ValueChanged="ValueChanged">
+            <Slider.BitmapEffect>
+                <OuterGlowBitmapEffect GlowColor="Red" Opacity="{Binding Path=Value, ElementName=sldRed}" />
+            </Slider.BitmapEffect>
+        </Slider>
+        <Slider Height="22" LargeChange="0.1" Margin="12,0,12,12" Maximum="1" Name="sldBlue" TickFrequency="0.01" VerticalAlignment="Bottom" ValueChanged="ValueChanged">
+            <Slider.BitmapEffect>
+                <OuterGlowBitmapEffect GlowColor="Blue" Opacity="{Binding Path=Value, ElementName=sldBlue}" />
+            </Slider.BitmapEffect>
+        </Slider>
+        <Slider LargeChange="0.1" Margin="12,0" Maximum="1" Name="sldGreen" TickFrequency="0.01" Height="22" VerticalAlignment="Center" ValueChanged="ValueChanged">
+            <Slider.BitmapEffect>
+                <OuterGlowBitmapEffect GlowColor="Green" Opacity="{Binding Path=Value, ElementName=sldGreen}"/>
+            </Slider.BitmapEffect>
+        </Slider>
+    </Grid>
+</UserControl>

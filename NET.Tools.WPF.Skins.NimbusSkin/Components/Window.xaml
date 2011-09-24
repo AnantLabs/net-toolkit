@@ -1,0 +1,126 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    x:Class="NET.Tools.WPF.Skins.CommandManager"
+                    x:ClassModifier="internal">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Window/WindowBorder.xaml"/>
+        <ResourceDictionary Source="Window/WindowCaption.xaml"/>
+        <ResourceDictionary Source="Window/WindowButton.xaml"/>
+        <ResourceDictionary Source="Window/WindowResizeGrip.xaml"/>
+        <ResourceDictionary Source="MenuBar.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+    <Style TargetType="{x:Type Window}" x:Key="NimbusWindow">
+        <Setter Property="Opacity" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Window}">
+                    <Border Style="{DynamicResource WindowBorder}" Margin="7" Name="OuterBorder">
+                        <Border Style="{DynamicResource WindowInnerBorder}" Name="InnerBorder">
+                            <Grid>
+                                <Label Style="{DynamicResource WindowCaption}" Name="Caption"
+                                       MouseDown="DragMoveAction" MouseDoubleClick="Label_MouseDoubleClick">
+                                    <Binding Path="Title" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                </Label>
+                                <Button Name="CloseButton" Style="{DynamicResource CloseButton}" Click="CloseAction"/>
+                                <Button Name="MaximizeButton" Style="{DynamicResource MaximizeButtonNormal}" Click="MaximizeButton_Click"/>
+                                <Button Name="MinimizeButton" Style="{DynamicResource MinimizeButton}" Click="MinimizeButton_Click"/>
+                                <Button Name="MenuButton" Style="{DynamicResource MenuButton}" Click="MenuButton_Click" MouseDoubleClick="MenuButton_MouseDoubleClick">
+                                    <Button.ContextMenu>
+                                        <ContextMenu Placement="Mouse" Style="{StaticResource {x:Type ContextMenu}}">
+                                            <MenuItem Header="Minimieren" Name="Minimize" Click="Minimize_Click" Style="{StaticResource {x:Type MenuItem}}"/>
+                                            <MenuItem Header="Maximieren" Name="Maximize" Click="Maximize_Click" Style="{StaticResource {x:Type MenuItem}}"/>
+                                            <Separator/>
+                                            <MenuItem Header="Schließen" Name="Close" FontWeight="Bold" InputGestureText="Alt+F4" Click="Close_Click" Style="{StaticResource {x:Type MenuItem}}"/>
+                                        </ContextMenu>
+                                    </Button.ContextMenu>
+                                </Button>
+                                
+                                <ContentPresenter/>
+                                
+                                <Thumb Name="HorizontalResize" DragDelta="WE_DragDelta" HorizontalAlignment="Right" Width="5" Cursor="SizeWE" Margin="0,0,-5,0">
+                                    <Thumb.Template>
+                                        <ControlTemplate TargetType="{x:Type Thumb}">
+                                            <Border Background="Transparent" BorderThickness="0"/>
+                                        </ControlTemplate>
+                                    </Thumb.Template>
+                                </Thumb>
+                                <Thumb Name="VerticalResize" DragDelta="NS_DragDelta" VerticalAlignment="Bottom" Height="5" Cursor="SizeNS" Margin="0,0,0,-5">
+                                    <Thumb.Template>
+                                        <ControlTemplate TargetType="{x:Type Thumb}">
+                                            <Border Background="Transparent" BorderThickness="0"/>
+                                        </ControlTemplate>
+                                    </Thumb.Template>
+                                </Thumb>                               
+                                <ResizeGrip Name="Resizer" VerticalAlignment="Bottom" HorizontalAlignment="Right" IsTabStop="False" Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="WindowState" Value="Maximized">
+                            <Setter TargetName="MaximizeButton" Property="Style" Value="{DynamicResource MaximizeButtonMax}"/>
+                            <Setter TargetName="OuterBorder" Property="Margin" Value="3"/>
+                            <Setter TargetName="HorizontalResize" Property="Visibility" Value="Hidden"/>
+                            <Setter TargetName="VerticalResize" Property="Visibility" Value="Hidden"/>
+                        </Trigger>
+                        <Trigger Property="IsActive" Value="false">
+                            <Setter TargetName="OuterBorder" Property="Style" Value="{DynamicResource WindowBorderInactive}"/>
+                            <Setter TargetName="Caption" Property="Foreground" Value="#8E8F91"/>
+                            <Setter TargetName="CloseButton" Property="IsEnabled" Value="false"/>
+                            <Setter TargetName="MaximizeButton" Property="IsEnabled" Value="false"/>
+                            <Setter TargetName="MinimizeButton" Property="IsEnabled" Value="false"/>
+                            <Setter TargetName="MenuButton" Property="IsEnabled" Value="false"/>
+                        </Trigger>
+                        
+                        <EventTrigger RoutedEvent="Window.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        Storyboard.TargetProperty="Opacity"
+                                        AutoReverse="False"
+                                        To="1"
+                                        Duration="0:0:0.25"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        
+                        <Trigger Property="ResizeMode" Value="NoResize">
+                            <Setter TargetName="MinimizeButton" Property="IsEnabled" Value="false"/>
+                            <Setter TargetName="MaximizeButton" Property="IsEnabled" Value="false"/>
+                            <Setter TargetName="Minimize" Property="IsEnabled" Value="false"/>
+                            <Setter TargetName="Maximize" Property="IsEnabled" Value="false"/>
+                            <Setter TargetName="HorizontalResize" Property="Visibility" Value="Hidden"/>
+                            <Setter TargetName="VerticalResize" Property="Visibility" Value="Hidden"/>
+                        </Trigger>
+                        <Trigger Property="ResizeMode" Value="CanMinimize">
+                            <Setter TargetName="MaximizeButton" Property="IsEnabled" Value="false"/>
+                            <Setter TargetName="Maximize" Property="IsEnabled" Value="false"/>
+                            <Setter TargetName="HorizontalResize" Property="Visibility" Value="Hidden"/>
+                            <Setter TargetName="VerticalResize" Property="Visibility" Value="Hidden"/>
+                        </Trigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="ResizeMode" Value="CanResizeWithGrip"/>
+                                <Condition Property="WindowState" Value="Normal"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="Resizer" Property="Visibility" Value="Visible"/>
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="WindowStyle" Value="None"/>
+        <Setter Property="AllowsTransparency" Value="true"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="5" ShadowDepth="5" Opacity=".7"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

@@ -1,0 +1,61 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Base/Control.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource ControlBase}">
+        <Setter Property="Foreground" Value="Black"/>
+        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Border BorderBrush="#B3C8D2" BorderThickness="0,1,0,1" Background="#D2EBF7" Name="Border" CornerRadius="0">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    </Border>
+                    
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter TargetName="Border" Property="Background" Value="#FEF8B4"/>
+                        </Trigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="false"/>
+                                <Condition Property="IsMouseOver" Value="false"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation
+                                        Storyboard.TargetName="Border"
+                                        Storyboard.TargetProperty="Background.Color"
+                                        To="#D2EBF7" AutoReverse="False" Duration="0:0:0.5"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation
+                                        Storyboard.TargetName="Border"
+                                        Storyboard.TargetProperty="Background.Color"
+                                        To="#E6F4FB" AutoReverse="False" Duration="0:0:0.5"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+                        
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}"/>
+    
+</ResourceDictionary>

@@ -1,0 +1,246 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <DrawingBrush x:Key="DisabledAndSelected">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing>
+                    <GeometryDrawing.Pen>
+                        <Pen DashCap="Round" EndLineCap="Round" StartLineCap="Round" Thickness="2">
+                            <Pen.Brush>
+                                <SolidColorBrush Color="#33555555"/>
+                            </Pen.Brush>
+                        </Pen>
+                    </GeometryDrawing.Pen>
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry>
+                            <PathFigure IsClosed="False" IsFilled="False" StartPoint="5,5">
+                                <BezierSegment Point1="10,5" Point2="12,0" Point3="20,5"/>
+                                <BezierSegment Point1="20,5" Point2="25,12" Point3="20,20"/>
+                                <BezierSegment Point1="20,20" Point2="12,25" Point3="5,20"/>
+                                <BezierSegment Point1="5,20" Point2="0,12" Point3="5,10"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+
+                <GeometryDrawing>
+                    <GeometryDrawing.Pen>
+                        <Pen DashCap="Round" EndLineCap="Round" StartLineCap="Round" Thickness="2">
+                            <Pen.Brush>
+                                <SolidColorBrush Color="#33000000"/>
+                            </Pen.Brush>
+                        </Pen>
+                    </GeometryDrawing.Pen>
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry>
+                            <PathFigure IsClosed="False" IsFilled="False" StartPoint="5,12">
+                                <BezierSegment Point1="5,12" Point2="8,13" Point3="12,20"/>
+                                <BezierSegment Point1="12,20" Point2="13,12" Point3="25,0"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="Disabled">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing>
+                    <GeometryDrawing.Pen>
+                        <Pen DashCap="Round" EndLineCap="Round" StartLineCap="Round" Thickness="2">
+                            <Pen.Brush>
+                                <SolidColorBrush Color="#33555555"/>
+                            </Pen.Brush>
+                        </Pen>
+                    </GeometryDrawing.Pen>
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry>
+                            <PathFigure IsClosed="False" IsFilled="False" StartPoint="5,5">
+                                <BezierSegment Point1="10,5" Point2="12,0" Point3="20,5"/>
+                                <BezierSegment Point1="20,5" Point2="25,12" Point3="20,20"/>
+                                <BezierSegment Point1="20,20" Point2="12,25" Point3="5,20"/>
+                                <BezierSegment Point1="5,20" Point2="0,12" Point3="5,10"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <!--*******************************************************************************************-->
+    
+    <Style TargetType="{x:Type CheckBox}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <StackPanel Background="Transparent" Orientation="Horizontal">
+                        <Border BorderThickness="0" Width="25" Height="25" Name="Border">
+                            <Border.Background>
+                                <DrawingBrush>
+                                    <DrawingBrush.Drawing>
+                                        <DrawingGroup>
+                                            <GeometryDrawing>
+                                                <GeometryDrawing.Pen>
+                                                    <Pen DashCap="Round" EndLineCap="Round" StartLineCap="Round" Thickness="2">
+                                                        <Pen.Brush>
+                                                            <SolidColorBrush Color="#555555" x:Name="Pen"/>
+                                                        </Pen.Brush>
+                                                    </Pen>
+                                                </GeometryDrawing.Pen>
+                                                <GeometryDrawing.Geometry>
+                                                    <PathGeometry>
+                                                        <PathFigure IsClosed="False" IsFilled="False" StartPoint="5,5">
+                                                            <BezierSegment Point1="10,5" Point2="12,0" Point3="20,5"/>
+                                                            <BezierSegment Point1="20,5" Point2="25,12" Point3="20,20"/>
+                                                            <BezierSegment Point1="20,20" Point2="12,25" Point3="5,20"/>
+                                                            <BezierSegment Point1="5,20" Point2="0,12" Point3="5,10"/>
+                                                        </PathFigure>
+                                                    </PathGeometry>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+
+                                            <GeometryDrawing>
+                                                <GeometryDrawing.Pen>
+                                                    <Pen DashCap="Round" EndLineCap="Round" StartLineCap="Round" Thickness="2">
+                                                        <Pen.Brush>
+                                                            <SolidColorBrush Color="#11000000" x:Name="Selector"/>
+                                                        </Pen.Brush>
+                                                    </Pen>
+                                                </GeometryDrawing.Pen>
+                                                <GeometryDrawing.Geometry>
+                                                    <PathGeometry>
+                                                        <PathFigure IsClosed="False" IsFilled="False" StartPoint="5,12">
+                                                            <BezierSegment Point1="5,12" Point2="8,13" Point3="12,20"/>
+                                                            <BezierSegment Point1="12,20" Point2="13,12" Point3="25,0"/>
+                                                        </PathFigure>
+                                                    </PathGeometry>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                        </DrawingGroup>
+                                    </DrawingBrush.Drawing>
+                                </DrawingBrush>
+                            </Border.Background>
+                        </Border>
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Left" RecognizesAccessKey="True" Margin="5,0,0,0"/>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="CheckBox.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard
+                                    Storyboard.TargetName="Pen"
+                                    Storyboard.TargetProperty="Color">
+                                    <ColorAnimation
+                                        AutoReverse="False"
+                                        Duration="0:0:0.5"
+                                        To="#777700"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="CheckBox.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard
+                                    Storyboard.TargetName="Pen"
+                                    Storyboard.TargetProperty="Color">
+                                    <ColorAnimation
+                                        AutoReverse="False"
+                                        Duration="0:0:0.5"
+                                        To="#555555"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        
+                        <EventTrigger RoutedEvent="CheckBox.Checked">
+                            <BeginStoryboard>
+                                <Storyboard
+                                    Storyboard.TargetName="Selector"
+                                    Storyboard.TargetProperty="Color">
+                                    <ColorAnimation
+                                        AutoReverse="False"
+                                        Duration="0:0:0.5"
+                                        To="#555555"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="CheckBox.Unchecked">
+                            <BeginStoryboard>
+                                <Storyboard
+                                    Storyboard.TargetName="Selector"
+                                    Storyboard.TargetProperty="Color">
+                                    <ColorAnimation
+                                        AutoReverse="False"
+                                        Duration="0:0:0.5"
+                                        To="#11000000"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="true"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard
+                                    Storyboard.TargetName="Selector"
+                                    Storyboard.TargetProperty="Color">
+                                        <ColorAnimation
+                                        AutoReverse="False"
+                                        Duration="0:0:0.5"
+                                        To="#555555"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard
+                                    Storyboard.TargetName="Selector"
+                                    Storyboard.TargetProperty="Color">
+                                        <ColorAnimation
+                                        AutoReverse="False"
+                                        Duration="0:0:0.5"
+                                        To="Transparent"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+                        
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                        </Trigger>
+                        
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsEnabled" Value="false"/>
+                                <Condition Property="IsChecked" Value="true"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter Property="Foreground" Value="#99000000"/>
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledAndSelected}"/>
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsEnabled" Value="false"/>
+                                <Condition Property="IsChecked" Value="false"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter Property="Foreground" Value="#99000000"/>
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource Disabled}"/>
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="FontFamily" Value="../Resources/Fonts/#Handschrift MARTIN"/>
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="Foreground" Value="#555555"/>
+        <Setter Property="MinHeight" Value="25"/>
+    </Style>
+    
+</ResourceDictionary>

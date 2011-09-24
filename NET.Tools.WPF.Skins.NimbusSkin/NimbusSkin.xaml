@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Components/Window.xaml"/>
+        <ResourceDictionary Source="Components/Button.xaml"/>
+        <ResourceDictionary Source="Components/TabControl.xaml"/>
+        <ResourceDictionary Source="Components/TextBox.xaml"/>
+        <ResourceDictionary Source="Components/Label.xaml"/>
+        <ResourceDictionary Source="Components/ScrollBar.xaml"/>
+        <ResourceDictionary Source="Components/CheckBox.xaml"/>
+        <ResourceDictionary Source="Components/RadioButton.xaml"/>
+        <ResourceDictionary Source="Components/ProgressBar.xaml"/>
+        <ResourceDictionary Source="Components/GroupBox.xaml"/>
+        <ResourceDictionary Source="Components/ListBox.xaml"/>
+        <ResourceDictionary Source="Components/ListView.xaml"/>
+        <ResourceDictionary Source="Components/ComboBox.xaml"/>
+        <ResourceDictionary Source="Components/ItemX.xaml"/>
+        <ResourceDictionary Source="Components/MenuBar.xaml"/>
+        <ResourceDictionary Source="Components/StatusBar.xaml"/>
+        <ResourceDictionary Source="Components/ToolBar.xaml"/>
+        <ResourceDictionary Source="Components/Separator.xaml"/>
+        <ResourceDictionary Source="Components/Slider.xaml"/>
+        <ResourceDictionary Source="Components/TreeView.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+</ResourceDictionary>

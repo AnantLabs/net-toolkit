@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7B71CDCE-6158-42C5-9AF4-37B396053300}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NET.Tools.Engines.CommandLine</RootNamespace>
+    <AssemblyName>NET.Tools.Engines.CommandLine</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>1591,1587</NoWarn>
+    <DocumentationFile>bin\Release\NET.Tools.Engines.CommandLine.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ArgumentReader.cs" />
+    <Compile Include="ArgumentReader\Enums.cs" />
+    <Compile Include="ArgumentReader\IArgument.cs" />
+    <Compile Include="ArgumentReader\IMultiArgument.cs" />
+    <Compile Include="ArgumentReader\ISwitchArgument.cs" />
+    <Compile Include="ArgumentReader\ITextArgument.cs" />
+    <Compile Include="ArgumentReader\PureArgument.cs" />
+    <Compile Include="ArgumentReader\SwitchArgument.cs" />
+    <Compile Include="ArgumentReader\SwitchedContentArgument.cs" />
+    <Compile Include="CMDApplication.cs" />
+    <Compile Include="Commons\CMDBufferSize.cs" />
+    <Compile Include="Commons\CMDDrawing.cs" />
+    <Compile Include="Commons\CMDPalette.cs" />
+    <Compile Include="Components\CMDButton.cs" />
+    <Compile Include="Components\CMDDesktop.cs" />
+    <Compile Include="Components\CMDDialog.cs" />
+    <Compile Include="Components\CMDWindow.cs" />
+    <Compile Include="GlobalCMDPalette.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NET.Tools.Engines.AbstractGUI\NET.Tools.Engines.AbstractGUI.csproj">
+      <Project>{B17951DE-6A3E-43F2-8BEB-BB28B37FF950}</Project>
+      <Name>NET.Tools.Engines.AbstractGUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.Forms.Tools\NET.Tools.Forms.Tools.csproj">
+      <Project>{50BE0370-034F-4F9D-B767-0BCFA2B8A434}</Project>
+      <Name>NET.Tools.Forms.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.OS.COM\NET.Tools.OS.COM.csproj">
+      <Project>{44DC5F4A-C335-428B-82A3-355250EC55BE}</Project>
+      <Name>NET.Tools.OS.COM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.OS\NET.Tools.OS.csproj">
+      <Project>{B7AD41B2-5C5D-415B-8460-78183E216502}</Project>
+      <Name>NET.Tools.OS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools\NET.Tools.csproj">
+      <Project>{EC6EAAA0-F4F1-419C-A9D5-9F2D3EF67120}</Project>
+      <Name>NET.Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

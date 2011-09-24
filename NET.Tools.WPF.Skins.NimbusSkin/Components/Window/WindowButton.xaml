@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Buttons/Close.xaml"/>
+        <ResourceDictionary Source="Buttons/Maximize.xaml"/>
+        <ResourceDictionary Source="Buttons/Minimize.xaml"/>
+        <ResourceDictionary Source="Buttons/Menu.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+</ResourceDictionary>

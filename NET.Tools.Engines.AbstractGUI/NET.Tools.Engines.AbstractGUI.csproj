@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B17951DE-6A3E-43F2-8BEB-BB28B37FF950}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NET.Tools.Engines.AbstractGUI</RootNamespace>
+    <AssemblyName>NET.Tools.Engines.AbstractGUI</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\NET.Tools.Engines.AbstractGUI.XML</DocumentationFile>
+    <NoWarn>1591,1587</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AbstractButton.cs" />
+    <Compile Include="AbstractComponent.cs" />
+    <Compile Include="AbstractContainer.cs" />
+    <Compile Include="AbstractDesktop.cs" />
+    <Compile Include="AbstractDialog.cs" />
+    <Compile Include="AbstractFrame.cs" />
+    <Compile Include="AbstractWindow.cs" />
+    <Compile Include="IAbstractButton.cs" />
+    <Compile Include="IAbstractStyle.cs" />
+    <Compile Include="Commons\TextAlignment.cs" />
+    <Compile Include="Commons\WindowState.cs" />
+    <Compile Include="Commons\FocusManager.cs" />
+    <Compile Include="Doxygen.cs" />
+    <Compile Include="IAbstractComponent.cs" />
+    <Compile Include="IAbstractContainer.cs" />
+    <Compile Include="IAbstractDesktop.cs" />
+    <Compile Include="IAbstractDialog.cs" />
+    <Compile Include="IAbstractFrame.cs" />
+    <Compile Include="IAbstractWindow.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NET.Tools\NET.Tools.csproj">
+      <Project>{EC6EAAA0-F4F1-419C-A9D5-9F2D3EF67120}</Project>
+      <Name>NET.Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

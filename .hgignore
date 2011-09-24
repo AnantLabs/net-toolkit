@@ -1,0 +1,8 @@
+syntax: glob
+binaries
+settings.xml
+setup.iss
+doxy.dat
+TestResults
+*/obj
+*/bin

@@ -1,0 +1,232 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{520CAE46-F46B-472D-B295-4DC76A473F6B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NET.Tools.Test</RootNamespace>
+    <AssemblyName>NET Tools Test</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationStreamTest.cs" />
+    <Compile Include="ArgumentReaderTest.cs" />
+    <Compile Include="AssemblyExtensionsTest.cs" />
+    <Compile Include="BytesTest.cs" />
+    <Compile Include="CalculatorTest.cs" />
+    <Compile Include="DateTimeExtensionsTest.cs" />
+    <Compile Include="DesktopToolsTest.cs" />
+    <Compile Include="EHCTest.cs" />
+    <Compile Include="MathematicaTest.cs" />
+    <Compile Include="NetworkToolsTest.cs" />
+    <Compile Include="Network\IRemoteService.cs" />
+    <Compile Include="Network\RemoteService.cs" />
+    <Compile Include="Network\TestUpdateServer.cs" />
+    <Compile Include="ObjectExtensionsTest.cs" />
+    <Compile Include="PointTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RectTest.cs" />
+    <Compile Include="StreamExtensionsTest.cs" />
+    <Compile Include="UriCreatorTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AuthoringTests.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NET.Tools.OS.COM\NET.Tools.OS.COM.csproj">
+      <Project>{44DC5F4A-C335-428B-82A3-355250EC55BE}</Project>
+      <Name>NET.Tools.OS.COM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.Demo\NET.Tools.Demo.csproj">
+      <Project>{693E450A-D2D8-4723-9DB1-C11E49009545}</Project>
+      <Name>NET.Tools.Demo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.Engines.CommandLine\NET.Tools.Engines.CommandLine.csproj">
+      <Project>{7B71CDCE-6158-42C5-9AF4-37B396053300}</Project>
+      <Name>NET.Tools.Engines.CommandLine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.Engines.Internationalization\NET.Tools.Engines.Internationalization.csproj">
+      <Project>{FF7A0A03-1425-4F44-A5AB-F0AD02833AC5}</Project>
+      <Name>NET.Tools.Engines.Internationalization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.Engines.Mathematica\NET.Tools.Engines.Mathematica.csproj">
+      <Project>{19C73DCF-FE43-485C-9622-5FCA1DCFA946}</Project>
+      <Name>NET.Tools.Engines.Mathematica</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.Engines.Network\NET.Tools.Engines.Network.csproj">
+      <Project>{66505065-EB69-4A9B-9A90-E3458FBDF2FD}</Project>
+      <Name>NET.Tools.Engines.Network</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.Engines.Organizer\NET.Tools.Engines.Organizer.csproj">
+      <Project>{0018303E-B727-45C1-8009-041714DEEC4C}</Project>
+      <Name>NET.Tools.Engines.Organizer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.Forms.Controls\NET.Tools.Forms.Controls.csproj">
+      <Project>{0553E847-1E09-4E12-8C6B-86E1E533FBA0}</Project>
+      <Name>NET.Tools.Forms.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.Forms.Dialogs\NET.Tools.Forms.Dialogs.csproj">
+      <Project>{2E199803-3EF7-4209-8F49-AC9A65354888}</Project>
+      <Name>NET.Tools.Forms.Dialogs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.Forms.Tools\NET.Tools.Forms.Tools.csproj">
+      <Project>{50BE0370-034F-4F9D-B767-0BCFA2B8A434}</Project>
+      <Name>NET.Tools.Forms.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.OS\NET.Tools.OS.csproj">
+      <Project>{B7AD41B2-5C5D-415B-8460-78183E216502}</Project>
+      <Name>NET.Tools.OS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.OS.Windows7\NET.Tools.OS.Windows7.csproj">
+      <Project>{898B5081-0E87-4B4E-9A29-209604CA3064}</Project>
+      <Name>NET.Tools.OS.Windows7</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Animations\NET.Tools.WPF.Animations.csproj">
+      <Project>{3332B4FD-0E0D-4D63-A43E-745C00FACC5E}</Project>
+      <Name>NET.Tools.WPF.Animations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Controls\NET.Tools.WPF.Controls.csproj">
+      <Project>{A4C83440-4263-4C64-98A5-C5979814AAC0}</Project>
+      <Name>NET.Tools.WPF.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Dialogs\NET.Tools.WPF.Dialogs.csproj">
+      <Project>{B3C793CA-E6C1-4489-B000-F588646E5BCE}</Project>
+      <Name>NET.Tools.WPF.Dialogs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Effects\NET.Tools.WPF.Effects.csproj">
+      <Project>{44E0216A-98D1-4F49-A16F-55FC43272708}</Project>
+      <Name>NET.Tools.WPF.Effects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Skins.ArtSkin\NET.Tools.WPF.Skins.ArtSkin.csproj">
+      <Project>{9169571A-790E-4E0B-8C07-4C6005BCB7D2}</Project>
+      <Name>NET.Tools.WPF.Skins.ArtSkin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Skins.BlackSkin\NET.Tools.WPF.Skins.BlackSkin.csproj">
+      <Project>{55C91FA6-9DC0-463A-8E1B-287757B58554}</Project>
+      <Name>NET.Tools.WPF.Skins.BlackSkin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Skins.ChalkSkin\NET.Tools.WPF.Skins.ChalkSkin.csproj">
+      <Project>{80EDDB07-A5AE-4530-A3E8-761AE5B4CD79}</Project>
+      <Name>NET.Tools.WPF.Skins.ChalkSkin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Skins.NimbusSkin\NET.Tools.WPF.Skins.NimbusSkin.csproj">
+      <Project>{02C7A5D4-262E-49E9-995D-70EBCB38B75E}</Project>
+      <Name>NET.Tools.WPF.Skins.NimbusSkin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Skins.PaperSkin\NET.Tools.WPF.Skins.PaperSkin.csproj">
+      <Project>{0E0E2580-F19C-4370-91BE-0804C19F3956}</Project>
+      <Name>NET.Tools.WPF.Skins.PaperSkin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Skins.Sims3Skin\NET.Tools.WPF.Skins.Sims3Skin.csproj">
+      <Project>{1ACE4851-9D07-4DA1-B530-E725A0CD5E5D}</Project>
+      <Name>NET.Tools.WPF.Skins.Sims3Skin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Skins\NET.Tools.WPF.Skins.csproj">
+      <Project>{29B0980A-861E-4C9D-9DF1-05EEB493D34F}</Project>
+      <Name>NET.Tools.WPF.Skins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Tools\NET.Tools.WPF.Tools.csproj">
+      <Project>{55AE2F48-7FE9-40C9-BADE-D1DCDCFDDAE6}</Project>
+      <Name>NET.Tools.WPF.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools\NET.Tools.csproj">
+      <Project>{EC6EAAA0-F4F1-419C-A9D5-9F2D3EF67120}</Project>
+      <Name>NET.Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Lists\ArgumentReader.orderedtest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Lists\Bytes.orderedtest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Lists\Calculator.orderedtest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Lists\DateTime.orderedtest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Lists\EHC.orderedtest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Lists\Mathematica.orderedtest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Lists\Stream.orderedtest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

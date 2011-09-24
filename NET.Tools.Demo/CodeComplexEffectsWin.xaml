@@ -1,0 +1,174 @@
+﻿<Window x:Class="NET.Tools.Demo.CodeComplexEffectsWin"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:eff="clr-namespace:NET.Tools.WPF.CodeComplex;assembly=NET.Tools.WPF.Effects"
+    Title="CodeComplexEffectsWin" Height="735" Width="928" xmlns:my="clr-namespace:NET.Tools.WPF;assembly=NET.Tools.WPF.Effects">
+    
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ButtonStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    
+    <Window.Background>
+        <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+            <GradientStop Color="Blue" Offset="0" />
+            <GradientStop Color="AliceBlue" Offset="0.8" />
+            <GradientStop Color="White" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <Grid Margin="0" Name="grid1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="134" />
+                <RowDefinition Height="134" />
+                <RowDefinition Height="134" />
+                <RowDefinition Height="134" />
+                <RowDefinition Height="134" />
+                <RowDefinition Height="202*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="178" />
+                <ColumnDefinition Width="178" />
+                <ColumnDefinition Width="178" />
+                <ColumnDefinition Width="178" />
+                <ColumnDefinition Width="178" />
+                <ColumnDefinition Width="89*" />
+            </Grid.ColumnDefinitions>
+            <Image Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" Name="imgBandedSwirl" Stretch="Fill" Source="Lighthouse.jpg">
+                <Image.Effect>
+                    <eff:BandedSwirlEffect/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" Name="imgBloom" Source="Lighthouse.jpg" Stretch="Fill" Grid.Column="1">
+                <Image.Effect>
+                    <eff:BloomEffect/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" Name="imgBright" Source="Lighthouse.jpg" Stretch="Fill" Grid.Column="2">
+                <Image.Effect>
+                    <eff:BrightExtractEffect/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" Name="imgColorKey" Source="Lighthouse.jpg" Stretch="Fill" Grid.Column="3">
+                <Image.Effect>
+                    <eff:ColorKeyAlphaEffect/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" Name="imgColorTone" Source="Lighthouse.jpg" Stretch="Fill" Grid.Column="4">
+                <Image.Effect>
+                    <eff:ColorToneEffect/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" Name="imgContrast" Source="Lighthouse.jpg" Stretch="Fill" Grid.Column="0" Grid.Row="1">
+                <Image.Effect>
+                    <eff:ContrastAdjustEffect Brightness="0.1" Contrast="1.7"/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" Name="imgBlur" Source="Lighthouse.jpg" Stretch="Fill" Grid.Column="1" Grid.Row="1">
+                <Image.Effect>
+                    <eff:DirectionalBlurEffect Angle="100" BlurAmount="0.01"/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" Name="imgEmbossed" Source="Lighthouse.jpg" Stretch="Fill" Grid.Column="2" Grid.Row="1">
+                <Image.Effect>
+                    <eff:EmbossedEffect Amount="100"/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" Name="imgGloom" Source="Lighthouse.jpg" Stretch="Fill" Grid.Column="3" Grid.Row="1">
+                <Image.Effect>
+                    <eff:GloomEffect/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" Name="imgPoissonDisk" Source="Lighthouse.jpg" Stretch="Fill" Grid.Column="4" Grid.Row="1">
+                <Image.Effect>
+                    <eff:GrowablePoissonDiskEffect/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" Name="imgInvert" Source="Lighthouse.jpg" Stretch="Fill" Grid.Column="0" Grid.Row="2">
+                <Image.Effect>
+                    <eff:InvertColorEffect/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" Name="imgLight" Source="Lighthouse.jpg" Stretch="Fill" Grid.Column="1" Grid.Row="2">
+                <Image.Effect>
+                    <eff:LightStreakEffect/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" Name="imgMagnify" Source="Lighthouse.jpg" Stretch="Fill" Grid.Column="2" Grid.Row="2">
+                <Image.Effect>
+                    <eff:MagnifyEffect Center=".3,.3" ShrinkFactor="0.5"/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" Name="imgMonochrome" Source="Lighthouse.jpg" Stretch="Fill" Grid.Column="3" Grid.Row="2">
+                <Image.Effect>
+                    <eff:MonochromeEffect FilterColor="AliceBlue"/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" Name="imgPinch" Source="Lighthouse.jpg" Stretch="Fill" Grid.Column="4" Grid.Row="2">
+                <Image.Effect>
+                    <eff:PinchEffect Amount="1.5" Radius="0.7"/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" Name="imgPixelate" Source="Lighthouse.jpg" Stretch="Fill" Grid.Column="0" Grid.Row="3">
+                <Image.Effect>
+                    <eff:PixelateEffect HorizontalPixelCounts="50" VerticalPixelCounts="50"/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" Name="imgRipple" Source="Lighthouse.jpg" Stretch="Fill" Grid.Column="1" Grid.Row="3">
+                <Image.Effect>
+                    <eff:RippleEffect/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" Name="imgSharpen" Source="Lighthouse.jpg" Stretch="Fill" Grid.Column="2" Grid.Row="3">
+                <Image.Effect>
+                    <eff:SharpenEffect Amount=".5" Width="0.1"/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" Name="imgSmoothMagnify" Source="Lighthouse.jpg" Stretch="Fill" Grid.Column="3" Grid.Row="3">
+                <Image.Effect>
+                    <eff:SmoothMagnifyEffect/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" Name="imgSwirl" Source="Lighthouse.jpg" Stretch="Fill" Grid.Column="4" Grid.Row="3">
+                <Image.Effect>
+                    <eff:SwirlEffect Center=".5,.5" SwirlStrength="2"/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" Name="imgToneMapping" Source="Lighthouse.jpg" Stretch="Fill" Grid.Column="0" Grid.Row="4">
+                <Image.Effect>
+                    <eff:ToneMappingEffect/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" Name="imgToonShader" Source="Lighthouse.jpg" Stretch="Fill" Grid.Column="1" Grid.Row="4">
+                <Image.Effect>
+                    <eff:ToonShaderEffect/>
+                </Image.Effect>
+            </Image>
+            <Image Grid.ColumnSpan="1" Grid.RowSpan="1" Margin="0" Name="imgZoomBlur" Source="Lighthouse.jpg" Stretch="Fill" Grid.Column="2" Grid.Row="4">
+                <Image.Effect>
+                    <eff:ZoomBlurEffect BlurAmount="0.2" Center=".2,.2"/>
+                </Image.Effect>
+            </Image>
+            <Button Grid.Column="1" Grid.Row="4" Height="32" Margin="6,0,6,11" Name="button1" VerticalAlignment="Bottom">
+                Animate
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="Button.Click">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <SingleAnimation
+                                    Storyboard.TargetName="imgToonShader"
+                                    Storyboard.TargetProperty="Effect.Factor"
+                                    AutoReverse="True"
+                                    Duration="0:0:10"
+                                    To="500"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>

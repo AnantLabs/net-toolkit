@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" x:Key="Glass">
+        <GradientStop Color="#AAFFFFFF" Offset="0"/>
+        <GradientStop Color="#99FFFFFF" Offset=".7"/>
+        <GradientStop Color="#00FFFFFF" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <RectangleGeometry Rect="0,0,100,50" x:Key="GlassRect"/>
+    
+</ResourceDictionary>

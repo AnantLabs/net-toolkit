@@ -1,0 +1,10 @@
+﻿<UserControl x:Class="NET.Tools.WPF.Header"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    MinHeight="50" MaxHeight="50" Width="Auto">
+    <Grid Name="grdMain">
+        <Label Name="lblHeader" FontSize="23" FontWeight="Bold" Padding="3,0,3,3" Margin="50,0,0,0">Header</Label>
+        <Label Margin="50,22,0,0" Name="lblDescription" VerticalContentAlignment="Bottom">Description</Label>
+        <Image Name="imgIcon" Stretch="Uniform" HorizontalAlignment="Left" Width="44" Source="Resources/Default.ico" />
+    </Grid>
+</UserControl>
