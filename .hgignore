@@ -1,9 +1,11 @@
 syntax: glob
 binaries
 settings.xml
-setup.iss
-doxy.dat
 TestResults
 */obj
 */bin
 */Properties/AssemblyInfo.cs
+NET Tools.suo
+syntax: regexp
+^doxy.dat$
+^setup.iss$
