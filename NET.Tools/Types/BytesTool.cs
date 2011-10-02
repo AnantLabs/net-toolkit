@@ -55,7 +55,7 @@ namespace NET.Tools
             return UnsignedLongExtensions.FromBytes(0, buffer);
         }
 
-        public static bool BooleanFromByte(byte buffer)
+        public static bool BooleanFromByte(byte[] buffer)
         {
             return BooleanExtensions.FromByte(true, buffer);
         }

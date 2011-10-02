@@ -42,30 +42,12 @@ namespace NET.Tools
 
         public static byte[] ToBytes(this ulong l)
         {
-            //Copy to polonger
-            IntPtr ptr = Marshal.AllocHGlobal(sizeof(long));
-            Marshal.Copy(new long[] { (long)l }, 0, ptr, 1);
-
-            //Copy from polonger to buffer
-            byte[] buffer = new byte[sizeof(long)];
-            Marshal.Copy(ptr, buffer, 0, sizeof(long));
-            Marshal.FreeHGlobal(ptr);
-
-            return buffer;
+            return BitConverter.GetBytes(l);
         }
 
         public static ulong FromBytes(this ulong l, byte[] buffer)
         {
-            //Copy to polonger
-            IntPtr ptr = Marshal.AllocHGlobal(sizeof(long));
-            Marshal.Copy(buffer, 0, ptr, sizeof(long));
-
-            //Copy from polonger to long
-            long[] res = new long[1];
-            Marshal.Copy(ptr, res, 0, 1);
-            Marshal.FreeHGlobal(ptr);
-
-            return (ulong)res[0];
+            return BitConverter.ToUInt64(buffer, 0);
         }
 
         public static uint ToLowUInteger(this ulong value)
@@ -76,6 +58,50 @@ namespace NET.Tools
         public static uint ToHightUInteger(this ulong value)
         {
             return (uint)(value >> 32);
+        }
+
+        public static String ToString(this ulong value, IntegerStringFormatType type)
+        {
+            switch (type)
+            {
+                case IntegerStringFormatType.ToHexBinary:
+                    return Convert.ToString((long)value, 16);
+                case IntegerStringFormatType.ToDecimal:
+                    return Convert.ToString((long)value, 10);
+                case IntegerStringFormatType.ToOcted:
+                    return Convert.ToString((long)value, 8);
+                case IntegerStringFormatType.ToBinary:
+                    return Convert.ToString((long)value, 2);
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+
+        public static short FromString(this ulong value, String str, IntegerStringFormatType type)
+        {
+            switch (type)
+            {
+                case IntegerStringFormatType.ToHexBinary:
+                    return Convert.ToInt16(str, 16);
+                case IntegerStringFormatType.ToDecimal:
+                    return Convert.ToInt16(str, 10);
+                case IntegerStringFormatType.ToOcted:
+                    return Convert.ToInt16(str, 8);
+                case IntegerStringFormatType.ToBinary:
+                    return Convert.ToInt16(str, 2);
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+
+        /// <summary>
+        /// Gets the number of set bits (1)
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int GetSetBits(this ulong value)
+        {
+            return value.ToString(IntegerStringFormatType.ToBinary).GetCountOf('1');
         }
     }
     /// @}

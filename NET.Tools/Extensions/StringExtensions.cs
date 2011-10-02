@@ -319,6 +319,100 @@ namespace NET.Tools
 
             return res.ToString();
         }
+
+        /// <summary>
+        /// Gets the count of the character
+        /// </summary>
+        /// <param name="c">Character to count</param>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static int GetCountOf(this String str, char c)
+        {
+            return GetCountOf(str, c, false);
+        }
+
+        /// <summary>
+        /// Gets the count of the character
+        /// </summary>
+        /// <param name="c">Character to count</param>
+        /// <param name="ignoreCase">Ignore the cases</param>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static int GetCountOf(this String str, char c, bool ignoreCase)
+        {
+            int counter = 0;
+
+            foreach (char part in str)
+            {
+                if (ignoreCase)
+                {
+                    if (Char.ToUpper(part) == Char.ToUpper(c))
+                        counter++;
+                }
+                else
+                {
+                    if (part == c)
+                        counter++;
+                }
+            }
+
+            return counter;
+        }
+
+        /// <summary>
+        /// Gets the count of the string
+        /// </summary>
+        /// <param name="s">String sequence to count</param>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static int GetCountOf(this String str, String s)
+        {
+            return GetCountOf(str, s, false);
+        }
+
+        /// <summary>
+        /// Gets the count of the String
+        /// </summary>
+        /// <param name="s">String sequence to count</param>
+        /// <param name="ignoreCase">Ignore the cases</param>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static int GetCountOf(this String str, String s, bool ignoreCase)
+        {
+            int counter = 0;
+
+            while (true)
+            {
+                int index = -1;
+                if (ignoreCase)
+                    index = str.IndexOf(s, StringComparison.CurrentCultureIgnoreCase);
+                else
+                    index = str.IndexOf(s, StringComparison.CurrentCulture);
+                if (index < 0)
+                    break;
+
+                counter++;
+                str = str.Remove(index, s.Length);
+            }
+
+            return counter;
+        }
+
+        /// <summary>
+        /// Gets the count of the string regex
+        /// </summary>
+        /// <param name="regex">Regex to count</param>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static int GetCountOfMatches(this String str, String regex)
+        {
+            return str.GetMaches(regex).Count;
+        }
+
+        public static MatchCollection GetMaches(this String str, String regex)
+        {
+            return new Regex(regex).Matches(str);
+        }
     }
     /// @}
 }

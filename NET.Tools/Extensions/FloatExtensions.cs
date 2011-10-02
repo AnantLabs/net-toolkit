@@ -42,30 +42,12 @@ namespace NET.Tools
 
         public static byte[] ToBytes(this float f)
         {
-            //Copy to pofloater
-            IntPtr ptr = Marshal.AllocHGlobal(sizeof(float));
-            Marshal.Copy(new float[] { f }, 0, ptr, 1);
-
-            //Copy from pofloater to buffer
-            byte[] buffer = new byte[sizeof(float)];
-            Marshal.Copy(ptr, buffer, 0, sizeof(float));
-            Marshal.FreeHGlobal(ptr);
-
-            return buffer;
+            return BitConverter.GetBytes(f);
         }
 
         public static float FromBytes(this float f, byte[] buffer)
         {
-            //Copy to pofloater
-            IntPtr ptr = Marshal.AllocHGlobal(sizeof(float));
-            Marshal.Copy(buffer, 0, ptr, sizeof(float));
-
-            //Copy from pofloater to float
-            float[] res = new float[1];
-            Marshal.Copy(ptr, res, 0, 1);
-            Marshal.FreeHGlobal(ptr);
-
-            return res[0];
+            return (float)BitConverter.ToDouble(buffer, 0);
         }
 
         public static float Round(this float f, int decimals)

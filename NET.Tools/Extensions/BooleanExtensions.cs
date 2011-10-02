@@ -22,14 +22,19 @@ namespace NET.Tools
             return new IntPtr(&b);
         }
 
-        public static byte ToByte(this bool b)
+        public static byte[] ToByte(this bool b)
         {
-            return b ? (byte)1 : (byte)0;
+            return BitConverter.GetBytes(b);
         }
 
-        public static bool FromByte(this bool b, byte buffer)
+        public static bool FromByte(this bool b, byte[] buffer, int startIndex)
         {
-            return buffer == (byte)1;
+            return BitConverter.ToBoolean(buffer, startIndex);
+        }
+
+        public static bool FromByte(this bool b, byte[] buffer)
+        {
+            return FromByte(b, buffer, 0);
         }
     }
     /// @}

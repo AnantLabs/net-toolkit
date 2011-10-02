@@ -20,30 +20,61 @@ namespace NET.Tools
 
         public static byte[] ToBytes(this char c)
         {
-            //Copy to pocharer
-            IntPtr ptr = Marshal.AllocHGlobal(sizeof(char));
-            Marshal.Copy(new char[] { c }, 0, ptr, 1);
+            return BitConverter.GetBytes(c);
+        }
 
-            //Copy from pocharer to buffer
-            byte[] buffer = new byte[sizeof(char)];
-            Marshal.Copy(ptr, buffer, 0, sizeof(char));
-            Marshal.FreeHGlobal(ptr);
-
-            return buffer;
+        public static char FromBytes(this char c, byte[] buffer, int startIndex)
+        {
+            return BitConverter.ToChar(buffer, startIndex);
         }
 
         public static char FromBytes(this char c, byte[] buffer)
         {
-            //Copy to pocharer
-            IntPtr ptr = Marshal.AllocHGlobal(sizeof(char));
-            Marshal.Copy(buffer, 0, ptr, sizeof(char));
+            return c.FromBytes(buffer, 0);
+        }
 
-            //Copy from pocharer to char
-            char[] res = new char[1];
-            Marshal.Copy(ptr, res, 0, 1);
-            Marshal.FreeHGlobal(ptr);
+        public static String ToString(this char value, IntegerStringFormatType type)
+        {
+            switch (type)
+            {
+                case IntegerStringFormatType.ToHexBinary:
+                    return Convert.ToString(value, 16);
+                case IntegerStringFormatType.ToDecimal:
+                    return Convert.ToString(value, 10);
+                case IntegerStringFormatType.ToOcted:
+                    return Convert.ToString(value, 8);
+                case IntegerStringFormatType.ToBinary:
+                    return Convert.ToString(value, 2);
+                default:
+                    throw new NotImplementedException();
+            }
+        }
 
-            return res[0];
+        public static short FromString(this char value, String str, IntegerStringFormatType type)
+        {
+            switch (type)
+            {
+                case IntegerStringFormatType.ToHexBinary:
+                    return Convert.ToInt16(str, 16);
+                case IntegerStringFormatType.ToDecimal:
+                    return Convert.ToInt16(str, 10);
+                case IntegerStringFormatType.ToOcted:
+                    return Convert.ToInt16(str, 8);
+                case IntegerStringFormatType.ToBinary:
+                    return Convert.ToInt16(str, 2);
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+
+        /// <summary>
+        /// Gets the number of set bits (1)
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int GetSetBits(this char value)
+        {
+            return value.ToString(IntegerStringFormatType.ToBinary).GetCountOf('1');
         }
     }
     /// @}
