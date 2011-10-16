@@ -13,7 +13,7 @@
                         <Pen Brush="#4669B0" EndLineCap="Flat" StartLineCap="Flat" Thickness="15"/>
                     </GeometryDrawing.Pen>
                     <GeometryDrawing.Geometry>
-                        <LineGeometry StartPoint="15,50" EndPoint="55,90"/>
+                        <LineGeometry StartPoint="20,50" EndPoint="55,70"/>
                     </GeometryDrawing.Geometry>
                 </GeometryDrawing>
 
@@ -22,7 +22,7 @@
                         <Pen Brush="#4669B0" EndLineCap="Round" StartLineCap="Flat" Thickness="15"/>
                     </GeometryDrawing.Pen>
                     <GeometryDrawing.Geometry>
-                        <LineGeometry StartPoint="50,85" EndPoint="100,0"/>
+                        <LineGeometry StartPoint="50,65" EndPoint="100,15"/>
                     </GeometryDrawing.Geometry>
                 </GeometryDrawing>
             </DrawingGroup>
@@ -37,7 +37,7 @@
                         <Pen Brush="#994669B0" EndLineCap="Flat" StartLineCap="Flat" Thickness="15"/>
                     </GeometryDrawing.Pen>
                     <GeometryDrawing.Geometry>
-                        <LineGeometry StartPoint="15,50" EndPoint="55,90"/>
+                        <LineGeometry StartPoint="20,50" EndPoint="55,70"/>
                     </GeometryDrawing.Geometry>
                 </GeometryDrawing>
 
@@ -46,7 +46,7 @@
                         <Pen Brush="#994669B0" EndLineCap="Round" StartLineCap="Flat" Thickness="15"/>
                     </GeometryDrawing.Pen>
                     <GeometryDrawing.Geometry>
-                        <LineGeometry StartPoint="50,85" EndPoint="100,0"/>
+                        <LineGeometry StartPoint="50,65" EndPoint="100,15"/>
                     </GeometryDrawing.Geometry>
                 </GeometryDrawing>
             </DrawingGroup>
@@ -61,7 +61,7 @@
                         <Pen Brush="Black" EndLineCap="Flat" StartLineCap="Flat" Thickness="15"/>
                     </GeometryDrawing.Pen>
                     <GeometryDrawing.Geometry>
-                        <LineGeometry StartPoint="15,50" EndPoint="55,90"/>
+                        <LineGeometry StartPoint="20,50" EndPoint="55,70"/>
                     </GeometryDrawing.Geometry>
                 </GeometryDrawing>
 
@@ -70,7 +70,7 @@
                         <Pen Brush="Black" EndLineCap="Round" StartLineCap="Flat" Thickness="15"/>
                     </GeometryDrawing.Pen>
                     <GeometryDrawing.Geometry>
-                        <LineGeometry StartPoint="50,85" EndPoint="100,0"/>
+                        <LineGeometry StartPoint="50,65" EndPoint="100,15"/>
                     </GeometryDrawing.Geometry>
                 </GeometryDrawing>
             </DrawingGroup>
@@ -92,11 +92,13 @@
                     <StackPanel CanHorizontallyScroll="False" CanVerticallyScroll="False"
                                 FlowDirection="LeftToRight" Background="Transparent" Orientation="Horizontal">
                         <Border Background="Transparent" BorderThickness="2" BorderBrush="Transparent" Name="OuterBorder" CornerRadius="5">
-                            <Border Margin="0" Height="25" Width="25" Background="White" Name="Border"
+                            <Grid>
+                                <Border Margin="3" Height="25" Width="25" Background="White" Name="Border"
                                     BorderBrush="#87AFC8" BorderThickness="1,2,2,0" CornerRadius="3"
                                     VerticalAlignment="Center" HorizontalAlignment="Left">
-                                <Border Name="Selector" BorderThickness="0" Width="25" Height="25" Visibility="Hidden"/>
-                            </Border>
+                                </Border>
+                                <Border Name="Selector" Margin="0" BorderThickness="0" Width="25" Height="25" Visibility="Hidden"/>
+                            </Grid>
                         </Border>
                         <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,5,0,0" RecognizesAccessKey="True"/>
                     </StackPanel>
