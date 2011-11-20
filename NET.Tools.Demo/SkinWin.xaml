@@ -10,6 +10,7 @@
             <ListBoxItem>Nimbus</ListBoxItem>
             <ListBoxItem>Paper</ListBoxItem>
             <ListBoxItem>Chalk</ListBoxItem>
+            <ListBoxItem>Art</ListBoxItem>
             <!--<ListBoxItem>Black</ListBoxItem>
             <ListBoxItem>Art</ListBoxItem>-->
         </ListBox>

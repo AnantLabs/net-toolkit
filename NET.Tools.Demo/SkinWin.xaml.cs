@@ -54,6 +54,9 @@ namespace NET.Tools.Demo
                     case "chalk":
                         activeBundle = ChalkSkin.SkinBundle;
                         break;
+                    case "art":
+                        activeBundle = ArtSkin.SkinBundle;
+                        break;
                     default:
                         throw new NotImplementedException();
                 }

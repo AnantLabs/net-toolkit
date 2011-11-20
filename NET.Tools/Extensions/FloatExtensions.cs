@@ -47,7 +47,7 @@ namespace NET.Tools
 
         public static float FromBytes(this float f, byte[] buffer)
         {
-            return (float)BitConverter.ToDouble(buffer, 0);
+            return (float)BitConverter.ToSingle(buffer, 0);
         }
 
         public static float Round(this float f, int decimals)

@@ -3,7 +3,7 @@
 	<name>NET Tools</name>
 	<groupId>PC-Software</groupId>
 	<artifactId>NET_Tools</artifactId>
-	<version>0.9.${buildNumber}.${maven.build.timestamp}</version>
+	<version>0.7.${maven.build.timestamp}</version>
 
 	<scm>
 		<connection>scm:svn:https://entwickler-pc:8443/svn/NET.Tools/trunk</connection>
@@ -11,29 +11,29 @@
 	</scm>
 
 	<properties>
-		<maven.build.timestamp.format>yyMM</maven.build.timestamp.format>
+		<maven.build.timestamp.format>ddMM.yyyy</maven.build.timestamp.format>
 		<project.out>binaries/${artifactId}-${pom.version}</project.out>
 		<setup.name>${project.name} ${pom.version} Setup</setup.name>
 		<setup.file>${setup.name}.exe</setup.file>
-		<skin.art.version>0.3.${buildNumber}.${maven.build.timestamp}</skin.art.version>
-		<skin.black.version>0.1.${buildNumber}.${maven.build.timestamp}</skin.black.version>
-		<skin.chalk.version>0.1.${buildNumber}.${maven.build.timestamp}</skin.chalk.version>
-		<skin.nimbus.version>1.0.${buildNumber}.${maven.build.timestamp}</skin.nimbus.version>
-		<skin.paper.version>0.9.${buildNumber}.${maven.build.timestamp}</skin.paper.version>
-		<skin.sims3.version>0.9.${buildNumber}.${maven.build.timestamp}</skin.sims3.version>
-		<wpf.version>0.9.${buildNumber}.${maven.build.timestamp}</wpf.version>
-		<forms.version>0.9.${buildNumber}.${maven.build.timestamp}</forms.version>
-		<os.version>0.5.${buildNumber}.${maven.build.timestamp}</os.version>
-		<main.version>1.0.${buildNumber}.${maven.build.timestamp}</main.version>
-		<engines.organizer.version>0.1.${buildNumber}.${maven.build.timestamp}</engines.organizer.version>
-		<engines.network.version>0.2.${buildNumber}.${maven.build.timestamp}</engines.network.version>
-		<engines.mathematica.version>0.5.${buildNumber}.${maven.build.timestamp}</engines.mathematica.version>
-		<engines.commandline.version>0.3.${buildNumber}.${maven.build.timestamp}</engines.commandline.version>
-		<engines.internationalization.version>0.2.${buildNumber}.${maven.build.timestamp}</engines.internationalization.version>
-		<engines.graphics2d.version>0.1.${buildNumber}.${maven.build.timestamp}</engines.graphics2d.version>
-		<engines.graphics3d.version>0.1.${buildNumber}.${maven.build.timestamp}</engines.graphics3d.version>
-		<engines.gui.version>0.1.${buildNumber}.${maven.build.timestamp}</engines.gui.version>
-		<engines.avm.version>0.5.${buildNumber}.${maven.build.timestamp}</engines.avm.version>
+		<skin.art.version>0.3.${maven.build.timestamp}</skin.art.version>
+		<skin.black.version>0.1.${maven.build.timestamp}</skin.black.version>
+		<skin.chalk.version>0.1.${maven.build.timestamp}</skin.chalk.version>
+		<skin.nimbus.version>1.0.${maven.build.timestamp}</skin.nimbus.version>
+		<skin.paper.version>0.9.${maven.build.timestamp}</skin.paper.version>
+		<skin.sims3.version>0.9.${maven.build.timestamp}</skin.sims3.version>
+		<wpf.version>0.9.${maven.build.timestamp}</wpf.version>
+		<forms.version>0.9.${maven.build.timestamp}</forms.version>
+		<os.version>0.5.${maven.build.timestamp}</os.version>
+		<main.version>1.0.${maven.build.timestamp}</main.version>
+		<engines.organizer.version>0.1.${maven.build.timestamp}</engines.organizer.version>
+		<engines.network.version>0.2.${maven.build.timestamp}</engines.network.version>
+		<engines.mathematica.version>0.5.${maven.build.timestamp}</engines.mathematica.version>
+		<engines.commandline.version>0.3.${maven.build.timestamp}</engines.commandline.version>
+		<engines.internationalization.version>0.2.${maven.build.timestamp}</engines.internationalization.version>
+		<engines.graphics2d.version>0.1.${maven.build.timestamp}</engines.graphics2d.version>
+		<engines.graphics3d.version>0.1.${maven.build.timestamp}</engines.graphics3d.version>
+		<engines.gui.version>0.1.${maven.build.timestamp}</engines.gui.version>
+		<engines.avm.version>0.5.${maven.build.timestamp}</engines.avm.version>
 	</properties>
 
 	<build>
@@ -41,25 +41,6 @@
 		<outputDirectory>${project.out}</outputDirectory>
 
 		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>buildnumber-maven-plugin</artifactId>
-				<version>1.0-beta-4</version>
-				<executions>
-					<execution>
-						<phase>validate</phase>
-						<goals>
-							<goal>create</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<doCheck>false</doCheck>
-					<doUpdate>false</doUpdate>
-					<revisionOnScmFailure>0</revisionOnScmFailure>
-				</configuration>
-			</plugin>
-
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>2.4.3</version>
