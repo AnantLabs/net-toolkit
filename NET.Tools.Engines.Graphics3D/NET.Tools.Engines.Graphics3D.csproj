@@ -52,7 +52,9 @@
   <ItemGroup>
     <Compile Include="Configuration\Graphics3DConfiguration.cs" />
     <Compile Include="Configuration\ScreenConfiguration.cs" />
+    <Compile Include="Converter\Direct3DConverter11.cs" />
     <Compile Include="Converter\Direct3DConverter9.cs" />
+    <Compile Include="Engines\GraphicsDirect3D11.cs" />
     <Compile Include="Engines\GraphicsDirect3D9.cs" />
     <Compile Include="Exceptions\Graphics3DConfigurationException.cs" />
     <Compile Include="Exceptions\Graphics3DException.cs" />

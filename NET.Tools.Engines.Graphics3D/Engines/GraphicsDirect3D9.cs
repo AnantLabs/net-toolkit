@@ -53,8 +53,9 @@ namespace NET.Tools.Engines.Graphics3D.Engines
             if (device != null)
                 throw new Graphics3DStateException("Cannot do device initialization: Device already initialized!");
 
-            device = new Device(new Direct3D(), 0, DeviceType.Hardware, config.Target, CreateFlags.HardwareVertexProcessing, Direct3DConverter9.Convert(config));
             Configuration = config;
+
+            device = new Device(new Direct3D(), 0, DeviceType.Hardware, config.Target, CreateFlags.HardwareVertexProcessing, Direct3DConverter9.Convert(config));
         }
 
         internal override void Render()
