@@ -5,12 +5,14 @@ using System.Text;
 using SlimDX.DXGI;
 using NET.Tools.Engines.Graphics3D.Configuration;
 using SlimDX;
+using Viewport3D = NET.Tools.Engines.Graphics3D.Common.Viewport;
+using SlimDX.Direct3D11;
 
 namespace NET.Tools.Engines.Graphics3D.Converter
 {
     internal static class Direct3DConverter11
     {
-        public static SwapChainDescription Convert(Graphics3DConfiguration configuration)
+        public static SwapChainDescription ConvertToSwapChainDescription(Graphics3DConfiguration configuration)
         {
             SwapChainDescription description = new SwapChainDescription();
             description.BufferCount = 1; //TODO
@@ -22,7 +24,7 @@ namespace NET.Tools.Engines.Graphics3D.Converter
                 configuration.ScreenConfiguration.Width,
                 configuration.ScreenConfiguration.Height, 
                 new Rational(60, 1), //TODO Hz
-                Convert(configuration.ScreenConfiguration.ColorMode));
+                ConvertToFormat(configuration.ScreenConfiguration.ColorMode));
             description.SampleDescription = new SampleDescription(
                 1, //TODO
                 0);
@@ -31,7 +33,7 @@ namespace NET.Tools.Engines.Graphics3D.Converter
             return description;
         }
 
-        public static Format Convert(ColorMode mode)
+        public static Format ConvertToFormat(ColorMode mode)
         {
             switch (mode)
             {
@@ -42,6 +44,17 @@ namespace NET.Tools.Engines.Graphics3D.Converter
                 default:
                     throw new NotImplementedException(mode.ToString());
             }
+        }
+
+        public static Viewport ConvertFromViewport(Viewport3D vp)
+        {
+            Viewport viewport = new Viewport();
+            viewport.X = vp.Left;
+            viewport.Y = vp.Top;
+            viewport.Width = vp.Width;
+            viewport.Height = vp.Height;
+
+            return viewport;
         }
     }
 }

@@ -10,10 +10,12 @@ using Resource11 = SlimDX.Direct3D11.Resource;
 using NET.Tools.Engines.Graphics3D.Converter;
 using SlimDX;
 using NET.Tools.Engines.Graphics3D.Exceptions;
+using Viewport3D = NET.Tools.Engines.Graphics3D.Common.Viewport;
+using NET.Tools.Engines.Graphics3D.Common.Managers;
 
 namespace NET.Tools.Engines.Graphics3D.Engines
 {
-    public sealed class GraphicsDirect3D11 : Graphics3DDevice
+    public sealed class GraphicsDirect3D11 : Graphics3DDevice<Device11>
     {
         #region Singleton
 
@@ -21,9 +23,14 @@ namespace NET.Tools.Engines.Graphics3D.Engines
 
         public static GraphicsDirect3D11 GetInstance()
         {
+            if (GraphicsDirect3D11.CurrentDeviceType.HasValue &&
+                GraphicsDirect3D11.CurrentDeviceType.Value != Graphics3DDeviceType.Direct3D11)
+                throw new Graphics3DException("An other device is already initialized: " + GraphicsDirect3D11.CurrentDeviceType.Value.ToString());
+
             if (instance == null)
             {
                 instance = new GraphicsDirect3D11();
+                GraphicsDirect3D11.CurrentDeviceType = Graphics3DDeviceType.Direct3D11;
             }
 
             return instance;
@@ -47,14 +54,17 @@ namespace NET.Tools.Engines.Graphics3D.Engines
 
         internal override void Initialize(Graphics3DConfiguration config)
         {
-            if (device != null)
+            if (GraphicsDirect3D11.Device != null)
                 throw new Graphics3DStateException("Cannot do device initialization: Device already initialized!");
 
             Configuration = config;
 
-            Device11.CreateWithSwapChain(DriverType.Hardware, DeviceCreationFlags.None, Direct3DConverter11.Convert(config), out device, out swapChain);
+            Device11.CreateWithSwapChain(DriverType.Hardware, DeviceCreationFlags.None, Direct3DConverter11.ConvertToSwapChainDescription(config), out device, out swapChain);
             SetupRenderTarget();
-            SetupViewport();            
+            //SetupViewport();  
+          
+            //Setup device to main device
+            GraphicsDirect3D11.Device = device;
         }
 
         private void SetupRenderTarget()
@@ -69,14 +79,20 @@ namespace NET.Tools.Engines.Graphics3D.Engines
 
         private void SetupViewport()
         {
+            /// ???
             Viewport viewport = new Viewport(0, 0, Configuration.ScreenConfiguration.Width, Configuration.ScreenConfiguration.Height);
             device.ImmediateContext.Rasterizer.SetViewports(viewport);
         }
 
         internal override void Render()
         {
-            device.ImmediateContext.ClearRenderTargetView(renderTarget, new Color4(0, 0, 1));
-            swapChain.Present(0, PresentFlags.None);
+            foreach (Viewport3D vp in ViewportManager.Iterator)
+            {
+                device.ImmediateContext.Rasterizer.SetViewports(Direct3DConverter11.ConvertFromViewport(vp));
+
+                device.ImmediateContext.ClearRenderTargetView(renderTarget, new Color4(vp.Background));
+                swapChain.Present(0, PresentFlags.None);   
+            }
         }
 
         public override void Dispose()

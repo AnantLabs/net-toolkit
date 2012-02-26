@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B4838734-3A5C-461E-BB39-10B5275270D0}</ProjectGuid>
+    <ProjectGuid>{83150B66-0071-45D0-AC43-0B235D764753}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NET.Tools.Engines.Graphics3D</RootNamespace>
-    <AssemblyName>NET.Tools.Engines.Graphics3D</AssemblyName>
+    <RootNamespace>NET.Tools.Engines.ASN1</RootNamespace>
+    <AssemblyName>NET.Tools.Engines.ASN1</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -29,17 +29,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\NET.Tools.Engines.Graphics3D.XML</DocumentationFile>
-    <NoWarn>1591,1587</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SlimDX, Version=2.0.13.43, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9, processorArchitecture=x86" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -50,32 +45,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Managers\MeshManager.cs" />
-    <Compile Include="Common\Managers\ViewportManager.cs" />
-    <Compile Include="Common\Mesh.cs" />
-    <Compile Include="Common\Tools\MeshBoxCreator.cs" />
-    <Compile Include="Common\Tools\MeshCreator.cs" />
-    <Compile Include="Common\Tools\MeshCylinderCreator.cs" />
-    <Compile Include="Common\Viewport.cs" />
-    <Compile Include="Configuration\Graphics3DConfiguration.cs" />
-    <Compile Include="Configuration\ScreenConfiguration.cs" />
-    <Compile Include="Converter\Direct3DConverter11.cs" />
-    <Compile Include="Converter\Direct3DConverter9.cs" />
-    <Compile Include="Converter\OpenGLConverter.cs" />
-    <Compile Include="Common\Direct3D9Mesh.cs" />
-    <Compile Include="Engines\GraphicsDirect3D11.cs" />
-    <Compile Include="Engines\GraphicsDirect3D9.cs" />
-    <Compile Include="Engines\GraphicsOpenGL.cs" />
-    <Compile Include="Exceptions\Graphics3DConfigurationException.cs" />
-    <Compile Include="Exceptions\Graphics3DException.cs" />
-    <Compile Include="Exceptions\Graphics3DStateException.cs" />
-    <Compile Include="Graphics3DApplication.cs">
-    </Compile>
-    <Compile Include="Engines\Graphics3DDevice.cs" />
+    <Compile Include="ASN1\ASN1Integer.cs" />
+    <Compile Include="ASN1\ASN1Null.cs" />
+    <Compile Include="ASN1\ASN1Object.cs" />
+    <Compile Include="ASN1\ASN1Tag.cs" />
+    <Compile Include="ASN1\IASN1Tag.cs" />
+    <Compile Include="DER\DERInteger.cs" />
+    <Compile Include="DER\DERNull.cs" />
+    <Compile Include="ASN1\IASN1Object.cs" />
+    <Compile Include="DER\DERUtility.cs" />
+    <Compile Include="Exeptions\ASN1DecodingException.cs" />
+    <Compile Include="Exeptions\ASN1EncodingException.cs" />
+    <Compile Include="Exeptions\ASN1Exception.cs" />
+    <Compile Include="Exeptions\ASN1LengthException.cs" />
+    <Compile Include="Exeptions\IBasicElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Common\Vertices\" />
+    <ProjectReference Include="..\NET.Tools\NET.Tools.csproj">
+      <Project>{EC6EAAA0-F4F1-419C-A9D5-9F2D3EF67120}</Project>
+      <Name>NET.Tools</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

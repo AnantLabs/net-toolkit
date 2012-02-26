@@ -85,6 +85,13 @@ namespace NET.Tools
 
             return array;
         }
+
+        /*public static byte[] Pad(this byte[] array, int start, int length, byte value)
+        {
+            byte[] result = new byte[array.Length + length];
+            byte[] first = array.SubArray(0, start + 1);
+            byte[] padding = 
+        }*/
     }
     /// @}
 }

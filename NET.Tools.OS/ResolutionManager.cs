@@ -317,7 +317,7 @@ namespace NET.Tools.OS
         /// <returns>String</returns>
         public override string ToString()
         {
-            return _devMode.dmPelsWidth + " x " + _devMode.dmPelsHeight + " @ " + _devMode.dmColor;
+            return _devMode.dmPelsWidth + " x " + _devMode.dmPelsHeight + " @ " + _devMode.dmDisplayFrequency;
         }
 
         /// <summary>
@@ -349,7 +349,8 @@ namespace NET.Tools.OS
 
             return
                 _devMode.dmPelsWidth.Equals(res._devMode.dmPelsWidth) &&
-                _devMode.dmPelsHeight.Equals(res._devMode.dmPelsHeight);
+                _devMode.dmPelsHeight.Equals(res._devMode.dmPelsHeight) &&
+                _devMode.dmDisplayFrequency.Equals(res._devMode.dmDisplayFrequency);
         }
     }
 }

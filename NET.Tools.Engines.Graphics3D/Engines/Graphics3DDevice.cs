@@ -7,8 +7,23 @@ using NET.Tools.Engines.Graphics3D.Configuration;
 
 namespace NET.Tools.Engines.Graphics3D.Engines
 {
-    public abstract class Graphics3DDevice : IDisposable
+    public enum Graphics3DDeviceType
     {
+        Direct3D9,
+        Direct3D11,
+        OpenGL
+    }
+
+    public abstract class Graphics3DDevice<T> : IDisposable
+    {
+        public static Graphics3DDeviceType? CurrentDeviceType { get; protected set; }
+        public static T Device { get; protected set; }
+
+        static Graphics3DDevice()
+        {
+            CurrentDeviceType = null;
+        }
+
         /// <summary>
         /// Returns the initial configuration
         /// </summary>
