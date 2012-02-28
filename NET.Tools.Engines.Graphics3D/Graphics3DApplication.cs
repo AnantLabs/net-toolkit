@@ -11,12 +11,12 @@ namespace NET.Tools.Engines.Graphics3D
 {
     public static class Graphics3DApplication
     {
-        public static event Action<Graphics3DDevice<Object>> Initialize;
-        public static event Action<Graphics3DDevice<Object>> PreRender;
-        public static event Action<Graphics3DDevice<Object>> PostRender;
-        public static event Action<Graphics3DDevice<Object>> Dispose;
+        public static event Action<Graphics3DDevice> Initialize;
+        public static event Action<Graphics3DDevice> PreRender;
+        public static event Action<Graphics3DDevice> PostRender;
+        public static event Action<Graphics3DDevice> Dispose;
 
-        public static void Run(Form form, Graphics3DConfiguration config, Graphics3DDevice<Object> graphics3d)
+        public static void Run(Form form, Graphics3DConfiguration config, Graphics3DDevice graphics3d)
         {
             graphics3d.Initialize(config);
             form.Show();
@@ -35,7 +35,7 @@ namespace NET.Tools.Engines.Graphics3D
             form.Dispose();
         }
 
-        public static void Run(Graphics3DConfiguration config, Graphics3DDevice<Object> graphics3d)
+        public static void Run(Graphics3DConfiguration config, Graphics3DDevice graphics3d)
         {
             Run(new Form(), config, graphics3d);
         }

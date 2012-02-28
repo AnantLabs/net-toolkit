@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<OrderedTest name="DateTime" storage="d:\daten\visual studio 2008\projects\net tools\net tools test\lists\datetime.orderedtest" id="b0c5334d-57d8-4da4-a89d-20a3f51105e8" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<OrderedTest name="DateTime" storage="d:\daten\visual studio 2008\projects\net tools\net tools test\lists\datetime.orderedtest" id="b0c5334d-57d8-4da4-a89d-20a3f51105e8" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
   <Css projectStructure="" iteration="" />
   <Execution timeOut="2147483647" />
   <Owners>

@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<OrderedTest name="ArgumentReader" storage="d:\daten\visual studio 2008\projects\net tools\net tools test\lists\argumentreader.orderedtest" id="11029b23-bffe-4288-8cee-b57084ac1a03" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<OrderedTest name="ArgumentReader" storage="d:\daten\visual studio 2008\projects\net tools\net tools test\lists\argumentreader.orderedtest" id="11029b23-bffe-4288-8cee-b57084ac1a03" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
   <Css projectStructure="" iteration="" />
   <Execution timeOut="2147483647" />
   <Owners>

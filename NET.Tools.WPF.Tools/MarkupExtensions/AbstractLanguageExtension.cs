@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Markup;
 
 namespace NET.Tools
@@ -24,7 +21,7 @@ namespace NET.Tools
     /// </code>
     /// </example>
     /// </summary>
-    [MarkupExtensionReturnType(typeof(String), typeof(String))]
+    [MarkupExtensionReturnType(typeof(String))]
     public abstract class AbstractLanguageExtension : MarkupExtension
     {
         private const String NOTFOUND = "#StringNotFound#";

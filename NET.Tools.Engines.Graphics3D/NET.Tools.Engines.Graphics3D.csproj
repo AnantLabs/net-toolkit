@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,8 +10,29 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NET.Tools.Engines.Graphics3D</RootNamespace>
     <AssemblyName>NET.Tools.Engines.Graphics3D</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +42,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,9 +53,10 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\NET.Tools.Engines.Graphics3D.XML</DocumentationFile>
     <NoWarn>1591,1587</NoWarn>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SlimDX, Version=2.0.13.43, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9, processorArchitecture=x86" />
+    <Reference Include="SlimDX, Version=4.0.13.43, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9, processorArchitecture=x86" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -50,19 +73,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Entity.cs" />
+    <Compile Include="Common\ObjectEntity.cs" />
+    <Compile Include="Common\Tools\Creator.cs" />
+    <Compile Include="Common\Tools\EntityCreator.cs" />
+    <Compile Include="Common\Managers\EntityManager.cs" />
     <Compile Include="Common\Managers\MeshManager.cs" />
     <Compile Include="Common\Managers\ViewportManager.cs" />
     <Compile Include="Common\Mesh.cs" />
+    <Compile Include="Common\Tools\EntityObjectCreator.cs" />
     <Compile Include="Common\Tools\MeshBoxCreator.cs" />
     <Compile Include="Common\Tools\MeshCreator.cs" />
     <Compile Include="Common\Tools\MeshCylinderCreator.cs" />
     <Compile Include="Common\Viewport.cs" />
     <Compile Include="Configuration\Graphics3DConfiguration.cs" />
     <Compile Include="Configuration\ScreenConfiguration.cs" />
-    <Compile Include="Converter\Direct3DConverter11.cs" />
-    <Compile Include="Converter\Direct3DConverter9.cs" />
-    <Compile Include="Converter\OpenGLConverter.cs" />
-    <Compile Include="Common\Direct3D9Mesh.cs" />
+    <Compile Include="Engines\Converter\Direct3DConverter11.cs" />
+    <Compile Include="Engines\Converter\Direct3DConverter9.cs" />
+    <Compile Include="Engines\Converter\OpenGLConverter.cs" />
+    <Compile Include="IO\IEntityContentLoader.cs" />
+    <Compile Include="Layer\Direct3D9\Direct3D9Mesh.cs" />
     <Compile Include="Engines\GraphicsDirect3D11.cs" />
     <Compile Include="Engines\GraphicsDirect3D9.cs" />
     <Compile Include="Engines\GraphicsOpenGL.cs" />
@@ -72,10 +102,35 @@
     <Compile Include="Graphics3DApplication.cs">
     </Compile>
     <Compile Include="Engines\Graphics3DDevice.cs" />
+    <Compile Include="IO\IContentLoader.cs" />
+    <Compile Include="IO\IContentLoaderFactory.cs" />
+    <Compile Include="IO\IMeshContentLoader.cs" />
+    <Compile Include="IO\ITextureContentLoader.cs" />
+    <Compile Include="IO\LoaderFactory.cs" />
+    <Compile Include="IO\XML\XMLContentLoaderFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\Vertices\" />
+    <Folder Include="Layer\Direct3D11\" />
+    <Folder Include="Layer\OpenGL\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

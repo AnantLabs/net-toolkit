@@ -8,7 +8,7 @@ using SlimDX;
 using Viewport3D = NET.Tools.Engines.Graphics3D.Common.Viewport;
 using SlimDX.Direct3D11;
 
-namespace NET.Tools.Engines.Graphics3D.Converter
+namespace NET.Tools.Engines.Graphics3D.Engines.Converter
 {
     internal static class Direct3DConverter11
     {

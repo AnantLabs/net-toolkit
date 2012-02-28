@@ -46,7 +46,7 @@ namespace NET.Tools.Forms
 
         [Browsable(true)]
         [Category("Behavior")]
-        public event EventHandler TextChanged;
+        public new event EventHandler TextChanged;
 
         public LabeledTextBox()
         {

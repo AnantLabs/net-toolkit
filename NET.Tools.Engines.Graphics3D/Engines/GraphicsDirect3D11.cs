@@ -7,15 +7,15 @@ using SlimDX.Direct3D11;
 using SlimDX.DXGI;
 using Device11 = SlimDX.Direct3D11.Device;
 using Resource11 = SlimDX.Direct3D11.Resource;
-using NET.Tools.Engines.Graphics3D.Converter;
 using SlimDX;
 using NET.Tools.Engines.Graphics3D.Exceptions;
 using Viewport3D = NET.Tools.Engines.Graphics3D.Common.Viewport;
 using NET.Tools.Engines.Graphics3D.Common.Managers;
+using NET.Tools.Engines.Graphics3D.Engines.Converter;
 
 namespace NET.Tools.Engines.Graphics3D.Engines
 {
-    public sealed class GraphicsDirect3D11 : Graphics3DDevice<Device11>
+    public sealed class GraphicsDirect3D11 : Graphics3DDevice
     {
         #region Singleton
 
@@ -38,7 +38,8 @@ namespace NET.Tools.Engines.Graphics3D.Engines
 
         #endregion
 
-        private Device11 device = null;
+        public static Device11 Device { get; protected set; }
+
         private SwapChain swapChain = null;
         private RenderTargetView renderTarget = null;
 
@@ -59,12 +60,13 @@ namespace NET.Tools.Engines.Graphics3D.Engines
 
             Configuration = config;
 
+            Device11 device = null;
             Device11.CreateWithSwapChain(DriverType.Hardware, DeviceCreationFlags.None, Direct3DConverter11.ConvertToSwapChainDescription(config), out device, out swapChain);
-            SetupRenderTarget();
-            //SetupViewport();  
-          
             //Setup device to main device
             GraphicsDirect3D11.Device = device;
+
+            SetupRenderTarget();
+            //SetupViewport();              
         }
 
         private void SetupRenderTarget()
@@ -72,25 +74,25 @@ namespace NET.Tools.Engines.Graphics3D.Engines
             //Render this texture (from swap chain target) into the render target
             using (Texture2D texture = Resource11.FromSwapChain<Texture2D>(swapChain, 0))
             {
-                renderTarget = new RenderTargetView(device, texture);
+                renderTarget = new RenderTargetView(GraphicsDirect3D11.Device, texture);
             }
-            device.ImmediateContext.OutputMerger.SetTargets(renderTarget);
+            GraphicsDirect3D11.Device.ImmediateContext.OutputMerger.SetTargets(renderTarget);
         }
 
         private void SetupViewport()
         {
             /// ???
             Viewport viewport = new Viewport(0, 0, Configuration.ScreenConfiguration.Width, Configuration.ScreenConfiguration.Height);
-            device.ImmediateContext.Rasterizer.SetViewports(viewport);
+            GraphicsDirect3D11.Device.ImmediateContext.Rasterizer.SetViewports(viewport);
         }
 
         internal override void Render()
         {
             foreach (Viewport3D vp in ViewportManager.Iterator)
             {
-                device.ImmediateContext.Rasterizer.SetViewports(Direct3DConverter11.ConvertFromViewport(vp));
+                GraphicsDirect3D11.Device.ImmediateContext.Rasterizer.SetViewports(Direct3DConverter11.ConvertFromViewport(vp));
 
-                device.ImmediateContext.ClearRenderTargetView(renderTarget, new Color4(vp.Background));
+                GraphicsDirect3D11.Device.ImmediateContext.ClearRenderTargetView(renderTarget, new Color4(vp.Background));
                 swapChain.Present(0, PresentFlags.None);   
             }
         }
@@ -102,8 +104,8 @@ namespace NET.Tools.Engines.Graphics3D.Engines
 
             renderTarget.Dispose();
             //swapChain.Dispose(); //TODO
-            device.Dispose();
-            device = null;
+            GraphicsDirect3D11.Device.Dispose();
+            GraphicsDirect3D11.Device = null;
 
             IsDisposed = true;
         }

@@ -14,10 +14,9 @@ namespace NET.Tools.Engines.Graphics3D.Engines
         OpenGL
     }
 
-    public abstract class Graphics3DDevice<T> : IDisposable
+    public abstract class Graphics3DDevice : IDisposable
     {
         public static Graphics3DDeviceType? CurrentDeviceType { get; protected set; }
-        public static T Device { get; protected set; }
 
         static Graphics3DDevice()
         {

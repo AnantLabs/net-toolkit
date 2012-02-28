@@ -7,7 +7,7 @@ using NET.Tools.Engines.Graphics3D.Engines;
 
 namespace NET.Tools.Engines.Graphics3D.Common.Tools
 {
-    public sealed class MeshCylinderCreator : MeshCreator
+    internal sealed class MeshCylinderCreator : MeshCreator
     {
         public float Radius1 { get; private set; }
         public float Radius2 { get; private set; }
@@ -26,18 +26,18 @@ namespace NET.Tools.Engines.Graphics3D.Common.Tools
             Stacks = stacks;
         }
 
-        protected override Mesh<Object> CreateDirect3D9Mesh()
+        protected override Mesh CreateDirect3D9Mesh()
         {
             DX9Mesh mesh = DX9Mesh.CreateCylinder(GraphicsDirect3D9.Device, Radius1, Radius2, Length, Slices, Stacks);
-            return new Direct3D9Mesh(mesh);
+            return null;// (Mesh<Object>)new Direct3D9Mesh(mesh);
         }
 
-        protected override Mesh<Object> CreateDirect3D11Mesh()
+        protected override Mesh CreateDirect3D11Mesh()
         {
             throw new NotImplementedException();
         }
 
-        protected override Mesh<Object> CreateOpenGLMesh()
+        protected override Mesh CreateOpenGLMesh()
         {
             throw new NotImplementedException();
         }

@@ -5,15 +5,8 @@ using System.Text;
 
 namespace NET.Tools.Engines.Graphics3D.Common
 {
-    public abstract class Mesh<T>
+    public abstract class Mesh
     {
-        protected T mesh;
-
-        protected Mesh(T mesh)
-        {
-            this.mesh = mesh;
-        }
-
         internal abstract void Render();
     }
 }

@@ -13,7 +13,7 @@ using System.Drawing;
 
 namespace NET.Tools.Engines.Graphics3D.Engines
 {
-    public sealed class GraphicsOpenGL : Graphics3DDevice<GameWindow>
+    public sealed class GraphicsOpenGL : Graphics3DDevice
     {
         #region Singleton
 
@@ -35,8 +35,8 @@ namespace NET.Tools.Engines.Graphics3D.Engines
         }
 
         #endregion
-
-        private GameWindow device = null;
+  
+        public static GameWindow Device { get; protected set; }
 
         public override NET.Tools.Engines.Graphics3D.Configuration.Graphics3DConfiguration Configuration
         {
@@ -49,14 +49,14 @@ namespace NET.Tools.Engines.Graphics3D.Engines
             if (GraphicsOpenGL.Device != null)
                 throw new Graphics3DStateException("Cannot do device initialization: Device already initialized!");
 
-            device = new GameWindow(
+            GraphicsOpenGL.Device = new GameWindow(
                 config.ScreenConfiguration.Width,
                 config.ScreenConfiguration.Height,
                 new GraphicsMode(
                     OpenGLConverter.ConvertFromColorMode(config.ScreenConfiguration.ColorMode),
                     16),
                 "Open GL", 0, DisplayDevice.Default, 3, 1, GraphicsContextFlags.Debug);
-            device.Run();
+            GraphicsOpenGL.Device.Run();
 
             Configuration = config;
   

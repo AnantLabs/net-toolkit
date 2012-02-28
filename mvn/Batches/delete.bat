@@ -9,10 +9,10 @@ echo OK
 
 echo.
 
-echo VS 2008 Cleanup
+echo VS 2010 Cleanup
 echo ===============
 echo.
-call "%VS2008_HOME%\devenv.com" %2 /clean
+call "%VS2010_HOME%\devenv.com" %2 /clean
 echo.
 echo ============================
 if "%ERRORLEVEL%" == "0" (

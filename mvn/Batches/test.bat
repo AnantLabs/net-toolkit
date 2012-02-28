@@ -3,7 +3,7 @@ echo Run Tests
 echo =========
 echo.
 
-"%VS2008_HOME%\MSTest.exe" "/testcontainer:%~1" /noresults
+"%VS2010_HOME%\MSTest.exe" "/testcontainer:%~1" /noresults
 
 echo.
 echo ============================

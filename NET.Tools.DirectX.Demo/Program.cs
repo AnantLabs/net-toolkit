@@ -8,6 +8,7 @@ using NET.Tools.Engines.Graphics3D.Engines;
 using NET.Tools.Engines.Graphics3D.Common.Managers;
 using NET.Tools.Engines.Graphics3D.Common;
 using System.Drawing;
+using NET.Tools.Engines.Graphics3D.Common.Tools;
 
 namespace NET.Tools.DirectX.Demo
 {
@@ -47,8 +48,11 @@ namespace NET.Tools.DirectX.Demo
 
         private static void Graphics3DApplication_Initialize(Graphics3DDevice obj)
         {
-            ViewportManager.AddViewport("main1", new Viewport(0, 0, obj.Configuration.ScreenConfiguration.Width, obj.Configuration.ScreenConfiguration.Height/2, Color.Blue));
-            ViewportManager.AddViewport("main2", new Viewport(0, obj.Configuration.ScreenConfiguration.Height / 2, obj.Configuration.ScreenConfiguration.Width, obj.Configuration.ScreenConfiguration.Height / 2, Color.Red));
+            ViewportManager.SetViewport("main1", new Viewport(0, 0, obj.Configuration.ScreenConfiguration.Width, obj.Configuration.ScreenConfiguration.Height/2, Color.Blue));
+            ViewportManager.SetViewport("main2", new Viewport(0, obj.Configuration.ScreenConfiguration.Height / 2, obj.Configuration.ScreenConfiguration.Width, obj.Configuration.ScreenConfiguration.Height / 2, Color.Red));
+
+            MeshManager.SetMesh("mesh1", MeshCreator.CreateBox(1, 1, 1));
+            EntityManager.SetEntity("entity1", EntityCreator.CreateObjectEntity("mesh1"));
         }
     }
 }

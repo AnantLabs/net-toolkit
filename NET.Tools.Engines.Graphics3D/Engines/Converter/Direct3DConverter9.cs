@@ -6,7 +6,7 @@ using NET.Tools.Engines.Graphics3D.Configuration;
 using SlimDX.Direct3D9;
 using Viewport3D = NET.Tools.Engines.Graphics3D.Common.Viewport;
 
-namespace NET.Tools.Engines.Graphics3D.Converter
+namespace NET.Tools.Engines.Graphics3D.Engines.Converter
 {
     internal static class Direct3DConverter9
     {

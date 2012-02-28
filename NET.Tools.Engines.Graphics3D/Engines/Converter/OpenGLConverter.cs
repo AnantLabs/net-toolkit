@@ -8,7 +8,7 @@ using OpenTK.Graphics;
 using NET.Tools.Engines.Graphics3D.Configuration;
 using OpenTK;
 
-namespace NET.Tools.Engines.Graphics3D.Converter
+namespace NET.Tools.Engines.Graphics3D.Engines.Converter
 {
     internal static class OpenGLConverter
     {

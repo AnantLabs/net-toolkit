@@ -6,14 +6,17 @@ using System.Windows.Forms;
 using System.Drawing;
 using NET.Tools.Engines.Graphics3D.Configuration;
 using NET.Tools.Engines.Graphics3D.Exceptions;
-using NET.Tools.Engines.Graphics3D.Converter;
 using SlimDX.Direct3D9;
 using Viewport3D = NET.Tools.Engines.Graphics3D.Common.Viewport;
+using DXViewport = SlimDX.Direct3D9.Viewport;
 using NET.Tools.Engines.Graphics3D.Common.Managers;
+using NET.Tools.Engines.Graphics3D.Engines.Converter;
+using NET.Tools.Engines.Graphics3D.Common;
+using SlimDX;
 
 namespace NET.Tools.Engines.Graphics3D.Engines
 {
-    public sealed class GraphicsDirect3D9 : Graphics3DDevice<Device>
+    public sealed class GraphicsDirect3D9 : Graphics3DDevice
     {
         #region Singleton
 
@@ -36,7 +39,7 @@ namespace NET.Tools.Engines.Graphics3D.Engines
 
         #endregion
 
-        private Device device = null;
+        public static Device Device { get; protected set; }
 
         public override Graphics3DConfiguration Configuration
         {
@@ -62,28 +65,35 @@ namespace NET.Tools.Engines.Graphics3D.Engines
 
             Configuration = config;
 
-            device = new Device(new Direct3D(), 0, DeviceType.Hardware, config.Target, CreateFlags.HardwareVertexProcessing, Direct3DConverter9.ConvertToPresentParameters(config));
-
-            //Setup device to main device
-            GraphicsDirect3D9.Device = device;
+            GraphicsDirect3D9.Device = new Device(new Direct3D(), 0, DeviceType.Hardware, config.Target, CreateFlags.HardwareVertexProcessing, Direct3DConverter9.ConvertToPresentParameters(config));
         }
 
         internal override void Render()
         {
-            device.BeginScene();
+            GraphicsDirect3D9.Device.BeginScene();
 
             foreach (Viewport3D vp in ViewportManager.Iterator)
             {
                 //Setup viewport
-                Viewport viewport = Direct3DConverter9.ConvertToViewport(vp);
-                device.Viewport = viewport;
+                DXViewport viewport = Direct3DConverter9.ConvertToViewport(vp);
+                GraphicsDirect3D9.Device.Viewport = viewport;
 
-                device.Clear(ClearFlags.ZBuffer | ClearFlags.Target, vp.Background, 1.0f, 0);
+                GraphicsDirect3D9.Device.Clear(ClearFlags.ZBuffer | ClearFlags.Target, vp.Background, 1.0f, 0);
+
+                GraphicsDirect3D9.Device.SetTransform(TransformState.View, Matrix.LookAtLH(new Vector3(2, 2, 2), Vector3.Zero, Vector3.UnitY));
+                GraphicsDirect3D9.Device.SetTransform(TransformState.Projection,
+                    Matrix.PerspectiveFovLH((float)Math.PI / 4f, (float)Configuration.ScreenConfiguration.Width / (float)Configuration.ScreenConfiguration.Height, 1.0f, 10000f));
+
+                //TODO
+                foreach (Entity entity in EntityManager.Iterator)
+                {
+                    entity.Render();
+                }
                                                
             }
 
-            device.EndScene();
-            device.Present();
+            GraphicsDirect3D9.Device.EndScene();
+            GraphicsDirect3D9.Device.Present();
         }
 
         public override void Dispose()
@@ -91,8 +101,8 @@ namespace NET.Tools.Engines.Graphics3D.Engines
             if (IsDisposed)
                 throw new Graphics3DStateException("Cannot dispose device: Device already disposed!");
 
-            device.Dispose();
-            device = null;
+            GraphicsDirect3D9.Device.Dispose();
+            GraphicsDirect3D9.Device = null;
 
             IsDisposed = true;
         }

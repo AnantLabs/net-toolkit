@@ -5,24 +5,26 @@ using System.Text;
 using System.Collections;
 using DXMesh = SlimDX.Direct3D9.Mesh;
 using NET.Tools.Engines.Graphics3D.Common.Tools;
+using NET.Tools.Engines.Graphics3D.IO;
+using System.IO;
 
 namespace NET.Tools.Engines.Graphics3D.Common.Managers
 {
     public static class MeshManager
     {
-        private static Dictionary<String, Mesh<Object>> meshes = new Dictionary<string, Mesh<Object>>();
+        private static Dictionary<String, Mesh> meshes = new Dictionary<string, Mesh>();
 
-        internal static Mesh<Object> GetMesh(String key)
+        internal static Mesh GetMesh(String key)
         {
             return meshes[key];
         }
 
         public static void SetMesh(String key, MeshCreator creator)
         {
-            SetMesh(key, creator.CreateMesh());
+            SetMesh(key, creator.Create());
         }
 
-        private static void SetMesh(String key, Mesh<Object> mesh)
+        private static void SetMesh(String key, Mesh mesh)
         {
             if (meshes.ContainsKey(key))
             {
@@ -45,6 +47,12 @@ namespace NET.Tools.Engines.Graphics3D.Common.Managers
         }
 
         public static int CountOfMeshes { get { return meshes.Count; } }
+
+        public static void LoadFromFile(IContentLoaderFactory factory, FileInfo file)
+        {
+            IMeshContentLoader meshContentLoader = factory.MeshContentLoader;
+            //TODO
+        }
 
         internal static IEnumerable Iterator
         {
