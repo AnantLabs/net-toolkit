@@ -73,8 +73,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Camera.cs" />
     <Compile Include="Common\Entity.cs" />
+    <Compile Include="Common\EntityNode.cs" />
+    <Compile Include="Common\Node.cs" />
     <Compile Include="Common\ObjectEntity.cs" />
+    <Compile Include="Common\RootNode.cs" />
     <Compile Include="Common\Tools\Creator.cs" />
     <Compile Include="Common\Tools\EntityCreator.cs" />
     <Compile Include="Common\Managers\EntityManager.cs" />
@@ -85,17 +89,21 @@
     <Compile Include="Common\Tools\MeshBoxCreator.cs" />
     <Compile Include="Common\Tools\MeshCreator.cs" />
     <Compile Include="Common\Tools\MeshCylinderCreator.cs" />
+    <Compile Include="Common\TransformationNode.cs" />
     <Compile Include="Common\Viewport.cs" />
     <Compile Include="Configuration\Graphics3DConfiguration.cs" />
     <Compile Include="Configuration\ScreenConfiguration.cs" />
     <Compile Include="Engines\Converter\Direct3DConverter11.cs" />
     <Compile Include="Engines\Converter\Direct3DConverter9.cs" />
-    <Compile Include="Engines\Converter\OpenGLConverter.cs" />
     <Compile Include="IO\IEntityContentLoader.cs" />
+    <Compile Include="Layer\Direct3D11\Direct3D11LayerImplementor.cs" />
+    <Compile Include="Layer\Direct3D11\Direct3D11MatrixImplementor.cs" />
+    <Compile Include="Layer\Direct3D11\Direct3D11MeshImplementor.cs" />
+    <Compile Include="Layer\Direct3D9\Direct3D9MatrixImplementor.cs" />
+    <Compile Include="Layer\Direct3D9\Direct3D9LayerImplementor.cs" />
     <Compile Include="Layer\Direct3D9\Direct3D9Mesh.cs" />
     <Compile Include="Engines\GraphicsDirect3D11.cs" />
     <Compile Include="Engines\GraphicsDirect3D9.cs" />
-    <Compile Include="Engines\GraphicsOpenGL.cs" />
     <Compile Include="Exceptions\Graphics3DConfigurationException.cs" />
     <Compile Include="Exceptions\Graphics3DException.cs" />
     <Compile Include="Exceptions\Graphics3DStateException.cs" />
@@ -108,12 +116,16 @@
     <Compile Include="IO\ITextureContentLoader.cs" />
     <Compile Include="IO\LoaderFactory.cs" />
     <Compile Include="IO\XML\XMLContentLoaderFactory.cs" />
+    <Compile Include="Layer\Direct3D9\Direct3D9MeshImplementor.cs" />
+    <Compile Include="Layer\IImplementor.cs" />
+    <Compile Include="Layer\ILayerImplementor.cs" />
+    <Compile Include="Layer\IMatrixImplementor.cs" />
+    <Compile Include="Layer\IMeshImplementor.cs" />
+    <Compile Include="Layer\LayerImplementorFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\Vertices\" />
-    <Folder Include="Layer\Direct3D11\" />
-    <Folder Include="Layer\OpenGL\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

@@ -22,7 +22,7 @@ namespace NET.Tools.Engines.Graphics3D.Common.Tools
 
         #endregion
 
-        internal override Mesh Create()
+        /*internal override Mesh Create()
         {
             switch (Graphics3DDevice.CurrentDeviceType.Value)
             {
@@ -39,6 +39,6 @@ namespace NET.Tools.Engines.Graphics3D.Common.Tools
 
         protected abstract Mesh CreateDirect3D9Mesh();
         protected abstract Mesh CreateDirect3D11Mesh();
-        protected abstract Mesh CreateOpenGLMesh();
+        protected abstract Mesh CreateOpenGLMesh();*/
     }
 }

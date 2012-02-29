@@ -9,6 +9,7 @@ using NET.Tools.Engines.Graphics3D.Common.Managers;
 using NET.Tools.Engines.Graphics3D.Common;
 using System.Drawing;
 using NET.Tools.Engines.Graphics3D.Common.Tools;
+using SlimDX;
 
 namespace NET.Tools.DirectX.Demo
 {
@@ -48,11 +49,18 @@ namespace NET.Tools.DirectX.Demo
 
         private static void Graphics3DApplication_Initialize(Graphics3DDevice obj)
         {
-            ViewportManager.SetViewport("main1", new Viewport(0, 0, obj.Configuration.ScreenConfiguration.Width, obj.Configuration.ScreenConfiguration.Height/2, Color.Blue));
-            ViewportManager.SetViewport("main2", new Viewport(0, obj.Configuration.ScreenConfiguration.Height / 2, obj.Configuration.ScreenConfiguration.Width, obj.Configuration.ScreenConfiguration.Height / 2, Color.Red));
+            Viewport vp1 = new Viewport(0, 0, Graphics3DDevice.Configuration.ScreenConfiguration.Width, Graphics3DDevice.Configuration.ScreenConfiguration.Height / 2, Color.Blue);
+            vp1.Camera.ViewInformation.Position = new Vector3(2, 2, 2);
+            Viewport vp2 = new Viewport(0, Graphics3DDevice.Configuration.ScreenConfiguration.Height / 2, Graphics3DDevice.Configuration.ScreenConfiguration.Width, Graphics3DDevice.Configuration.ScreenConfiguration.Height / 2, Color.Red);
+            vp2.Camera.ViewInformation.Position = new Vector3(2, 2, 0);
+
+            ViewportManager.SetViewport("main1", vp1);
+            ViewportManager.SetViewport("main2", vp2);
 
             MeshManager.SetMesh("mesh1", MeshCreator.CreateBox(1, 1, 1));
             EntityManager.SetEntity("entity1", EntityCreator.CreateObjectEntity("mesh1"));
+
+            obj.RootNode.AddEntityNode("node1", "entity1");
         }
     }
 }

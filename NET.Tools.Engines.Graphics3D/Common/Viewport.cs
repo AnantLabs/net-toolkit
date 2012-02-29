@@ -13,6 +13,7 @@ namespace NET.Tools.Engines.Graphics3D.Common
         public int Width { get; set; }
         public int Height { get; set; }
         public Color Background { get; set; }
+        public Camera Camera { get; private set; }
 
         public Viewport(int left, int top, int width, int height, Color background)
         {
@@ -21,6 +22,7 @@ namespace NET.Tools.Engines.Graphics3D.Common
             Width = width;
             Height = height;
             Background = background;
+            Camera = new Camera();
         }
 
         public Viewport(int left, int top, int width, int height)

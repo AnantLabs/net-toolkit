@@ -12,6 +12,7 @@ using NET.Tools.Engines.Graphics3D.Exceptions;
 using Viewport3D = NET.Tools.Engines.Graphics3D.Common.Viewport;
 using NET.Tools.Engines.Graphics3D.Common.Managers;
 using NET.Tools.Engines.Graphics3D.Engines.Converter;
+using NET.Tools.Engines.Graphics3D.Layer;
 
 namespace NET.Tools.Engines.Graphics3D.Engines
 {
@@ -43,12 +44,6 @@ namespace NET.Tools.Engines.Graphics3D.Engines
         private SwapChain swapChain = null;
         private RenderTargetView renderTarget = null;
 
-        public override Graphics3DConfiguration Configuration
-        {
-            get;
-            protected set;
-        }
-
         private GraphicsDirect3D11()
         {
         }
@@ -64,6 +59,7 @@ namespace NET.Tools.Engines.Graphics3D.Engines
             Device11.CreateWithSwapChain(DriverType.Hardware, DeviceCreationFlags.None, Direct3DConverter11.ConvertToSwapChainDescription(config), out device, out swapChain);
             //Setup device to main device
             GraphicsDirect3D11.Device = device;
+            GraphicsDirect3D11.Implementors = LayerImplementorFactory.Direct3D11Implementor;
 
             SetupRenderTarget();
             //SetupViewport();              

@@ -14,7 +14,7 @@ namespace NET.Tools.Engines.Graphics3D.Common.Managers
     {
         private static Dictionary<String, Mesh> meshes = new Dictionary<string, Mesh>();
 
-        internal static Mesh GetMesh(String key)
+        public static Mesh GetMesh(String key)
         {
             return meshes[key];
         }

@@ -13,6 +13,7 @@ using NET.Tools.Engines.Graphics3D.Common.Managers;
 using NET.Tools.Engines.Graphics3D.Engines.Converter;
 using NET.Tools.Engines.Graphics3D.Common;
 using SlimDX;
+using NET.Tools.Engines.Graphics3D.Layer;
 
 namespace NET.Tools.Engines.Graphics3D.Engines
 {
@@ -41,12 +42,6 @@ namespace NET.Tools.Engines.Graphics3D.Engines
 
         public static Device Device { get; protected set; }
 
-        public override Graphics3DConfiguration Configuration
-        {
-            get;
-            protected set;
-        }
-
         public override bool IsDisposed
         {
             get;
@@ -66,6 +61,7 @@ namespace NET.Tools.Engines.Graphics3D.Engines
             Configuration = config;
 
             GraphicsDirect3D9.Device = new Device(new Direct3D(), 0, DeviceType.Hardware, config.Target, CreateFlags.HardwareVertexProcessing, Direct3DConverter9.ConvertToPresentParameters(config));
+            GraphicsDirect3D9.Implementors = LayerImplementorFactory.Direct3D9Implementor;
         }
 
         internal override void Render()
@@ -80,15 +76,11 @@ namespace NET.Tools.Engines.Graphics3D.Engines
 
                 GraphicsDirect3D9.Device.Clear(ClearFlags.ZBuffer | ClearFlags.Target, vp.Background, 1.0f, 0);
 
-                GraphicsDirect3D9.Device.SetTransform(TransformState.View, Matrix.LookAtLH(new Vector3(2, 2, 2), Vector3.Zero, Vector3.UnitY));
-                GraphicsDirect3D9.Device.SetTransform(TransformState.Projection,
-                    Matrix.PerspectiveFovLH((float)Math.PI / 4f, (float)Configuration.ScreenConfiguration.Width / (float)Configuration.ScreenConfiguration.Height, 1.0f, 10000f));
+                //Setup camera first
+                vp.Camera.SetupCamera();
 
-                //TODO
-                foreach (Entity entity in EntityManager.Iterator)
-                {
-                    entity.Render();
-                }
+                //Render scene
+                RootNode.Render();
                                                
             }
 

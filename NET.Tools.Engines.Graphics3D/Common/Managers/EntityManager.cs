@@ -13,7 +13,7 @@ namespace NET.Tools.Engines.Graphics3D.Common.Managers
     {
         private static Dictionary<String, Entity> entities = new Dictionary<string, Entity>();
 
-        internal static Entity GetEntity(String key)
+        public static Entity GetEntity(String key)
         {
             return entities[key];
         }

@@ -26,10 +26,10 @@ namespace NET.Tools.Engines.Graphics3D.Common.Tools
             Stacks = stacks;
         }
 
-        protected override Mesh CreateDirect3D9Mesh()
+        /*protected override Mesh CreateDirect3D9Mesh()
         {
             DX9Mesh mesh = DX9Mesh.CreateCylinder(GraphicsDirect3D9.Device, Radius1, Radius2, Length, Slices, Stacks);
-            return null;// (Mesh<Object>)new Direct3D9Mesh(mesh);
+            return new Direct3D9Mesh(mesh);
         }
 
         protected override Mesh CreateDirect3D11Mesh()
@@ -40,6 +40,11 @@ namespace NET.Tools.Engines.Graphics3D.Common.Tools
         protected override Mesh CreateOpenGLMesh()
         {
             throw new NotImplementedException();
+        }*/
+
+        internal override Mesh Create()
+        {
+            return Graphics3DDevice.Implementors.MeshImplementor.CreateCylinderMesh(Radius1, Radius2, Length, Slices, Stacks);
         }
     }
 }
