@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace NET.Tools.Engines.Graphics3D.Layer.Direct3D11
+namespace NET.Tools.Engines.Graphics3D.Direct3D11
 {
     internal sealed class Direct3D11MeshImplementor : IMeshImplementor
     {
@@ -22,12 +22,12 @@ namespace NET.Tools.Engines.Graphics3D.Layer.Direct3D11
         {
         }
 
-        public Common.Mesh CreateBoxMesh(float width, float height, float depth)
+        public Mesh CreateBoxMesh(float width, float height, float depth)
         {
             throw new NotImplementedException();
         }
 
-        public Common.Mesh CreateCylinderMesh(float radius1, float radius2, float length, int slices, int stacks)
+        public Mesh CreateCylinderMesh(float radius1, float radius2, float length, int slices, int stacks)
         {
             throw new NotImplementedException();
         }

@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DX9Mesh = SlimDX.Direct3D9.Mesh;
-using NET.Tools.Engines.Graphics3D.Engines;
 
-namespace NET.Tools.Engines.Graphics3D.Common.Tools
+namespace NET.Tools.Engines.Graphics3D
 {
     internal sealed class MeshCylinderCreator : MeshCreator
     {
@@ -44,7 +43,7 @@ namespace NET.Tools.Engines.Graphics3D.Common.Tools
 
         internal override Mesh Create()
         {
-            return Graphics3DDevice.Implementors.MeshImplementor.CreateCylinderMesh(Radius1, Radius2, Length, Slices, Stacks);
+            return Graphics3DSystem.Implementors.MeshImplementor.CreateCylinderMesh(Radius1, Radius2, Length, Slices, Stacks);
         }
     }
 }

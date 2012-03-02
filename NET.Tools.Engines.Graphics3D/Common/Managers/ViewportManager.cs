@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 
-namespace NET.Tools.Engines.Graphics3D.Common.Managers
+namespace NET.Tools.Engines.Graphics3D
 {
     public static class ViewportManager
     {
@@ -15,7 +15,15 @@ namespace NET.Tools.Engines.Graphics3D.Common.Managers
             return viewports[key];
         }
 
-        public static void SetViewport(String key, Viewport vp)
+        public static Viewport CreateViewport(String key, ViewportCreator creator) 
+        {
+            Viewport vp = creator.Create();
+            SetViewport(key, vp);
+
+            return vp;
+        }
+
+        private static void SetViewport(String key, Viewport vp)
         {
             if (viewports.ContainsKey(key))
             {

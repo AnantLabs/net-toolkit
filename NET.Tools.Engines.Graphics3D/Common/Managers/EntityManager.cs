@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NET.Tools.Engines.Graphics3D.Common.Tools;
 using System.Collections;
-using NET.Tools.Engines.Graphics3D.IO;
 using System.IO;
 
-namespace NET.Tools.Engines.Graphics3D.Common.Managers
+namespace NET.Tools.Engines.Graphics3D
 {
     public static class EntityManager
     {
@@ -18,9 +16,12 @@ namespace NET.Tools.Engines.Graphics3D.Common.Managers
             return entities[key];
         }
 
-        public static void SetEntity(String key, EntityCreator creator)
+        public static Entity CreateEntity(String key, EntityCreator creator)
         {
-            SetEntity(key, creator.Create());
+            Entity entity = creator.Create();
+            SetEntity(key, entity);
+
+            return entity;
         }
 
         private static void SetEntity(String key, Entity mesh)

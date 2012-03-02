@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 using DXMesh = SlimDX.Direct3D9.Mesh;
-using NET.Tools.Engines.Graphics3D.Common.Tools;
-using NET.Tools.Engines.Graphics3D.IO;
 using System.IO;
 
-namespace NET.Tools.Engines.Graphics3D.Common.Managers
+namespace NET.Tools.Engines.Graphics3D
 {
     public static class MeshManager
     {
@@ -19,9 +17,12 @@ namespace NET.Tools.Engines.Graphics3D.Common.Managers
             return meshes[key];
         }
 
-        public static void SetMesh(String key, MeshCreator creator)
+        public static Mesh CreateMesh(String key, MeshCreator creator)
         {
-            SetMesh(key, creator.Create());
+            Mesh mesh = creator.Create();
+            SetMesh(key, mesh);
+
+            return mesh;
         }
 
         private static void SetMesh(String key, Mesh mesh)

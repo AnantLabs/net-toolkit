@@ -2,14 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using NET.Tools.Engines.Graphics3D.Configuration;
-using NET.Tools.Engines.Graphics3D;
-using NET.Tools.Engines.Graphics3D.Engines;
-using NET.Tools.Engines.Graphics3D.Common.Managers;
-using NET.Tools.Engines.Graphics3D.Common;
 using System.Drawing;
-using NET.Tools.Engines.Graphics3D.Common.Tools;
 using SlimDX;
+using NET.Tools.Engines.Graphics3D;
 
 namespace NET.Tools.DirectX.Demo
 {
@@ -40,7 +35,7 @@ namespace NET.Tools.DirectX.Demo
 
             Graphics3DApplication.Initialize += new Action<Graphics3DDevice>(Graphics3DApplication_Initialize);
             Graphics3DApplication.Dispose += new Action<Graphics3DDevice>(Graphics3DApplication_Dispose);
-            Graphics3DApplication.Run(win, config, GraphicsDirect3D9.GetInstance());
+            Graphics3DApplication.Run(win, Graphics3DSystem.InitializeSystem(config, "Direct3D9"));
         }
 
         private static void Graphics3DApplication_Dispose(Graphics3DDevice obj)
@@ -49,16 +44,15 @@ namespace NET.Tools.DirectX.Demo
 
         private static void Graphics3DApplication_Initialize(Graphics3DDevice obj)
         {
-            Viewport vp1 = new Viewport(0, 0, Graphics3DDevice.Configuration.ScreenConfiguration.Width, Graphics3DDevice.Configuration.ScreenConfiguration.Height / 2, Color.Blue);
+            Viewport vp1 = ViewportManager.CreateViewport("main1", ViewportCreator.CreateViewport(
+                0, 0, Graphics3DSystem.Configuration.ScreenConfiguration.Width, Graphics3DSystem.Configuration.ScreenConfiguration.Height / 2, Color.Blue));
             vp1.Camera.ViewInformation.Position = new Vector3(2, 2, 2);
-            Viewport vp2 = new Viewport(0, Graphics3DDevice.Configuration.ScreenConfiguration.Height / 2, Graphics3DDevice.Configuration.ScreenConfiguration.Width, Graphics3DDevice.Configuration.ScreenConfiguration.Height / 2, Color.Red);
+            Viewport vp2 = ViewportManager.CreateViewport("main2", ViewportCreator.CreateViewport(
+                0, Graphics3DSystem.Configuration.ScreenConfiguration.Height / 2, Graphics3DSystem.Configuration.ScreenConfiguration.Width, Graphics3DSystem.Configuration.ScreenConfiguration.Height / 2, Color.Red));
             vp2.Camera.ViewInformation.Position = new Vector3(2, 2, 0);
 
-            ViewportManager.SetViewport("main1", vp1);
-            ViewportManager.SetViewport("main2", vp2);
-
-            MeshManager.SetMesh("mesh1", MeshCreator.CreateBox(1, 1, 1));
-            EntityManager.SetEntity("entity1", EntityCreator.CreateObjectEntity("mesh1"));
+            Mesh mesh = MeshManager.CreateMesh("mesh1", MeshCreator.CreateBox(1, 1, 1));
+            EntityManager.CreateEntity("entity1", EntityCreator.CreateObjectEntity(mesh));
 
             obj.RootNode.AddEntityNode("node1", "entity1");
         }

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SlimDX.DXGI;
-using NET.Tools.Engines.Graphics3D.Configuration;
 using SlimDX;
-using Viewport3D = NET.Tools.Engines.Graphics3D.Common.Viewport;
+using Viewport3D = NET.Tools.Engines.Graphics3D.Viewport;
+using DXViewport = SlimDX.Direct3D11.Viewport;
 using SlimDX.Direct3D11;
 
-namespace NET.Tools.Engines.Graphics3D.Engines.Converter
+namespace NET.Tools.Engines.Graphics3D.Direct3D11
 {
     internal static class Direct3DConverter11
     {
@@ -46,9 +46,9 @@ namespace NET.Tools.Engines.Graphics3D.Engines.Converter
             }
         }
 
-        public static Viewport ConvertFromViewport(Viewport3D vp)
+        public static DXViewport ConvertToViewport(Viewport3D vp)
         {
-            Viewport viewport = new Viewport();
+            DXViewport viewport = new DXViewport();
             viewport.X = vp.Left;
             viewport.Y = vp.Top;
             viewport.Width = vp.Width;

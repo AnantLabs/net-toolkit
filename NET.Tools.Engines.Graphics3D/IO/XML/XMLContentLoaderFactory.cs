@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace NET.Tools.Engines.Graphics3D.IO.XML
+namespace NET.Tools.Engines.Graphics3D
 {
     /// <summary>
     /// Represent a loader factory for XML files. Initialization with LoaderFactory!
@@ -36,6 +36,11 @@ namespace NET.Tools.Engines.Graphics3D.IO.XML
         }
 
         public IEntityContentLoader EntityContentLoader
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public IMaterialContentLoader MaterialContentLoader
         {
             get { throw new NotImplementedException(); }
         }

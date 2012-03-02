@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace NET.Tools.Engines.Graphics3D.IO
+namespace NET.Tools.Engines.Graphics3D
 {
     /// <summary>
     /// Factory interface for all content loader
@@ -22,5 +22,9 @@ namespace NET.Tools.Engines.Graphics3D.IO
         /// Gets a content loader to load an entity
         /// </summary>
         IEntityContentLoader EntityContentLoader { get; }
+        /// <summary>
+        /// Gets a content loader to load a material
+        /// </summary>
+        IMaterialContentLoader MaterialContentLoader { get; }
     }
 }

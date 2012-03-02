@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace NET.Tools.Engines.Graphics3D.Layer.Direct3D11
+namespace NET.Tools.Engines.Graphics3D.Direct3D11
 {
     internal sealed class Direct3D11LayerImplementor : ILayerImplementor
     {
@@ -31,6 +31,11 @@ namespace NET.Tools.Engines.Graphics3D.Layer.Direct3D11
         public IMatrixImplementor MatrixImplementor
         {
             get { return Direct3D11MatrixImplementor.GetInstance(); }
+        }
+
+        public IViewportImplementor ViewportImplementor
+        {
+            get { return Direct3D11ViewportImplementor.GetInstance(); }
         }
     }
 }

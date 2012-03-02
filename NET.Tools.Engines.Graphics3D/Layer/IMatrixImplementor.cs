@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NET.Tools.Engines.Graphics3D.Common;
+using NET.Tools.Engines.Graphics3D;
 using SlimDX;
 
-namespace NET.Tools.Engines.Graphics3D.Layer
+namespace NET.Tools.Engines.Graphics3D
 {
-    internal interface IMatrixImplementor : IImplementor
+    public interface IMatrixImplementor : IImplementor
     {
         void SetupCamera(ViewInformation view, ProjectionInformation projection);
         /// <summary>

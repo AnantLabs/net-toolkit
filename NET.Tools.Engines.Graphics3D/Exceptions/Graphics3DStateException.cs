@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace NET.Tools.Engines.Graphics3D.Exceptions
+namespace NET.Tools.Engines.Graphics3D
 {
     [global::System.Serializable]
     public class Graphics3DStateException : Graphics3DException

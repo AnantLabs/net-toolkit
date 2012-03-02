@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SlimDX;
-using NET.Tools.Engines.Graphics3D.Engines;
-using NET.Tools.Engines.Graphics3D.Common.Managers;
 
-namespace NET.Tools.Engines.Graphics3D.Common
+namespace NET.Tools.Engines.Graphics3D
 {
     public abstract class Node
     {
@@ -21,7 +19,7 @@ namespace NET.Tools.Engines.Graphics3D.Common
 
         internal void Render()
         {
-            Matrix oldTransformation = Graphics3DDevice.Implementors.MatrixImplementor.AddTransformation(Trandformation);
+            Matrix oldTransformation = Graphics3DSystem.Implementors.MatrixImplementor.AddTransformation(Trandformation);
 
             OnRender();
 
@@ -30,17 +28,22 @@ namespace NET.Tools.Engines.Graphics3D.Common
                 Nodes[nodeName].Render();
             }
 
-            Graphics3DDevice.Implementors.MatrixImplementor.SetTransformation(oldTransformation);
+            Graphics3DSystem.Implementors.MatrixImplementor.SetTransformation(oldTransformation);
         }
 
         protected abstract void OnRender();
 
-        public EntityNode AddEntityNode(String nodeName, String entityName)
+        public EntityNode AddEntityNode(String nodeName, Entity entity)
         {
-            EntityNode node = new EntityNode(EntityManager.GetEntity(entityName));
+            EntityNode node = new EntityNode(entity);
             Nodes.Add(nodeName, node);
 
             return node; 
+        }
+
+        public EntityNode AddEntityNode(String nodeName, String entityName)
+        {
+            return AddEntityNode(nodeName, EntityManager.GetEntity(entityName));
         }
 
         public TransformationNode AddTransformationNode(String nodeName)

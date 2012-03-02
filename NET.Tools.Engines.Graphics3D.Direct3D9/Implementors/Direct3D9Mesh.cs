@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NET.Tools.Engines.Graphics3D.Common;
 using DXMesh = SlimDX.Direct3D9.Mesh;
-using NET.Tools.Engines.Graphics3D.Engines;
 
-namespace NET.Tools.Engines.Graphics3D.Layer.Direct3D9
+namespace NET.Tools.Engines.Graphics3D.Direct3D9
 {
     internal sealed class Direct3D9Mesh : Mesh
     {
@@ -17,7 +15,7 @@ namespace NET.Tools.Engines.Graphics3D.Layer.Direct3D9
             this.mesh = mesh;
         }
 
-        internal override void Render()
+        protected override void OnRender()
         {
             //GraphicsDirect3D9.Device
 

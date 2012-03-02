@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace NET.Tools.Engines.Graphics3D.Layer
+namespace NET.Tools.Engines.Graphics3D
 {
-    internal interface ILayerImplementor
+    public interface ILayerImplementor
     {
         IMeshImplementor MeshImplementor { get; }
         IMatrixImplementor MatrixImplementor { get; }
+        IViewportImplementor ViewportImplementor { get; }
     }
 }

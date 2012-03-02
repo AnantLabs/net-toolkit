@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NET.Tools.Engines.Graphics3D.Common;
 
-namespace NET.Tools.Engines.Graphics3D.Layer.Direct3D11
+namespace NET.Tools.Engines.Graphics3D.Direct3D11
 {
     internal sealed class Direct3D11MatrixImplementor : IMatrixImplementor
     {

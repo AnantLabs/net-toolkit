@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NET.Tools.Engines.Graphics3D.Engines;
 
-namespace NET.Tools.Engines.Graphics3D.Common.Tools
+namespace NET.Tools.Engines.Graphics3D
 {
     public abstract class MeshCreator : Creator<Mesh>
     {
@@ -15,9 +14,19 @@ namespace NET.Tools.Engines.Graphics3D.Common.Tools
             return new MeshBoxCreator(width, height, depth);
         }
 
+        public static MeshCreator CreateBox(float size)
+        {
+            return CreateBox(size, size, size);
+        }
+
         public static MeshCreator CreateCylinder(float radius1, float radius2, float length, int slices, int stacks)
         {
             return new MeshCylinderCreator(radius1, radius2, length, slices, stacks);
+        }
+
+        public static MeshCreator CreateCylinder(float radius, float length, int slices, int stacks)
+        {
+            return CreateCylinder(radius, radius, length, slices, stacks);
         }
 
         #endregion

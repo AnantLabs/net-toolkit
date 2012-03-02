@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NET.Tools.Engines.Graphics3D.Engines;
-using NET.Tools.Engines.Graphics3D.Layer.Direct3D9;
 
-namespace NET.Tools.Engines.Graphics3D.Common.Tools
+namespace NET.Tools.Engines.Graphics3D
 {
     internal sealed class MeshBoxCreator : MeshCreator
     {
@@ -38,7 +36,7 @@ namespace NET.Tools.Engines.Graphics3D.Common.Tools
 
         internal override Mesh Create()
         {
-            return Graphics3DDevice.Implementors.MeshImplementor.CreateBoxMesh(Width, Height, Depth);
+            return Graphics3DSystem.Implementors.MeshImplementor.CreateBoxMesh(Width, Height, Depth);
         }
     }
 }

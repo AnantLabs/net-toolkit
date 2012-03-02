@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NET.Tools.Engines.Graphics3D.Common;
-using NET.Tools.Engines.Graphics3D.Engines;
 using SlimDX.Direct3D9;
 using SlimDX;
 
-namespace NET.Tools.Engines.Graphics3D.Layer.Direct3D9
+namespace NET.Tools.Engines.Graphics3D.Direct3D9
 {
     internal sealed class Direct3D9MatrixImplementor : IMatrixImplementor
     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace NET.Tools.Engines.Graphics3D.Layer
+namespace NET.Tools.Engines.Graphics3D
 {
-    internal interface IImplementor
+    public interface IImplementor
     {
     }
 }

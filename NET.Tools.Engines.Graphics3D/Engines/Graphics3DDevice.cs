@@ -3,48 +3,51 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using NET.Tools.Engines.Graphics3D.Configuration;
-using NET.Tools.Engines.Graphics3D.Layer;
-using NET.Tools.Engines.Graphics3D.Common;
 
-namespace NET.Tools.Engines.Graphics3D.Engines
+namespace NET.Tools.Engines.Graphics3D
 {
-    public enum Graphics3DDeviceType
-    {
-        Direct3D9,
-        Direct3D11,
-        OpenGL
-    }
-
     public abstract class Graphics3DDevice : IDisposable
     {
-        public static Graphics3DDeviceType? CurrentDeviceType { get; protected set; }
-        internal static ILayerImplementor Implementors { get; set; }
-        /// <summary>
-        /// Returns the initial configuration
-        /// </summary>
-        public static Graphics3DConfiguration Configuration { get; protected set; }
-
-        static Graphics3DDevice()
-        {
-            CurrentDeviceType = null;
-        }
-
         public RootNode RootNode { get; private set; }
 
-        protected Graphics3DDevice()
+        public Graphics3DDevice()
         {
             RootNode = new RootNode();
+            IsDisposed = false;
         }
 
-        internal abstract void Initialize(Graphics3DConfiguration config);
-        internal abstract void Render();
+        internal void Initialize(Graphics3DConfiguration config)
+        {
+            OnInitialization(config);
+        }
 
-        #region IDisposable Member
+        internal void Render()
+        {
+            OnStartRendering();
 
-        public abstract void Dispose();
+            foreach (Viewport vp in ViewportManager.Iterator)
+            {
+                Graphics3DSystem.Implementors.ViewportImplementor.SetViewport(vp);
+
+                OnClearScene(vp);
+
+                //Setup camera first
+                vp.Camera.SetupCamera();
+
+                //Render scene
+                RootNode.Render();
+
+            }
+
+            OnEndRendering();
+        }
+
         public abstract bool IsDisposed { get; protected set; }
+        public abstract void Dispose();
 
-        #endregion
+        protected abstract void OnInitialization(Graphics3DConfiguration config);
+        protected abstract void OnStartRendering();
+        protected abstract void OnEndRendering();
+        protected abstract void OnClearScene(Viewport vp);
     }
 }

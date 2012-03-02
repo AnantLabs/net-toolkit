@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NET.Tools.Engines.Graphics3D.Engines;
 using SlimDX;
 
-namespace NET.Tools.Engines.Graphics3D.Common
+namespace NET.Tools.Engines.Graphics3D
 {
     public sealed class ProjectionInformation
     {
@@ -17,7 +16,7 @@ namespace NET.Tools.Engines.Graphics3D.Common
         internal ProjectionInformation()
         {
             FieldOfView = (float)Math.PI / 4f;
-            Aspect = (float)Graphics3DDevice.Configuration.ScreenConfiguration.Width / (float)Graphics3DDevice.Configuration.ScreenConfiguration.Height;
+            Aspect = (float)Graphics3DSystem.Configuration.ScreenConfiguration.Width / (float)Graphics3DSystem.Configuration.ScreenConfiguration.Height;
             NearestZ = 1f;
             FarthestZ = 10000f;
         }
@@ -50,7 +49,7 @@ namespace NET.Tools.Engines.Graphics3D.Common
 
         internal void SetupCamera()
         {
-            Graphics3DDevice.Implementors.MatrixImplementor.SetupCamera(ViewInformation, ProjectionInformation);
+            Graphics3DSystem.Implementors.MatrixImplementor.SetupCamera(ViewInformation, ProjectionInformation);
         }
     }
 }
