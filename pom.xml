@@ -32,8 +32,11 @@
 		<engines.internationalization.version>0.2.${maven.build.timestamp}</engines.internationalization.version>
 		<engines.graphics2d.version>0.1.${maven.build.timestamp}</engines.graphics2d.version>
 		<engines.graphics3d.version>0.1.${maven.build.timestamp}</engines.graphics3d.version>
+		<engines.graphics3d.d3d9.version>0.1.${maven.build.timestamp}</engines.graphics3d.d3d9.version>
+		<engines.graphics3d.d3d11.version>0.1.${maven.build.timestamp}</engines.graphics3d.d3d11.version>
 		<engines.gui.version>0.1.${maven.build.timestamp}</engines.gui.version>
 		<engines.avm.version>0.5.${maven.build.timestamp}</engines.avm.version>
+		<engines.asn1.version>0.1.${maven.build.timestamp}</engines.asn1.version>
 	</properties>
 
 	<build>
@@ -666,6 +669,46 @@
 						</configuration>
 					</execution>
 					<execution>
+						<id>copy-net-tools-engines-graphics3d-d3d9-asm</id>
+						<!-- here the phase you need -->
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/NET.Tools.Engines.Graphics3D.Direct3D9/Properties</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/mvn/Templates/NET.Tools.Engines.Graphics3D.Direct3D9</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>AssemblyInfo.cs</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-net-tools-engines-graphics3d-d3d11-asm</id>
+						<!-- here the phase you need -->
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/NET.Tools.Engines.Graphics3D.Direct3D11/Properties</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/mvn/Templates/NET.Tools.Engines.Graphics3D.Direct3D11</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>AssemblyInfo.cs</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
 						<id>copy-net-tools-engines-avm-asm</id>
 						<!-- here the phase you need -->
 						<phase>validate</phase>
@@ -677,6 +720,26 @@
 							<resources>
 								<resource>
 									<directory>${basedir}/mvn/Templates/NET.Tools.Engines.AVM</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>AssemblyInfo.cs</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-net-tools-engines-asn1-asm</id>
+						<!-- here the phase you need -->
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/NET.Tools.Engines.ASN1/Properties</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/mvn/Templates/NET.Tools.Engines.ASN1</directory>
 									<filtering>true</filtering>
 									<includes>
 										<include>AssemblyInfo.cs</include>
@@ -887,9 +950,27 @@
 									</includes>
 								</resource>
 								<resource>
+									<directory>${basedir}/NET.Tools.Engines.Graphics3D.Direct3D9/bin/Release</directory>
+									<includes>
+										<include>NET.Tools.Engines.Graphics3D.Direct3D9.*</include>
+									</includes>
+								</resource>
+								<resource>
+									<directory>${basedir}/NET.Tools.Engines.Graphics3D.Direct3D11/bin/Release</directory>
+									<includes>
+										<include>NET.Tools.Engines.Graphics3D.Direct3D11.*</include>
+									</includes>
+								</resource>
+								<resource>
 									<directory>${basedir}/NET.Tools.Engines.AVM/bin/Release</directory>
 									<includes>
 										<include>NET.Tools.Engines.AVM.*</include>
+									</includes>
+								</resource>
+								<resource>
+									<directory>${basedir}/NET.Tools.Engines.ASN1/bin/Release</directory>
+									<includes>
+										<include>NET.Tools.Engines.ASN1.*</include>
 									</includes>
 								</resource>
 							</resources>
