@@ -39,6 +39,7 @@
 		<engines.gui.version>0.1.${maven.build.timestamp}</engines.gui.version>
 		<engines.avm.version>0.5.${maven.build.timestamp}</engines.avm.version>
 		<engines.asn1.version>0.1.${maven.build.timestamp}</engines.asn1.version>
+		<engines.codebuilder.version>0.1.${maven.build.timestamp}</engines.codebuilder.version>
 	</properties>
 
 	<build>
@@ -790,6 +791,26 @@
 							</resources>
 						</configuration>
 					</execution>
+					<execution>
+						<id>copy-net-tools-engines-codebuilder-asm</id>
+						<!-- here the phase you need -->
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/NET.Tools.Engines.CodeBuilder/Properties</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/mvn/Templates/NET.Tools.Engines.CodeBuilder</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>AssemblyInfo.cs</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
 					<!-- Inno Setup Script -->
 					<execution>
 						<id>copy-inno-setup-script</id>
@@ -1013,6 +1034,12 @@
 									<directory>${basedir}/NET.Tools.Engines.ASN1/bin/Release</directory>
 									<includes>
 										<include>NET.Tools.Engines.ASN1.*</include>
+									</includes>
+								</resource>
+								<resource>
+									<directory>${basedir}/NET.Tools.Engines.CodeBuilder/bin/Release</directory>
+									<includes>
+										<include>NET.Tools.Engines.CodeBuilder.*</include>
 									</includes>
 								</resource>
 							</resources>
