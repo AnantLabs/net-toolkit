@@ -19,6 +19,9 @@
                 <Setter Property="MinWidth" Value="15"/>
                 <Setter Property="MaxWidth" Value="15"/>
             </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Opacity" Value=".3"/>
+            </Trigger>
         </Style.Triggers>
     </Style>
     

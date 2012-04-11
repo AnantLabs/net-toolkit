@@ -7,8 +7,7 @@ namespace NET.Tools.Engines.Graphics3D
 {
     internal sealed class ObjectEntity : Entity
     {
-        private Mesh mesh;
-        //TODO:Texture
+        private Mesh mesh;        
 
         internal ObjectEntity(Mesh mesh)
         {
@@ -17,7 +16,6 @@ namespace NET.Tools.Engines.Graphics3D
 
         internal override void Render()
         {
-            //TODO: Texture
             mesh.Render();
         }
     }

@@ -27,5 +27,15 @@ namespace NET.Tools.Demo
         {
             Close();
         }
+
+        private void Storyboard_Completed(object sender, EventArgs e)
+        {
+            button4.IsEnabled = true;
+        }
+
+        private void button4_Click(object sender, RoutedEventArgs e)
+        {
+            button4.IsEnabled = false;
+        }
     }
 }

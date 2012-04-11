@@ -29,7 +29,7 @@ namespace NET.Tools.DirectX.Demo
             Graphics3DConfiguration config = new Graphics3DConfiguration();
             config.Target = win.Handle;
             config.ScreenConfiguration.ColorMode = ColorMode.Bit32;
-            config.ScreenConfiguration.FullScreen = false;
+            config.ScreenConfiguration.FullScreen = true;
             config.ScreenConfiguration.Height = G3D_HEIGHT;
             config.ScreenConfiguration.Width = G3D_WIDTH;
 
@@ -52,9 +52,10 @@ namespace NET.Tools.DirectX.Demo
             vp2.Camera.ViewInformation.Position = new Vector3(2, 2, 0);
 
             Mesh mesh = MeshManager.CreateMesh("mesh1", MeshCreator.CreateBox(1, 1, 1));
-            EntityManager.CreateEntity("entity1", EntityCreator.CreateObjectEntity(mesh));
+            Entity entity = EntityManager.CreateEntity("entity1", EntityCreator.CreateObjectEntity(mesh));
+            Light light = LightManager.CreateLight("light1", LightCreator.CreatePointLight(new Vector3(5, 5, 5), Color.White, Color.Red, Color.White, 8f));
 
-            obj.RootNode.AddEntityNode("node1", "entity1");
+            EntityNode node = obj.RootNode.AddEntityNode("node1", entity);
         }
     }
 }

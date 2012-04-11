@@ -387,6 +387,10 @@
       <Project>{80EDDB07-A5AE-4530-A3E8-761AE5B4CD79}</Project>
       <Name>NET.Tools.WPF.Skins.ChalkSkin</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Skins.CIMSkin\NET.Tools.WPF.Skins.CIMSkin.csproj">
+      <Project>{366CA9A6-A1A7-47FF-AC64-69D206664F3E}</Project>
+      <Name>NET.Tools.WPF.Skins.CIMSkin</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NET.Tools.WPF.Skins.NimbusSkin\NET.Tools.WPF.Skins.NimbusSkin.csproj">
       <Project>{02C7A5D4-262E-49E9-995D-70EBCB38B75E}</Project>
       <Name>NET.Tools.WPF.Skins.NimbusSkin</Name>
@@ -394,6 +398,10 @@
     <ProjectReference Include="..\NET.Tools.WPF.Skins.PaperSkin\NET.Tools.WPF.Skins.PaperSkin.csproj">
       <Project>{0E0E2580-F19C-4370-91BE-0804C19F3956}</Project>
       <Name>NET.Tools.WPF.Skins.PaperSkin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Skins.Portal\NET.Tools.WPF.Skins.PortalSkin.csproj">
+      <Project>{BA36CE52-DE86-4901-93B8-73D2C994048C}</Project>
+      <Name>NET.Tools.WPF.Skins.PortalSkin</Name>
     </ProjectReference>
     <ProjectReference Include="..\NET.Tools.WPF.Skins.Sims3Skin\NET.Tools.WPF.Skins.Sims3Skin.csproj">
       <Project>{1ACE4851-9D07-4DA1-B530-E725A0CD5E5D}</Project>

@@ -20,6 +20,40 @@ namespace NET.Tools.Engines.Graphics3D
             NearestZ = 1f;
             FarthestZ = 10000f;
         }
+
+        // override object.Equals
+        public override bool Equals(object obj)
+        {
+            //       
+            // See the full list of guidelines at
+            //   http://go.microsoft.com/fwlink/?LinkID=85237  
+            // and also the guidance for operator== at
+            //   http://go.microsoft.com/fwlink/?LinkId=85238
+            //
+
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            else if (Object.ReferenceEquals(obj, this))
+            {
+                return true;
+            }
+
+            ProjectionInformation pi = obj as ProjectionInformation;
+
+            return
+                FieldOfView == pi.FieldOfView &&
+                Aspect == pi.Aspect &&
+                NearestZ == pi.NearestZ &&
+                FarthestZ == pi.FarthestZ;
+        }
+
+        // override object.GetHashCode
+        public override int GetHashCode()
+        {
+            return FieldOfView.GetHashCode() + Aspect.GetHashCode() + NearestZ.GetHashCode() + FarthestZ.GetHashCode();
+        }
     }
 
     public sealed class ViewInformation
@@ -33,6 +67,39 @@ namespace NET.Tools.Engines.Graphics3D
             Position = new Vector3(1, 1, 1);
             LookAt = Vector3.Zero;
             UpVector = Vector3.UnitY;
+        }
+
+        // override object.Equals
+        public override bool Equals(object obj)
+        {
+            //       
+            // See the full list of guidelines at
+            //   http://go.microsoft.com/fwlink/?LinkID=85237  
+            // and also the guidance for operator== at
+            //   http://go.microsoft.com/fwlink/?LinkId=85238
+            //
+
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            else if (Object.ReferenceEquals(obj, this))
+            {
+                return true;
+            }
+
+            ViewInformation vi = obj as ViewInformation;
+
+            return
+                vi.LookAt.Equals(LookAt) &&
+                vi.Position.Equals(Position) &&
+                vi.UpVector.Equals(UpVector);
+        }
+
+        // override object.GetHashCode
+        public override int GetHashCode()
+        {
+            return LookAt.GetHashCode() + Position.GetHashCode() + UpVector.GetHashCode();
         }
     }
 
@@ -50,6 +117,38 @@ namespace NET.Tools.Engines.Graphics3D
         internal void SetupCamera()
         {
             Graphics3DSystem.Implementors.MatrixImplementor.SetupCamera(ViewInformation, ProjectionInformation);
+        }
+
+        // override object.Equals
+        public override bool Equals(object obj)
+        {
+            //       
+            // See the full list of guidelines at
+            //   http://go.microsoft.com/fwlink/?LinkID=85237  
+            // and also the guidance for operator== at
+            //   http://go.microsoft.com/fwlink/?LinkId=85238
+            //
+
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            else if (Object.ReferenceEquals(obj, this))
+            {
+                return true;
+            }
+
+            Camera cam = obj as Camera;
+
+            return
+                cam.ProjectionInformation.Equals(ProjectionInformation) &&
+                cam.ViewInformation.Equals(ViewInformation);
+        }
+
+        // override object.GetHashCode
+        public override int GetHashCode()
+        {
+            return ProjectionInformation.GetHashCode() * ViewInformation.GetHashCode();
         }
     }
 }

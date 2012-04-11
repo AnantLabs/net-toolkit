@@ -11,7 +11,7 @@ namespace NET.Tools.Engines.Graphics3D
         {
         }
 
-        protected override void OnRender()
+        protected override void OnSelfRendering()
         {
             //Empty
         }

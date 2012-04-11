@@ -11,6 +11,8 @@
             <ListBoxItem>Paper</ListBoxItem>
             <ListBoxItem>Chalk</ListBoxItem>
             <ListBoxItem>Art</ListBoxItem>
+            <ListBoxItem>Portal</ListBoxItem>
+            <ListBoxItem>CIM</ListBoxItem>
             <!--<ListBoxItem>Black</ListBoxItem>
             <ListBoxItem>Art</ListBoxItem>-->
         </ListBox>

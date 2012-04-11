@@ -28,5 +28,29 @@ namespace NET.Tools.Engines.Graphics3D
             FarthestZ = farthestZ;
             Camera = new Camera();
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            else if (!(obj is Viewport))
+                return false;
+            else if (Object.ReferenceEquals(obj, this))
+                return true;
+
+            Viewport vp = obj as Viewport;
+            return
+                vp.Left == Left && vp.Top == Top &&
+                vp.Width == Width && vp.Height == Height &&
+                vp.NearestZ == NearestZ && vp.FarthestZ == FarthestZ &&
+                vp.Background.Equals(Background) &&
+                Camera.Equals(Camera);
+        }
+
+        public override int GetHashCode()
+        {
+            return Left.GetHashCode() + Top.GetHashCode() + Width.GetHashCode() + Height.GetHashCode()
+                + NearestZ.GetHashCode() + FarthestZ.GetHashCode() + Background.GetHashCode() + Camera.GetHashCode();
+        }
     }
 }

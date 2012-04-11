@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style TargetType="{x:Type Border}" x:Key="WindowBorder">
+        <Setter Property="CornerRadius" Value="25"/>
+        <Setter Property="Background" Value="#CC1E1711"/>
+        <Setter Property="BorderThickness" Value="2.5"/>
+        <Setter Property="BorderBrush" Value="#FF555555"/>
+    </Style>
+    
+    <Style TargetType="{x:Type Border}" x:Key="CaptionBorder">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#1E1711" Offset="0"/>
+                    <GradientStop Color="#33261E" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="CornerRadius" Value="25,25,0,0"/>
+        <Setter Property="BorderThickness" Value="0,0,0,2"/>
+        <Setter Property="BorderBrush" Value="#4C3B36"/>
+    </Style>
+
+</ResourceDictionary>

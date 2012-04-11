@@ -12,21 +12,22 @@
     <!--*****************************************************************-->
 
     <ControlTemplate TargetType="{x:Type ProgressBar}" x:Key="HBar">
-        <Border BorderThickness="1" CornerRadius="0" x:Name="PART_Track">
-            <Border.BorderBrush>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                    <GradientStop Color="#95989E" Offset="0"/>
-                    <GradientStop Color="#5A5D63" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.BorderBrush>
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                    <GradientStop Color="{StaticResource TopNormal}" Offset=".1"/>
-                    <GradientStop Color="{StaticResource MiddleNormal}" Offset=".7"/>
-                    <GradientStop Color="{StaticResource BottomNormal}" Offset=".9"/>
-                </LinearGradientBrush>
-            </Border.Background>
-            
+        <Grid>
+            <Border BorderThickness="1" CornerRadius="0" x:Name="PART_Track">
+                <Border.BorderBrush>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#95989E" Offset="0"/>
+                        <GradientStop Color="#5A5D63" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="{StaticResource TopNormal}" Offset=".1"/>
+                        <GradientStop Color="{StaticResource MiddleNormal}" Offset=".7"/>
+                        <GradientStop Color="{StaticResource BottomNormal}" Offset=".9"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
             <Border BorderThickness="1" CornerRadius="0" x:Name="PART_Indicator" HorizontalAlignment="Left">
                 <Border.BorderBrush>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
@@ -41,42 +42,28 @@
                         <GradientStop Color="{StaticResource BottomProgress}" Offset=".9"/>
                     </LinearGradientBrush>
                 </Border.Background>
-                <!--<Border x:Name="Light" HorizontalAlignment="Left" Width="25" Background="#33FFFFFF" Margin="0,0,0,0"/>-->
             </Border>
-        </Border>
-        <!--<ControlTemplate.Triggers>
-            <EventTrigger RoutedEvent="ProgressBar.Loaded">
-                <BeginStoryboard>
-                    <Storyboard RepeatBehavior="Forever">
-                        <ThicknessAnimation
-                            Storyboard.TargetName="Light"
-                            Storyboard.TargetProperty="Margin"
-                            AutoReverse="False"
-                            To="100,0,0,0"
-                            Duration="0:0:10"/>
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger>
-        </ControlTemplate.Triggers>-->
+        </Grid>
     </ControlTemplate>
 
     <ControlTemplate TargetType="{x:Type ProgressBar}" x:Key="VBar">
-        <Border BorderThickness="1" CornerRadius="0" x:Name="PART_Track">
-            <Border.BorderBrush>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                    <GradientStop Color="#95989E" Offset="0"/>
-                    <GradientStop Color="#5A5D63" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.BorderBrush>
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                    <GradientStop Color="{StaticResource TopNormal}" Offset=".1"/>
-                    <GradientStop Color="{StaticResource MiddleNormal}" Offset=".7"/>
-                    <GradientStop Color="{StaticResource BottomNormal}" Offset=".9"/>
-                </LinearGradientBrush>
-            </Border.Background>
-
-            <Border BorderThickness="1" CornerRadius="0" x:Name="PART_Indicator" VerticalAlignment="Bottom">
+        <Grid>
+            <Border BorderThickness="1" CornerRadius="0" x:Name="PART_Track">
+                <Border.BorderBrush>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#95989E" Offset="0"/>
+                        <GradientStop Color="#5A5D63" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="{StaticResource TopNormal}" Offset=".1"/>
+                        <GradientStop Color="{StaticResource MiddleNormal}" Offset=".7"/>
+                        <GradientStop Color="{StaticResource BottomNormal}" Offset=".9"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+            <Border BorderThickness="1" CornerRadius="0" x:Name="PART_Indicator" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
                 <Border.BorderBrush>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                         <GradientStop Color="#993F01" Offset="0"/>
@@ -91,7 +78,7 @@
                     </LinearGradientBrush>
                 </Border.Background>
             </Border>
-        </Border>
+        </Grid>
     </ControlTemplate>
 
     <!--*********************************************************************-->

@@ -46,6 +46,8 @@
     <Compile Include="Converter\Direct3DConverter11.cs" />
     <Compile Include="Engine\GraphicsDirect3D11.cs" />
     <Compile Include="Implementors\Direct3D11LayerImplementor.cs" />
+    <Compile Include="Implementors\Direct3D11LightImplementor.cs" />
+    <Compile Include="Implementors\Direct3D11MaterialImplementor.cs" />
     <Compile Include="Implementors\Direct3D11MatrixImplementor.cs" />
     <Compile Include="Implementors\Direct3D11MeshImplementor.cs" />
     <Compile Include="Implementors\Direct3D11ViewportImplementor.cs" />

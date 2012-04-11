@@ -11,14 +11,15 @@ namespace NET.Tools.Engines.Graphics3D
         public Color Ambient { get; set; }
         public Color Diffuse { get; set; }
         public Color Specular { get; set; }
-        public Color Emmesive { get; set; }
+        public Color Emissive { get; set; }
+        public float Power { get; set; }
 
-        internal Material()
+        public Material()
         {
             Ambient = Color.White;
             Diffuse = Color.White;
             Specular = Color.Black;
-            Emmesive = Color.Gray;
+            Emissive = Color.Gray;
         }
     }
 }

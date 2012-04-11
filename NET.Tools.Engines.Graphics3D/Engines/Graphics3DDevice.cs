@@ -19,6 +19,8 @@ namespace NET.Tools.Engines.Graphics3D
         internal void Initialize(Graphics3DConfiguration config)
         {
             OnInitialization(config);
+            Graphics3DSystem.Implementors.MaterialImplementor.SetMaterial(
+                MaterialCreator.CreateDefaultMaterial().Create());
         }
 
         internal void Render()
@@ -34,8 +36,19 @@ namespace NET.Tools.Engines.Graphics3D
                 //Setup camera first
                 vp.Camera.SetupCamera();
 
+                //TODO: Not here
+                foreach (Light light in LightManager.Iterator)
+                {
+                    light.ActivateLight();
+                }
+
                 //Render scene
                 RootNode.Render();
+
+                foreach (Light light in LightManager.Iterator)
+                {
+                    light.DeactivateLight();
+                }
 
             }
 

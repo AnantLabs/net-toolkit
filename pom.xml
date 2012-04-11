@@ -21,6 +21,7 @@
 		<skin.nimbus.version>1.0.${maven.build.timestamp}</skin.nimbus.version>
 		<skin.paper.version>0.9.${maven.build.timestamp}</skin.paper.version>
 		<skin.sims3.version>0.9.${maven.build.timestamp}</skin.sims3.version>
+		<skin.cim.version>0.5.${maven.build.timestamp}</skin.cim.version>
 		<wpf.version>0.9.${maven.build.timestamp}</wpf.version>
 		<forms.version>0.9.${maven.build.timestamp}</forms.version>
 		<os.version>0.5.${maven.build.timestamp}</os.version>
@@ -500,6 +501,26 @@
 							<resources>
 								<resource>
 									<directory>${basedir}/mvn/Templates/NET.Tools.WPF.Skins.Sims3Skin</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>AssemblyInfo.cs</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-net-tools-wpf-skins-cim-asm</id>
+						<!-- here the phase you need -->
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/NET.Tools.WPF.Skins.CIMSkin/Properties</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/mvn/Templates/NET.Tools.WPF.Skins.CIMSkin</directory>
 									<filtering>true</filtering>
 									<includes>
 										<include>AssemblyInfo.cs</include>
@@ -1100,6 +1121,12 @@
 									<directory>${basedir}/NET.Tools.WPF.Skins.Sims3Skin/bin/Release</directory>
 									<includes>
 										<include>NET.Tools.WPF.Skins.Sims3Skin.*</include>
+									</includes>
+								</resource>
+								<resource>
+									<directory>${basedir}/NET.Tools.WPF.Skins.CIMSkin/bin/Release</directory>
+									<includes>
+										<include>NET.Tools.WPF.Skins.CIMSkin.*</include>
 									</includes>
 								</resource>
 							</resources>

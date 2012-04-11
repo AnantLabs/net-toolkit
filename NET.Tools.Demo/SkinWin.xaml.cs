@@ -57,6 +57,12 @@ namespace NET.Tools.Demo
                     case "art":
                         activeBundle = ArtSkin.SkinBundle;
                         break;
+                    case "portal":
+                        activeBundle = PortalSkin.SkinBundle;
+                        break;
+                    case "cim":
+                        activeBundle = CIMSkin.SkinBundle;
+                        break;
                     default:
                         throw new NotImplementedException();
                 }

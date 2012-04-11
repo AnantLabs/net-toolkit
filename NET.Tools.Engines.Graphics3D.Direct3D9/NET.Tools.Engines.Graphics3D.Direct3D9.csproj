@@ -46,6 +46,8 @@
     <Compile Include="Converter\Direct3DConverter9.cs" />
     <Compile Include="Engine\GraphicsDirect3D9.cs" />
     <Compile Include="Implementors\Direct3D9LayerImplementor.cs" />
+    <Compile Include="Implementors\Direct3D9LightImplementor.cs" />
+    <Compile Include="Implementors\Direct3D9MaterialImplementor.cs" />
     <Compile Include="Implementors\Direct3D9MatrixImplementor.cs" />
     <Compile Include="Implementors\Direct3D9Mesh.cs" />
     <Compile Include="Implementors\Direct3D9MeshImplementor.cs" />

@@ -37,5 +37,17 @@ namespace NET.Tools.Engines.Graphics3D.Direct3D11
         {
             get { return Direct3D11ViewportImplementor.GetInstance(); }
         }
+
+
+        public IMaterialImplementor MaterialImplementor
+        {
+            get { return Direct3D11MaterialImplementor.GetInstance(); }
+        }
+
+
+        public ILightImplementor LightImplementor
+        {
+            get { return Direct3D11LightImplementor.GetInstance(); }
+        }
     }
 }

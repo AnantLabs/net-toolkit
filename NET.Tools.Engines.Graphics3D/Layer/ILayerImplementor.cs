@@ -10,5 +10,7 @@ namespace NET.Tools.Engines.Graphics3D
         IMeshImplementor MeshImplementor { get; }
         IMatrixImplementor MatrixImplementor { get; }
         IViewportImplementor ViewportImplementor { get; }
+        IMaterialImplementor MaterialImplementor { get; }
+        ILightImplementor LightImplementor { get; }
     }
 }
