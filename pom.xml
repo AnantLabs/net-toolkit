@@ -22,6 +22,7 @@
 		<skin.paper.version>0.9.${maven.build.timestamp}</skin.paper.version>
 		<skin.sims3.version>0.9.${maven.build.timestamp}</skin.sims3.version>
 		<skin.cim.version>0.5.${maven.build.timestamp}</skin.cim.version>
+		<skin.portal.version>0.1.${maven.build.timestamp}</skin.portal.version>
 		<wpf.version>0.9.${maven.build.timestamp}</wpf.version>
 		<forms.version>0.9.${maven.build.timestamp}</forms.version>
 		<os.version>0.5.${maven.build.timestamp}</os.version>
@@ -521,6 +522,26 @@
 							<resources>
 								<resource>
 									<directory>${basedir}/mvn/Templates/NET.Tools.WPF.Skins.CIMSkin</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>AssemblyInfo.cs</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-net-tools-wpf-skins-portal-asm</id>
+						<!-- here the phase you need -->
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/NET.Tools.WPF.Skins.PortalSkin/Properties</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/mvn/Templates/NET.Tools.WPF.Skins.PortalSkin</directory>
 									<filtering>true</filtering>
 									<includes>
 										<include>AssemblyInfo.cs</include>
@@ -1127,6 +1148,12 @@
 									<directory>${basedir}/NET.Tools.WPF.Skins.CIMSkin/bin/Release</directory>
 									<includes>
 										<include>NET.Tools.WPF.Skins.CIMSkin.*</include>
+									</includes>
+								</resource>
+								<resource>
+									<directory>${basedir}/NET.Tools.WPF.Skins.PortalSkin/bin/Release</directory>
+									<includes>
+										<include>NET.Tools.WPF.Skins.PortalSkin.*</include>
 									</includes>
 								</resource>
 							</resources>

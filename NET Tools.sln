@@ -99,7 +99,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET.Tools.Engines.Graphics3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET.Tools.Engines.Graphics3D.Direct3D11", "NET.Tools.Engines.Graphics3D.Direct3D11\NET.Tools.Engines.Graphics3D.Direct3D11.csproj", "{76F3B470-52D9-4A1F-8409-881390FAB02F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET.Tools.WPF.Skins.PortalSkin", "NET.Tools.WPF.Skins.Portal\NET.Tools.WPF.Skins.PortalSkin.csproj", "{BA36CE52-DE86-4901-93B8-73D2C994048C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET.Tools.WPF.Skins.PortalSkin", "NET.Tools.WPF.Skins.PortalSkin\NET.Tools.WPF.Skins.PortalSkin.csproj", "{BA36CE52-DE86-4901-93B8-73D2C994048C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET.Tools.WPF.Skins.CIMSkin", "NET.Tools.WPF.Skins.CIMSkin\NET.Tools.WPF.Skins.CIMSkin.csproj", "{366CA9A6-A1A7-47FF-AC64-69D206664F3E}"
 EndProject

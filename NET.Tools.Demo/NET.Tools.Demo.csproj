@@ -399,7 +399,7 @@
       <Project>{0E0E2580-F19C-4370-91BE-0804C19F3956}</Project>
       <Name>NET.Tools.WPF.Skins.PaperSkin</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NET.Tools.WPF.Skins.Portal\NET.Tools.WPF.Skins.PortalSkin.csproj">
+    <ProjectReference Include="..\NET.Tools.WPF.Skins.PortalSkin\NET.Tools.WPF.Skins.PortalSkin.csproj">
       <Project>{BA36CE52-DE86-4901-93B8-73D2C994048C}</Project>
       <Name>NET.Tools.WPF.Skins.PortalSkin</Name>
     </ProjectReference>
