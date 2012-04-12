@@ -92,17 +92,17 @@
 
     <ControlTemplate TargetType="{x:Type ScrollBar}" x:Key="Vertical">
         <Grid>
-            <Track Name="PART_Track" IsDirectionReversed="False">
+            <Track Name="PART_Track" IsDirectionReversed="True">
                 <Track.Resources>
                     <sys:Double x:Key="{x:Static SystemParameters.VerticalScrollBarButtonHeightKey}">
                         75
                     </sys:Double>
                 </Track.Resources>
                 <Track.DecreaseRepeatButton>
-                    <RepeatButton Style="{DynamicResource Repeater}" Command="ScrollBar.PageLeftCommand"/>
+                    <RepeatButton Style="{DynamicResource Repeater}" Command="ScrollBar.PageUpCommand"/>
                 </Track.DecreaseRepeatButton>
                 <Track.IncreaseRepeatButton>
-                    <RepeatButton Style="{DynamicResource Repeater}" Command="ScrollBar.PageRightCommand"/>
+                    <RepeatButton Style="{DynamicResource Repeater}" Command="ScrollBar.PageDownCommand"/>
                 </Track.IncreaseRepeatButton>
                 <Track.Thumb>
                     <Thumb>
