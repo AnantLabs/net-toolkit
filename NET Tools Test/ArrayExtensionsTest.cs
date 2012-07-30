@@ -72,5 +72,41 @@ namespace NET.Tools.Test
             Assert.AreEqual(5, sub2.Length);
             Assert.IsTrue(new byte[] { 5, 6, 7, 8, 9 }.EqualsTo(sub2));
         }
+
+        [TestMethod]
+        public void TestPadding1()
+        {
+            byte[] array = new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            byte[] result = array.PadLeft<byte>(10, 11);
+
+            Console.WriteLine(result.ToString());
+
+            Assert.AreEqual(20, result.Length);
+            Assert.IsTrue(new byte[] { 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }.EqualsTo(result));
+        }
+
+        [TestMethod]
+        public void TestPadding2()
+        {
+            byte[] array = new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            byte[] result = array.PadRight<byte>(10, 11);
+
+            Console.WriteLine(result.ToString());
+
+            Assert.AreEqual(20, result.Length);
+            Assert.IsTrue(new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11 }.EqualsTo(result));
+        }
+
+        [TestMethod]
+        public void TestPadding3()
+        {
+            byte[] array = new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            byte[] result = array.Pad<byte>(5, 10, 11);
+
+            Console.WriteLine(result.ToString());
+
+            Assert.AreEqual(20, result.Length);
+            Assert.IsTrue(new byte[] { 0, 1, 2, 3, 4, 5, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 6, 7, 8, 9 }.EqualsTo(result));
+        }
     }
 }

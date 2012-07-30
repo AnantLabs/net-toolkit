@@ -31,7 +31,7 @@ namespace NET.Tools.Forms
                 DirectoryInfo di = (this.Items[e.Index] as DirectoryInfo);
                 Image image = Properties.Resources.Folder.ToBitmap();
                 String text = di.Name;
-                if (di.GetDirectoryParentsCount() == 0)
+                if (di.GetParents().Length == 0)
                 {
                     image = di.ToRootDriveInfo().GetIcon().ToBitmap();
                     try
@@ -51,10 +51,10 @@ namespace NET.Tools.Forms
             else
             {
                 DirectoryInfo di = (this.Items[e.Index] as DirectoryInfo);
-                int level = di.GetDirectoryParentsCount();
+                int level = di.GetParents().Length;
                 Image image = Properties.Resources.Folder.ToBitmap();
                 String text = di.Name;
-                if (di.GetDirectoryParentsCount() == 0)
+                if (di.GetParents().Length == 0)
                 {
                     image = di.ToRootDriveInfo().GetIcon().ToBitmap();
                     try

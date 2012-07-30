@@ -97,7 +97,7 @@ namespace NET.Tools.Engines.CommandLine
         /// <param name="text"></param>
         /// <param name="location"></param>
         /// <param name="width"></param>
-        public static void DrawText(CMDMnemonicPalette palette, TextAlignment align, String text, Point location, int width)
+        /*public static void DrawText(CMDMnemonicPalette palette, TextAlignment align, String text, Point location, int width)
         {
             Console.ForegroundColor = palette.MainColor.Foreground;
             Console.BackgroundColor = palette.MainColor.Background;
@@ -141,7 +141,7 @@ namespace NET.Tools.Engines.CommandLine
                     }
                 }
             }
-        }
+        }*/
 
         /// <summary>
         /// Draw a text line
@@ -151,10 +151,10 @@ namespace NET.Tools.Engines.CommandLine
         /// <param name="text"></param>
         /// <param name="location"></param>
         /// <param name="width"></param>
-        public static void DrawText(CMDPaletteItem palette, TextAlignment align, String text, Point location, int width)
+        /*public static void DrawText(CMDPaletteItem palette, TextAlignment align, String text, Point location, int width)
         {
             DrawText(new CMDMnemonicPalette(palette, palette), align, text, location, width);
-        }
+        }*/
 
         /// <summary>
         /// Draw a close button for a window

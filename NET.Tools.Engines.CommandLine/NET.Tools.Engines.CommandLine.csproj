@@ -84,10 +84,9 @@
     <Compile Include="Commons\CMDBufferSize.cs" />
     <Compile Include="Commons\CMDDrawing.cs" />
     <Compile Include="Commons\CMDPalette.cs" />
-    <Compile Include="Components\CMDButton.cs" />
-    <Compile Include="Components\CMDDesktop.cs" />
-    <Compile Include="Components\CMDDialog.cs" />
-    <Compile Include="Components\CMDWindow.cs" />
+    <Compile Include="Components\ButtonStyle.cs" />
+    <Compile Include="Components\TurboVision.cs" />
+    <Compile Include="Components\WindowStyle.cs" />
     <Compile Include="GlobalCMDPalette.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

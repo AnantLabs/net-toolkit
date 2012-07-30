@@ -9,7 +9,7 @@ namespace NET.Tools.Engines.CommandLine
     /// <summary>
     /// Represent a console color palette
     /// </summary>
-    public sealed class CMDPalette : IAbstractStyle
+    public sealed class CMDPalette
     {
         #region Static
 
@@ -91,7 +91,7 @@ namespace NET.Tools.Engines.CommandLine
         }
     }
 
-    public class CMDFramePalette : IAbstractStyle
+    public class CMDFramePalette
     {
         /// <summary>
         /// Gets the color only for windows
@@ -118,7 +118,7 @@ namespace NET.Tools.Engines.CommandLine
     /// <summary>
     /// Represent a mnemonic palette
     /// </summary>
-    public class CMDMnemonicPalette : IAbstractStyle
+    public class CMDMnemonicPalette
     {
         /// <summary>
         /// Gets Mnemonic color
@@ -139,7 +139,7 @@ namespace NET.Tools.Engines.CommandLine
     /// <summary>
     /// Represent a console window close button palette
     /// </summary>
-    public class CMDFrameButtonPalette : IAbstractStyle
+    public class CMDFrameButtonPalette
     {
         /// <summary>
         /// Site color of button ([])
@@ -160,7 +160,7 @@ namespace NET.Tools.Engines.CommandLine
     /// <summary>
     /// Represent a console palette item
     /// </summary>
-    public class CMDPaletteItem : IAbstractStyle
+    public class CMDPaletteItem
     {
         /// <summary>
         /// Foreground color

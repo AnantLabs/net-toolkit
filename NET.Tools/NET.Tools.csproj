@@ -132,6 +132,7 @@
     <Compile Include="Extensions\DirectoryInfoExtensions.cs" />
     <Compile Include="Extensions\DoubleExtensions.cs" />
     <Compile Include="Extensions\DriveInfoExtensions.cs" />
+    <Compile Include="Extensions\Utils\MathUtils.cs" />
     <Compile Include="Extensions\FileInfoExtensions.cs" />
     <Compile Include="Extensions\FloatExtensions.cs" />
     <Compile Include="Extensions\FontExtensions.cs" />
@@ -155,7 +156,6 @@
     <Compile Include="Extensions\StreamExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\StringFormatType.cs" />
-    <Compile Include="Extensions\TextReaderExtensions.cs" />
     <Compile Include="Extensions\TimeSpanExtensions.cs" />
     <Compile Include="Extensions\UnsignedIntegerExtensions.cs" />
     <Compile Include="Extensions\UnsignedLongExtensions.cs" />
@@ -167,7 +167,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Types\Algorithm.cs" />
+    <Compile Include="Extensions\Utils\Algorithm.cs" />
     <Compile Include="Types\AssemblyAppenderStream.cs" />
     <Compile Include="Types\FileAppenderStream.cs" />
     <Compile Include="Types\AssemblyInfo.cs" />

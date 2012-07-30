@@ -97,7 +97,7 @@ namespace NET.Tools.Forms
                 if (di.RootDirectory.FullName[0] == directory.FullName[0])
                 {
                     TreeNode activeNode = node;
-                    List<DirectoryInfo> dirList = new List<DirectoryInfo>(directory.GetDirectoryParents());
+                    List<DirectoryInfo> dirList = new List<DirectoryInfo>(directory.GetParents());
                     dirList.Add(directory);
                     for (int i = 1; i < dirList.Count; i++ )
                     {

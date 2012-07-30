@@ -15,19 +15,7 @@ namespace NET.Tools
     {
         public static String ToByteSizeString(this float f, bool makeSmaller)
         {
-            if (!makeSmaller)
-                return f.ToString("0.00") + " Bytes";
-
-            if (f <= 1024f)
-                return f.ToString("0.00") + "B";
-            else if (f < 1024f * 1024f)
-                return (f / 1024f).ToString("0.00") + "KB";
-            else if (f < 1024f * 1024f * 1024f)
-                return (f / (1024f * 1024f)).ToString("0.00") + "MB";
-            else if (f < 1024f * 1024f * 1024f * 1024f)
-                return (f / (1024f * 1024f * 1024f)).ToString("0.00") + "GB";
-            else
-                return (f / (1024f * 1024f * 1024f * 1024f)).ToString("0.00") + "TB";
+            return MathUtils.ToByteSizeString(f, makeSmaller);
         }
 
         public static String ToByteSizeString(this float f)

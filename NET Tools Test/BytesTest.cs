@@ -163,10 +163,9 @@ namespace NET.Tools.Test
         public void TestCharacterArrayBytes()
         {
             String str = "abcde";
-            byte[] buffer = str.ToCharArray().ToByteArray();
-            String res = new String(buffer.ToCharacterArray());
+            byte[] buffer = str.ToCharArray().ToByteArray(Encoding.UTF8);
+            String res = buffer.ToString(Encoding.UTF8);
 
-            Assert.IsTrue(buffer.Length == sizeof(char) * str.Length, "Invalid buffer length!");
             Assert.IsTrue(str.Equals(res), "Different strings between before and after!");
         }
 

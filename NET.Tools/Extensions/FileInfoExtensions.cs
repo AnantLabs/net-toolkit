@@ -36,6 +36,13 @@ namespace NET.Tools
             };
         }
 
+        /// <summary>
+        /// Checks that the file is one of the given file types via extensions
+        /// </summary>
+        /// <param name="fi"></param>
+        /// <param name="ignoreCase">TRUE to ignore case sensitive</param>
+        /// <param name="exts">The extensions to check</param>
+        /// <returns></returns>
         public static bool IsOneOfFileType(this FileInfo fi, bool ignoreCase, params String[] exts)
         {
             foreach (String ext in exts)
@@ -60,22 +67,43 @@ namespace NET.Tools
             return IsOneOfFileType(fi, true, exts);
         }
 
+        /// <summary>
+        /// Delete file automatically on application exit. Use the App Domain ProcessExit Event-Method.
+        /// <b>Warning: A file cannot be delete from file on exit list!</b>
+        /// </summary>
+        /// <param name="fi"></param>
         public static void DeleteOnExit(this FileInfo fi)
         {
             if (!deleteOnExitList.Contains(fi))
                 deleteOnExitList.Add(fi);
         }
 
+        /// <summary>
+        /// Returns the file name without the extension
+        /// </summary>
+        /// <param name="fi"></param>
+        /// <returns></returns>
         public static String GetNameWithoutExtension(this FileInfo fi)
         {
             return fi.Name.Substring(0, fi.Name.Length - fi.Extension.Length);
         }
 
+        /// <summary>
+        /// Returns the file icon used in explorer
+        /// </summary>
+        /// <param name="fi"></param>
+        /// <returns></returns>
         public static Icon GetIcon(this FileInfo fi)
         {
             return Icon.ExtractAssociatedIcon(fi.FullName);
         }
 
+        /// <summary>
+        /// Zip the given file via GZipStream.
+        /// <b>Warning: File will be overwritten!</b>
+        /// </summary>
+        /// <param name="fi"></param>
+        /// <returns></returns>
         public static bool ZipFile(this FileInfo fi)
         {
             String tmpFile = Path.GetTempFileName();
@@ -110,6 +138,12 @@ namespace NET.Tools
             return res;
         }
 
+        /// <summary>
+        /// Unzip the given file via GZipStream.
+        /// <b>Warning: File will be overwritten!</b>
+        /// </summary>
+        /// <param name="fi"></param>
+        /// <returns></returns>
         public static bool UnzipFile(this FileInfo fi)
         {
             String tmpFile = Path.GetTempFileName();
@@ -144,7 +178,13 @@ namespace NET.Tools
             return res;
         }
 
-        public static bool EncodeWithMD5File(this FileInfo fi)
+        /// <summary>
+        /// Encode the file with MD5
+        /// <b>Warning: File will be overwritten</b>
+        /// </summary>
+        /// <param name="fi"></param>
+        /// <returns></returns>
+        public static bool EncodeWithMD5(this FileInfo fi)
         {
             String tmpFile = Path.GetTempFileName();
             bool res = true;
@@ -176,7 +216,13 @@ namespace NET.Tools
             return res;
         }
 
-        public static bool EncodeWithSHA1File(this FileInfo fi)
+        /// <summary>
+        /// Encode the file with SHA1
+        /// <b>Warning: File will be overwritten</b>
+        /// </summary>
+        /// <param name="fi"></param>
+        /// <returns></returns>
+        public static bool EncodeWithSHA1(this FileInfo fi)
         {
             String tmpFile = Path.GetTempFileName();
             bool res = true;
@@ -188,6 +234,121 @@ namespace NET.Tools
                     if (!DoActionWithBytes(fi, input, (buf) =>
                     {
                         byte[] crypto = buf.EncodeWithSHA1();
+                        output.Write(crypto, 0, crypto.Length);
+                    }))
+                        res = false;
+                }
+            }
+
+            if (res)
+            {
+                File.Delete(fi.FullName);
+                File.Move(tmpFile, fi.FullName);
+                File.Delete(tmpFile);
+            }
+            else
+            {
+                File.Delete(tmpFile);
+            }
+
+            return res;
+        }
+
+        /// <summary>
+        /// Encode the file with SHA256
+        /// <b>Warning: File will be overwritten</b>
+        /// </summary>
+        /// <param name="fi"></param>
+        /// <returns></returns>
+        public static bool EncodeWithSHA256(this FileInfo fi)
+        {
+            String tmpFile = Path.GetTempFileName();
+            bool res = true;
+
+            using (FileStream input = new FileStream(fi.FullName, FileMode.Open))
+            {
+                using (FileStream output = new FileStream(tmpFile, FileMode.Create))
+                {
+                    if (!DoActionWithBytes(fi, input, (buf) =>
+                    {
+                        byte[] crypto = buf.EncodeWithSHA256();
+                        output.Write(crypto, 0, crypto.Length);
+                    }))
+                        res = false;
+                }
+            }
+
+            if (res)
+            {
+                File.Delete(fi.FullName);
+                File.Move(tmpFile, fi.FullName);
+                File.Delete(tmpFile);
+            }
+            else
+            {
+                File.Delete(tmpFile);
+            }
+
+            return res;
+        }
+
+        /// <summary>
+        /// Encode the file with SHA512
+        /// <b>Warning: File will be overwritten</b>
+        /// </summary>
+        /// <param name="fi"></param>
+        /// <returns></returns>
+        public static bool EncodeWithSHA512(this FileInfo fi)
+        {
+            String tmpFile = Path.GetTempFileName();
+            bool res = true;
+
+            using (FileStream input = new FileStream(fi.FullName, FileMode.Open))
+            {
+                using (FileStream output = new FileStream(tmpFile, FileMode.Create))
+                {
+                    if (!DoActionWithBytes(fi, input, (buf) =>
+                    {
+                        byte[] crypto = buf.EncodeWithSHA512();
+                        output.Write(crypto, 0, crypto.Length);
+                    }))
+                        res = false;
+                }
+            }
+
+            if (res)
+            {
+                File.Delete(fi.FullName);
+                File.Move(tmpFile, fi.FullName);
+                File.Delete(tmpFile);
+            }
+            else
+            {
+                File.Delete(tmpFile);
+            }
+
+            return res;
+        }
+
+        /// <summary>
+        /// Encode the file with the given hash algorithm
+        /// <b>Warning: File will be overwritten</b>
+        /// </summary>
+        /// <param name="fi"></param>
+        /// <param name="hashAlgo">Hash algorithm name to use for encoding</param>
+        /// <returns></returns>
+        public static bool EncodeWith(this FileInfo fi, string hashAlgo)
+        {
+            String tmpFile = Path.GetTempFileName();
+            bool res = true;
+
+            using (FileStream input = new FileStream(fi.FullName, FileMode.Open))
+            {
+                using (FileStream output = new FileStream(tmpFile, FileMode.Create))
+                {
+                    if (!DoActionWithBytes(fi, input, (buf) =>
+                    {
+                        byte[] crypto = buf.EncodeWith(hashAlgo);
                         output.Write(crypto, 0, crypto.Length);
                     }))
                         res = false;

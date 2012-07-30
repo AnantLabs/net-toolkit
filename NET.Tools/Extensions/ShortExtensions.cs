@@ -13,6 +13,16 @@ namespace NET.Tools
     /// </summary>
     public static class ShortExtensions
     {
+        public static String ToByteSizeString(this short i, bool makeSmaller)
+        {
+            return MathUtils.ToByteSizeString(i, makeSmaller);
+        }
+
+        public static String ToByteSizeString(this short i)
+        {
+            return ToByteSizeString(i, true);
+        }
+
         public unsafe static IntPtr ToPointer(this short s)
         {
             return new IntPtr(&s);

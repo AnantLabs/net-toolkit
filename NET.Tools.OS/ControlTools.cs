@@ -24,9 +24,14 @@ namespace NET.Tools.OS
             return User32.LockWindowUpdate(IntPtr.Zero);
         }
 
-        public static bool StopControlRepaint(Control c)
+        public static bool StopControlRepaint(this Control c)
         {
             return StopControlRepaint(c.Handle);
+        }
+
+        public static bool RunAllControlRepaint(this Control c)
+        {
+            return RunAllControlRepaint();
         }
     }
     /// @}

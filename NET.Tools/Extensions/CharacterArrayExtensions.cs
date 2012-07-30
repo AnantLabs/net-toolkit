@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
@@ -14,16 +15,18 @@ namespace NET.Tools
     /// </summary>
     public static class CharacterArrayExtensions
     {
-        public static byte[] ToByteArray(this char[] array)
+        public static byte[] ToByteArray(this char[] array, Encoding encoding)
         {
-            IntPtr ptr = Marshal.AllocHGlobal(sizeof(char) * array.Length);
-            Marshal.Copy(array, 0, ptr, array.Length);
-
-            byte[] buffer = new byte[sizeof(char) * array.Length];
-            Marshal.Copy(ptr, buffer, 0, sizeof(char) * array.Length);
-            Marshal.FreeHGlobal(ptr);
-
-            return buffer;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                using (StreamWriter writer = new StreamWriter(ms, encoding))
+                {
+                    writer.Write(array);
+                    writer.Flush();
+                    ms.Seek(0, SeekOrigin.Begin);
+                    return ms.ToArray();
+                }
+            }
         }
     }
 

@@ -12,7 +12,7 @@ namespace NET.Tools.Console.Demo
     {
         static void Main(string[] args)
         {
-            CMDApplication.Run(new CMDDesktop());
+            /*CMDApplication.Run(new CMDDesktop());
 
             CMDWindow window = new CMDWindow();
             window.Show();
@@ -24,7 +24,7 @@ namespace NET.Tools.Console.Demo
             btn.Text = "&Close";
             btn.Bounds = new Rectangle(0, 0, 20, 1);
             btn.Click += (s, e) => { dlg.Close(); };
-            dlg.Children.Add(btn);
+            dlg.Children.Add(btn);*/
         }
     }
 }

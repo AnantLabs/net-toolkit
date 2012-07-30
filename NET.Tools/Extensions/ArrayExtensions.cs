@@ -22,6 +22,14 @@ namespace NET.Tools
             return tmp.ToArray();
         }
 
+        public static T[] AddRange<T>(this T[] array, T[] items)
+        {
+            List<T> tmp = new List<T>(array);
+            tmp.AddRange(items);
+
+            return tmp.ToArray();
+        }
+
         public static T[] Remove<T>(this T[] array, T item)
         {
             IList<T> tmp = new List<T>(array);
@@ -105,6 +113,55 @@ namespace NET.Tools
                     return false;
 
             return true;
+        }
+
+        /// <summary>
+        /// Do a padding on the given array
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="array"></param>
+        /// <param name="start">Start index for padding, zero based</param>
+        /// <param name="length">Length of padding</param>
+        /// <param name="value">Value to use for padding</param>
+        /// <returns></returns>
+        public static T[] Pad<T>(this T[] array, int start, int length, T value)
+        {
+
+            T[] first = start <= 0 ? new T[0] : array.SubArray(0, start + 1);
+            T[] padding = new T[length];
+            for (int i = 0; i < length; i++)
+            {
+                padding[i] = value;
+            }
+            T[] last = start >= array.Length - 1 ? new T[0] : array.SubArray(start + (start <= 0 ? 0 : 1));
+
+            return first.AddRange(padding).AddRange(last);
+        }
+
+        /// <summary>
+        /// Do a padding on the left site of this array
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="array"></param>
+        /// <param name="length">Length of padding</param>
+        /// <param name="value">Value to use for padding</param>
+        /// <returns></returns>
+        public static T[] PadLeft<T>(this T[] array, int length, T value)
+        {
+            return Pad(array, 0, length, value);
+        }
+
+        /// <summary>
+        /// Do a padding on the right site of this array
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="array"></param>
+        /// <param name="length">Length of padding</param>
+        /// <param name="value">Value to use for padding</param>
+        /// <returns></returns>
+        public static T[] PadRight<T>(this T[] array, int length, T value)
+        {
+            return Pad(array, array.Length - 1, length, value);
         }
     }
 

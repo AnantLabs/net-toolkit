@@ -155,9 +155,9 @@ namespace NET.Tools
                 using (StreamWriter writer = new StreamWriter(stream, enc))
                 {
                     writer.Write(str);
+                    stream.Seek(0, SeekOrigin.Begin);
+                    buffer = stream.ToArray();
                 }
-
-                buffer = stream.ToArray();
             }
 
             return buffer;

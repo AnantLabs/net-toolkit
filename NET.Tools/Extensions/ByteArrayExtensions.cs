@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
@@ -54,6 +55,42 @@ namespace NET.Tools
             return sha1.ComputeHash(bytes, off, count);
         }
 
+        public static byte[] EncodeWithSHA256(this byte[] bytes)
+        {
+            SHA256 sha256 = SHA256.Create();
+            return sha256.ComputeHash(bytes);
+        }
+
+        public static byte[] EncodeWithSHA256(this byte[] bytes, int off, int count)
+        {
+            SHA256 sha256 = SHA256.Create();
+            return sha256.ComputeHash(bytes, off, count);
+        }
+
+        public static byte[] EncodeWithSHA512(this byte[] bytes)
+        {
+            SHA512 sha512 = SHA512.Create();
+            return sha512.ComputeHash(bytes);
+        }
+
+        public static byte[] EncodeWithSHA512(this byte[] bytes, int off, int count)
+        {
+            SHA512 sha512 = SHA512.Create();
+            return sha512.ComputeHash(bytes, off, count);
+        }
+
+        public static byte[] EncodeWith(this byte[] bytes, string hashAlgo)
+        {
+            HashAlgorithm hashAlgorithm = HashAlgorithm.Create(hashAlgo);
+            return hashAlgorithm.ComputeHash(bytes);
+        }
+
+        public static byte[] EncodeWith(this byte[] bytes, string hashAlgo, int off, int count)
+        {
+            HashAlgorithm hashAlgorithm = HashAlgorithm.Create(hashAlgo);
+            return hashAlgorithm.ComputeHash(bytes, off, count);
+        }
+
         public static long GetCheckSum(this byte[] bytes)
         {
             long counter = 0;
@@ -64,34 +101,21 @@ namespace NET.Tools
             return counter;
         }
 
-        public static char[] ToCharacterArray(this byte[] buf)
+        public static String ToString(this byte[] buf, Encoding encoding)
         {
-            byte[] buffer = null;
-            if (buf.Length % 2 != 0) //Check for odd
+            using(MemoryStream ms = new MemoryStream(buf))
             {
-                buffer = new byte[buf.Length + 1];
-                buffer[buffer.Length - 1] = 0;
+                using (StreamReader reader = new StreamReader(ms, encoding))
+                {
+                    return reader.ReadToEnd();
+                }
             }
-            else
-                buffer = new byte[buf.Length];
-            buf.CopyTo(buffer, 0);
-
-            IntPtr ptr = Marshal.AllocHGlobal(sizeof(byte) * buffer.Length);
-            Marshal.Copy(buffer, 0, ptr, sizeof(byte) * buffer.Length);
-
-            char[] array = new char[(sizeof(byte) * buffer.Length) / sizeof(char)];
-            Marshal.Copy(ptr, array, 0, (sizeof(byte) * buffer.Length) / sizeof(char));
-            Marshal.FreeHGlobal(ptr);
-
-            return array;
         }
 
-        /*public static byte[] Pad(this byte[] array, int start, int length, byte value)
+        public static char[] ToCharacterArray(this byte[] buf, Encoding encoding)
         {
-            byte[] result = new byte[array.Length + length];
-            byte[] first = array.SubArray(0, start + 1);
-            byte[] padding = 
-        }*/
+            return ToString(buf, encoding).ToCharArray();
+        }
     }
     /// @}
 }

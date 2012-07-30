@@ -14,6 +14,13 @@ namespace NET.Tools
     /// </summary>
     public static class DirectoryInfoExtensions
     {
+        /// <summary>
+        /// Returns the complete size of this directory
+        /// </summary>
+        /// <param name="di"></param>
+        /// <param name="recurs">TRUE to search recursive all sub directories</param>
+        /// <param name="filter">An optional file filter</param>
+        /// <returns></returns>
         public static long GetDirectorySize(this DirectoryInfo di, bool recurs, String filter)
         {
             if (!recurs)
@@ -43,75 +50,112 @@ namespace NET.Tools
             return GetDirectorySize(di, recurs, "*.*");
         }
 
+        /// <summary>
+        /// Returns the complete size of the directory, inclusive all files and sub directories
+        /// </summary>
+        /// <param name="di"></param>
+        /// <returns></returns>
         public static long GetDirectorySize(this DirectoryInfo di)
         {
             return GetDirectorySize(di, true);
         }
 
-        public static int GetDirectoryFiles(this DirectoryInfo di, bool recurs, String filter)
+        /// <summary>
+        /// Returns all files in this directory
+        /// </summary>
+        /// <param name="di"></param>
+        /// <param name="recurs">TRUE to search recursive</param>
+        /// <param name="filter">An optional file filter</param>
+        /// <returns></returns>
+        public static FileInfo[] GetAllFiles(this DirectoryInfo di, bool recurs, String filter)
         {
             if (!recurs)
             {
-                return di.GetFiles(filter).Length;
+                return di.GetFiles(filter);
             }
             else
             {
-                int counter=0;
+                List<FileInfo> lst = new List<FileInfo>();
+
                 DoDirectoryActionRecurs(di, null,
-                    (s, e) =>
-                    {
-                        counter += di.GetFiles(filter).Length;
-                    });
-                return counter;
+                                        (s, e) => lst.AddRange(di.GetFiles(filter)));
+
+                return lst.ToArray();
             }
         }
 
-        public static int GetDirectoryFiles(this DirectoryInfo di, bool recurs)
+        public static FileInfo[] GetAllFiles(this DirectoryInfo di, bool recurs)
         {
-            return GetDirectoryFiles(di, recurs, "*.*");
+            return GetAllFiles(di, recurs, "*.*");
         }
 
-        public static int GetDirectoryFiles(this DirectoryInfo di)
+        /// <summary>
+        /// Returns all files fromk this directory and all sub directories
+        /// </summary>
+        /// <param name="di"></param>
+        /// <returns></returns>
+        public static FileInfo[] GetAllFiles(this DirectoryInfo di)
         {
-            return GetDirectoryFiles(di, false);
+            return GetAllFiles(di, true);
         }
 
-        public static int GetDirectoryFolders(this DirectoryInfo di, bool recurs)
+        public static DirectoryInfo[] GetAllDirectories(this DirectoryInfo di, bool recurs, string filter)
         {
             if (!recurs)
             {
-                return di.GetDirectories().Length;
+                return di.GetDirectories();
             }
             else
             {
-                int counter = 0;
+                List<DirectoryInfo> lst = new List<DirectoryInfo>();
+
                 DoDirectoryActionRecurs(di, null,
-                    (s, e) =>
-                    {
-                        counter += di.GetDirectories().Length;
-                    });
-                return counter;
+                                        (s, e) => lst.AddRange(di.GetDirectories(filter)));
+
+                return lst.ToArray();
             }
         }
 
-        public static int GetDirectoryFolders(this DirectoryInfo di)
+        public static DirectoryInfo[] GetAllDirectories(this DirectoryInfo di, bool recurs)
         {
-            return GetDirectoryFolders(di, false);
+            return GetAllDirectories(di, recurs, "*");
         }
 
-        public static int GetDirectoryElements(this DirectoryInfo di, bool recurs, String filter)
+        /// <summary>
+        /// Returns all directories in this directory and all sub directories
+        /// </summary>
+        /// <param name="di"></param>
+        /// <returns></returns>
+        public static DirectoryInfo[] GetAllDirectories(this DirectoryInfo di)
         {
-            return GetDirectoryFiles(di, recurs, filter) + GetDirectoryFolders(di, recurs);
+            return GetAllDirectories(di, true);
         }
 
-        public static int GetDirectoryElements(this DirectoryInfo di, bool recurs)
+        /// <summary>
+        /// Returns the number of sub elements
+        /// </summary>
+        /// <param name="di"></param>
+        /// <param name="recurs">TRUE to search recursive in sub directories</param>
+        /// <param name="filter">An optional file filter</param>
+        /// <returns></returns>
+        public static int GetAllElements(this DirectoryInfo di, bool recurs, String filter)
         {
-            return GetDirectoryElements(di, recurs);
+            return GetAllFiles(di, recurs, filter).Length + GetAllDirectories(di, recurs).Length;
         }
 
-        public static int GetDirectoryElements(this DirectoryInfo di)
+        public static int GetAllElements(this DirectoryInfo di, bool recurs)
         {
-            return GetDirectoryElements(di, false);
+            return GetAllElements(di, recurs, "*.*");
+        }
+
+        /// <summary>
+        /// Returns all sub elements in this directory and all sub directories
+        /// </summary>
+        /// <param name="di"></param>
+        /// <returns></returns>
+        public static int GetAllElements(this DirectoryInfo di)
+        {
+            return GetAllElements(di, true);
         }
 
         public static bool CanAccess(this DirectoryInfo di)
@@ -127,31 +171,32 @@ namespace NET.Tools
             }
         }
 
-        public static int GetDirectoryParentsCount(this DirectoryInfo di)
-        {
-            int counter = 0;
-            DirectoryInfo parent = di.Parent;
-
-            while (parent != null)
-            {
-                counter++;
-                parent = parent.Parent;
-            }
-
-            return counter;
-        }
-
+        /// <summary>
+        /// Get the root driver information from directory
+        /// </summary>
+        /// <param name="di"></param>
+        /// <returns></returns>
         public static DriveInfo ToRootDriveInfo(this DirectoryInfo di)
         {
             return new DriveInfo(di.FullName[0] + "");
         }
 
+        /// <summary>
+        /// Returns the icon for this directory
+        /// </summary>
+        /// <param name="di"></param>
+        /// <returns></returns>
         public static Icon GetIcon(this DirectoryInfo di)
         {
-            return Resources.Folder;
+            return Icon.ExtractAssociatedIcon(di.FullName) ?? Resources.Folder;
         }
 
-        public static DirectoryInfo[] GetDirectoryParents(this DirectoryInfo di)
+        /// <summary>
+        /// Get all directory parents
+        /// </summary>
+        /// <param name="di"></param>
+        /// <returns></returns>
+        public static DirectoryInfo[] GetParents(this DirectoryInfo di)
         {
             List<DirectoryInfo> res = new List<DirectoryInfo>();
             DirectoryInfo parent = di.Parent;
@@ -165,7 +210,13 @@ namespace NET.Tools
             return res.ToArray();
         }
 
-        public static FileInfo[] GetFiles(this DirectoryInfo di, params String[] filters)
+        /// <summary>
+        /// Get all files in directory that matches with one of the given file filter
+        /// </summary>
+        /// <param name="di"></param>
+        /// <param name="filters">File filter to match</param>
+        /// <returns></returns>
+        public static FileInfo[] GetFilesMultiFilter(this DirectoryInfo di, params String[] filters)
         {
             List<FileInfo> res = new List<FileInfo>();
 
@@ -175,12 +226,50 @@ namespace NET.Tools
             return res.ToArray();
         }
 
-        public static DirectoryInfo[] GetDirectories(this DirectoryInfo di, params String[] filters)
+        /// <summary>
+        /// Get all files in directory and sub directories that matches with one of the given file filter
+        /// </summary>
+        /// <param name="di"></param>
+        /// <param name="filters">File filter to match</param>
+        /// <returns></returns>
+        public static FileInfo[] GetAllFilesMultiFilter(this DirectoryInfo di, params String[] filters)
+        {
+            List<FileInfo> res = new List<FileInfo>();
+
+            foreach (String filter in filters)
+                res.AddRange(di.GetAllFiles(true, filter));
+
+            return res.ToArray();
+        }
+
+        /// <summary>
+        /// Get all directories in directory that matches with one of the given file filter
+        /// </summary>
+        /// <param name="di"></param>
+        /// <param name="filters">File filter to match</param>
+        /// <returns></returns>
+        public static DirectoryInfo[] GetDirectoriesMultiFilter(this DirectoryInfo di, params String[] filters)
         {
             List<DirectoryInfo> res = new List<DirectoryInfo>();
 
             foreach (String filter in filters)
                 res.AddRange(di.GetDirectories(filter));
+
+            return res.ToArray();
+        }
+
+        /// <summary>
+        /// Get all directories and sub directories in directory that matches with one of the given file filter
+        /// </summary>
+        /// <param name="di"></param>
+        /// <param name="filters">File filter to match</param>
+        /// <returns></returns>
+        public static DirectoryInfo[] GetAllDirectoriesMultiFilter(this DirectoryInfo di, params String[] filters)
+        {
+            List<DirectoryInfo> res = new List<DirectoryInfo>();
+
+            foreach (String filter in filters)
+                res.AddRange(di.GetAllDirectories(true, filter));
 
             return res.ToArray();
         }

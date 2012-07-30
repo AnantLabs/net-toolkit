@@ -71,26 +71,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractButton.cs" />
-    <Compile Include="AbstractComponent.cs" />
-    <Compile Include="AbstractContainer.cs" />
-    <Compile Include="AbstractDesktop.cs" />
-    <Compile Include="AbstractDialog.cs" />
-    <Compile Include="AbstractFrame.cs" />
-    <Compile Include="AbstractWindow.cs" />
-    <Compile Include="IAbstractButton.cs" />
-    <Compile Include="IAbstractStyle.cs" />
-    <Compile Include="Commons\TextAlignment.cs" />
-    <Compile Include="Commons\WindowState.cs" />
-    <Compile Include="Commons\FocusManager.cs" />
+    <Compile Include="Button.cs" />
+    <Compile Include="Component.cs" />
+    <Compile Include="Container.cs" />
     <Compile Include="Doxygen.cs" />
-    <Compile Include="IAbstractComponent.cs" />
-    <Compile Include="IAbstractContainer.cs" />
-    <Compile Include="IAbstractDesktop.cs" />
-    <Compile Include="IAbstractDialog.cs" />
-    <Compile Include="IAbstractFrame.cs" />
-    <Compile Include="IAbstractWindow.cs" />
+    <Compile Include="Input\IInputHandler.cs" />
+    <Compile Include="Input\MouseEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Styles\IStyle.cs" />
+    <Compile Include="Styles\StyleManagement.cs" />
+    <Compile Include="Window.cs" />
+    <Compile Include="WindowManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NET.Tools\NET.Tools.csproj">
@@ -115,6 +106,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

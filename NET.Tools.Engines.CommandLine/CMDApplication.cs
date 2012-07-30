@@ -15,7 +15,7 @@ namespace NET.Tools.Engines.CommandLine
     /// </summary>
     public static class CMDApplication
     {
-        private static bool refresh = false; 
+        /*private static bool refresh = false; 
 
         internal static CMDDesktop Desktop { get; private set; }
         internal static event MouseEventHandler MouseEvent;
@@ -106,6 +106,6 @@ namespace NET.Tools.Engines.CommandLine
         internal static void Refresh()
         {
             refresh = true;
-        }
+        }*/
     }
 }

@@ -13,6 +13,16 @@ namespace NET.Tools
     /// </summary>
     public static class UnsignedShortExtensions
     {
+        public static String ToByteSizeString(this ushort i, bool makeSmaller)
+        {
+            return MathUtils.ToByteSizeString(i, makeSmaller);
+        }
+
+        public static String ToByteSizeString(this ushort i)
+        {
+            return ToByteSizeString(i, true);
+        }
+
         public unsafe static IntPtr ToPointer(this ushort s)
         {
             return new IntPtr(&s);
