@@ -103,6 +103,7 @@
   <ItemGroup>
     <Compile Include="Extensions\BitmapSourceExtensions.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
+    <Compile Include="Extensions\DependencyObjectExtensions.cs" />
     <Compile Include="Extensions\FontFamilyExtensions.cs" />
     <Compile Include="Extensions\LinearGradientBrushExtensions.cs" />
     <Compile Include="Extensions\PointExtensions.cs" />
