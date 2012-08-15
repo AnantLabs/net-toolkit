@@ -369,6 +369,36 @@ namespace NET.Tools
             return res;
         }
 
+        /// <summary>
+        /// Write the stream into this file (overwrites file!)
+        /// </summary>
+        /// <param name="file"></param>
+        /// <param name="stream">Stream to write into file</param>
+        public static void WriteFromStream(this FileInfo file, Stream stream)
+        {
+            stream.WriteToFile(file);
+        }
+
+        /// <summary>
+        /// Read the content of the file to stream
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        public static Stream ReadToStream(this FileInfo file)
+        {
+            return new FileStream(file.FullName, FileMode.Open);
+        }
+
+        public static byte[] ReadAllBytes(this FileInfo file)
+        {
+            return File.ReadAllBytes(file.FullName);
+        }
+
+        public static void WriteAllBytes(this FileInfo file, byte[] data)
+        {
+            File.WriteAllBytes(file.FullName, data);
+        }
+
         #region Private
 
         private static bool DoActionWithBytes(FileInfo fi, Stream input, Action<byte[]> action)

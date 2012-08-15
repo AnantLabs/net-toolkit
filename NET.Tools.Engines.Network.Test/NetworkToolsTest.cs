@@ -6,9 +6,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Runtime.Remoting;
 using System.Net;
 using System.IO;
-using NET.Tools.Engines.Network;
 
-namespace NET.Tools.Test
+namespace NET.Tools.Engines.Network.Test
 {
     /// <summary>
     /// Zusammenfassungsbeschreibung für NetworkToolsTest

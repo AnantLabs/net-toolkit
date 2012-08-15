@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NET.Tools;
 using NET.Tools.Engines.CommandLine;
 
-namespace NET.Tools.Test
+namespace NET.Tools.Engines.CommandLine.Test
 {
     /// <summary>
     /// Zusammenfassungsbeschreibung für ArgumentReaderTest

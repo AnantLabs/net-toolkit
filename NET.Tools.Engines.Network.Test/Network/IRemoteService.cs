@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace NET.Tools.Test
+namespace NET.Tools.Engines.Network.Test
 {
     public interface IRemoteService
     {

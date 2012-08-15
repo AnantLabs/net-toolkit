@@ -275,6 +275,26 @@ namespace NET.Tools
         {
             return stream.Seek(0, SeekOrigin.End);
         }
+
+        /// <summary>
+        /// Write the stream to the given file
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="file">Destination file name</param>
+        public static void WriteToFile(this Stream stream, string file)
+        {
+            using (FileStream fs = new FileStream(file, FileMode.Create))
+            {
+                stream.CopyTo(fs);
+                fs.Flush();
+                fs.Close();
+            }
+        }
+
+        public static void WriteToFile(this Stream stream, FileInfo file)
+        {
+            WriteToFile(stream, file.FullName);
+        }
     }
 
     /// @}

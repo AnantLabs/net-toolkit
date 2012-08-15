@@ -40,6 +40,7 @@
 		<engines.avm.version>0.5.${maven.build.timestamp}</engines.avm.version>
 		<engines.asn1.version>0.1.${maven.build.timestamp}</engines.asn1.version>
 		<engines.codebuilder.version>0.1.${maven.build.timestamp}</engines.codebuilder.version>
+		<engines.office.version>0.8.${maven.build.timestamp}</engines.office.version>
 	</properties>
 
 	<build>
@@ -811,6 +812,26 @@
 							</resources>
 						</configuration>
 					</execution>
+					<execution>
+						<id>copy-net-tools-engines-office-asm</id>
+						<!-- here the phase you need -->
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/NET.Tools.Engines.Office/Properties</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/mvn/Templates/NET.Tools.Engines.Office</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>AssemblyInfo.cs</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
 					<!-- Inno Setup Script -->
 					<execution>
 						<id>copy-inno-setup-script</id>
@@ -1042,6 +1063,12 @@
 										<include>NET.Tools.Engines.CodeBuilder.*</include>
 									</includes>
 								</resource>
+								<resource>
+									<directory>${basedir}/NET.Tools.Engines.Office/bin/Release</directory>
+									<includes>
+										<include>NET.Tools.Engines.Office.*</include>
+									</includes>
+								</resource>
 							</resources>
 						</configuration>
 					</execution>
@@ -1268,7 +1295,7 @@
 						</configuration>
 					</execution>
 					<execution>
-						<id>vs-test</id>
+						<id>vs-test-basic</id>
 						<goals>
 							<goal>exec</goal>
 						</goals>
@@ -1278,6 +1305,62 @@
 							<arguments>
 								<argument>"${basedir}/mvn/Batches/test.bat"</argument>
 								<argument>"NET Tools Test\bin\Release\NET Tools Test.dll"</argument>
+							</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>vs-test-cmd</id>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<phase>test</phase>
+						<configuration>
+							<executable>call</executable>
+							<arguments>
+								<argument>"${basedir}/mvn/Batches/test.bat"</argument>
+								<argument>"NET.Tools.Engines.CommandLine.Test\bin\Release\NET.Tools.Engines.CommandLine.Test.dll"</argument>
+							</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>vs-test-mathematica</id>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<phase>test</phase>
+						<configuration>
+							<executable>call</executable>
+							<arguments>
+								<argument>"${basedir}/mvn/Batches/test.bat"</argument>
+								<argument>"NET.Tools.Engines.Mathematica.Test\bin\Release\NET.Tools.Engines.Mathematica.Test.dll"</argument>
+							</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>vs-test-network</id>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<phase>test</phase>
+						<configuration>
+							<executable>call</executable>
+							<arguments>
+								<argument>"${basedir}/mvn/Batches/test.bat"</argument>
+								<argument>"NET.Tools.Engines.Network.Test\bin\Release\NET.Tools.Engines.Network.Test.dll"</argument>
+							</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>vs-test-office</id>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<phase>test</phase>
+						<configuration>
+							<executable>call</executable>
+							<arguments>
+								<argument>"${basedir}/mvn/Batches/test.bat"</argument>
+								<argument>"NET.Tools.Engines.Office.Test\bin\Release\NET.Tools.Engines.Office.Test.dll"</argument>
 							</arguments>
 						</configuration>
 					</execution>

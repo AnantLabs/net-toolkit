@@ -5,7 +5,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NET.Tools.Engines.Mathematica;
 
-namespace NET.Tools.Test
+namespace NET.Tools.Engines.Mathematica.Test
 {
     /// <summary>
     /// Zusammenfassungsbeschreibung für MathematicaTest

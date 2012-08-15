@@ -5,7 +5,7 @@ using System.Text;
 using System.IO;
 using NET.Tools.Engines.Network;
 
-namespace NET.Tools.Test
+namespace NET.Tools.Engines.Network.Test
 {
     public class TestUpdateServer : DefaultUpdateServer
     {
