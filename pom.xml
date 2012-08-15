@@ -593,6 +593,26 @@
 						</configuration>
 					</execution>
 					<execution>
+						<id>copy-net-tools-engines-commandline-test-asm</id>
+						<!-- here the phase you need -->
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/NET.Tools.Engines.CommandLine.Test/Properties</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/mvn/Templates/NET.Tools.Engines.CommandLine.Test</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>AssemblyInfo.cs</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
 						<id>copy-net-tools-engines-gui-asm</id>
 						<!-- here the phase you need -->
 						<phase>validate</phase>
@@ -653,6 +673,26 @@
 						</configuration>
 					</execution>
 					<execution>
+						<id>copy-net-tools-engines-mathematica-test-asm</id>
+						<!-- here the phase you need -->
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/NET.Tools.Engines.Mathematica.Test/Properties</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/mvn/Templates/NET.Tools.Engines.Mathematica.Test</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>AssemblyInfo.cs</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
 						<id>copy-net-tools-engines-network-asm</id>
 						<!-- here the phase you need -->
 						<phase>validate</phase>
@@ -664,6 +704,26 @@
 							<resources>
 								<resource>
 									<directory>${basedir}/mvn/Templates/NET.Tools.Engines.Network</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>AssemblyInfo.cs</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-net-tools-engines-network-test-asm</id>
+						<!-- here the phase you need -->
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/NET.Tools.Engines.Network.Test/Properties</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/mvn/Templates/NET.Tools.Engines.Network.Test</directory>
 									<filtering>true</filtering>
 									<includes>
 										<include>AssemblyInfo.cs</include>
@@ -824,6 +884,26 @@
 							<resources>
 								<resource>
 									<directory>${basedir}/mvn/Templates/NET.Tools.Engines.Office</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>AssemblyInfo.cs</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-net-tools-engines-office-test-asm</id>
+						<!-- here the phase you need -->
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/NET.Tools.Engines.Office.Test/Properties</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/mvn/Templates/NET.Tools.Engines.Office.Test</directory>
 									<filtering>true</filtering>
 									<includes>
 										<include>AssemblyInfo.cs</include>
