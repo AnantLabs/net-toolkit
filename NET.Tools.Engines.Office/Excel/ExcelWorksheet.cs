@@ -60,6 +60,11 @@ namespace NET.Tools.Engines.Office.Excel
             return new ExcelFormatter(leftTopCell, rightBottomCell, this);
         }
 
+        public ExcelFormatter GetFormatterAt(ExcelCellName cell)
+        {
+            return GetFormatterAt(cell, cell);
+        }
+
         /// <summary>
         /// Delete this worksheet from Excel document. <b>Call Dispose Method!</b>
         /// </summary>
