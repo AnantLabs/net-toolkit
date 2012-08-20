@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Globalization;
+using System.Reflection;
+using System.Resources;
 using System.Windows.Markup;
 
 namespace NET.Tools
@@ -22,14 +25,29 @@ namespace NET.Tools
     /// </example>
     /// </summary>
     [MarkupExtensionReturnType(typeof(String))]
-    public abstract class AbstractLanguageExtension : MarkupExtension
+    public sealed class LanguageExtension : MarkupExtension
     {
+        private static readonly ResourceManager rm;
+        static LanguageExtension()
+        {
+            Assembly executingAssembly = Assembly.GetEntryAssembly();
+            object[] array = executingAssembly.GetCustomAttributes(typeof (LanguageExtensionAttribute), false);
+            if (array.Length <= 0)
+                throw new InvalidOperationException("Cannot find Language Extension Attribute in assembly: " + executingAssembly.GetName());
+            if (array.Length > 1)
+                throw new InvalidOperationException("Find more than one Language Extension Attribute in assembly: " + executingAssembly.GetName());
+
+            LanguageExtensionAttribute attr = (LanguageExtensionAttribute) array[0];
+
+            rm = new ResourceManager(attr.LanguageResourceName, executingAssembly);
+        }
+
         private const String NOTFOUND = "#StringNotFound#";
 
         [ConstructorArgument("key")]
         public String Key { get; set; }
 
-        public AbstractLanguageExtension(String key)
+        public LanguageExtension(String key)
         {
             Key = key;
         }
@@ -47,6 +65,9 @@ namespace NET.Tools
         /// </summary>
         /// <param name="key">key to search string</param>
         /// <returns></returns>
-        protected abstract String GetString(String key);
+        private String GetString(String key)
+        {
+            return rm.GetString(key, CultureInfo.CurrentUICulture);
+        }
     }
 }

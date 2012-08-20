@@ -113,7 +113,8 @@
     <Compile Include="Extensions\TextBoxExtensions.cs" />
     <Compile Include="Extensions\UIElementExtensions.cs" />
     <Compile Include="Extensions\WindowExtensions.cs" />
-    <Compile Include="MarkupExtensions\AbstractLanguageExtension.cs" />
+    <Compile Include="MarkupExtensions\LanguageExtension.cs" />
+    <Compile Include="MarkupExtensions\LanguageExtensionAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Types\Handler.cs" />
     <Compile Include="Types\UriCreator.cs" />
