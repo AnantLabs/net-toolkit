@@ -25,12 +25,12 @@ namespace NET.Tools.Engines.Office.Test
             {
                 ExcelWorksheet worksheet = doc.CreateWorksheet("Test");
 
-                ExcelCell cell = worksheet.GetCellAt(new ExcelCellName(ColumnLetter.CreateSingleColumnLetter(Letter.A), 1));
+                ExcelCell cell = worksheet.GetCellAt(new ExcelCellName(new ColumnLetter(Letter.A), 1));
                 cell.Text = "Hello World";
 
                 ExcelFormatter formatter = worksheet.GetFormatterAt(
-                    new ExcelCellName(ColumnLetter.CreateSingleColumnLetter(Letter.A), 1),
-                    new ExcelCellName(ColumnLetter.CreateSingleColumnLetter(Letter.C), 3));
+                    new ExcelCellName(new ColumnLetter(Letter.A), 1),
+                    new ExcelCellName(new ColumnLetter(Letter.C), 3));
                 formatter.Background = Color.Red;
                 formatter.Foreground = Color.Yellow;
                 formatter.BorderColor = Color.Blue;
@@ -60,8 +60,8 @@ namespace NET.Tools.Engines.Office.Test
 
             ExcelWorksheet worksheet = doc.GetAllWorksheets()[0];
             ExcelFormatter formatter = worksheet.GetFormatterAt(
-                    new ExcelCellName(ColumnLetter.CreateSingleColumnLetter(Letter.A), 1),
-                    new ExcelCellName(ColumnLetter.CreateSingleColumnLetter(Letter.C), 3));
+                    new ExcelCellName(new ColumnLetter(Letter.A), 1),
+                    new ExcelCellName(new ColumnLetter(Letter.C), 3));
 
             Assert.AreEqual(Color.FromArgb(0, 255, 0, 0), formatter.Background);
             Assert.AreEqual(Color.FromArgb(0, 255, 255, 0), formatter.Foreground);

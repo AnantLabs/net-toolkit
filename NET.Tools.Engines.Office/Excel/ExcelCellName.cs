@@ -43,20 +43,28 @@ namespace NET.Tools.Engines.Office.Excel
 
     public sealed class ColumnLetter
     {
-        public static ColumnLetter CreateSingleColumnLetter(Letter letter)
+        internal static ColumnLetter FromColumnNumber(ushort column)
         {
-            return new ColumnLetter(letter, null);
-        }
+            if (column <= 0)
+                throw new ArgumentException("Column must be greater than 0!");
 
-        public static ColumnLetter CreateDoubleColumnLetter(Letter firstLetter, Letter secondLetter)
-        {
-            return new ColumnLetter(firstLetter, secondLetter);
+            if (column <= 26)
+            {
+                return new ColumnLetter((Letter)column);
+            }
+            else
+            {
+                return new ColumnLetter((Letter)(column / 26), (Letter)((column % 26) + 1));
+            }
         }
 
         public Letter FirstLetter { get; private set; }
         public Letter? SecondLetter { get; private set; }
 
         public bool HasTwoLetters { get { return SecondLetter.HasValue; } }
+
+        public ColumnLetter(Letter letter) : this(letter, (Letter?)null) { }
+        public ColumnLetter(Letter firstLetter, Letter secondLetter) : this(firstLetter, (Letter?)secondLetter) { }
 
         private ColumnLetter(Letter firstLetter, Letter? secondLetter)
         {
@@ -73,14 +81,14 @@ namespace NET.Tools.Engines.Office.Excel
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj is ColumnLetter && Equals((ColumnLetter) obj);
+            return obj is ColumnLetter && Equals((ColumnLetter)obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                return (FirstLetter.GetHashCode()*397) ^ SecondLetter.GetHashCode();
+                return (FirstLetter.GetHashCode() * 397) ^ SecondLetter.GetHashCode();
             }
         }
 
@@ -96,7 +104,7 @@ namespace NET.Tools.Engines.Office.Excel
 
         internal ushort ToColumnNumber()
         {
-            return (ushort)(HasTwoLetters ? (byte) FirstLetter*26 + (byte) SecondLetter.Value : (byte) FirstLetter);
+            return (ushort)(HasTwoLetters ? (byte)FirstLetter * 26 + (byte)SecondLetter.Value : (byte)FirstLetter);
         }
     }
 
@@ -112,6 +120,12 @@ namespace NET.Tools.Engines.Office.Excel
         {
             ColumnLetter = columnLetter;
             RowNumber = rowNumber;
+        }
+
+        public ExcelCellName(ushort column, ushort row)
+        {
+            ColumnLetter = ColumnLetter.FromColumnNumber(column);
+            RowNumber = row;
         }
 
         private bool Equals(ExcelCellName other)
