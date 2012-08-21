@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Reflection;
 using System.Resources;
+using System.Windows;
 using System.Windows.Markup;
 
 namespace NET.Tools
@@ -30,19 +31,34 @@ namespace NET.Tools
         private static readonly ResourceManager rm;
         static LanguageExtension()
         {
-            Assembly executingAssembly = Assembly.GetEntryAssembly();
-            object[] array = executingAssembly.GetCustomAttributes(typeof (LanguageExtensionAttribute), false);
-            if (array.Length <= 0)
-                throw new InvalidOperationException("Cannot find Language Extension Attribute in assembly: " + executingAssembly.GetName());
-            if (array.Length > 1)
-                throw new InvalidOperationException("Find more than one Language Extension Attribute in assembly: " + executingAssembly.GetName());
+            try
+            {
+                Assembly executingAssembly = Assembly.GetEntryAssembly();
+                object[] array = executingAssembly.GetCustomAttributes(typeof (LanguageExtensionAttribute), false);
+                if (array.Length <= 0)
+                    throw new InvalidOperationException("Cannot find Language Extension Attribute in assembly: " +
+                                                        executingAssembly.GetName());
+                if (array.Length > 1)
+                    throw new InvalidOperationException(
+                        "Find more than one Language Extension Attribute in assembly: " + executingAssembly.GetName());
 
-            LanguageExtensionAttribute attr = (LanguageExtensionAttribute) array[0];
+                LanguageExtensionAttribute attr = (LanguageExtensionAttribute) array[0];
 
-            rm = new ResourceManager(attr.LanguageResourceName, executingAssembly);
+                rm = new ResourceManager(attr.LanguageResourceName, executingAssembly);
+            } catch(Exception)
+            {
+                if (new DependencyObject().IsDesignMode())
+                {
+                    rm = null;
+                    return;
+                }
+
+                throw;
+            }
         }
 
-        private const String NOTFOUND = "#StringNotFound#";
+        private const String ILLEGAL_KEY = "#IllegalKey#";
+        private const String NOT_FOUND = "#NotFound#";
 
         [ConstructorArgument("key")]
         public String Key { get; set; }
@@ -55,9 +71,9 @@ namespace NET.Tools
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
             if (String.IsNullOrEmpty(Key))
-                return NOTFOUND;
+                return ILLEGAL_KEY;
 
-            return GetString(Key) ?? NOTFOUND;
+            return GetString(Key);
         }
 
         /// <summary>
@@ -67,7 +83,16 @@ namespace NET.Tools
         /// <returns></returns>
         private String GetString(String key)
         {
-            return rm.GetString(key, CultureInfo.CurrentUICulture);
+            if (rm == null)
+            {
+                return key;
+            }
+
+            String str = rm.GetString(key, CultureInfo.CurrentUICulture);
+            if (String.IsNullOrEmpty(str))
+                return NOT_FOUND;
+
+            return str;
         }
     }
 }
