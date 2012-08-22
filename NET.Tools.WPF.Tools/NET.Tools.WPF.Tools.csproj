@@ -101,6 +101,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converter\VisibilityConverter.cs" />
     <Compile Include="Extensions\BitmapSourceExtensions.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />

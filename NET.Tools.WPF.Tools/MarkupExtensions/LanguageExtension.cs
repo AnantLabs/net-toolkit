@@ -72,7 +72,7 @@ namespace NET.Tools
         {
             if (String.IsNullOrEmpty(Key))
                 return ILLEGAL_KEY;
-
+   
             return GetString(Key);
         }
 

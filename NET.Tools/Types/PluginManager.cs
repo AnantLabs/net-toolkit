@@ -50,20 +50,20 @@ namespace NET.Tools
                     switch (SearchType)
                     {
                         case SearchType.Direct:
-                            if (type.Equals(t))
-                                instances.Add(Activator.CreateInstance(t, parameters));
+                            if (type == t)
+                                instances.Add(Activator.CreateInstance(type, parameters));
                             break;
                         case SearchType.DirectBase:
-                            if (type.BaseType.Equals(t))
-                                instances.Add(Activator.CreateInstance(t, parameters));
+                            if (type.BaseType != null && type.BaseType == t)
+                                instances.Add(Activator.CreateInstance(type, parameters));
                             break;
                         case SearchType.AnyBase:
                             if (CheckBaseTypes(type, t))
-                                instances.Add(Activator.CreateInstance(t, parameters));
+                                instances.Add(Activator.CreateInstance(type, parameters));
                             break;
                         case SearchType.AnyInterface:
                             if (CheckInterfaces(type, t))
-                                instances.Add(Activator.CreateInstance(t, parameters));
+                                instances.Add(Activator.CreateInstance(type, parameters));
                             break;
                         default:
                             throw new NotImplementedException();
