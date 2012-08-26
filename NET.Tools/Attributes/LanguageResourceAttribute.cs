@@ -5,7 +5,7 @@ using System.Text;
 
 namespace NET.Tools
 {
-    [AttributeUsage(AttributeTargets.Assembly, Inherited = false)]
+    [AttributeUsage(AttributeTargets.Assembly, Inherited = true)]
     public sealed class LanguageResourceAttribute : Attribute
     {
         public String LanguageResourceName { get; private set; }
