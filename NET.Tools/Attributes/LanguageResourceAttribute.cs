@@ -6,11 +6,11 @@ using System.Text;
 namespace NET.Tools
 {
     [AttributeUsage(AttributeTargets.Assembly, Inherited = false)]
-    public sealed class LanguageExtensionAttribute : Attribute
+    public sealed class LanguageResourceAttribute : Attribute
     {
         public String LanguageResourceName { get; private set; }
 
-        public LanguageExtensionAttribute(string languageResourceName)
+        public LanguageResourceAttribute(string languageResourceName)
         {
             LanguageResourceName = languageResourceName;
         }

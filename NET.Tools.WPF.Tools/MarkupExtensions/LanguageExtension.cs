@@ -34,7 +34,7 @@ namespace NET.Tools
             try
             {
                 Assembly executingAssembly = Assembly.GetEntryAssembly();
-                object[] array = executingAssembly.GetCustomAttributes(typeof (LanguageExtensionAttribute), false);
+                object[] array = executingAssembly.GetCustomAttributes(typeof (LanguageResourceAttribute), false);
                 if (array.Length <= 0)
                     throw new InvalidOperationException("Cannot find Language Extension Attribute in assembly: " +
                                                         executingAssembly.GetName());
@@ -42,7 +42,7 @@ namespace NET.Tools
                     throw new InvalidOperationException(
                         "Find more than one Language Extension Attribute in assembly: " + executingAssembly.GetName());
 
-                LanguageExtensionAttribute attr = (LanguageExtensionAttribute) array[0];
+                LanguageResourceAttribute attr = (LanguageResourceAttribute) array[0];
 
                 rm = new ResourceManager(attr.LanguageResourceName, executingAssembly);
             } catch(Exception)

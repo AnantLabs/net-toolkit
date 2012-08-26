@@ -113,6 +113,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\LanguageResourceAttribute.cs" />
     <Compile Include="Converter\DirectoryInfoConverter.cs" />
     <Compile Include="Doxygen.cs" />
     <Compile Include="Exceptions\NumberParserException.cs" />
