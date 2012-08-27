@@ -45,6 +45,8 @@ namespace NET.Tools
         {
             if (String.IsNullOrEmpty(Key))
                 return ILLEGAL_KEY;
+            if (new DependencyObject().IsDesignMode())
+                return Key;
    
             return GetString(Key, GetResourceManager(serviceProvider));
         }
@@ -57,11 +59,6 @@ namespace NET.Tools
         /// <returns></returns>
         private String GetString(String key, ResourceManager rm)
         {
-            if (rm == null)
-            {
-                return key;
-            }
-
             String str = rm.GetString(key, CultureInfo.CurrentUICulture);
             if (String.IsNullOrEmpty(str))
                 return NOT_FOUND;
@@ -71,33 +68,21 @@ namespace NET.Tools
 
         private ResourceManager GetResourceManager(IServiceProvider serviceProvider)
         {
-            var rootObjectProvider = serviceProvider.GetService(typeof(IRootObjectProvider)) as IRootObjectProvider;
+            var rootObjectProvider = serviceProvider.GetService(typeof (IRootObjectProvider)) as IRootObjectProvider;
             var root = rootObjectProvider.RootObject;
 
-            try
-            {
-                Assembly executingAssembly = root.GetType().Assembly;
-                object[] array = executingAssembly.GetCustomAttributes(typeof(LanguageResourceAttribute), true);
-                if (array.Length <= 0)
-                    throw new InvalidOperationException("Cannot find Language Extension Attribute in assembly: " +
-                                                        executingAssembly.GetName());
-                if (array.Length > 1)
-                    throw new InvalidOperationException(
-                        "Find more than one Language Extension Attribute in assembly: " + executingAssembly.GetName());
+            Assembly executingAssembly = root.GetType().Assembly;
+            object[] array = executingAssembly.GetCustomAttributes(typeof (LanguageResourceAttribute), true);
+            if (array.Length <= 0)
+                throw new InvalidOperationException("Cannot find Language Extension Attribute in assembly: " +
+                                                    executingAssembly.GetName());
+            if (array.Length > 1)
+                throw new InvalidOperationException(
+                    "Find more than one Language Extension Attribute in assembly: " + executingAssembly.GetName());
 
-                LanguageResourceAttribute attr = (LanguageResourceAttribute)array[0];
+            LanguageResourceAttribute attr = (LanguageResourceAttribute) array[0];
 
-                return new ResourceManager(attr.LanguageResourceName, executingAssembly);
-            }
-            catch (Exception)
-            {
-                if (new DependencyObject().IsDesignMode())
-                {
-                    return null;
-                }
-
-                throw;
-            }
+            return new ResourceManager(attr.LanguageResourceName, executingAssembly);
         }
     }
 }

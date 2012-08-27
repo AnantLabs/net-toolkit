@@ -136,6 +136,9 @@
       <DependentUpon>ImageListViewItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IImageItem.cs" />
+    <Compile Include="PageRotator.xaml.cs">
+      <DependentUpon>PageRotator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -231,6 +234,10 @@
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PageRotator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
