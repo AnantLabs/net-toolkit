@@ -176,6 +176,7 @@
     <Compile Include="Types\Compiler.cs" />
     <Compile Include="Types\ComputeTools.cs" />
     <Compile Include="Types\EHCBuilder.cs" />
+    <Compile Include="Types\ObservableDictionary.cs" />
     <Compile Include="Types\PluginManager.cs" />
     <Compile Include="Types\MultiPluginManager.cs" />
     <Compile Include="Types\PointType.cs" />
