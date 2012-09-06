@@ -127,6 +127,7 @@
     <Compile Include="Extensions\ByteExtensions.cs" />
     <Compile Include="Extensions\CharacterArrayExtensions.cs" />
     <Compile Include="Extensions\CharacterExtensions.cs" />
+    <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\DecimalExtensions.cs" />
