@@ -10,6 +10,7 @@ NET Tools.suo
 UpgradeLog.XML
 _UpgradeReport_Files
 _ReSharper.NET Tools
+NET Tools.sln.DotSettings.user
 syntax: regexp
 ^doxy.dat$
 ^setup.iss$
