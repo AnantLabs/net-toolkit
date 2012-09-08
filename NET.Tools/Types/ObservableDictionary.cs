@@ -5,6 +5,8 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace NET.Tools
 {
@@ -12,11 +14,17 @@ namespace NET.Tools
     {
         private readonly IDictionary<TKey, TValue> dictionary;
 
+        private Dispatcher dispatcher;
+
         #region Constructor
 
-        public ObservableDictionary()
+        public ObservableDictionary(Dispatcher dispatcher = null)
         {
             dictionary = new Dictionary<TKey, TValue>();
+            this.dispatcher = dispatcher ??
+                              (Application.Current != null
+                                   ? Application.Current.Dispatcher
+                                   : Dispatcher.CurrentDispatcher);
         }
 
         public ObservableDictionary(IDictionary<TKey, TValue> dictionary)
@@ -33,21 +41,33 @@ namespace NET.Tools
 
         public void Add(KeyValuePair<TKey, TValue> item)
         {
-            dictionary.Add(item);
+            if (dispatcher.CheckAccess())
+            {
+                dictionary.Add(item);
 
-            OnCollectionChanged(NotifyCollectionChangedAction.Add, item.Value);
-            AddNotifyEvents(item.Value);
+                OnCollectionChanged(NotifyCollectionChangedAction.Add, item.Value);
+                AddNotifyEvents(item.Value);
+            } else
+            {
+                dispatcher.Invoke(new Action(() => Add(item)));
+            }
         }
 
         public void Clear()
         {
-            foreach (var value in Values)
+            if (dispatcher.CheckAccess())
             {
-                RemoveNotifyEvents(value);
-            }
+                foreach (var value in Values)
+                {
+                    RemoveNotifyEvents(value);
+                }
 
-            dictionary.Clear();
-            OnCollectionChanged(NotifyCollectionChangedAction.Reset);
+                dictionary.Clear();
+                OnCollectionChanged(NotifyCollectionChangedAction.Reset);
+            } else
+            {
+                dispatcher.Invoke(new Action(Clear));
+            }
         }
 
         public bool Contains(KeyValuePair<TKey, TValue> item)
@@ -62,14 +82,20 @@ namespace NET.Tools
 
         public bool Remove(KeyValuePair<TKey, TValue> item)
         {
-            bool result = dictionary.Remove(item);
-            if (result)
+            if (dispatcher.CheckAccess())
             {
-                RemoveNotifyEvents(item.Value);
-                OnCollectionChanged(NotifyCollectionChangedAction.Remove, item.Value);
-            }
+                bool result = dictionary.Remove(item);
+                if (result)
+                {
+                    RemoveNotifyEvents(item.Value);
+                    OnCollectionChanged(NotifyCollectionChangedAction.Remove, item.Value);
+                }
 
-            return result;
+                return result;
+            } else
+            {
+                return (bool) dispatcher.Invoke(new Action(() => Remove(item)));
+            }
         }
 
         public int Count
@@ -89,24 +115,36 @@ namespace NET.Tools
 
         public void Add(TKey key, TValue value)
         {
-            dictionary.Add(key, value);
-            OnCollectionChanged(NotifyCollectionChangedAction.Add, value);
-            AddNotifyEvents(value);
+            if (dispatcher.CheckAccess())
+            {
+                dictionary.Add(key, value);
+                OnCollectionChanged(NotifyCollectionChangedAction.Add, value);
+                AddNotifyEvents(value);
+            } else
+            {
+                dispatcher.Invoke(new Action(() => Add(key, value)));
+            }
         }
 
         public bool Remove(TKey key)
         {
-            if (dictionary.ContainsKey(key))
+            if (dispatcher.CheckAccess())
             {
-                TValue value = dictionary[key];
-                dictionary.Remove(key);
-                RemoveNotifyEvents(value);
-                OnCollectionChanged(NotifyCollectionChangedAction.Remove, value);
+                if (dictionary.ContainsKey(key))
+                {
+                    TValue value = dictionary[key];
+                    dictionary.Remove(key);
+                    RemoveNotifyEvents(value);
+                    OnCollectionChanged(NotifyCollectionChangedAction.Remove, value);
 
-                return true;
+                    return true;
+                }
+
+                return false;
+            } else
+            {
+                return (bool) dispatcher.Invoke(new Action(() => Remove(key)));
             }
-
-            return false;
         }
 
         public bool TryGetValue(TKey key, out TValue value)
@@ -119,14 +157,20 @@ namespace NET.Tools
             get { return dictionary[key]; }
             set
             {
-                if (dictionary.ContainsKey(key))
-                    throw new ArgumentException("Unknown key: " + key);
-               
-                OnCollectionChanged(NotifyCollectionChangedAction.Replace, dictionary[key], value);
-                RemoveNotifyEvents(dictionary[key]);
-                AddNotifyEvents(value);
+                if (dispatcher.CheckAccess())
+                {
+                    if (dictionary.ContainsKey(key))
+                        throw new ArgumentException("Unknown key: " + key);
 
-                dictionary[key] = value;
+                    OnCollectionChanged(NotifyCollectionChangedAction.Replace, dictionary[key], value);
+                    RemoveNotifyEvents(dictionary[key]);
+                    AddNotifyEvents(value);
+
+                    dictionary[key] = value;
+                } else
+                {
+                    dispatcher.Invoke(new Action(() => this[key] = value));
+                }
             }
         }
 
