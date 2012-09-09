@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Shapes;
 using Brush = System.Windows.Media.Brush;
+using Brushes = System.Windows.Media.Brushes;
 using FontStyle = System.Windows.FontStyle;
 using Point = System.Windows.Point;
 using Rectangle = System.Windows.Shapes.Rectangle;
@@ -14,142 +15,150 @@ using Size = System.Windows.Size;
 
 namespace NET.Tools
 {
+    /// <summary>
+    /// \addtogroup extensions
+    /// @{
+    /// </summary>
     public static class CanvasExtensions
     {
         #region Rectangle
 
-        public static Rectangle AddRectangle(this Canvas canvas, double x, double y, double width, double height, Brush fill, Brush stroke)
+        public static Rectangle AddRectangle(this Canvas canvas, double x, double y, double width, double height, ShapeStyle shapeStyle)
         {
-            Rectangle rectangle = new Rectangle {Width = width, Height = height};
+            Rectangle rectangle = new Rectangle
+                {
+                    Width = width,
+                    Height = height
+                };
+            rectangle.UpdateShape(shapeStyle);
             Canvas.SetLeft(rectangle, x);
             Canvas.SetTop(rectangle, y);
-            if (fill != null)
-                rectangle.Fill = fill;
-            if (stroke != null)
-                rectangle.Stroke = stroke;
 
             canvas.Children.Add(rectangle);
             return rectangle;
         }
 
-        public static Rectangle AddRectangle(this Canvas canvas, Point point, Size size, Brush fill, Brush stroke)
+        public static Rectangle AddRectangle(this Canvas canvas, Point point, Size size, ShapeStyle shapeStyle)
         {
-            return AddRectangle(canvas, new Rect(point, size), fill, stroke);
+            return AddRectangle(canvas, new Rect(point, size), shapeStyle);
         }
 
-        public static Rectangle AddRectangle(this Canvas canvas, Rect rect, Brush fill, Brush stroke)
+        public static Rectangle AddRectangle(this Canvas canvas, Rect rect, ShapeStyle shapeStyle)
         {
-            return AddRectangle(canvas, rect.Left, rect.Top, rect.Width, rect.Height, fill, stroke);
-        }
-
-        public static Rectangle AddFilledRectangle(this Canvas canvas, double x, double y, double width, double height, Brush fill)
-        {
-            return AddRectangle(canvas, x, y, width, height, fill, null);
-        }
-
-        public static Rectangle AddFilledRectangle(this Canvas canvas, Point point, Size size, Brush fill)
-        {
-            return AddFilledRectangle(canvas, new Rect(point, size), fill);
-        }
-
-        public static Rectangle AddFilledRectangle(this Canvas canvas, Rect rect, Brush fill)
-        {
-            return AddFilledRectangle(canvas, rect.Left, rect.Top, rect.Width, rect.Height, fill);
-        }
-
-        public static Rectangle AddStrokedRectangle(this Canvas canvas, double x, double y, double width, double height, Brush stroke)
-        {
-            return AddRectangle(canvas, x, y, width, height, null, stroke);
-        }
-
-        public static Rectangle AddStrokedRectangle(this Canvas canvas, Point point, Size size, Brush stroke)
-        {
-            return AddStrokedRectangle(canvas, new Rect(point, size), stroke);
-        }
-
-        public static Rectangle AddStrokedRectangle(this Canvas canvas, Rect rect, Brush stroke)
-        {
-            return AddStrokedRectangle(canvas, rect.Left, rect.Top, rect.Width, rect.Height, stroke);
+            return AddRectangle(canvas, rect.Left, rect.Top, rect.Width, rect.Height, shapeStyle);
         }
 
         #endregion
 
         #region Ellipse
 
-        public static Ellipse AddEllipse(this Canvas canvas, double x, double y, double width, double height, Brush fill, Brush stroke)
+        public static Ellipse AddEllipse(this Canvas canvas, double x, double y, double width, double height, ShapeStyle shapeStyle)
         {
-            Ellipse ellipse = new Ellipse { Width = width, Height = height };
+            Ellipse ellipse = new Ellipse
+                {
+                    Width = width,
+                    Height = height
+                };
+            ellipse.UpdateShape(shapeStyle);
             Canvas.SetLeft(ellipse, x);
             Canvas.SetTop(ellipse, y);
-            if (fill != null)
-                ellipse.Fill = fill;
-            if (stroke != null)
-                ellipse.Stroke = stroke;
 
             canvas.Children.Add(ellipse);
             return ellipse;
         }
 
-        public static Ellipse AddEllipse(this Canvas canvas, Point point, Size size, Brush fill, Brush stroke)
+        public static Ellipse AddEllipse(this Canvas canvas, Point point, Size size, ShapeStyle shapeStyle)
         {
-            return AddEllipse(canvas, new Rect(point, size), fill, stroke);
+            return AddEllipse(canvas, new Rect(point, size), shapeStyle);
         }
 
-        public static Ellipse AddEllipse(this Canvas canvas, Rect rect, Brush fill, Brush stroke)
+        public static Ellipse AddEllipse(this Canvas canvas, Rect rect, ShapeStyle shapeStyle)
         {
-            return AddEllipse(canvas, rect.Left, rect.Top, rect.Width, rect.Height, fill, stroke);
+            return AddEllipse(canvas, rect.Left, rect.Top, rect.Width, rect.Height, shapeStyle);
         }
 
-        public static Ellipse AddFilledEllipse(this Canvas canvas, double x, double y, double width, double height, Brush fill)
+        #endregion
+
+        #region Line
+
+        public static Line AddLine(this Canvas canvas, double x1, double y1, double x2, double y2, ShapeStyle shapeStyle)
         {
-            return AddEllipse(canvas, x, y, width, height, fill, null);
+            Line line = new Line()
+                {
+                    X1 = x1,
+                    Y1 = y1,
+                    X2 = x2,
+                    Y2 = y2
+                };
+            line.UpdateShape(shapeStyle);
+
+            canvas.Children.Add(line);
+            return line;
         }
 
-        public static Ellipse AddFilledEllipse(this Canvas canvas, Point point, Size size, Brush fill)
+        public static Line AddLine(this Canvas canvas, Point p1, Point p2, ShapeStyle shapeStyle)
         {
-            return AddFilledEllipse(canvas, new Rect(point, size), fill);
+            return AddLine(canvas, p1.X, p1.Y, p2.X, p2.Y, shapeStyle);
         }
 
-        public static Ellipse AddFilledEllipse(this Canvas canvas, Rect rect, Brush fill)
+        #endregion
+
+        #region Plygon
+
+        public static Polygon AddPolygon(this Canvas canvas, ShapeStyle shapeStyle, params Point[] points)
         {
-            return AddFilledEllipse(canvas, rect.Left, rect.Top, rect.Width, rect.Height, fill);
+            Polygon polygon = new Polygon();
+            foreach (var point in points)
+            {
+                polygon.Points.Add(point);
+            }
+            polygon.UpdateShape(shapeStyle);
+
+            canvas.Children.Add(polygon);
+            return polygon;
         }
 
-        public static Ellipse AddStrokedEllipse(this Canvas canvas, double x, double y, double width, double height, Brush stroke)
-        {
-            return AddEllipse(canvas, x, y, width, height, null, stroke);
-        }
+        #endregion
 
-        public static Ellipse AddStrokedEllipse(this Canvas canvas, Point point, Size size, Brush stroke)
-        {
-            return AddStrokedEllipse(canvas, new Rect(point, size), stroke);
-        }
+        #region Plyline
 
-        public static Ellipse AddStrokedEllipse(this Canvas canvas, Rect rect, Brush stroke)
+        public static Polyline AddPolyline(this Canvas canvas, ShapeStyle shapeStyle, params Point[] points)
         {
-            return AddStrokedEllipse(canvas, rect.Left, rect.Top, rect.Width, rect.Height, stroke);
+            Polyline polyline = new Polyline();
+            foreach (var point in points)
+            {
+                polyline.Points.Add(point);
+            }
+            polyline.UpdateShape(shapeStyle);
+
+            canvas.Children.Add(polyline);
+            return polyline;
         }
 
         #endregion
 
         #region Text
 
-        public static TextBlock AddText(this Canvas canvas, double x, double y, double width, double height, String text, double fontSize, bool bold, TextAlignment alignment, Brush fill)
+        public static TextBlock AddText(this Canvas canvas, double x, double y, double width, double height, String text, TextStyle textStyle)
         {
             TextBlock textBlock = new TextBlock()
                 {
                     Width = width,
                     Height = height,
                     Text = text,
-                    Foreground = fill,
-                    FontSize = fontSize,
+                    Foreground = textStyle.TextColor,
+                    FontSize = textStyle.FontSize,
                     TextWrapping = TextWrapping.Wrap,
-                    TextAlignment = alignment,
+                    TextAlignment = textStyle.Alignment,
                     VerticalAlignment = VerticalAlignment.Center
                 };
-            if (bold)
+            if (textStyle.Bold)
             {
                 textBlock.FontWeight = FontWeights.Bold;
+            }
+            if (textStyle.Italic)
+            {
+                textBlock.FontStyle = FontStyles.Italic;
             }
             Canvas.SetLeft(textBlock, x);
             Canvas.SetTop(textBlock, y);
@@ -158,16 +167,18 @@ namespace NET.Tools
             return textBlock;
         }
 
-        public static TextBlock AddText(this Canvas canvas, Point position, Size size, String text, double fontSize, bool bold, TextAlignment alignment, Brush fill)
+        public static TextBlock AddText(this Canvas canvas, Point position, Size size, String text, TextStyle textStyle)
         {
-            return AddText(canvas, position.X, position.Y, size.Width, size.Height, text, fontSize, bold, alignment, fill);
+            return AddText(canvas, position.X, position.Y, size.Width, size.Height, text, textStyle);
         }
 
-        public static TextBlock AddText(this Canvas canvas, Rect rect, String text, double fontSize, bool bold, TextAlignment alignment, Brush fill)
+        public static TextBlock AddText(this Canvas canvas, Rect rect, String text, TextStyle textStyle)
         {
-            return AddText(canvas, rect.Left, rect.Top, rect.Width, rect.Height, text, fontSize, bold, alignment, fill);
+            return AddText(canvas, rect.Left, rect.Top, rect.Width, rect.Height, text, textStyle);
         }
 
         #endregion
     }
+
+    /// @}
 }

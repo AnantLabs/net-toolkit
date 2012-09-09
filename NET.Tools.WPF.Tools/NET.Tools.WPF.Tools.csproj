@@ -110,6 +110,7 @@
     <Compile Include="Extensions\LinearGradientBrushExtensions.cs" />
     <Compile Include="Extensions\PointExtensions.cs" />
     <Compile Include="Extensions\RectExtensions.cs" />
+    <Compile Include="Extensions\ShapeExtensions.cs" />
     <Compile Include="Extensions\SizeExtensions.cs" />
     <Compile Include="Extensions\SolidColorBrushExtensions.cs" />
     <Compile Include="Extensions\TextBoxExtensions.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="MarkupExtensions\LanguageExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Types\Handler.cs" />
+    <Compile Include="Types\Styles.cs" />
     <Compile Include="Types\UriCreator.cs" />
     <Compile Include="Types\WPFFont.cs" />
   </ItemGroup>

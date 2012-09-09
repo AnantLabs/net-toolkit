@@ -107,6 +107,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoResizeCanvas.cs" />
     <Compile Include="CheckedListBoxItem.xaml.cs">
       <DependentUpon>CheckedListBoxItem.xaml</DependentUpon>
     </Compile>
