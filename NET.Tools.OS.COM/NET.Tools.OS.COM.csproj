@@ -106,7 +106,6 @@
     <Compile Include="Enums\EventType.cs" />
     <Compile Include="Enums\HResult.cs" />
     <Compile Include="Enums\NativeMouseButton.cs" />
-    <Compile Include="Extensions\MessageExtensions.cs" />
     <Compile Include="Helper\MessageInterpreter.cs" />
     <Compile Include="Helper\WmCommandResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

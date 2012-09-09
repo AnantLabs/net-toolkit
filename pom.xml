@@ -273,6 +273,26 @@
 						</configuration>
 					</execution>
 					<execution>
+						<id>copy-net-tools--os-tools-asm</id>
+						<!-- here the phase you need -->
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/NET.Tools.OS.Tools/Properties</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/mvn/Templates/NET.Tools.OS.Tools</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>AssemblyInfo.cs</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
 						<id>copy-net-tools-wpf-animations-asm</id>
 						<!-- here the phase you need -->
 						<phase>validate</phase>
@@ -1050,6 +1070,12 @@
 									<directory>${basedir}/NET.Tools.OS.Windows7/bin/Release</directory>
 									<includes>
 										<include>NET.Tools.OS.Windows7.*</include>
+									</includes>
+								</resource>
+								<resource>
+									<directory>${basedir}/NET.Tools.OS.Tools/bin/Release</directory>
+									<includes>
+										<include>NET.Tools.OS.Tools.*</include>
 									</includes>
 								</resource>
 							</resources>

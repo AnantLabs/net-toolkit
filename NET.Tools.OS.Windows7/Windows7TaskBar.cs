@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 
 namespace NET.Tools.OS
 {
-    internal static class Windows7TaskBar
+    public static class Windows7TaskBar
     {
         private static ITaskbarList4 taskbar = null;
 
@@ -44,7 +44,7 @@ namespace NET.Tools.OS
                 taskbar.SetProgressValue(hwnd, value, max);
         }
 
-        public static void AddThumbnailButtons(IntPtr hwnd, params ThumbButton[] buttons)
+        internal static void AddThumbnailButtons(IntPtr hwnd, params ThumbButton[] buttons)
         {
             if (IsInitialized)
             {
@@ -54,7 +54,7 @@ namespace NET.Tools.OS
             }
         }
 
-        public static void UpdateThumbnailButtons(IntPtr hwnd, params ThumbButton[] buttons)
+        internal static void UpdateThumbnailButtons(IntPtr hwnd, params ThumbButton[] buttons)
         {
             if (IsInitialized)
             {

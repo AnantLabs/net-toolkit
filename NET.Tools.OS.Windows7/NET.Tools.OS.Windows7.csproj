@@ -103,7 +103,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums.cs" />
-    <Compile Include="FormsExtensions.cs" />
     <Compile Include="Structs.cs" />
     <Compile Include="TaskbarCOM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

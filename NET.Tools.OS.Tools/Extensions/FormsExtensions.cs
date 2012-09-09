@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
+using NET.Tools.OS;
 
-namespace NET.Tools.OS
+namespace NET.Tools
 {
     /// \addtogroup extensions
     /// @{

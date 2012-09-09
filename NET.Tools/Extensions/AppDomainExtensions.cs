@@ -30,7 +30,7 @@ namespace NET.Tools
         /// </summary>
         /// <param name="dom"></param>
         /// <returns>The string with the AppDomain-Informations</returns>
-        public static string ListApplicationInformnation(this AppDomain dom)
+        public static string ListApplicationInformation(this AppDomain dom)
         {
             StringBuilder str = new StringBuilder();
 
