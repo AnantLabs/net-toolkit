@@ -38,7 +38,7 @@ namespace NET.Tools.WPF
                 sldGreen.Value = value.ScG;
                 sldBlue.Value = value.ScB;
 
-                DoColorChanged();
+                OnColorChanged();
             }
         }
 
@@ -69,7 +69,7 @@ namespace NET.Tools.WPF
             InitializeComponent();
         }
 
-        protected void DoColorChanged()
+        protected void OnColorChanged()
         {
             if (ColorChanged != null)
                 ColorChanged(this, new RoutedEventArgs());
@@ -77,7 +77,10 @@ namespace NET.Tools.WPF
 
         private void ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            DoColorChanged();
+            brdPreview.Background = new SolidColorBrush(
+                Color.FromScRgb(1f, (float) sldRed.Value, (float) sldGreen.Value, (float) sldBlue.Value));
+
+            OnColorChanged();
         }
     }
 }
