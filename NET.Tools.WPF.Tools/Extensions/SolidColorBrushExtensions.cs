@@ -67,14 +67,14 @@ namespace NET.Tools
             return new SolidColorBrush(solidColorBrush.Color.ToNegative());
         }
 
-        public static SolidColorBrush AddSolidColorBrush(this SolidColorBrush solidColorBrush, Color addColor, float percent)
+        public static SolidColorBrush AddColor(this SolidColorBrush solidColorBrush, Color addColor, float percent)
         {
             return new SolidColorBrush(solidColorBrush.Color.AddColor(addColor, percent));
         }
 
-        public static SolidColorBrush AddSolidColorBrush(this SolidColorBrush solidColorBrush, Color addColor)
+        public static SolidColorBrush AddColor(this SolidColorBrush solidColorBrush, Color addColor)
         {
-            return AddSolidColorBrush(solidColorBrush, addColor, 0.5f);
+            return AddColor(solidColorBrush, addColor, 0.5f);
         }
     }
     /// @}
