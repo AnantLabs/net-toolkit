@@ -163,6 +163,30 @@ namespace NET.Tools
         {
             return Pad(array, array.Length - 1, length, value);
         }
+
+        /// <summary>
+        /// Converts an array (object) to a native array.
+        /// </summary>
+        /// <param name="array"></param>
+        /// <returns>The native array</returns>
+        /// <exception cref="ArgumentException">Is thrown if the array is too big (bigger than Int32.MaxValue)</exception>
+        public static object[] ToNativeArray(this Array array)
+        {
+            if (array.LongLength > Int32.MaxValue)
+                throw new ArgumentException("Array too big!");
+
+            object[] result = new object[array.Length];
+            IEnumerator enumerator = array.GetEnumerator();
+
+            int counter = 0;
+            while (enumerator.MoveNext())
+            {
+                result[counter] = enumerator.Current;
+                counter++;
+            }
+
+            return result;
+        }
     }
 
     /// @}

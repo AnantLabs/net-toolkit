@@ -12,5 +12,17 @@ namespace NET.Tools
         {
             return new System.Drawing.FontFamily(ff.Source);
         }
+
+        public static System.Drawing.FontFamily[] ToDrawingFontFamilies(this FontFamily[] fontFamilies)
+        {
+            System.Drawing.FontFamily[] result = new System.Drawing.FontFamily[fontFamilies.Length];
+
+            for (int i = 0; i < fontFamilies.Length; i++)
+            {
+                result[i] = ToDrawingFontFamily(fontFamilies[i]);
+            }
+
+            return result;
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -175,6 +176,15 @@ namespace NET.Tools
         public static TextBlock AddText(this Canvas canvas, Rect rect, String text, TextStyle textStyle)
         {
             return AddText(canvas, rect.Left, rect.Top, rect.Width, rect.Height, text, textStyle);
+        }
+
+        #endregion
+
+        #region Save
+
+        public static void SaveAsImage(this Canvas canvas, Stream stream, BitmapEncoding encoding)
+        {
+            canvas.SaveAsImage(stream, encoding, (int) canvas.Width, (int) canvas.Height);
         }
 
         #endregion
