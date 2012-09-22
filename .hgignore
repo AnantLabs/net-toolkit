@@ -1,0 +1,16 @@
+syntax: glob
+binaries
+settings.xml
+TestResults
+*/obj
+*/bin
+*/Properties/AssemblyInfo.cs
+NET Tools.suo
+*.csproj.user
+UpgradeLog.XML
+_UpgradeReport_Files
+_ReSharper.NET Tools
+NET Tools.sln.DotSettings.user
+syntax: regexp
+^doxy.dat$
+^setup.iss$

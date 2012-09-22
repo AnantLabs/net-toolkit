@@ -1,0 +1,6 @@
+﻿<UserControl x:Class="NET.Tools.WPF.FontComboBox"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    MinHeight="{Binding Path=MinHeight, ElementName=cmbFonts}" Width="150">
+    <ComboBox Name="cmbFonts"/>
+</UserControl>

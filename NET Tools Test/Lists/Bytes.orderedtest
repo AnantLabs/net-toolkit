@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<OrderedTest name="Bytes" storage="d:\daten\visual studio 2008\projects\net tools\net tools test\lists\bytes.orderedtest" id="ec6a1c66-2ad7-4c30-ab9b-98d79b0ccbe0" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Css projectStructure="" iteration="" />
+  <Execution timeOut="2147483647" />
+  <Owners>
+    <Owner name="" />
+  </Owners>
+  <TestLinks>
+    <TestLink id="8f0071d2-9de6-334f-765a-fca37fbfe825" name="TestCharacterArrayBytes" storage="..\bin\debug\net tools test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="fef09636-1db3-b61c-8329-35cb40031de1" name="TestCharBytes" storage="..\bin\debug\net tools test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="3e90052e-a04d-4486-9a33-e961930b6497" name="TestDoubleBytes" storage="..\bin\debug\net tools test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="79c1e43c-990c-97f5-f050-639bb980295d" name="TestFloatBytes" storage="..\bin\debug\net tools test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="89ee424d-0bc9-f0b9-b525-e78672111815" name="TestIntBytes" storage="..\bin\debug\net tools test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="bf3b59a6-43c6-154c-5141-f6dfd59dc525" name="TestLongBytes" storage="..\bin\debug\net tools test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="39d22ae1-acfe-9fbb-5065-e9b0ba384785" name="TestShortBytes" storage="..\bin\debug\net tools test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="ffccb7f1-86a7-a5ce-44f3-2b383b212acd" name="TestUIntBytes" storage="..\bin\debug\net tools test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="b2cb4a79-be7c-6051-8188-df2437bd9ea5" name="TestULongBytes" storage="..\bin\debug\net tools test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="4f002278-b88e-e9eb-d112-feb9988b26d8" name="TestUShortBytes" storage="..\bin\debug\net tools test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+  </TestLinks>
+</OrderedTest>

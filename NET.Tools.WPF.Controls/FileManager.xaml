@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="NET.Tools.WPF.FileManager"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    MinHeight="150" MinWidth="150">
+    
+    <Grid>
+        <ListView Name="lvFiles" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="lvFiles_MouseDoubleClick">
+            <ListView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.Panel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </GroupStyle.Panel>
+                </GroupStyle>
+            </ListView.GroupStyle>
+            <ListView.ContextMenu>
+                <ContextMenu Name="cmDefault">
+                    <MenuItem Header="Back" Name="miBack" Click="miBack_Click"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+    </Grid>
+</UserControl>

@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color A="#FF" R="#D3" G="#D4" B="#D4" x:Key="BTNNormal1"/>
+    <Color A="#FF" R="#D3" G="#D7" B="#DB" x:Key="BTNNormal2"/>
+    <Color A="#FF" R="#F2" G="#F6" B="#F9" x:Key="BTNNormal3"/>
+
+    <Color A="#FF" R="#FE" G="#FE" B="#FE" x:Key="BTNSelected1"/>
+    <Color A="#FF" R="#E8" G="#EC" B="#F0" x:Key="BTNSelected2"/>
+    <Color A="#FF" R="#FF" G="#FF" B="#FF" x:Key="BTNSelected3"/>
+
+    <Color A="#FF" R="#B9" G="#BE" B="#BF" x:Key="BTNPressed1"/>
+    <Color A="#FF" R="#B5" G="#BC" B="#C2" x:Key="BTNPressed2"/>
+    <Color A="#FF" R="#CF" G="#D5" B="#BA" x:Key="BTNPressed3"/>
+
+    <Color A="#FF" R="#F9" G="#FB" B="#FC" x:Key="ThumbNormal1"/>
+    <Color A="#FF" R="#AB" G="#C0" B="#D3" x:Key="ThumbNormal2"/>
+    <Color A="#FF" R="#E5" G="#F8" B="#FB" x:Key="ThumbNormal3"/>
+
+    <Color A="#FF" R="#FB" G="#FC" B="#FD" x:Key="ThumbSelected1"/>
+    <Color A="#FF" R="#BE" G="#D3" B="#E5" x:Key="ThumbSelected2"/>
+    <Color A="#FF" R="#F7" G="#FB" B="#FF" x:Key="ThumbSelected3"/>
+
+</ResourceDictionary>

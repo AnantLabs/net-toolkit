@@ -1,0 +1,9 @@
+﻿<ComboBoxItem x:Class="NET.Tools.WPF.ImageComboBoxItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    MinHeight="25" Width="Auto">
+    <StackPanel Orientation="Horizontal" Name="pnl" x:FieldModifier="private">
+        <Image Name="imgIcon" Width="16" Height="16" Margin="5"/>
+        <Label Name="lblText" VerticalContentAlignment="Center" HorizontalAlignment="Stretch"/>
+    </StackPanel>
+</ComboBoxItem>

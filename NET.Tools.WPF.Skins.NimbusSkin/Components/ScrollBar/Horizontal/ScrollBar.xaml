@@ -1,0 +1,37 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Button.xaml"/>
+        <ResourceDictionary Source="Thumb.xaml"/>
+        <ResourceDictionary Source="Track.xaml"/>
+        <ResourceDictionary Source="../PageButton.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+    <ControlTemplate TargetType="{x:Type ScrollBar}" x:Key="Horizontal">
+        <Border Style="{StaticResource TrackLineHorizontal}">
+            <Grid>
+                <RepeatButton Style="{StaticResource LeftButton}" Width="30" HorizontalAlignment="Left" Command="ScrollBar.LineLeftCommand"/>
+                <RepeatButton Style="{StaticResource RightButton}" Width="30" HorizontalAlignment="Right" Command="ScrollBar.LineRightCommand"/>
+                <Track Name="PART_Track" IsDirectionReversed="False" Margin="17,0,17,0">
+                    <Track.Resources>
+                        <sys:Double x:Key="{x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}">
+                            80
+                        </sys:Double>
+                    </Track.Resources>
+                    <Track.DecreaseRepeatButton>
+                        <RepeatButton Style="{StaticResource PageButton}" Command="ScrollBar.PageLeftCommand"/>
+                    </Track.DecreaseRepeatButton>
+                    <Track.IncreaseRepeatButton>
+                        <RepeatButton Style="{StaticResource PageButton}" Command="ScrollBar.PageRightCommand"/>
+                    </Track.IncreaseRepeatButton>
+                    <Track.Thumb>
+                        <Thumb Style="{StaticResource ThumbHorizontal}"/>
+                    </Track.Thumb>
+                </Track>
+            </Grid>
+        </Border>
+    </ControlTemplate>
+    
+</ResourceDictionary>

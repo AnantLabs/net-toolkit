@@ -1,0 +1,206 @@
+﻿<Window x:Class="NET.Tools.Demo.DemoSkinWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Demo Skin Window" Height="602" Width="581" Name="skinWin" 
+        WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+
+    <Grid>
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,12,26" Name="button1" VerticalAlignment="Bottom" Width="75" Click="button1_Click">Close</Button>
+        <TabControl Margin="0,84,0,89" Name="tabControl1">
+            <TabItem Header="Allgemein" Name="tabItem1">
+                <Grid>
+                    <Button Content="Active" Height="23" HorizontalAlignment="Left" Margin="6,6,0,0" Name="button2" VerticalAlignment="Top" Width="75" />
+                    <Button Content="Inactive" Height="23" HorizontalAlignment="Left" Margin="6,35,0,0" Name="button3" VerticalAlignment="Top" Width="75" IsEnabled="False" />
+                    <ToggleButton Content="Toggle" HorizontalAlignment="Left" Height="23" Width="74" VerticalAlignment="Top" Margin="87,6,0,0" />
+                    <Label Content="Textbox:" Height="28" HorizontalAlignment="Left" Margin="6,66,0,0" Name="label1" VerticalAlignment="Top" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="6,270,0,0" Name="textBox1" VerticalAlignment="Top" Width="155" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="6,301,0,0" Name="textBox2" VerticalAlignment="Top" Width="155" IsEnabled="False" />
+                    <GroupBox Header="RadioButtons" Height="158" HorizontalAlignment="Right" Margin="0,9,7,0" Name="groupBox1" VerticalAlignment="Top" Width="200">
+                        <Grid>
+                            <RadioButton Content="RadioButton" Height="16" HorizontalAlignment="Left" Margin="6,6,0,0" Name="radioButton1" VerticalAlignment="Top" />
+                            <RadioButton Content="RadioButton" Height="16" HorizontalAlignment="Left" Margin="6,35,0,0" Name="radioButton2" VerticalAlignment="Top" />
+                            <RadioButton Content="RadioButton" Height="16" HorizontalAlignment="Left" Margin="6,66,0,0" Name="radioButton3" VerticalAlignment="Top" IsEnabled="False" />
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="CheckBoxes" HorizontalAlignment="Right" Margin="0,173,7,0" Name="groupBox2" Width="200" Height="153" VerticalAlignment="Top">
+                        <Grid>
+                            <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="6,68,0,0" Name="checkBox1" VerticalAlignment="Top" />
+                            <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="6,37,0,0" Name="checkBox2" VerticalAlignment="Top" />
+                            <CheckBox Content="CheckBox" Height="16" HorizontalAlignment="Left" Margin="6,6,0,0" Name="checkBox3" VerticalAlignment="Top" IsEnabled="False" />
+                        </Grid>
+                    </GroupBox>
+                    <TextBox Height="163" HorizontalAlignment="Left" Margin="6,97,0,0" Name="textBox3" VerticalAlignment="Top" Width="310" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AcceptsReturn="True" />
+                    <PasswordBox Height="23" Margin="167,270,233,0" Name="passwordBox1" VerticalAlignment="Top" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Listen">
+                <Grid>
+                    <ListBox Height="158" HorizontalAlignment="Left" Margin="6,6,0,0" Name="listBox1" VerticalAlignment="Top" Width="166">
+                        <ListBoxItem Content="Item 1" Name="Bla" />
+                        <ListBoxItem Content="Item 2" />
+                        <ListBoxItem Content="Item 3" IsEnabled="False" />
+                        <ListBoxItem Content="Item 4" />
+                        <ListBoxItem Content="Item 5" />
+                    </ListBox>
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="300,6,0,0" Name="comboBox1" VerticalAlignment="Top" Width="222" SelectedIndex="0">
+                        <ComboBoxItem Content="Item 1" />
+                        <ComboBoxItem Content="Item 2" IsEnabled="False" />
+                        <ComboBoxItem Content="Item 3" />
+                        <ComboBoxItem Content="Item 4" />
+                        <ComboBoxItem Content="Item 5" />
+                    </ComboBox>
+                    <TreeView Height="129" HorizontalAlignment="Left" Margin="300,35,0,0" Name="treeView1" VerticalAlignment="Top" Width="222">
+                        <TreeViewItem Header="Item 1">
+                            <TreeViewItem Header="Item 1" IsEnabled="False" />
+                            <TreeViewItem Header="Item 2">
+                                <TreeViewItem Header="Item 1" />
+                            </TreeViewItem>
+                        </TreeViewItem>
+                        <TreeViewItem Header="Item 2">
+                            <TreeViewItem Header="Item 1" />
+                        </TreeViewItem>
+                        <TreeViewItem Header="Item 3"/>
+                    </TreeView>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Scroller und Slider">
+                <Grid>
+                    <ProgressBar Height="18" Margin="6,6,51,0" Name="pbH" VerticalAlignment="Top" />
+                    <ProgressBar HorizontalAlignment="Left" Margin="6,30,0,6" Name="pbV" Width="18" Orientation="Vertical" Height="322" />
+                    <Button Content="Animate" Height="23" HorizontalAlignment="Left" Margin="30,30,0,0" Name="button4" VerticalAlignment="Top" Width="75" Click="button4_Click">
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="Button.Click">
+                                <BeginStoryboard>
+                                    <Storyboard Completed="Storyboard_Completed">
+                                        <DoubleAnimation
+                                                Storyboard.TargetName="pbH" 
+                                                Storyboard.TargetProperty="Value"
+                                                AutoReverse="True"
+                                                To="100"
+                                                Duration="0:0:5"/>
+                                        <DoubleAnimation
+                                                Storyboard.TargetName="pbV"
+                                                Storyboard.TargetProperty="Value"
+                                                AutoReverse="True"
+                                                To="100"
+                                                Duration="0:0:5"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
+                    <ScrollBar Margin="0,6,27,7" Name="scrollBar1" LargeChange="1" SmallChange="0.1" HorizontalAlignment="Right" Width="18" />
+                    <ScrollBar Height="18" Margin="30,0,51,32" Name="scrollBar2" VerticalAlignment="Bottom" Orientation="Horizontal" />
+                    <Slider Height="23" Margin="272,95,51,0" Name="slider1" VerticalAlignment="Top" />
+                    <Slider HorizontalAlignment="Left" Margin="196,95,0,56" Name="slider2" Width="23" Orientation="Vertical" />
+                    <Slider Height="23" Margin="272,124,51,0" Name="slider3" TickPlacement="TopLeft" VerticalAlignment="Top" />
+                    <Slider Height="23" Margin="272,153,51,0" Name="slider4" TickPlacement="BottomRight" VerticalAlignment="Top" />
+                    <Slider Height="36" Margin="272,182,51,0" Name="slider5" TickPlacement="Both" VerticalAlignment="Top" />
+                    <Slider HorizontalAlignment="Left" Margin="167,95,0,56" Name="slider6" Orientation="Vertical" Width="23" TickPlacement="BottomRight" />
+                    <Slider HorizontalAlignment="Left" Margin="138,95,0,56" Name="slider7" Orientation="Vertical" Width="23" TickPlacement="TopLeft" />
+                    <Slider HorizontalAlignment="Left" Margin="96,95,0,56" Name="slider8" Orientation="Vertical" Width="36" TickPlacement="Both" />
+                    <Slider Height="23" Margin="272,224,51,0" Name="slider9" VerticalAlignment="Top" IsEnabled="False" />
+                    <Slider HorizontalAlignment="Left" Margin="53,95,0,56" Name="slider10" Orientation="Vertical" TickPlacement="Both" Width="36" IsEnabled="False" />
+                    <ScrollBar HorizontalAlignment="Right" LargeChange="1" Margin="0,6,6,7" Name="scrollBar3" SmallChange="0.1" Width="17" IsEnabled="False" />
+                    <ScrollBar Height="18" Margin="30,0,51,7" Name="scrollBar4" Orientation="Horizontal" VerticalAlignment="Bottom" IsEnabled="False" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Inactive" IsEnabled="False"/>
+        </TabControl>
+        <StatusBar Height="20" Name="statusBar1" VerticalAlignment="Bottom">
+            <Label FontSize="8" VerticalContentAlignment="Top" Margin="0,-7,0,0">Status: OK</Label>
+            <Separator/>
+        </StatusBar>
+        <Menu Height="22" Name="menu1" VerticalAlignment="Top">
+            <MenuItem Header="Examples" Name="mi">
+                <MenuItem Header="Checkable">
+                    <MenuItem Header="Checked with icon" IsCheckable="True" IsChecked="True">
+                        <MenuItem.Icon>
+                            <Image Width="16" Height="16">
+                                <Image.Source>
+                                    <BitmapImage UriSource="Resources\File001.ico" />
+                                </Image.Source>
+                            </Image>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Checked without icon" IsCheckable="True" IsChecked="True" />
+                    <Separator />
+                    <MenuItem Header="Unchecked with icon" IsCheckable="True">
+                        <MenuItem.Icon>
+                            <Image Width="16" Height="16">
+                                <Image.Source>
+                                    <BitmapImage UriSource="Resources\File001.ico" />
+                                </Image.Source>
+                            </Image>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Unckecked without icon" IsCheckable="True" />
+                </MenuItem>
+                <MenuItem Header="Normal with icon" InputGestureText="Ctrl+O">
+                    <MenuItem.Icon>
+                        <Image Width="16" Height="16">
+                            <Image.Source>
+                                <BitmapImage UriSource="Resources\File001.ico" />
+                            </Image.Source>
+                        </Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Normal without icon" />
+                <MenuItem Header="Normal disabled" IsEnabled="False" />
+                <Separator />
+                <MenuItem Header="Submenu">
+                    <MenuItem.Icon>
+                        <Image Width="16" Height="16">
+                            <Image.Source>
+                                <BitmapImage UriSource="Resources\File001.ico" />
+                            </Image.Source>
+                        </Image>
+                    </MenuItem.Icon>
+                    <MenuItem Header="Item1" />
+                    <MenuItem Header="Item2">
+                        <MenuItem.Icon>
+                            <Image Width="16" Height="16">
+                                <Image.Source>
+                                    <BitmapImage UriSource="Resources\File001.ico" />
+                                </Image.Source>
+                            </Image>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Disabled" IsEnabled="False" />
+        </Menu>
+        <ToolBarTray Height="26" Margin="0,20,0,0" Name="toolBarTray1" VerticalAlignment="Top">
+            <ToolBar>
+                <Button>
+                    <Image Width="16" Height="16">
+                        <Image.Source>
+                            <BitmapImage UriSource="Resources/File001.ico"/>
+                        </Image.Source>
+                    </Image>
+                </Button>
+                <ToggleButton>
+                    <Image Width="16" Height="16">
+                        <Image.Source>
+                            <BitmapImage UriSource="Resources/File001.ico"/>
+                        </Image.Source>
+                    </Image>
+                </ToggleButton>
+                <Separator/>
+                <Button IsEnabled="False">
+                    <Image Width="16" Height="16">
+                        <Image.Source>
+                            <BitmapImage UriSource="Resources/File001.ico"/>
+                        </Image.Source>
+                    </Image>
+                </Button>
+                <Separator/>
+                <TextBox Width="200"/>
+                <ComboBox Width="150">
+                    <ComboBoxItem>Hallo</ComboBoxItem>
+                    <ComboBoxItem>Welt</ComboBoxItem>
+                </ComboBox>
+            </ToolBar>
+        </ToolBarTray>   
+    </Grid>
+</Window>

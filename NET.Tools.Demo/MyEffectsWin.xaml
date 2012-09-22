@@ -1,0 +1,525 @@
+﻿<Window x:Class="NET.Tools.Demo.MyEffectsWin"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:eff="clr-namespace:NET.Tools.WPF;assembly=NET.Tools.WPF.Effects"
+    Title="Effects Demo" Height="982" Width="914" Name="win" AllowsTransparency="False" WindowStyle="SingleBorderWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ButtonStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="Blue" Offset="0"/>
+            <GradientStop Color="Green" Offset=".8"/>
+            <GradientStop Color="Red" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    
+    <Grid Height="Auto" Name="grid1" Width="Auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="13" />
+            <RowDefinition Height="121" />
+            <RowDefinition Height="134" />
+            <RowDefinition Height="134" />
+            <RowDefinition Height="134" />
+            <RowDefinition Height="134" />
+            <RowDefinition Height="134" />
+            <RowDefinition Height="134" />
+            <RowDefinition Height="13*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="178" />
+            <ColumnDefinition Width="178" />
+            <ColumnDefinition Width="178" />
+            <ColumnDefinition Width="178" />
+            <ColumnDefinition Width="178" />
+            <ColumnDefinition Width="89*" />
+        </Grid.ColumnDefinitions>
+        <Image Name="imgColor" Stretch="Uniform" Source="Lighthouse.jpg" Margin="0,0,0,0.5" Grid.RowSpan="2">
+            <Image.Effect>
+                <eff:TransparentColorEffect Value="0.5" Color="Red"/>
+            </Image.Effect>
+        </Image>
+        <Button Height="34" Margin="12,0,12,11" Name="btnColor" VerticalAlignment="Bottom" Grid.Row="1">
+            Animate
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation 
+                                Storyboard.TargetName="imgColor"
+                                Storyboard.TargetProperty="Effect.Color"
+                                AutoReverse="True"
+                                To="Blue"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
+        <Image Name="imgHDR" Source="Lighthouse.jpg" Stretch="Uniform" Grid.Column="1" Grid.RowSpan="2">
+            <Image.Effect>
+                <eff:HDREffect HighValue="1.0" LowValue="01.0" />
+            </Image.Effect>
+        </Image>
+        <Button Height="34" Margin="15,0,9,11" Name="btnHDR" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="1">
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="ButtonBase.Click">
+                    <BeginStoryboard>
+                        <BeginStoryboard.Storyboard>
+                            <Storyboard>
+                                <SingleAnimation 
+                                    AutoReverse="True" 
+                                    From="1" 
+                                    Storyboard.TargetName="imgHDR" 
+                                    Storyboard.TargetProperty="Effect.LowValue" 
+                                    To="0" />
+                            </Storyboard>
+                        </BeginStoryboard.Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers> Animate
+        </Button>
+        <Image Name="imgNegative" Source="Lighthouse.jpg" Stretch="Uniform" Grid.Column="2" Grid.RowSpan="2">
+            <Image.Effect>
+                <eff:NegativeEffect />
+            </Image.Effect>
+        </Image>
+        <Image Name="imgMirrow" Source="Lighthouse.jpg" Stretch="Uniform" Grid.Column="3" Grid.RowSpan="2">
+            <Image.Effect>
+                <eff:MirrowEffect />
+            </Image.Effect>
+        </Image>
+        <Image Name="imgBlackWhite" Source="Lighthouse.jpg" Stretch="Uniform" Grid.Column="4" Grid.RowSpan="2">
+            <Image.Effect>
+                <eff:BlackWhiteEffect HeightColor="Yellow" LowColor="Blue"/>
+            </Image.Effect>
+        </Image>
+        <Button Height="34" Margin="14,0,0,11" Name="btnBlackWhite1" VerticalAlignment="Bottom" Grid.Column="4" Foreground="Red" HorizontalAlignment="Left" Width="64" Grid.Row="1">
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="ButtonBase.Click">
+                    <BeginStoryboard>
+                        <BeginStoryboard.Storyboard>
+                            <Storyboard>
+                                <SingleAnimation 
+                                    AutoReverse="True" 
+                                    From="0" 
+                                    Storyboard.TargetName="imgBlackWhite" 
+                                    Storyboard.TargetProperty="Effect.MiddleValue" 
+                                    To="0.9"
+                                    Duration="0:0:5"/>
+                            </Storyboard>
+                        </BeginStoryboard.Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers> Animate
+        </Button>
+        <Button Foreground="Red" Height="34" HorizontalAlignment="Right" Margin="0,0,10,11" Name="btnBlackWhite2" VerticalAlignment="Bottom" Width="64" Grid.Column="4" Grid.Row="1">
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="ButtonBase.Click">
+                    <BeginStoryboard>
+                        <BeginStoryboard.Storyboard>
+                            <Storyboard>
+                                <SingleAnimation 
+                                    AutoReverse="True" 
+                                    Duration="00:00:05" 
+                                    From="0.5" 
+                                    Storyboard.TargetName="imgBlackWhite" 
+                                    Storyboard.TargetProperty="Effect.MiddleValue" 
+                                    To="0" />
+                            </Storyboard>
+                        </BeginStoryboard.Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers> Animate
+        </Button>
+        <Image Margin="0" Name="imgRelief" Source="Lighthouse.jpg" Stretch="Uniform" Grid.Row="2">
+            <Image.Effect>
+                <eff:ReliefEffect Interpolar="2.7" Moving="0.003" />
+            </Image.Effect>
+        </Image>
+        <Button Foreground="Red" Height="34" HorizontalAlignment="Left" Margin="12,0,0,29" Name="btnRelief1" VerticalAlignment="Bottom" Width="64" Grid.Row="2">
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="ButtonBase.Click">
+                    <BeginStoryboard>
+                        <BeginStoryboard.Storyboard>
+                            <Storyboard>
+                                <SingleAnimation 
+                                    AutoReverse="True"
+                                    From="0.003" 
+                                    Storyboard.TargetName="imgRelief" 
+                                    Storyboard.TargetProperty="Effect.Moving" 
+                                    To="0.01" />
+                            </Storyboard>
+                        </BeginStoryboard.Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers> Animate
+        </Button>
+        <Button Foreground="Red" Height="34" HorizontalAlignment="Right" Margin="0,0,12,29" Name="btnRelief2" VerticalAlignment="Bottom" Width="64" Grid.Row="2">
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="ButtonBase.Click">
+                    <BeginStoryboard>
+                        <BeginStoryboard.Storyboard>
+                            <Storyboard>
+                                <SingleAnimationUsingKeyFrames
+                                    AutoReverse="True"  
+                                    Storyboard.TargetName="imgRelief" 
+                                    Storyboard.TargetProperty="Effect.Interpolar"
+                                    Duration="0:0:5"
+                                >
+                                    <LinearSingleKeyFrame
+                                        Value="2.7"
+                                        KeyTime="0:0:0"/>
+                                    <LinearSingleKeyFrame
+                                        Value="1.0"
+                                        KeyTime="0:0:2.5"/>
+                                    <LinearSingleKeyFrame
+                                        Value="3.5"
+                                        KeyTime="0:0:5"/>
+                                </SingleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard.Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers> Animate
+        </Button>
+        <Image Margin="0" Name="imgWave" Source="Lighthouse.jpg" Stretch="Uniform" Grid.Column="1" Grid.Row="2">
+            <Image.Effect>
+                <eff:WaveEffect ScaleX="75" ScaleY="0.03" MovingX="0" />
+            </Image.Effect>
+        </Image>
+        <Image Margin="0" Name="imgGrayscale" Source="Lighthouse.jpg" Stretch="Uniform" Grid.Column="2" Grid.Row="2">
+            <Image.Effect>
+                <eff:GrayscaleEffect ChannelR="0.3" ChannelG="0.59" ChannelB="0.11" />
+            </Image.Effect>
+        </Image>
+        <Button Height="34" Margin="18,0,6,13" Name="btnWave" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="2">
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="ButtonBase.Click">
+                    <BeginStoryboard>
+                        <BeginStoryboard.Storyboard>
+                            <Storyboard>
+                                <SingleAnimation 
+                                    AutoReverse="True" 
+                                    From="0" 
+                                    Storyboard.TargetName="imgWave" 
+                                    Storyboard.TargetProperty="Effect.MovingX" 
+                                    Duration="0:0:5"
+                                    To="10" />
+                            </Storyboard>
+                        </BeginStoryboard.Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers> Animate
+        </Button>
+        <Button Foreground="Red" Height="34" Margin="17,0,15,13" Name="btnGrayscale" VerticalAlignment="Bottom" Grid.Column="2" Grid.Row="2">
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="ButtonBase.Click">
+                    <BeginStoryboard>
+                        <BeginStoryboard.Storyboard>
+                            <Storyboard>
+                                <SingleAnimation
+                                    Storyboard.TargetName="imgGrayscale"
+                                    Storyboard.TargetProperty="Effect.ChannelR"
+                                    AutoReverse="True"
+                                    Duration="0:0:5"
+                                    From="0.3"
+                                    To="0.7"/>
+                                <SingleAnimation
+                                    Storyboard.TargetName="imgGrayscale"
+                                    Storyboard.TargetProperty="Effect.ChannelG"
+                                    AutoReverse="True"
+                                    Duration="0:0:5"
+                                    From="0.59"
+                                    To="0.1"/>
+                                <SingleAnimation
+                                    Storyboard.TargetName="imgGrayscale"
+                                    Storyboard.TargetProperty="Effect.ChannelB"
+                                    AutoReverse="True"
+                                    Duration="0:0:5"
+                                    From="0.11"
+                                    To="0.9"/>
+                            </Storyboard>
+                        </BeginStoryboard.Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers> Animate
+        </Button>
+        <Image Margin="0" Name="imgMotionBlur" Source="Lighthouse.jpg" Stretch="Uniform" Grid.Column="3" Grid.Row="2">
+            <Image.Effect>
+                <eff:MotionBlurEffect Angle="0.1" BlurAmount="0.005"/>
+            </Image.Effect>
+        </Image>
+        <Button Height="34" Margin="14,0,10,13" Name="btnMotionBlur" VerticalAlignment="Bottom" Grid.Column="3" Grid.Row="2">
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="ButtonBase.Click">
+                    <BeginStoryboard>
+                        <BeginStoryboard.Storyboard>
+                            <Storyboard>
+                                <SingleAnimation 
+                                    AutoReverse="True" 
+                                    Duration="00:00:05" 
+                                    From="0.1" 
+                                    Storyboard.TargetName="imgMotionBlur" 
+                                    Storyboard.TargetProperty="Effect.Angle" 
+                                    To="1" />
+                                <SingleAnimation 
+                                    AutoReverse="True" 
+                                    Duration="00:00:05" 
+                                    From="0.005" 
+                                    Storyboard.TargetName="imgMotionBlur" 
+                                    Storyboard.TargetProperty="Effect.BlurAmount" 
+                                    To="0.001" />
+                            </Storyboard>
+                        </BeginStoryboard.Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers> Animate
+        </Button>
+        <CheckBox Grid.Row="2" Height="23" Margin="51,0,49,0" Name="ckbRelief" VerticalAlignment="Bottom" Foreground="Red" Checked="ckbRelief_Checked" Unchecked="ckbRelief_Unchecked">Use colors</CheckBox>
+        <Image Margin="0" Name="imgColorShift" Source="Lighthouse.jpg" Stretch="Uniform" Grid.Column="4" Grid.Row="2">
+            <Image.Effect>
+                <eff:ColorShiftEffect ChannelR="0" ChannelG="1" ChannelB="0" Value="0.001" />
+            </Image.Effect>
+        </Image>
+        <Button Margin="14,0,10,13" Name="btnColorShift" Grid.Column="4" Grid.Row="2" Height="34" VerticalAlignment="Bottom">
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="ButtonBase.Click">
+                    <BeginStoryboard>
+                        <BeginStoryboard.Storyboard>
+                            <Storyboard>
+                                <SingleAnimation 
+                                    AutoReverse="True" 
+                                    Duration="00:00:05" 
+                                    From="1" 
+                                    Storyboard.TargetName="imgColorShift" 
+                                    Storyboard.TargetProperty="Effect.ChannelG" 
+                                    To="0" />
+                                <SingleAnimation 
+                                    AutoReverse="True" 
+                                    Duration="00:00:05" 
+                                    From="0" 
+                                    Storyboard.TargetName="imgColorShift" 
+                                    Storyboard.TargetProperty="Effect.ChannelR" 
+                                    To="-1" />
+                                <SingleAnimation 
+                                    AutoReverse="True" 
+                                    Duration="00:00:05" 
+                                    From="0" 
+                                    Storyboard.TargetName="imgColorShift" 
+                                    Storyboard.TargetProperty="Effect.ChannelB" 
+                                    To="-1" />
+                            </Storyboard>
+                        </BeginStoryboard.Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers> Animate
+        </Button>
+        <Image Margin="0" Name="imgAlpha" Source="Lighthouse.jpg" Stretch="Uniform" Grid.Row="3">
+            <Image.Effect>
+                <eff:AlphaEffect Value="0.9" />
+            </Image.Effect>
+        </Image>
+        <Button Height="34" Margin="12,0,12,13" Name="btnAlpha" VerticalAlignment="Bottom" Grid.Row="3">
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="ButtonBase.Click">
+                    <BeginStoryboard>
+                        <BeginStoryboard.Storyboard>
+                            <Storyboard>
+                                <SingleAnimation 
+                                    AutoReverse="True" 
+                                    From="0.9" 
+                                    Storyboard.TargetName="imgAlpha" 
+                                    Storyboard.TargetProperty="Effect.Value" 
+                                    To="0.1" />
+                            </Storyboard>
+                        </BeginStoryboard.Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers> Animate
+        </Button>
+        <Image Name="image1" Source="Lighthouse.jpg" Stretch="Uniform" Grid.Column="1" Grid.Row="3">
+            <Image.Effect>
+                <eff:PixelEffect TranslationX="0.1" TranslationY="0.1"/>
+            </Image.Effect>
+        </Image>
+        <Image Name="image2" Source="Lighthouse.jpg" Stretch="Uniform" Grid.Column="2" Grid.Row="3">
+            <Image.Effect>
+                <eff:DarkenImageEffect>
+                    <eff:DarkenImageEffect.Image>
+                        <ImageBrush ImageSource="Tulips.jpg"/>
+                    </eff:DarkenImageEffect.Image>
+                </eff:DarkenImageEffect>
+            </Image.Effect>
+        </Image>
+        <Image Name="image3" Source="Lighthouse.jpg" Stretch="Uniform" Grid.Column="3" Grid.Row="3">
+            <Image.Effect>
+                <eff:TransparentImageEffect>
+                    <eff:TransparentImageEffect.Image>
+                        <ImageBrush ImageSource="Tulips.jpg" />
+                    </eff:TransparentImageEffect.Image>
+                </eff:TransparentImageEffect>
+            </Image.Effect>
+        </Image>
+        <Image Name="image4" Source="Lighthouse.jpg" Stretch="Uniform" Grid.Column="4" Grid.Row="3">
+            <Image.Effect>
+                <eff:LightenImageEffect>
+                    <eff:LightenImageEffect.Image>
+                        <ImageBrush ImageSource="Tulips.jpg" />
+                    </eff:LightenImageEffect.Image>
+                </eff:LightenImageEffect>
+            </Image.Effect>
+        </Image>
+        <Image Name="imgDifferenceImage" Source="Lighthouse.jpg" Stretch="Uniform" Grid.Row="4">
+            <Image.Effect>
+                <eff:DifferenceImageEffect IsChanged="{Binding Path=IsChecked, ElementName=cbDifferenceImageChanger}">
+                    <eff:DifferenceImageEffect.Image>
+                        <ImageBrush ImageSource="Tulips.jpg" />
+                    </eff:DifferenceImageEffect.Image>
+                </eff:DifferenceImageEffect>
+            </Image.Effect>
+        </Image>
+        <Image Name="image6" Source="Lighthouse.jpg" Stretch="Uniform" Grid.Column="1" Grid.Row="4">
+            <Image.Effect>
+                <eff:MultiplyImageEffect>
+                    <eff:MultiplyImageEffect.Image>
+                        <ImageBrush ImageSource="Tulips.jpg" />
+                    </eff:MultiplyImageEffect.Image>
+                </eff:MultiplyImageEffect>
+            </Image.Effect>
+        </Image>
+        <Image Name="image7" Source="Lighthouse.jpg" Stretch="Uniform" Grid.Column="2" Grid.Row="4">
+            <Image.Effect>
+                <eff:NegationDifferenceImageEffect>
+                    <eff:NegationDifferenceImageEffect.Image>
+                        <ImageBrush ImageSource="Tulips.jpg" />
+                    </eff:NegationDifferenceImageEffect.Image>
+                </eff:NegationDifferenceImageEffect>
+            </Image.Effect>
+        </Image>
+        <Image Name="image8" Source="Lighthouse.jpg" Stretch="Uniform" Grid.Column="3" Grid.Row="4">
+            <Image.Effect>
+                <eff:OverlayHardlightImageEffect>
+                    <eff:OverlayHardlightImageEffect.Image>
+                        <ImageBrush ImageSource="Tulips.jpg" />
+                    </eff:OverlayHardlightImageEffect.Image>
+                </eff:OverlayHardlightImageEffect>
+            </Image.Effect>
+        </Image>
+        <Image Name="image9" Source="Lighthouse.jpg" Stretch="Uniform" Grid.Column="4" Grid.Row="4">
+            <Image.Effect>
+                <eff:OverlaySoftlightImageEffect>
+                    <eff:OverlaySoftlightImageEffect.Image>
+                        <ImageBrush ImageSource="Tulips.jpg" />
+                    </eff:OverlaySoftlightImageEffect.Image>
+                </eff:OverlaySoftlightImageEffect>
+            </Image.Effect>
+        </Image>
+        <Image Name="image10" Source="Lighthouse.jpg" Stretch="Uniform" Grid.Row="5">
+            <Image.Effect>
+                <eff:ExclusionImageEffect>
+                    <eff:ExclusionImageEffect.Image>
+                        <ImageBrush ImageSource="Tulips.jpg" />
+                    </eff:ExclusionImageEffect.Image>
+                </eff:ExclusionImageEffect>
+            </Image.Effect>
+        </Image>
+        <CheckBox Grid.Row="4" Height="16" Margin="12,0,0,6" Name="cbDifferenceImageChanger" VerticalAlignment="Bottom" Foreground="Red" HorizontalAlignment="Left" Width="64">
+            Change
+        </CheckBox>
+        <Image Name="imgSky" Source="Wolken1.png" Grid.Column="1" Grid.Row="5" Stretch="UniformToFill">
+            <Image.Effect>
+                <eff:SkyEffect/>
+            </Image.Effect>
+        </Image>
+        <Image Name="imgSkyColor" Source="Wolken1.png" Stretch="UniformToFill" Grid.Column="2" Grid.Row="5">
+            <Image.Effect>
+                <eff:SkyColorEffect/>
+            </Image.Effect>
+        </Image>
+        <Image Name="imgColorSnow" ToolTip="Colored Snow" Source="Lighthouse.jpg" Stretch="UniformToFill" Grid.Column="3" Grid.Row="5">
+            <Image.Effect>
+                <eff:ColorSnowEffect />
+            </Image.Effect>
+        </Image>
+        <Button Height="34" Margin="14,0,10,11" Name="button1" VerticalAlignment="Bottom" Grid.Column="3" Grid.Row="5">
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="ButtonBase.Click">
+                    <BeginStoryboard>
+                        <BeginStoryboard.Storyboard>
+                            <Storyboard>
+                                <SingleAnimation 
+                                    AutoReverse="False" 
+                                    From="0.9" 
+                                    Duration="0:0:10"
+                                    Storyboard.TargetName="imgColorSnow" 
+                                    Storyboard.TargetProperty="Effect.Random" 
+                                    To="100" />
+                            </Storyboard>
+                        </BeginStoryboard.Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers> Animate
+        </Button>
+        <Image Name="imgBlackWhiteSnow" ToolTip="Black / White snow" Source="Lighthouse.jpg" Stretch="UniformToFill" Grid.Column="4" Grid.Row="5">
+            <Image.Effect>
+                <eff:BlackWhiteSnowEffect/>
+            </Image.Effect>
+        </Image>
+        <Button Height="34" Margin="14,0,10,11" Name="button2" VerticalAlignment="Bottom" Grid.Column="4" Grid.Row="5">
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="ButtonBase.Click">
+                    <BeginStoryboard>
+                        <BeginStoryboard.Storyboard>
+                            <Storyboard>
+                                <SingleAnimation 
+                                    AutoReverse="False" 
+                                    Duration="00:00:10" 
+                                    From="0.9" 
+                                    Storyboard.TargetName="imgBlackWhiteSnow" 
+                                    Storyboard.TargetProperty="Effect.Random" 
+                                    To="100" />
+                            </Storyboard>
+                        </BeginStoryboard.Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers> Animate
+        </Button>
+        <Image Name="image5" Source="Lighthouse.jpg" Stretch="Uniform" Grid.Row="6">
+            <Image.Effect>
+                <eff:ImageShiftEffect Value="0.001" IsChanged="{Binding Path=IsChecked, ElementName=cbImageShift}">
+                    <eff:ImageShiftEffect.Image>
+                        <ImageBrush ImageSource="Tulips.jpg" />
+                    </eff:ImageShiftEffect.Image>
+                </eff:ImageShiftEffect>
+            </Image.Effect>
+        </Image>
+        <CheckBox Foreground="Red" Height="16" Margin="12,0,0,10" Name="cbImageShift" VerticalAlignment="Bottom" Grid.Row="6" HorizontalAlignment="Left" Width="64">Change</CheckBox>
+    </Grid>
+    
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard RepeatBehavior="Forever">
+                    <SingleAnimation
+                        Storyboard.TargetName="imgSky"
+                        Storyboard.TargetProperty="Effect.Alpha"
+                        AutoReverse="True"
+                        Duration="0:0:10"
+                        To="0.1"/>
+                    <SingleAnimation
+                        Storyboard.TargetName="imgSkyColor"
+                        Storyboard.TargetProperty="Effect.Alpha"
+                        AutoReverse="True"
+                        Duration="0:0:10"
+                        To="0.1"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+</Window>

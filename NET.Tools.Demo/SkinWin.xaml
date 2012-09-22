@@ -1,0 +1,21 @@
+﻿<Window x:Class="NET.Tools.Demo.SkinWin"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Skins" Height="287" Width="254" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Button Height="45" Margin="12,12,12,0" Name="btnDemo" VerticalAlignment="Top" Click="btnDemo_Click">Demo Skin</Button>
+        <ListBox Margin="12,0,12,12" Name="lstSkins" Height="100" VerticalAlignment="Bottom" SelectionChanged="lstSkins_SelectionChanged">
+            <ListBoxItem>Default</ListBoxItem>
+            <ListBoxItem>Sims 3</ListBoxItem>
+            <ListBoxItem>Nimbus</ListBoxItem>
+            <ListBoxItem>Paper</ListBoxItem>
+            <ListBoxItem>Chalk</ListBoxItem>
+            <ListBoxItem>Art</ListBoxItem>
+            <ListBoxItem>Portal</ListBoxItem>
+            <ListBoxItem>CIM</ListBoxItem>
+            <!--<ListBoxItem>Black</ListBoxItem>
+            <ListBoxItem>Art</ListBoxItem>-->
+        </ListBox>
+        <Label Margin="12,103,100,118" Name="label1">Skins:</Label>
+    </Grid>
+</Window>
