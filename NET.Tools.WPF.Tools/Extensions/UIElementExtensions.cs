@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Threading;
 using System.Windows.Media.Imaging;
 
 namespace NET.Tools
@@ -17,7 +18,7 @@ namespace NET.Tools
     {
         public static void Refresh(this UIElement element)
         {
-            element.Dispatcher.Invoke(new Action(() => { }), null);
+            element.Dispatcher.Invoke(DispatcherPriority.Render, new Action(() => { }));
         }
 
         public static void Invoke(this UIElement element, Action action)
