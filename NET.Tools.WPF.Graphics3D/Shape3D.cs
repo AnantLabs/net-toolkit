@@ -1,29 +1,64 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
+using NET.Tools.Extensions;
 
 namespace NET.Tools.WPF
 {
     public abstract class Shape3D : UserControl
     {
+        public static readonly DependencyProperty TextureCoordinationMultiplyFactorProperty =
+            DependencyProperty.Register("TextureCoordinationMultiplyFactor", typeof (Point), typeof (Shape3D), new PropertyMetadata(new Point(1,1)));
+
+        public Point TextureCoordinationMultiplyFactor
+        {
+            get { return (Point) GetValue(TextureCoordinationMultiplyFactorProperty); }
+            set { SetValue(TextureCoordinationMultiplyFactorProperty, value); }
+        }
+
+        public static readonly DependencyProperty TextureCoordinationTransformFactorProperty =
+            DependencyProperty.Register("TextureCoordinationTransformFactor", typeof (Point), typeof (Shape3D), new PropertyMetadata(new Point(0,0)));
+
+        public Point TextureCoordinationTransformFactor
+        {
+            get { return (Point) GetValue(TextureCoordinationTransformFactorProperty); }
+            set { SetValue(TextureCoordinationTransformFactorProperty, value); }
+        }
+
         public static readonly DependencyProperty CameraPositionProperty =
             DependencyProperty.Register("CameraPosition", typeof(Point3D), typeof(Shape3D),
-                                        new PropertyMetadata(new Point3D(0.5d, 0.5d, 4d)));
+                                        new PropertyMetadata(new Point3D(0d, 0d, 4d)));
 
+        [Browsable(true)]
+        [Category("Shape 3D")]
         public Point3D CameraPosition
         {
             get { return (Point3D) GetValue(CameraPositionProperty); }
             set { SetValue(CameraPositionProperty, value); }
         }
 
+        public static readonly DependencyProperty CameraLookAtPositionProperty =
+            DependencyProperty.Register("CameraLookAtPosition", typeof (Point3D), typeof (Shape3D), new PropertyMetadata(new Point3D(0,0,0)));
+
+        [Browsable(true)]
+        [Category("Shape 3D")]
+        public Point3D CameraLookAtPosition
+        {
+            get { return (Point3D) GetValue(CameraLookAtPositionProperty); }
+            set { SetValue(CameraLookAtPositionProperty, value); }
+        }
+
         public static readonly DependencyProperty LightingProperty =
             DependencyProperty.Register("Lighting", typeof (bool), typeof (Shape3D), new PropertyMetadata(true));
 
+        [Browsable(true)]
+        [Category("Shape 3D")]
         public bool Lighting
         {
             get { return (bool) GetValue(LightingProperty); }
@@ -33,15 +68,74 @@ namespace NET.Tools.WPF
         public static readonly DependencyProperty DiffuseBrushProperty =
             DependencyProperty.Register("DiffuseBrush", typeof (Brush), typeof (Shape3D), new PropertyMetadata(Brushes.White));
 
+        [Browsable(true)]
+        [Category("Shape 3D")]
         public Brush DiffuseBrush
         {
             get { return (Brush) GetValue(DiffuseBrushProperty); }
             set { SetValue(DiffuseBrushProperty, value); }
         }
 
+        public static readonly DependencyProperty EmissiveBrushProperty =
+            DependencyProperty.Register("EmissiveBrush", typeof (Brush), typeof (Shape3D), new PropertyMetadata(null));
+
+        [Browsable(true)]
+        [Category("Shape 3D")]
+        public Brush EmissiveBrush
+        {
+            get { return (Brush) GetValue(EmissiveBrushProperty); }
+            set { SetValue(EmissiveBrushProperty, value); }
+        }
+
+        public static readonly DependencyProperty SpecularBrushProperty =
+            DependencyProperty.Register("SpecularBrush", typeof (Brush), typeof (Shape3D), new PropertyMetadata(null));
+
+        [Browsable(true)]
+        [Category("Shape 3D")]
+        public Brush SpecularBrush
+        {
+            get { return (Brush) GetValue(SpecularBrushProperty); }
+            set { SetValue(SpecularBrushProperty, value); }
+        }
+
+        public static readonly DependencyProperty SpecularPowerProperty =
+            DependencyProperty.Register("SpecularPower", typeof (double), typeof (Shape3D), new PropertyMetadata(1d));
+
+        [Browsable(true)]
+        [Category("Shape 3D")]
+        public double SpecularPower
+        {
+            get { return (double) GetValue(SpecularPowerProperty); }
+            set { SetValue(SpecularPowerProperty, value); }
+        }
+
+        public static readonly DependencyProperty LightDirectionProperty =
+            DependencyProperty.Register("LightDirection", typeof (Vector3D), typeof (Shape3D), new PropertyMetadata(new Vector3D(0,0,-1)));
+
+        [Browsable(true)]
+        [Category("Shape 3D")]
+        public Vector3D LightDirection
+        {
+            get { return (Vector3D) GetValue(LightDirectionProperty); }
+            set { SetValue(LightDirectionProperty, value); }
+        }
+
+        public static readonly DependencyProperty LightColorProperty =
+            DependencyProperty.Register("LightColor", typeof (Color), typeof (Shape3D), new PropertyMetadata(Colors.White));
+
+        [Browsable(true)]
+        [Category("Shape 3D")]
+        public Color LightColor
+        {
+            get { return (Color) GetValue(LightColorProperty); }
+            set { SetValue(LightColorProperty, value); }
+        }
+
         public static readonly DependencyProperty ObjectTransformationProperty =
             DependencyProperty.Register("ObjectTransformation", typeof (Transform3D), typeof (Shape3D), new PropertyMetadata(Transform3D.Identity));
 
+        [Browsable(true)]
+        [Category("Shape 3D")]
         public Transform3D ObjectTransformation
         {
             get { return (Transform3D) GetValue(ObjectTransformationProperty); }
@@ -50,42 +144,47 @@ namespace NET.Tools.WPF
 
         private Viewport3D viewport;
         private ModelVisual3D light;
+        private IList<ModelVisual3D> models = new List<ModelVisual3D>(); 
 
         protected Shape3D()
         {
+            PerspectiveCamera camera = new PerspectiveCamera
+                {
+                    Position = CameraPosition
+                };
+            camera.SetLookAtPosition(CameraLookAtPosition);
+
             viewport = new Viewport3D
                 {
-                    Camera = new PerspectiveCamera()
-                        {
-                            Position = CameraPosition,
-                            LookDirection = new Vector3D(0,0,-1)
-                        }
+                    Camera = camera
                 };
 
             light = new ModelVisual3D
             {
-                Content = new DirectionalLight(Colors.White, new Vector3D(0,0,-1))
+                Content = new DirectionalLight(LightColor, LightDirection)
             };
             viewport.Children.Add(light);
 
-            foreach (Visual3D visual in Visuals)
-            {
-                viewport.Children.Add(visual);
-            }
+            RebuildModel();
 
             Content = viewport;
         }
 
-        protected abstract IList<Visual3D> Visuals { get; }
+        protected abstract IList<MeshGeometry3D> Meshes { get; }
 
         protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
             base.OnPropertyChanged(e);
 
-            if (e.Property == CameraPositionProperty)
+            if (e.Property == CameraPositionProperty ||
+                e.Property == CameraLookAtPositionProperty)
             {
-                viewport.Camera = new PerspectiveCamera(CameraPosition, new Vector3D(0, 0, 0), new Vector3D(0, 1, 0),
-                                                        Math.PI/4d);
+                viewport.Camera = new PerspectiveCamera
+                    {
+                        Position = CameraPosition
+                    };
+                (viewport.Camera as PerspectiveCamera).SetLookAtPosition(CameraLookAtPosition);
+
                 InvalidateVisual();
             }
             else if (e.Property == LightingProperty)
@@ -103,6 +202,75 @@ namespace NET.Tools.WPF
                 }
 
                 InvalidateVisual();
+            }
+            else if (e.Property == ObjectTransformationProperty)
+            {
+                foreach (ModelVisual3D model in models)
+                {
+                    model.Transform = ObjectTransformation;
+                }
+
+                InvalidateVisual();
+            }
+            else if (e.Property == DiffuseBrushProperty ||
+                e.Property == EmissiveBrushProperty ||
+                e.Property == SpecularBrushProperty ||
+                e.Property == SpecularPowerProperty)
+            {
+                foreach (ModelVisual3D model in models)
+                {
+                    MaterialGroup material = new MaterialGroup();
+                    if (DiffuseBrush != null)
+                    {
+                        material.Children.Add(new DiffuseMaterial(DiffuseBrush));
+                    }
+                    if (EmissiveBrush != null)
+                    {
+                        material.Children.Add(new EmissiveMaterial(EmissiveBrush));
+                    }
+                    if (SpecularBrush != null)
+                    {
+                        material.Children.Add(new SpecularMaterial(SpecularBrush, SpecularPower));
+                    }
+
+                    (model.Content as GeometryModel3D).Material = material;
+                }
+
+                InvalidateVisual();
+            }
+            else if (e.Property == LightColorProperty ||
+                e.Property == LightDirectionProperty)
+            {
+                light.Content = new DirectionalLight(LightColor, LightDirection);
+                InvalidateVisual();
+            }
+            else if (e.Property == TextureCoordinationMultiplyFactorProperty ||
+                e.Property == TextureCoordinationTransformFactorProperty)
+            {
+                RebuildModel();
+                InvalidateVisual();
+            }
+        }
+
+        protected void RebuildModel()
+        {
+            foreach (ModelVisual3D model in models)
+            {
+                viewport.Children.Remove(model);
+            }
+            models.Clear();
+
+            foreach (MeshGeometry3D mesh in Meshes)
+            {
+                GeometryModel3D geometryModel = new GeometryModel3D(mesh, new DiffuseMaterial(DiffuseBrush));
+                ModelVisual3D visualModel = new ModelVisual3D
+                {
+                    Content = geometryModel,
+                    Transform = ObjectTransformation
+                };
+
+                models.Add(visualModel);
+                viewport.Children.Add(visualModel);
             }
         }
     }

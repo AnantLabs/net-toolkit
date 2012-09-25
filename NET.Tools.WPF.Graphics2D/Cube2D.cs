@@ -14,6 +14,8 @@ namespace NET.Tools.WPF
         public static readonly DependencyProperty DepthProperty =
             DependencyProperty.Register("Depth", typeof (double), typeof (Cube2D), new PropertyMetadata(25d));
 
+        [Browsable(true)]
+        [Category("Shape 2D")]
         public double Depth
         {
             get { return (double) GetValue(DepthProperty); }
@@ -24,7 +26,7 @@ namespace NET.Tools.WPF
             DependencyProperty.Register("HorizontalFill", typeof (Brush), typeof (Cube2D), new PropertyMetadata(null));
 
         [Browsable(true)]
-        [Category("Appearance")]
+        [Category("Shape 2D")]
         public Brush HorizontalFill
         {
             get { return (Brush) GetValue(HorizontalFillProperty); }
@@ -35,7 +37,7 @@ namespace NET.Tools.WPF
             DependencyProperty.Register("VerticalFill", typeof (Brush), typeof (Cube2D), new PropertyMetadata(null));
 
         [Browsable(true)]
-        [Category("Appearance")]
+        [Category("Shape 2D")]
         public Brush VerticalFill
         {
             get { return (Brush) GetValue(VerticalFillProperty); }

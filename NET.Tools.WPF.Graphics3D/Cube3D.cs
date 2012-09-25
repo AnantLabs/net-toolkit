@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -12,6 +13,8 @@ namespace NET.Tools.WPF
         public static readonly DependencyProperty CubeWidthProperty =
             DependencyProperty.Register("CubeWidth", typeof (double), typeof (Cube3D), new PropertyMetadata(2d));
 
+        [Browsable(true)]
+        [Category("Shape 3D")]
         public double CubeWidth
         {
             get { return (double) GetValue(CubeWidthProperty); }
@@ -21,6 +24,8 @@ namespace NET.Tools.WPF
         public static readonly DependencyProperty CubeHeightProperty =
             DependencyProperty.Register("CubeHeight", typeof (double), typeof (Cube3D), new PropertyMetadata(2d));
 
+        [Browsable(true)]
+        [Category("Shape 3D")]
         public double CubeHeight
         {
             get { return (double) GetValue(CubeHeightProperty); }
@@ -30,107 +35,110 @@ namespace NET.Tools.WPF
         public static readonly DependencyProperty CubeDepthProperty =
             DependencyProperty.Register("CubeDepth", typeof (double), typeof (Cube3D), new PropertyMetadata(2d));
 
+        [Browsable(true)]
+        [Category("Shape 3D")]
         public double CubeDepth
         {
             get { return (double) GetValue(CubeDepthProperty); }
             set { SetValue(CubeDepthProperty, value); }
         }
 
-        private ModelVisual3D cubeModel;
-
-        protected override IList<Visual3D> Visuals
+        protected override IList<MeshGeometry3D> Meshes
         {
             get
             {
-                IList<Visual3D> result = new List<Visual3D>();
+                IList<MeshGeometry3D> result = new List<MeshGeometry3D>();
 
                 MeshGeometry3D cubeMesh = new MeshGeometry3D();
-                cubeMesh.Positions.Add(new Point3D(0, 0, 1));
-                cubeMesh.Positions.Add(new Point3D(1, 0, 1));
-                cubeMesh.Positions.Add(new Point3D(1, 1, 1));
-                cubeMesh.Positions.Add(new Point3D(0, 1, 1));
-                cubeMesh.Positions.Add(new Point3D(1, 0, 0));
-                cubeMesh.Positions.Add(new Point3D(0, 0, 0));
-                cubeMesh.Positions.Add(new Point3D(0, 1, 0));
-                cubeMesh.Positions.Add(new Point3D(1, 1, 0));
-                cubeMesh.Positions.Add(new Point3D(1, 0, 1));
-                cubeMesh.Positions.Add(new Point3D(1, 0, 0));
-                cubeMesh.Positions.Add(new Point3D(1, 1, 0));
-                cubeMesh.Positions.Add(new Point3D(1, 1, 1));
-                cubeMesh.Positions.Add(new Point3D(0, 0, 0));
-                cubeMesh.Positions.Add(new Point3D(0, 0, 1));
-                cubeMesh.Positions.Add(new Point3D(0, 1, 1));
-                cubeMesh.Positions.Add(new Point3D(0, 1, 0));
-                cubeMesh.Positions.Add(new Point3D(0, 1, 1));
-                cubeMesh.Positions.Add(new Point3D(1, 1, 1));
-                cubeMesh.Positions.Add(new Point3D(1, 1, 0));
-                cubeMesh.Positions.Add(new Point3D(0, 1, 0));
-                cubeMesh.Positions.Add(new Point3D(1, 0, 1));
-                cubeMesh.Positions.Add(new Point3D(0, 0, 1));
-                cubeMesh.Positions.Add(new Point3D(0, 0, 0));
-                cubeMesh.Positions.Add(new Point3D(1, 0, 0));
+                //Vertices
+                cubeMesh.Positions.Add(new Point3D(-(CubeWidth / 2), -(CubeHeight / 2), +(CubeDepth / 2)));//00 //0, 0, 1
+                cubeMesh.Positions.Add(new Point3D(+(CubeWidth / 2), -(CubeHeight / 2), +(CubeDepth / 2)));//01 //1, 0, 1
+                cubeMesh.Positions.Add(new Point3D(+(CubeWidth / 2), +(CubeHeight / 2), +(CubeDepth / 2)));//02 //1, 1, 1
+                cubeMesh.Positions.Add(new Point3D(-(CubeWidth / 2), +(CubeHeight / 2), +(CubeDepth / 2)));//03 //0, 1, 1
+                cubeMesh.Positions.Add(new Point3D(+(CubeWidth / 2), -(CubeHeight / 2), -(CubeDepth / 2)));//04 //1, 0, 0
+                cubeMesh.Positions.Add(new Point3D(-(CubeWidth / 2), -(CubeHeight / 2), -(CubeDepth / 2)));//05 //0, 0, 0
+                cubeMesh.Positions.Add(new Point3D(-(CubeWidth / 2), +(CubeHeight / 2), -(CubeDepth / 2)));//06 //0, 1, 0
+                cubeMesh.Positions.Add(new Point3D(+(CubeWidth / 2), +(CubeHeight / 2), -(CubeDepth / 2)));//07 //1, 1, 0
                 //Indices
-                cubeMesh.TriangleIndices.Add(0);
-                cubeMesh.TriangleIndices.Add(1);
-                cubeMesh.TriangleIndices.Add(2);
+                cubeMesh.TriangleIndices.Add(0);//0, 0, 1
+                cubeMesh.TriangleIndices.Add(1);//1, 0, 1
+                cubeMesh.TriangleIndices.Add(2);//1, 1, 1
                 //
-                cubeMesh.TriangleIndices.Add(2);
-                cubeMesh.TriangleIndices.Add(3);
-                cubeMesh.TriangleIndices.Add(0);
+                cubeMesh.TriangleIndices.Add(2);//1, 1, 1
+                cubeMesh.TriangleIndices.Add(3);//0, 1, 1
+                cubeMesh.TriangleIndices.Add(0);//0, 0, 1
                 //
-                cubeMesh.TriangleIndices.Add(4);
-                cubeMesh.TriangleIndices.Add(5);
-                cubeMesh.TriangleIndices.Add(6);
+                cubeMesh.TriangleIndices.Add(4);//1, 0, 0
+                cubeMesh.TriangleIndices.Add(5);//0, 0, 0
+                cubeMesh.TriangleIndices.Add(6);//0, 1, 0
                 //
-                cubeMesh.TriangleIndices.Add(6);
-                cubeMesh.TriangleIndices.Add(7);
-                cubeMesh.TriangleIndices.Add(4);
+                cubeMesh.TriangleIndices.Add(6);//0, 1, 0
+                cubeMesh.TriangleIndices.Add(7);//1, 1, 0
+                cubeMesh.TriangleIndices.Add(4);//1, 0, 0
                 //
-                cubeMesh.TriangleIndices.Add(8);
-                cubeMesh.TriangleIndices.Add(9);
-                cubeMesh.TriangleIndices.Add(10);
+                cubeMesh.TriangleIndices.Add(1);//1, 0, 1
+                cubeMesh.TriangleIndices.Add(4);//1, 0, 0
+                cubeMesh.TriangleIndices.Add(7);//1, 1, 0
                 //
-                cubeMesh.TriangleIndices.Add(10);
-                cubeMesh.TriangleIndices.Add(11);
-                cubeMesh.TriangleIndices.Add(8);
+                cubeMesh.TriangleIndices.Add(7);//1, 1, 0
+                cubeMesh.TriangleIndices.Add(2);//1, 1, 1
+                cubeMesh.TriangleIndices.Add(1);//1, 0, 1
                 //
-                cubeMesh.TriangleIndices.Add(12);
-                cubeMesh.TriangleIndices.Add(13);
-                cubeMesh.TriangleIndices.Add(14);
+                cubeMesh.TriangleIndices.Add(5);//0, 0, 0
+                cubeMesh.TriangleIndices.Add(0);//0, 0, 1
+                cubeMesh.TriangleIndices.Add(3);//0, 1, 1
                 //
-                cubeMesh.TriangleIndices.Add(14);
-                cubeMesh.TriangleIndices.Add(15);
-                cubeMesh.TriangleIndices.Add(12);
+                cubeMesh.TriangleIndices.Add(3);//0, 1, 1
+                cubeMesh.TriangleIndices.Add(6);//0, 1, 0
+                cubeMesh.TriangleIndices.Add(5);//0, 0, 0
                 //
-                cubeMesh.TriangleIndices.Add(16);
-                cubeMesh.TriangleIndices.Add(17);
-                cubeMesh.TriangleIndices.Add(18);
+                cubeMesh.TriangleIndices.Add(3);//0, 1, 1
+                cubeMesh.TriangleIndices.Add(2);//1, 1, 1
+                cubeMesh.TriangleIndices.Add(7);//1, 1, 0
                 //
-                cubeMesh.TriangleIndices.Add(18);
-                cubeMesh.TriangleIndices.Add(19);
-                cubeMesh.TriangleIndices.Add(16);
+                cubeMesh.TriangleIndices.Add(7);//1, 1, 0
+                cubeMesh.TriangleIndices.Add(6);//0, 1, 0
+                cubeMesh.TriangleIndices.Add(3);//0, 1, 1
                 //
-                cubeMesh.TriangleIndices.Add(20);
-                cubeMesh.TriangleIndices.Add(21);
-                cubeMesh.TriangleIndices.Add(22);
+                cubeMesh.TriangleIndices.Add(1);//1, 0, 1
+                cubeMesh.TriangleIndices.Add(0);//0, 0, 1
+                cubeMesh.TriangleIndices.Add(5);//0, 0, 0
                 //
-                cubeMesh.TriangleIndices.Add(22);
-                cubeMesh.TriangleIndices.Add(23);
-                cubeMesh.TriangleIndices.Add(20);
+                cubeMesh.TriangleIndices.Add(5);//0, 0, 0
+                cubeMesh.TriangleIndices.Add(4);//1, 0, 0
+                cubeMesh.TriangleIndices.Add(1);//1, 0, 1
+                //Tex Coords
+                cubeMesh.TextureCoordinates.Add(new Point(0, 1));
+                cubeMesh.TextureCoordinates.Add(new Point(1, 1));
+                cubeMesh.TextureCoordinates.Add(new Point(1, 0));
+                cubeMesh.TextureCoordinates.Add(new Point(0, 0));
+                //
+                cubeMesh.TextureCoordinates.Add(new Point(0, 1));
+                cubeMesh.TextureCoordinates.Add(new Point(1, 1));
+                cubeMesh.TextureCoordinates.Add(new Point(1, 0));
+                cubeMesh.TextureCoordinates.Add(new Point(0, 0));
+                //
+                cubeMesh.TextureCoordinates.Add(new Point(0, 1));
+                cubeMesh.TextureCoordinates.Add(new Point(1, 1));
+                cubeMesh.TextureCoordinates.Add(new Point(1, 0));
+                cubeMesh.TextureCoordinates.Add(new Point(0, 0));
+                //
+                cubeMesh.TextureCoordinates.Add(new Point(0, 1));
+                cubeMesh.TextureCoordinates.Add(new Point(1, 1));
+                cubeMesh.TextureCoordinates.Add(new Point(1, 0));
+                cubeMesh.TextureCoordinates.Add(new Point(0, 0));
+                //
+                cubeMesh.TextureCoordinates.Add(new Point(0, 1));
+                cubeMesh.TextureCoordinates.Add(new Point(1, 1));
+                cubeMesh.TextureCoordinates.Add(new Point(1, 0));
+                cubeMesh.TextureCoordinates.Add(new Point(0, 0));
+                //
+                cubeMesh.TextureCoordinates.Add(new Point(0, 1));
+                cubeMesh.TextureCoordinates.Add(new Point(1, 1));
+                cubeMesh.TextureCoordinates.Add(new Point(1, 0));
+                cubeMesh.TextureCoordinates.Add(new Point(0, 0));
 
-                Material material = null;
-                if (DiffuseBrush != null)
-                {
-                    material = new DiffuseMaterial(DiffuseBrush);
-                }
-
-                GeometryModel3D cubeGeo = new GeometryModel3D(cubeMesh, material);
-                cubeModel = new ModelVisual3D
-                    {
-                        Content = cubeGeo,
-                        Transform = ObjectTransformation
-                    };
-                result.Add(cubeModel);
+                result.Add(cubeMesh);
 
                 return result;
             }
@@ -140,20 +148,12 @@ namespace NET.Tools.WPF
         {
             base.OnPropertyChanged(e);
 
-            if (e.Property == DiffuseBrushProperty)
+            if (e.Property == CubeDepthProperty ||
+                e.Property == CubeHeightProperty ||
+                e.Property == CubeWidthProperty)
             {
-                if (cubeModel == null)
-                    return;
-
-                (cubeModel.Content as GeometryModel3D).Material = new DiffuseMaterial(DiffuseBrush);
+                RebuildModel();
                 InvalidateVisual();
-            }
-            else if (e.Property == ObjectTransformationProperty)
-            {
-                if (cubeModel == null)
-                    return;
-
-                cubeModel.Transform = ObjectTransformation;
             }
         }
     }

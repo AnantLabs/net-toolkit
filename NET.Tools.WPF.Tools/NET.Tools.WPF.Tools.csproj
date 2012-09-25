@@ -103,6 +103,7 @@
   <ItemGroup>
     <Compile Include="Converter\VisibilityConverter.cs" />
     <Compile Include="Extensions\BitmapSourceExtensions.cs" />
+    <Compile Include="Extensions\CameraExtensions.cs" />
     <Compile Include="Extensions\CanvasExtensions.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />

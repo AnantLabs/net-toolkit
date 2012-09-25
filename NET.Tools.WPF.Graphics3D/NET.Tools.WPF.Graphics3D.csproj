@@ -48,6 +48,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shape3D.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NET.Tools.WPF.Tools\NET.Tools.WPF.Tools.csproj">
+      <Project>{55AE2F48-7FE9-40C9-BADE-D1DCDCFDDAE6}</Project>
+      <Name>NET.Tools.WPF.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools\NET.Tools.csproj">
+      <Project>{EC6EAAA0-F4F1-419C-A9D5-9F2D3EF67120}</Project>
+      <Name>NET.Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
