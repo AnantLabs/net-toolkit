@@ -413,6 +413,46 @@
 						</configuration>
 					</execution>
 					<execution>
+						<id>copy-net-tools-wpf-graphics2d-asm</id>
+						<!-- here the phase you need -->
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/NET.Tools.WPF.Graphics2D/Properties</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/mvn/Templates/NET.Tools.WPF.Graphics2D</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>AssemblyInfo.cs</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-net-tools-wpf-graphics3d-asm</id>
+						<!-- here the phase you need -->
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/NET.Tools.WPF.Graphics3D/Properties</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/mvn/Templates/NET.Tools.WPF.Graphics3D</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>AssemblyInfo.cs</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
 						<id>copy-net-tools-wpf-skins-art-asm</id>
 						<!-- here the phase you need -->
 						<phase>validate</phase>
@@ -1253,6 +1293,18 @@
 									<directory>${basedir}/NET.Tools.WPF.Tools/bin/Release</directory>
 									<includes>
 										<include>NET.Tools.WPF.Tools.*</include>
+									</includes>
+								</resource>
+								<resource>
+									<directory>${basedir}/NET.Tools.WPF.Graphics2D/bin/Release</directory>
+									<includes>
+										<include>NET.Tools.WPF.Graphics2D.*</include>
+									</includes>
+								</resource>
+								<resource>
+									<directory>${basedir}/NET.Tools.WPF.Graphics3D/bin/Release</directory>
+									<includes>
+										<include>NET.Tools.WPF.Graphics3D.*</include>
 									</includes>
 								</resource>
 							</resources>

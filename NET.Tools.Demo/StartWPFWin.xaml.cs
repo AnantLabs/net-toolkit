@@ -69,5 +69,12 @@ namespace NET.Tools.Demo
             new ComponentsWin().ShowDialog();
             this.Visibility = Visibility.Visible;
         }
+
+        private void button1_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Hidden;
+            new DrawablesWin().ShowDialog();
+            this.Visibility = Visibility.Visible;
+        }
     }
 }

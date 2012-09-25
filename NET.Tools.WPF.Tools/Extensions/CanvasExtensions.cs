@@ -104,7 +104,7 @@ namespace NET.Tools
 
         #endregion
 
-        #region Plygon
+        #region Polygon
 
         public static Polygon AddPolygon(this Canvas canvas, ShapeStyle shapeStyle, params Point[] points)
         {
@@ -121,7 +121,7 @@ namespace NET.Tools
 
         #endregion
 
-        #region Plyline
+        #region Polyline
 
         public static Polyline AddPolyline(this Canvas canvas, ShapeStyle shapeStyle, params Point[] points)
         {
@@ -176,6 +176,47 @@ namespace NET.Tools
         public static TextBlock AddText(this Canvas canvas, Rect rect, String text, TextStyle textStyle)
         {
             return AddText(canvas, rect.Left, rect.Top, rect.Width, rect.Height, text, textStyle);
+        }
+
+        #endregion
+
+        #region UIElement
+
+        public static void AddUIElement(this Canvas canvas, double x, double y, UIElement element)
+        {
+            Canvas.SetLeft(element, x);
+            Canvas.SetTop(element, y);
+
+            canvas.Children.Add(element);
+        }
+
+        public static void AddUIElement(this Canvas canvas, Point location, UIElement element)
+        {
+            AddUIElement(canvas, location.X, location.Y, element);
+        }
+
+        #endregion
+
+        #region FrameworkElement
+
+        public static void AddFrameworkElement(this Canvas canvas, double x, double y, double width, double height, FrameworkElement element)
+        {
+            element.Width = width;
+            element.Height = height;
+            Canvas.SetLeft(element, x);
+            Canvas.SetTop(element, y);
+
+            canvas.Children.Add(element);
+        }
+
+        public static void AddFrameworkElement(this Canvas canvas, Point location, Size size, FrameworkElement element)
+        {
+            AddFrameworkElement(canvas, location.X, location.Y, size.Width, size.Height, element);
+        }
+
+        public static void AddFrameworkElement(this Canvas canvas, Rect bounds, FrameworkElement element)
+        {
+            AddFrameworkElement(canvas, bounds.Location, bounds.Size, element);
         }
 
         #endregion

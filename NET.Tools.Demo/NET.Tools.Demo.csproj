@@ -146,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="DrawablesWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MyEffectsWin.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -188,6 +192,9 @@
     </Compile>
     <Compile Include="DialogWin.xaml.cs">
       <DependentUpon>DialogWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DrawablesWin.xaml.cs">
+      <DependentUpon>DrawablesWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyEffectsWin.xaml.cs">
       <DependentUpon>MyEffectsWin.xaml</DependentUpon>
@@ -374,6 +381,14 @@
     <ProjectReference Include="..\NET.Tools.WPF.Effects\NET.Tools.WPF.Effects.csproj">
       <Project>{44E0216A-98D1-4F49-A16F-55FC43272708}</Project>
       <Name>NET.Tools.WPF.Effects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Graphics2D\NET.Tools.WPF.Graphics2D.csproj">
+      <Project>{6E6B4C67-3C54-4765-BC2E-DB41E86BEB8B}</Project>
+      <Name>NET.Tools.WPF.Graphics2D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Graphics3D\NET.Tools.WPF.Graphics3D.csproj">
+      <Project>{E031930A-28AF-4D7E-8404-E54545DFD0B4}</Project>
+      <Name>NET.Tools.WPF.Graphics3D</Name>
     </ProjectReference>
     <ProjectReference Include="..\NET.Tools.WPF.Skins.ArtSkin\NET.Tools.WPF.Skins.ArtSkin.csproj">
       <Project>{9169571A-790E-4E0B-8C07-4C6005BCB7D2}</Project>

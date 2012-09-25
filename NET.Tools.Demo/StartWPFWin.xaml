@@ -10,5 +10,6 @@
         <Button Height="47" HorizontalAlignment="Right" Margin="0,12,12,0" Name="btnCodeComplexEffects" VerticalAlignment="Top" Width="124" Click="btnCodeComplexEffects_Click">Code Complex Effects</Button>
         <Button Content="Dialogs" Margin="12,173,12,0" Name="btnDialogs" Click="button1_Click" Height="51" VerticalAlignment="Top" />
         <Button Height="51" Margin="12,230,12,0" Name="btnComponents" VerticalAlignment="Top" Click="btnComponents_Click">Components</Button>
+        <Button Content="Drawables" Height="51" Margin="12,287,12,0" Name="button1" VerticalAlignment="Top" Click="button1_Click_1" />
     </Grid>
 </Window>
