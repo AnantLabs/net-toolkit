@@ -15,7 +15,7 @@ namespace NET.Tools.WPF
             DependencyProperty.Register("HiddenLineStyle", typeof(HiddenLineStyle), typeof(Cube2D), new PropertyMetadata(HiddenLineStyle.Dash));
 
         [Browsable(true)]
-        [Category("Appearance")]
+        [Category("Shape 2D")]
         public HiddenLineStyle HiddenLineStyle
         {
             get { return (HiddenLineStyle)GetValue(HiddenLineStyleProperty); }
@@ -26,6 +26,7 @@ namespace NET.Tools.WPF
             DependencyProperty.Register("CameraPosition", typeof (Shape2DCameraPosition), typeof (Shape2D), new PropertyMetadata(Shape2DCameraPosition.TopLeft));
 
         [Browsable(true)]
+        [Category("Shape 2D")]
         public Shape2DCameraPosition CameraPosition
         {
             get { return (Shape2DCameraPosition) GetValue(CameraPositionProperty); }
@@ -36,7 +37,7 @@ namespace NET.Tools.WPF
             DependencyProperty.Register("Fill", typeof (Brush), typeof (Shape2D), new PropertyMetadata(Brushes.White));
 
         [Browsable(true)]
-        [Category("Appearance")]
+        [Category("Shape 2D")]
         public Brush Fill
         {
             get { return (Brush) GetValue(FillProperty); }
@@ -47,7 +48,7 @@ namespace NET.Tools.WPF
             DependencyProperty.Register("Stroke", typeof (Brush), typeof (Shape2D), new PropertyMetadata(Brushes.Black));
 
         [Browsable(true)]
-        [Category("Appearance")]
+        [Category("Shape 2D")]
         public Brush Stroke
         {
             get { return (Brush) GetValue(StrokeProperty); }
@@ -58,7 +59,7 @@ namespace NET.Tools.WPF
             DependencyProperty.Register("StrokeThickness", typeof (double), typeof (Shape2D), new PropertyMetadata(1d));
 
         [Browsable(true)]
-        [Category("Appearance")]
+        [Category("Shape 2D")]
         public double StrokeThickness
         {
             get { return (double) GetValue(StrokeThicknessProperty); }
@@ -69,7 +70,7 @@ namespace NET.Tools.WPF
             DependencyProperty.Register("StrokeLineCap", typeof (PenLineCap), typeof (Shape2D), new PropertyMetadata(default(PenLineCap)));
 
         [Browsable(true)]
-        [Category("Appearance")]
+        [Category("Shape 2D")]
         public PenLineCap StrokeLineCap
         {
             get { return (PenLineCap) GetValue(StrokeLineCapProperty); }

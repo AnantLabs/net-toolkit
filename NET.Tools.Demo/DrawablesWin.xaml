@@ -13,7 +13,7 @@
             </TabItem>
             <TabItem Header="Graphics 3D" Name="tabItem2">
                 <Grid>
-                    <WPF3D:Cube3D Margin="6,6,0,0" HorizontalAlignment="Left" Width="128" Height="128" VerticalAlignment="Top" DiffuseBrush="#FFBA1D1D">
+                    <WPF3D:Cube3D Margin="6,6,0,0" HorizontalAlignment="Left" Width="128" Height="128" VerticalAlignment="Top" CameraPosition="2,2,4">
                         <WPF3D:Cube3D.ObjectTransformation>
                             <RotateTransform3D>
                                 <RotateTransform3D.Rotation>
@@ -30,6 +30,9 @@
                                 </BeginStoryboard>
                             </EventTrigger>
                         </WPF3D:Cube3D.Triggers>
+                        <WPF3D:Cube3D.DiffuseBrush>
+                            <ImageBrush ImageSource="/NET.Tools.Demo;component/Tulips.jpg" />
+                        </WPF3D:Cube3D.DiffuseBrush>
                     </WPF3D:Cube3D>
                 </Grid>
             </TabItem>
