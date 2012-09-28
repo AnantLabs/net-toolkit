@@ -41,6 +41,10 @@ namespace NET.Tools
             Key = key;
         }
 
+        public LanguageExtension()
+        {
+        }
+
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
             if (String.IsNullOrEmpty(Key))

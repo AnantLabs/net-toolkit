@@ -204,7 +204,7 @@ namespace NET.Tools
         /// <exception cref="NumberParserException">
         /// Is thrown if an number cannot be parsed
         /// </exception>
-        public static double ParseCalculationString(String str, Dictionary<String, double> valueList, int decimals)
+        public static double ParseCalculationString(String str, IDictionary<String, double> valueList, int decimals)
         {
             StringCalculator.decimals = decimals;
 

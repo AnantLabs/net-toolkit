@@ -259,12 +259,12 @@ namespace NET.Tools
         /// Is thrown if an number cannot be parsed
         /// </exception>
         /// <seealso cref="StringCalculator"/>
-        public static double ParseCalculationString(this String str, Dictionary<String, double> valueList, int decimals)
+        public static double ParseCalculationString(this String str, IDictionary<String, double> valueList, int decimals)
         {
             return StringCalculator.ParseCalculationString(str, valueList, decimals);
         }
 
-        public static double ParseCalculationString(this String str, Dictionary<String, double> valueList)
+        public static double ParseCalculationString(this String str, IDictionary<String, double> valueList)
         {
             return str.ParseCalculationString(valueList, 6);
         }
