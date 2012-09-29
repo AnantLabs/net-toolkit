@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using log4net;
 
 namespace NET.Tools.OS
 {
@@ -15,6 +16,8 @@ namespace NET.Tools.OS
     /// </summary>
     public sealed class TaskBarManager : NativeWindow
     {
+        private static readonly ILog LOG = LogManager.GetLogger(typeof(TaskBarManager));
+
         private IntPtr hwnd = IntPtr.Zero;
         private ulong value = 0, max = 100;
         private TaskbarProgressBarStyle style = TaskbarProgressBarStyle.NoProgress;
@@ -184,7 +187,7 @@ namespace NET.Tools.OS
         {
             if (m.Msg == COMConstants.COMCommands.WmTaskbarButtonCreated)
             {
-                Log.Debug("Create thumb buttons");
+                LOG.Debug("Create thumb buttons");
                 buttonManager.AddButtonsToTaskbar();
             }
 

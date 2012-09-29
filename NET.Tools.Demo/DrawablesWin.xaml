@@ -4,13 +4,21 @@
         xmlns:WPF="clr-namespace:NET.Tools.WPF;assembly=NET.Tools.WPF.Graphics2D" 
         xmlns:WPF3D="clr-namespace:NET.Tools.WPF;assembly=NET.Tools.WPF.Graphics3D"
         xmlns:MarkupExtensions="clr-namespace:NET.Tools.MarkupExtensions;assembly=NET.Tools.WPF.Tools"
-        Title="DrawablesWin" Height="412" Width="734" ShowInTaskbar="False" ResizeMode="NoResize" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
+        Title="Drawing WPF" Height="412" Width="734" ShowInTaskbar="False" ResizeMode="NoResize" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
     <Grid>
         <TabControl Margin="12" Name="tabControl1">
             <TabItem Header="Graphics 2D" Name="tabItem1">
                 <Grid>
                     <WPF:Cube2D x:Name="Cube2D" Fill="Red" Stroke="Black" Height="128" VerticalAlignment="Top" HorizontalAlignment="Left" Width="128" Margin="6,6,0,0" HorizontalFill="#FFFF5F5F" VerticalFill="#FF900000" StrokeLineCap="Round" />
-                    <Border BorderBrush="Silver" BorderThickness="1" Height="{MarkupExtensions:Calculate Formula=100+X,ValueX=100}" HorizontalAlignment="Left" Margin="310,78,0,0" Name="border1" VerticalAlignment="Top" Width="200" />
+                    <Border BorderBrush="Silver" BorderThickness="1" Height="{MarkupExtensions:Calculate Formula=100+X,ValueX=100}" HorizontalAlignment="Right" Margin="0,6,6,0" Name="border1" VerticalAlignment="Top" Width="200" />
+                    <WPF:CoordinateSystem HorizontalAlignment="Left" Margin="140,6,0,0" Name="coordinateSystem1" VerticalAlignment="Top" Height="305" Width="326" CalculationFormula1="2*x^3+5*x^2-3*x+2" ShowGridLines="True" GridLineTickVertical="5" GridLineTickHorizontal="5" ShowGraphLine3="True" ShowGraphLine4="True" MouseWheel="coordinateSystem1_MouseWheel">
+                        <WPF:CoordinateSystem.Effect>
+                            <DropShadowEffect Opacity=".3"/>
+                        </WPF:CoordinateSystem.Effect>
+                        <WPF:CoordinateSystem.Background>
+                            <SolidColorBrush />
+                        </WPF:CoordinateSystem.Background>
+                    </WPF:CoordinateSystem>
                 </Grid>
             </TabItem>
             <TabItem Header="Graphics 3D" Name="tabItem2">

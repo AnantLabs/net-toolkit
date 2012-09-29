@@ -22,5 +22,10 @@ namespace NET.Tools
         {
             InitializeComponent();
         }
+
+        private void coordinateSystem1_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            Console.WriteLine(e.Delta);
+        }
     }
 }

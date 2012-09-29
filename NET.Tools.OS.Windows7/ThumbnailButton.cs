@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
+using log4net;
 
 namespace NET.Tools.OS
 {
@@ -12,6 +13,8 @@ namespace NET.Tools.OS
     /// </summary>
     public class ThumbnailButton : IDisposable
     {
+        private static readonly ILog LOG = LogManager.GetLogger(typeof(ThumbnailButton));
+
         #region Static Memebrs
 
         private static ThumbButtonMask Mask
@@ -141,7 +144,7 @@ namespace NET.Tools.OS
 
         internal ThumbnailButton(ThumbnailButtonManager man, Icon icon, string tooltip)
         {
-            Log.Info("Create thumbnail button for " + man.Root.ToInt64());
+            LOG.Info("Create thumbnail button for " + man.Root.ToInt64());
 
             Icon = icon;
             ToolTip = tooltip;
@@ -153,20 +156,20 @@ namespace NET.Tools.OS
 
         internal void AddButton()
         {
-            Log.Debug("Add thumbnail button");
+            LOG.Debug("Add thumbnail button");
             Windows7TaskBar.UpdateThumbnailButtons(Parent, this.ToThumbButton());
             Windows7TaskBar.AddThumbnailButtons(Parent, this.ToThumbButton());
         }
 
         internal void RemoveButton()
         {
-            Log.Debug("Remove thumbnail button");
+            LOG.Debug("Remove thumbnail button");
             Visible = false;
         }
 
         private ThumbButton ToThumbButton()
         {
-            Log.Debug("Convert to ThumbButton...");
+            LOG.Debug("Convert to ThumbButton...");
 
             ThumbButton btn = new ThumbButton();
             btn.Bitmap = 0;
@@ -176,13 +179,13 @@ namespace NET.Tools.OS
             btn.Mask = Mask;
             btn.Tip = ToolTip;
 
-            Log.Debug(">>> OK");
+            LOG.Debug(">>> OK");
             return btn;
         }
 
         internal void OnWndProc(ref Message msg)
         {
-            Log.Debug("Thumbnail Button: Do Action");
+            LOG.Debug("Thumbnail Button: Do Action");
 
             WmCommandResult res = MessageInterpreter.CheckWmCommand(msg);
             if ((res != null) && (ID == res.ID))
@@ -245,7 +248,7 @@ namespace NET.Tools.OS
             if (Update != null)
                 Update(this, new EventArgs());
 
-            Log.Debug("Thumbnail Button: Update Taskbar");
+            LOG.Debug("Thumbnail Button: Update Taskbar");
             Windows7TaskBar.UpdateThumbnailButtons(Parent, this.ToThumbButton());
         }
 

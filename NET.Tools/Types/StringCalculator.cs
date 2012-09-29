@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using log4net;
 
 namespace NET.Tools
 {
@@ -62,6 +63,8 @@ namespace NET.Tools
     /// </summary>
     public static class StringCalculator
     {
+        private static readonly ILog LOG = LogManager.GetLogger(typeof (StringCalculator));
+
         private static int decimals = 6;
 
         #region Calculator
@@ -208,23 +211,23 @@ namespace NET.Tools
         {
             StringCalculator.decimals = decimals;
 
-            Log.Info("Parse calculation string...");
-            Log.Debug("Incomming: " + str);
+            LOG.Info("Parse calculation string...");
+            LOG.Debug("Incomming: " + str);
             foreach (String key in valueList.Keys)
                 str = str.Replace(key, valueList[key].ToString(CreateForToStringZeros()));
-            Log.Debug("Replace values: " + str);
+            LOG.Debug("Replace values: " + str);
 
             //Replace all points with comma for decimal numbers
             str = str.Replace('.', ',');
-            Log.Debug("Replace '.': " + str);
+            LOG.Debug("Replace '.': " + str);
             //Remove all spaces
             str = str.RemoveAllSpaces();
-            Log.Debug("Remove all spaces: " + str);
+            LOG.Debug("Remove all spaces: " + str);
 
             str = CheckForBreaks(str); //Clean up from breaks (compute all breaks)
             double value = CheckForOperatorsAndFunctions(str); //Last step: Compute all operations
 
-            Log.Info("Finished parsing, result: " + value);
+            LOG.Info("Finished parsing, result: " + value);
             return value;
         }
 
@@ -247,19 +250,19 @@ namespace NET.Tools
 
         private static String CheckForBreaks(String str)
         {
-            Log.Debug("Check for breaks...");
+            LOG.Debug("Check for breaks...");
 
             StringBuilder calc = new StringBuilder(str);
             Match match = null;
 
             do
             {
-                Log.Debug("Current: " + calc.ToString());
+                LOG.Debug("Current: " + calc.ToString());
 
                 match = Breaks.Match(calc.ToString());
                 if (match.Success)
                 {
-                    Log.Debug("Found match: " + match.Value);
+                    LOG.Debug("Found match: " + match.Value);
 
                     //Get part
                     String part = match.Value.Substring(1, match.Value.Length - 2);
@@ -271,11 +274,11 @@ namespace NET.Tools
                     //Insert double number value on this place
                     calc.Insert(match.Index, value.ToString(CreateForToStringZeros()));
 
-                    Log.Debug("New string: " + calc.ToString());
+                    LOG.Debug("New string: " + calc.ToString());
                 }
             } while (match.Success);
 
-            Log.Debug("Breaks result: " + str);
+            LOG.Debug("Breaks result: " + str);
             return calc.ToString();
         }
 
@@ -316,63 +319,81 @@ namespace NET.Tools
 
         private static String CheckFor(String str, Regex reg, string func)
         {
-            Log.Debug("Check for function: " + func);
+            LOG.Debug("Check for function: " + func);
 
             StringBuilder calc = new StringBuilder(str);
             Match match = null;
 
             do
             {
-                Log.Debug("Current: " + str);
+                LOG.Debug("Current: " + str);
 
                 match = reg.Match(calc.ToString());
                 if (match.Success)
                 {
-                    Log.Debug("Found match: " + match.Value);
+                    LOG.Debug("Found match: " + match.Value);
 
                     String part = match.Value;
                     double value = ComputeCalculationForFunctions(part, func);
 
                     calc.Remove(match.Index, match.Length);
-                    calc.Insert(match.Index, value.ToString(CreateForToStringZeros()));
+                    //Check that a operator is set after removing
+                    if (match.Index - 1 >= 0 && calc[match.Index - 1] != '+' && calc[match.Index - 1] != '-' &&
+                        calc[match.Index - 1] != '*' && calc[match.Index - 1] != '/')
+                    {
+                        calc.Insert(match.Index, "+" + value.ToString(CreateForToStringZeros()));
+                    }
+                    else
+                    {
+                        calc.Insert(match.Index, value.ToString(CreateForToStringZeros()));
+                    }
 
-                    Log.Debug("New string: " + str);
+                    LOG.Debug("New string: " + str);
                 }
             }
             while (match.Success);
 
-            Log.Debug("Functions result: " + str);
+            LOG.Debug("Functions result: " + str);
             return calc.ToString();
         }
 
         private static String CheckFor(String str, Regex reg, char operation)
         {
-            Log.Debug("Check for operators: " + operation);
+            LOG.Debug("Check for operators: " + operation);
 
             StringBuilder calc = new StringBuilder(str);
             Match match = null;
 
             do
             {
-                Log.Debug("Current: " + str);
+                LOG.Debug("Current: " + calc);
 
                 match = reg.Match(calc.ToString());
                 if (match.Success)
                 {
-                    Log.Debug("Found match: " + match.Value);
+                    LOG.Debug("Found match: " + match.Value);
 
                     String part = match.Value;
                     double value = ComputeCalculationForOperators(part, operation);
 
                     calc.Remove(match.Index, match.Length);
-                    calc.Insert(match.Index, value.ToString(CreateForToStringZeros()));
+                    //Check that a operator is set after removing
+                    if (match.Index - 1 >= 0 && calc[match.Index - 1] != '+' && calc[match.Index - 1] != '-' &&
+                        calc[match.Index - 1] != '*' && calc[match.Index - 1] != '/')
+                    {
+                        calc.Insert(match.Index, "+" + value.ToString(CreateForToStringZeros()));
+                    }
+                    else
+                    {
+                        calc.Insert(match.Index, value.ToString(CreateForToStringZeros()));
+                    }
 
-                    Log.Debug("New string: " + str);
+                    LOG.Debug("New string: " + calc);
                 }
             }
             while (match.Success);
 
-            Log.Debug("Operation result: " + str);
+            LOG.Debug("Operation result: " + calc);
             return calc.ToString();
         }
 

@@ -8,21 +8,21 @@ namespace NET.Tools.OS
 {
     public static class Cards
     {
-        [DllImport("cards.dll")]
+        [DllImport("cards", EntryPoint = "cdtInit")]
         public static extern bool cdtInit([In] ref int width, [In] ref int height);
 
-        [DllImport("cards.dll")]
+        [DllImport("cards", EntryPoint = "cdtTerm")]
         public static extern void cdtTerm();
 
-        [DllImport("cards.dll")]
+        [DllImport("cards", EntryPoint = "cdtDrawExt")]
         public static extern int cdtDrawExt(IntPtr hDC, int x, int y, int dx, int dy,
             int escCard, int ectDraw, int clr);
 
-        [DllImport("cards.dll")]
+        [DllImport("cards", EntryPoint = "cdtDraw")]
         public static extern int cdtDraw(IntPtr hDC, int x, int y, int escCard,
             int ectDraw, int clr);
 
-        [DllImport("cards.dll")]
+        [DllImport("cards", EntryPoint = "cdtAnimate")]
         public static extern int cdtAnimate(IntPtr hDC, int ecbCardBack, int x, int y,
             int iState);
     }
