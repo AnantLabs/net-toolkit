@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using System.Globalization;
 using System.Threading;
+using log4net;
 
 namespace NET.Tools.Engines.Internationalization
 {
@@ -18,6 +19,8 @@ namespace NET.Tools.Engines.Internationalization
     /// </summary>
     public sealed class ExternalLanguageManager : LanguageManager
     {
+        private static readonly ILog LOG = LogManager.GetLogger(typeof (ExternalLanguageManager));
+
         private IDictionary<CultureInfo, LanguageDocument> textList;
         private LanguageDocument defaultText;
 
@@ -40,7 +43,7 @@ namespace NET.Tools.Engines.Internationalization
                     }
                     catch (Exception e)
                     {
-                        Log.Warn("Cannot handle language '" + fi.Name.ToLower().Replace(".xml", ""), e);
+                        LOG.Warn("Cannot handle language '" + fi.Name.ToLower().Replace(".xml", ""), e);
                     }
                 }
             }

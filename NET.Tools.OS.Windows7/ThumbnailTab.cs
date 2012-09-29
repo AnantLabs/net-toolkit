@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using log4net;
 
 namespace NET.Tools.OS
 {
@@ -10,6 +11,8 @@ namespace NET.Tools.OS
     /// </summary>
     public sealed class ThumbnailTab : IDisposable
     {
+        private static readonly ILog LOG = LogManager.GetLogger(typeof(ThumbnailTab));
+
         private TabBehavior behavior = TabBehavior.None;
         private ThumbnailTabManager manager;
 
@@ -23,7 +26,7 @@ namespace NET.Tools.OS
 
         internal ThumbnailTab(ThumbnailTabManager man, IntPtr child)
         {
-            Log.Info("Create thumbnail tab for " + man.Root.ToInt64());
+            LOG.Info("Create thumbnail tab for " + man.Root.ToInt64());
             this.Child = child;
 
             this.manager = man;
@@ -31,7 +34,7 @@ namespace NET.Tools.OS
 
         internal void AddTab()
         {
-            Log.Debug("Add tab to thumbnail");
+            LOG.Debug("Add tab to thumbnail");
             Windows7TaskBar.RegisterTab(Parent, Child);
             Windows7TaskBar.SetTabOrder(Child, IntPtr.Zero);
             Windows7TaskBar.SetTabActive(Child, Parent);
@@ -41,7 +44,7 @@ namespace NET.Tools.OS
 
         internal void RemoveTab()
         {
-            Log.Debug("Remove tab from thumbnail");
+            LOG.Debug("Remove tab from thumbnail");
             Windows7TaskBar.UnregisterTab(Child);
             IsShown = false;
         }

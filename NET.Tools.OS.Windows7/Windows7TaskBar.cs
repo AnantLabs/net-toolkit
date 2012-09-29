@@ -3,27 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
+using log4net;
 
 namespace NET.Tools.OS
 {
     public static class Windows7TaskBar
     {
+        private static readonly ILog LOG = LogManager.GetLogger(typeof(Windows7TaskBar));
+
         private static ITaskbarList4 taskbar = null;
 
         static Windows7TaskBar()
         {
             try
             {
-                Log.Info("Try to initialize Windows 7 Taskbar...");
+                LOG.Info("Try to initialize Windows 7 Taskbar...");
                 taskbar = (ITaskbarList4)new TaskbarList();
                 taskbar.HrInit();
-                Log.Info(">>> OK");
+                LOG.Info(">>> OK");
             }
             catch (Exception e)
             {
                 taskbar = null;
-                Log.Warn("WARN: Cannot create windows 7 taskbar:\n" + e.Message);
-                Log.Info("Ignore commands for windows 7 taskbar!");
+                LOG.Warn("WARN: Cannot create windows 7 taskbar:\n" + e.Message);
+                LOG.Info("Ignore commands for windows 7 taskbar!");
             }
         }
 

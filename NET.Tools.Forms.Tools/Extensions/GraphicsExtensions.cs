@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Windows.Forms;
 using NET.Tools.OS;
+using log4net;
 
 namespace NET.Tools
 {
@@ -27,6 +29,8 @@ namespace NET.Tools
 
         private static class CardsWrapper
         {
+            private static readonly ILog LOG = LogManager.GetLogger(typeof (GraphicsExtensions));
+
             private static int defWidth, defHeight;
             private static bool isInitialized = false;
 
@@ -41,8 +45,9 @@ namespace NET.Tools
                     AppDomain.CurrentDomain.ProcessExit += (s, e) => { Cards.cdtTerm(); };
                     isInitialized = true;
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
+                    LOG.Error("Cannot initialize cards!", e);
                     isInitialized = false;
                 }
             }
@@ -51,7 +56,10 @@ namespace NET.Tools
                 int faceValue, CardSuit suit, Color invColor)
             {
                 if (!isInitialized)
+                {
+                    LOG.Warn("Cannot draw card face: Not initialized!");
                     return;
+                }
 
                 if ((faceValue < 0) || (faceValue > 12))
                     throw new ArgumentOutOfRangeException("FaceValue", faceValue, "FaceValue must be in the range 0 - 12!");
@@ -74,7 +82,10 @@ namespace NET.Tools
                 CardSuit suit, Color invColor)
             {
                 if (!isInitialized)
+                {
+                    LOG.Warn("Cannot draw card face: Not initialized!");
                     return;
+                }
 
                 if ((faceValue < 0) || (faceValue > 12))
                     throw new ArgumentOutOfRangeException("FaceValue", faceValue, "FaceValue must be in the range 0 - 12!");
@@ -97,7 +108,10 @@ namespace NET.Tools
                 CardDeck deck, Color color)
             {
                 if (!isInitialized)
+                {
+                    LOG.Warn("Cannot draw card deck: Not initialized!");
                     return;
+                }
 
                 IntPtr hDC = g.GetHdc();
                 try
@@ -113,7 +127,10 @@ namespace NET.Tools
             public static void DrawDeck(Graphics g, int x, int y, CardDeck deck, Color color)
             {
                 if (!isInitialized)
+                {
+                    LOG.Warn("Cannot draw card deck: Not initialized!");
                     return;
+                }
 
                 IntPtr hDC = g.GetHdc();
                 try

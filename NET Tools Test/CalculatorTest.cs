@@ -301,7 +301,8 @@ namespace NET.Tools.Test
         [TestMethod]
         public void Test()
         {
-            double value = "3*5+8".ParseCalculationString();
+            double value = "-3.0*5.0+8.0*3.0-2.0*-3.000".ParseCalculationString();
+            Assert.AreEqual(15, value);
         }
     }
 }
