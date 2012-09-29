@@ -30,21 +30,17 @@ namespace NET.Tools.WPF
         public static LoginData ShowDialog(String title, String header, String info,
             String userNameText, String userName, ImageSource icon, SkinBundle bundle, Func<String, String, bool> validateUser)
         {
-            LoginDialogEx dlg = new LoginDialogEx(validateUser, bundle);
-            dlg.Title = title;
-            dlg.hInfo.HeaderText = header;
-            dlg.hInfo.InfoText = info;
+            LoginDialogEx dlg = new LoginDialogEx(validateUser, bundle)
+                {
+                    Title = title,
+                    hInfo =
+                        {
+                            HeaderContent = header,
+                            DescriptionText = info
+                        }
+                };
             if (bundle != null)
             {
-                if (bundle.HeaderTopColor.HasValue)
-                    dlg.hInfo.TopColor = bundle.HeaderTopColor.Value;
-                if (bundle.HeadLineTextBrush != null)
-                    dlg.hInfo.HeaderColor = bundle.HeadLineTextBrush;
-                if (bundle.InfoTextBrush != null)
-                    dlg.hInfo.InfoColor = bundle.InfoTextBrush;
-                if (bundle.HeaderBottomColor.HasValue)
-                    dlg.hInfo.BottomColor = bundle.HeaderBottomColor.Value;
-
                 bundle.SetBundle(dlg);
             }
 

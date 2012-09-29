@@ -15,7 +15,7 @@ namespace NET.Tools.WPF.Skins
             {
                 return new SkinBundle(
                   new Uri(@"pack://application:,,,/NET.Tools.WPF.Skins.PaperSkin;component/PaperSkin.xaml"),
-                  "PaperWindow", Brushes.Black, Brushes.Black, Colors.LightYellow, Colors.Yellow);
+                  "PaperWindow");
             }
         }
     }

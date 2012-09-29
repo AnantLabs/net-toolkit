@@ -9,7 +9,21 @@
                 <ControlTemplate TargetType="{x:Type Window}">
                     <Border Style="{DynamicResource WindowBorder}" Background="Transparent" BorderThickness="0">
                         <Grid>
-                            <Border Background="#EEEEEE" Margin="0,0,200,100">
+                            <Border Margin="0,0,200,100">
+                                <Border.Background>
+                                    <DrawingBrush Stretch="None" TileMode="Tile" Viewbox="0,0,1,1" ViewboxUnits="RelativeToBoundingBox">
+                                        <DrawingBrush.Drawing>
+                                            <GeometryDrawing Brush="#EEEEEE">
+                                                <GeometryDrawing.Pen>
+                                                    <Pen Brush="Silver" Thickness="1"/>
+                                                </GeometryDrawing.Pen>
+                                                <GeometryDrawing.Geometry>
+                                                    <RectangleGeometry Rect="100,100,100,100"/>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                        </DrawingBrush.Drawing>
+                                    </DrawingBrush>
+                                </Border.Background>
                                 <Label Style="{DynamicResource WindowCaption}" MouseDown="Label_MouseDown">
                                     <Binding Path="Title" RelativeSource="{RelativeSource Mode=TemplatedParent}"/>
                                 </Label>
