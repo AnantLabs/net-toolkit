@@ -15,210 +15,151 @@ using System.ComponentModel;
 
 namespace NET.Tools.WPF
 {
+    public enum HeaderIconSize : int
+    {
+        /// <summary>
+        /// 16x16
+        /// </summary>
+        Small = 16,
+        /// <summary>
+        /// 32x32
+        /// </summary>
+        Medium = 32,
+        /// <summary>
+        /// 64x64
+        /// </summary>
+        Large = 64
+    }
+
     /// <summary>
     /// Interaktionslogik für Header.xaml
     /// </summary>
     public partial class Header : UserControl
     {
-        private Color topColor, bottomColor;
+        public static readonly DependencyProperty DescriptionBrushProperty =
+            DependencyProperty.Register("DescriptionBrush", typeof (Brush), typeof (Header), new PropertyMetadata(null));
 
         [Browsable(true)]
         [Category("Appearance")]
-        public Color TopColor
+        public Brush DescriptionBrush
         {
-            get { return topColor; }
-            set { topColor = value; BuildBrush(); }
+            get { return (Brush) GetValue(DescriptionBrushProperty); }
+            set { SetValue(DescriptionBrushProperty, value); }
         }
+
+        public static readonly DependencyProperty IconSourceProperty =
+            DependencyProperty.Register("IconSource", typeof (ImageSource), typeof (Header), new PropertyMetadata(default(ImageSource)));
 
         [Browsable(true)]
         [Category("Appearance")]
-        public Color BottomColor
+        public ImageSource IconSource
         {
-            get { return bottomColor; }
-            set { bottomColor = value; BuildBrush(); }
+            get { return (ImageSource) GetValue(IconSourceProperty); }
+            set { SetValue(IconSourceProperty, value); }
         }
+
+        public static readonly DependencyProperty DescriptionFontProperty =
+            DependencyProperty.Register("DescriptionFont", typeof (WPFFont), typeof (Header), new PropertyMetadata(null));
 
         [Browsable(true)]
         [Category("Appearance")]
-        public Brush HeaderColor
+        public WPFFont DescriptionFont
         {
-            get { return lblHeader.Foreground; }
-            set { lblHeader.Foreground = value; }
+            get { return (WPFFont) GetValue(DescriptionFontProperty); }
+            set { SetValue(DescriptionFontProperty, value); }
         }
+
+        public static readonly DependencyProperty HeaderContentProperty =
+            DependencyProperty.Register("HeaderContent", typeof (object), typeof (Header), new PropertyMetadata("Header"));
 
         [Browsable(true)]
         [Category("Appearance")]
-        public Brush InfoColor
+        public object HeaderContent
         {
-            get { return lblDescription.Foreground; }
-            set { lblDescription.Foreground = value; }
+            get { return (object) GetValue(HeaderContentProperty); }
+            set { SetValue(HeaderContentProperty, value); }
         }
+
+        public static readonly DependencyProperty DescriptionTextProperty =
+            DependencyProperty.Register("DescriptionText", typeof (String), typeof (Header), new PropertyMetadata("Description"));
 
         [Browsable(true)]
         [Category("Appearance")]
-        public FontFamily HeaderFontFamily
+        public String DescriptionText
         {
-            get { return lblHeader.FontFamily; }
-            set { lblHeader.FontFamily = value; }
+            get { return (String) GetValue(DescriptionTextProperty); }
+            set { SetValue(DescriptionTextProperty, value); }
         }
 
-        [Browsable(true)]
-        [Category("Appearance")]
-        public double HeaderFontSize
+        public static readonly DependencyProperty IconSizeProperty =
+            DependencyProperty.Register("IconSize", typeof (HeaderIconSize), typeof (Header), new PropertyMetadata(HeaderIconSize.Medium));
+
+        public HeaderIconSize IconSize
         {
-            get { return lblHeader.FontSize; }
-            set { lblHeader.FontSize = value; }
+            get { return (HeaderIconSize) GetValue(IconSizeProperty); }
+            set { SetValue(IconSizeProperty, value); }
         }
 
-        [Browsable(true)]
-        [Category("Appearance")]
-        public FontWeight HeaderFontWeight
-        {
-            get { return lblHeader.FontWeight; }
-            set { lblHeader.FontWeight = value; }
-        }
-
-        [Browsable(true)]
-        [Category("Appearance")]
-        public FontStretch HeaderFontStretch
-        {
-            get { return lblHeader.FontStretch; }
-            set { lblHeader.FontStretch = value; }
-        }
-
-        [Browsable(true)]
-        [Category("Appearance")]
-        public FontStyle HeaderFontStyle
-        {
-            get { return lblHeader.FontStyle; }
-            set { lblHeader.FontStyle = value; }
-        }
-
-        [Browsable(true)]
-        [Category("Appearance")]
-        public FontFamily InfoFontFamily
-        {
-            get { return lblDescription.FontFamily; }
-            set { lblDescription.FontFamily = value; }
-        }
-
-        [Browsable(true)]
-        [Category("Appearance")]
-        public double InfoFontSize
-        {
-            get { return lblDescription.FontSize; }
-            set { lblDescription.FontSize = value; }
-        }
-
-        [Browsable(true)]
-        [Category("Appearance")]
-        public FontWeight InfoFontWeight
-        {
-            get { return lblDescription.FontWeight; }
-            set { lblDescription.FontWeight = value; }
-        }
-
-        [Browsable(true)]
-        [Category("Appearance")]
-        public FontStyle InfoFontStyle
-        {
-            get { return lblDescription.FontStyle; }
-            set { lblDescription.FontStyle = value; }
-        }
-
-        [Browsable(true)]
-        [Category("Appearance")]
-        public FontStretch InfoFontStretch
-        {
-            get { return lblDescription.FontStretch; }
-            set { lblDescription.FontStretch = value; }
-        }
-
-        [Browsable(true)]
-        [Category("Appearance")]
-        public String HeaderText
-        {
-            get { return lblHeader.Content as String; }
-            set { lblHeader.Content = value; }
-        }
-
-        [Browsable(true)]
-        [Category("Appearance")]
-        public String InfoText
-        {
-            get { return lblDescription.Content as String; }
-            set { lblDescription.Content = value; }
-        }
-
-        [Browsable(true)]
-        [Category("Appearance")]
-        public ImageSource Icon
-        {
-            get { return imgIcon.Source; }
-            set { imgIcon.Source = value; }
-        }
-
-        [Browsable(false)]
-        public WPFFont HeaderFont
-        {
-            get
-            {
-                return new WPFFont(
-                    HeaderFontFamily,
-                    HeaderFontSize,
-                    HeaderFontStyle,
-                    HeaderFontWeight,
-                    HeaderFontStretch);
-            }
-            set
-            {
-                HeaderFontFamily = value;
-                HeaderFontSize = value;
-                HeaderFontStretch = value;
-                HeaderFontStyle = value;
-                HeaderFontWeight = value;
-            }
-        }
-
-        [Browsable(false)]
-        public WPFFont InfoFont
-        {
-            get
-            {
-                return new WPFFont(
-                    InfoFontFamily,
-                    InfoFontSize,
-                    InfoFontStyle,
-                    InfoFontWeight,
-                    InfoFontStretch);
-            }
-            set
-            {
-                InfoFontFamily = value;
-                InfoFontSize = value;
-                InfoFontStretch = value;
-                InfoFontStyle = value;
-                InfoFontWeight = value;
-            }
-        }
+        public event RoutedEventHandler IconSizeChanged;
 
         public Header()
         {
             InitializeComponent();
-            HeaderColor = SystemColors.ActiveCaptionTextBrush;
-            InfoColor = SystemColors.ActiveCaptionTextBrush;
-
-            topColor = SystemColors.ActiveCaptionColor;
-            bottomColor = SystemColors.GradientActiveCaptionColor;
-            BuildBrush();
         }
 
-        private void BuildBrush()
+        protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
-            LinearGradientBrush brush = new LinearGradientBrush(
-                TopColor, BottomColor, 
-                new Point(0, 0), new Point(0, 1));
-            grdMain.Background = brush;
+            base.OnPropertyChanged(e);
+
+            if (e.Property == IconSourceProperty)
+            {
+                imgIcon.Source = IconSource;
+                InvalidateVisual();
+            }
+            else if (e.Property == DescriptionBrushProperty)
+            {
+                lblDescription.Foreground = DescriptionBrush;
+                InvalidateVisual();
+            }
+            else if (e.Property == DescriptionFontProperty)
+            {
+                lblDescription.SetFont(DescriptionFont);
+                InvalidateVisual();
+            }
+            else if (e.Property == HeaderContentProperty)
+            {
+                lblHeader.Content = HeaderContent;
+                InvalidateVisual();
+            }
+            else if (e.Property == DescriptionTextProperty)
+            {
+                lblDescription.Text = DescriptionText;
+                InvalidateVisual();
+            }
+            else if (e.Property == IconSizeProperty)
+            {
+                colImage.MaxWidth = (int)IconSize;
+                if (IconSize == HeaderIconSize.Large)
+                {
+                    Grid.SetRowSpan(imgIcon, 2);
+                }
+                else
+                {
+                    Grid.SetRowSpan(imgIcon, 1);
+                }
+
+                OnIconSizeChanged();
+
+                InvalidateVisual();
+            }
+        }
+
+        protected void OnIconSizeChanged()
+        {
+            if (IconSizeChanged != null)
+            {
+                IconSizeChanged(this, new RoutedEventArgs());
+            }
         }
     }
 }

@@ -106,6 +106,7 @@
     <Compile Include="Extensions\CameraExtensions.cs" />
     <Compile Include="Extensions\CanvasExtensions.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
+    <Compile Include="Extensions\ControlExtensions.cs" />
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
     <Compile Include="Extensions\FontFamilyExtensions.cs" />
     <Compile Include="Extensions\LinearGradientBrushExtensions.cs" />

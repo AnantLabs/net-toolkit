@@ -14,7 +14,7 @@ namespace NET.Tools.WPF.Skins
             {
                 return new SkinBundle(
                     new Uri(@"pack://application:,,,/NET.Tools.WPF.Skins.ChalkSkin;component/ChalkSkin.xaml"),
-                    "ChalkWindow", Brushes.White, Brushes.White, Colors.Green, Colors.DarkGreen);
+                    "ChalkWindow");
             }
         }
     }

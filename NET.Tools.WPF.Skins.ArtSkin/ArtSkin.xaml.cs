@@ -14,7 +14,7 @@ namespace NET.Tools.WPF.Skins
             {
                 return new SkinBundle(
                     new Uri(@"pack://application:,,,/NET.Tools.WPF.Skins.ArtSkin;component/ArtSkin.xaml"),
-                    "ArtWindow", Brushes.White, Brushes.White, Colors.White, Colors.Silver);
+                    "ArtWindow");
             }
         }
     }

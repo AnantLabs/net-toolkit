@@ -30,23 +30,19 @@ namespace NET.Tools.WPF
         public static String ShowDialog(String title, String header, String info, ImageSource icon,
             SkinBundle bundle, Func<String, bool> validatePassword)
         {
-            PasswordChangeDialogEx dlg = new PasswordChangeDialogEx(validatePassword, bundle);
-            dlg.Title = title;
-            dlg.hInfo.HeaderText = header;
-            dlg.hInfo.InfoText = info;
+            PasswordChangeDialogEx dlg = new PasswordChangeDialogEx(validatePassword, bundle)
+                {
+                    Title = title,
+                    hInfo =
+                        {
+                            HeaderContent = header,
+                            DescriptionText = info
+                        }
+                };
             if (icon != null)
-                dlg.hInfo.Icon = icon;
+                dlg.hInfo.IconSource = icon;
             if (bundle != null)
             {
-                if (bundle.HeaderTopColor.HasValue)
-                    dlg.hInfo.TopColor = bundle.HeaderTopColor.Value;
-                if (bundle.HeadLineTextBrush != null)
-                    dlg.hInfo.HeaderColor = bundle.HeadLineTextBrush;
-                if (bundle.InfoTextBrush != null)
-                    dlg.hInfo.InfoColor = bundle.InfoTextBrush;
-                if (bundle.HeaderBottomColor.HasValue)
-                    dlg.hInfo.BottomColor = bundle.HeaderBottomColor.Value;
-
                 bundle.SetBundle(dlg);
             }
 

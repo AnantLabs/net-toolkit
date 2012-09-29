@@ -14,7 +14,7 @@ namespace NET.Tools.WPF.Skins
             {
                 return new SkinBundle(
                   new Uri(@"pack://application:,,,/NET.Tools.WPF.Skins.PortalSkin;component/PortalSkin.xaml"),
-                  "PortalWindow", Brushes.Black, Brushes.Black, Colors.LightYellow, Colors.Yellow);
+                  "PortalWindow");
             }
         }
     }

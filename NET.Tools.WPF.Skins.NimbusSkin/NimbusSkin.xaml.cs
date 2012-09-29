@@ -15,7 +15,7 @@ namespace NET.Tools.WPF.Skins
             {
                 return new SkinBundle(
                     new Uri(@"pack://application:,,,/NET.Tools.WPF.Skins.NimbusSkin;component/NimbusSkin.xaml"),
-                    "NimbusWindow", Brushes.Black, Brushes.Black, Colors.Silver, Colors.DarkGray);
+                    "NimbusWindow");
             }
         }
 

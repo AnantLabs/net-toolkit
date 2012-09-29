@@ -14,7 +14,7 @@ namespace NET.Tools.WPF.Skins
             {
                 return new SkinBundle(
                   new Uri(@"pack://application:,,,/NET.Tools.WPF.Skins.CIMSkin;component/CIMSkin.xaml"),
-                  "CIMWindow", Brushes.Black, Brushes.Black, Colors.LightYellow, Colors.Yellow);
+                  "CIMWindow");
             }
         }
     }
