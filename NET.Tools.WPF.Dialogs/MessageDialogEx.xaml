@@ -1,16 +1,18 @@
 ﻿<Window x:Class="NET.Tools.WPF.MessageDialogEx"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Title" Height="145" Width="468" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" Closing="Window_Closing" Loaded="Window_Loaded">
+    Title="Title" Height="196" Width="616" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" Closing="Window_Closing" Loaded="Window_Loaded">
         
     <Grid>
-        <TextBlock Margin="58,12,12,0" Name="lblMessage" TextWrapping="Wrap" TextAlignment="Justify" Text="Message" Height="40" VerticalAlignment="Top" />
-        <Border Margin="12,12,0,0" Name="border1" HorizontalAlignment="Left" Width="40" Height="40" VerticalAlignment="Top">
+        <TextBlock Margin="58,12,12,0" Name="lblMessage" TextWrapping="Wrap" TextAlignment="Justify" Text="Message" Height="66" VerticalAlignment="Top" />
+        <Border Margin="12,28,0,0" Name="border1" HorizontalAlignment="Left" Width="40" Height="40" VerticalAlignment="Top">
             <Image Name="imgIcon" Stretch="Uniform" StretchDirection="DownOnly" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </Border>
-        <Button Height="23" Margin="0,0,12,12" Name="btnCancel" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" IsCancel="True" Visibility="Hidden" Click="btnCancel_Click">Abbrechen</Button>
-        <Button Margin="0,0,93,12" Height="23" Name="btnOK" Width="75" IsDefault="True" Visibility="Hidden" Click="btnOK_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom">OK</Button>
-        <Button Margin="12,0,0,12" Name="btnYes" Width="75" IsDefault="True" Visibility="Hidden" Click="btnYes_Click" HorizontalAlignment="Left" Height="23" VerticalAlignment="Bottom">Ja</Button>
-        <Button Margin="92,0,0,12" Name="btnNo" Visibility="Hidden" Click="btnNo_Click" HorizontalAlignment="Left" Width="75" Height="23" VerticalAlignment="Bottom">Nein</Button>
+        </Border>        
+        <StackPanel Height="61" Margin="93,0,12,12" Name="stackPanel1" VerticalAlignment="Bottom" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Button Margin="5" Height="23" Name="btnOK" Width="75" IsDefault="True" Visibility="Collapsed" Click="btnOK_Click" VerticalAlignment="Bottom">OK</Button>
+            <Button Margin="5" Name="btnYes" Width="75" IsDefault="True" Visibility="Collapsed" Click="btnYes_Click" Height="23" VerticalAlignment="Bottom">Ja</Button>
+            <Button Margin="5" Name="btnNo" Visibility="Collapsed" Click="btnNo_Click" Width="75" Height="23" VerticalAlignment="Bottom">Nein</Button>
+        </StackPanel>
+        <Button Height="23" Margin="12,0,0,17" Name="btnCancel" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="75" IsCancel="True" Visibility="Hidden" Click="btnCancel_Click">Abbrechen</Button>
     </Grid>
 </Window>
