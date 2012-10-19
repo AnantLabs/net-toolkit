@@ -51,7 +51,7 @@ namespace NET.Tools.WPF
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void btnOK_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }

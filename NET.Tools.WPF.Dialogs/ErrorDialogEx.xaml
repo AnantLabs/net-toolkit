@@ -4,41 +4,44 @@
         Title="Message" Height="196" Width="561" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="False" Name="Win" Loaded="LoadedWin">
     <Grid>
         <TextBlock Height="65" Margin="79,12,12,0" Name="lblMsg" Text="Message" VerticalAlignment="Top" TextWrapping="Wrap" TextAlignment="Justify"/>
-        <Button Content="OK" Height="23" Margin="0,0,12,13" Name="btnOK" VerticalAlignment="Bottom" Click="button1_Click" HorizontalAlignment="Right" Width="75" />
-        <Button Content="Details" Height="23" HorizontalAlignment="Right" Margin="0,0,93,13" Name="btnDetails" VerticalAlignment="Bottom" Width="75">
-            <Button.Triggers>
-                <EventTrigger RoutedEvent="Button.Click">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation
+        
+        <TextBox IsReadOnly="True" Height="0" HorizontalAlignment="Left" Margin="12,93,0,65" Name="lblError" Text="Error-Message" Width="515" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+        <Border HorizontalAlignment="Left" Margin="12,12,0,0" Name="border1" Width="61" Height="65" VerticalAlignment="Top">
+            <Image Name="image1" Stretch="Uniform" StretchDirection="DownOnly" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Net.Tools.WPF.Dialogs;component/Resources/Images/ERROR.ico" />
+        </Border>
+        <StackPanel Height="62" Margin="12,0,12,12" Name="stackPanel1" VerticalAlignment="Bottom" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Button Content="OK" Height="23" Name="btnOK" VerticalAlignment="Bottom" Click="btnOK_Click" Width="75" Margin="5" />
+            <Button Content="Details" Height="23" Name="btnDetails" VerticalAlignment="Bottom" Width="75" Margin="5">
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="Button.Click">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
                                 Storyboard.TargetName="Win"
                                 Storyboard.TargetProperty="Height"
                                 AutoReverse="False"
                                 To="300"
                                 Duration="0:0:1"/>
-                            <DoubleAnimation
+                                <DoubleAnimation
                                 Storyboard.TargetName="lblError"
                                 Storyboard.TargetProperty="Height"
                                 AutoReverse="False"
                                 To="100"
                                 Duration="0:0:1"/>
-                            <BooleanAnimationUsingKeyFrames
+                                <BooleanAnimationUsingKeyFrames
                                 Storyboard.TargetName="btnDetails"
                                 Storyboard.TargetProperty="IsEnabled"
                                 AutoReverse="False"
                                 Duration="0:0:1">
-                                <DiscreteBooleanKeyFrame
+                                    <DiscreteBooleanKeyFrame
                                     KeyTime="0:0:0"
                                     Value="False"/>
-                            </BooleanAnimationUsingKeyFrames>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Button.Triggers>
-        </Button>
-        <TextBox IsReadOnly="True" Height="0" HorizontalAlignment="Left" Margin="12,93,0,65" Name="lblError" Text="Error-Message" Width="515" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
-        <Border HorizontalAlignment="Left" Margin="12,12,0,0" Name="border1" Width="61" Height="65" VerticalAlignment="Top">
-            <Image Name="image1" Stretch="Uniform" StretchDirection="DownOnly" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Net.Tools.WPF.Dialogs;component/Resources/Images/ERROR.ico" />
-        </Border>
+                                </BooleanAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>
