@@ -1,0 +1,11 @@
+﻿<Window x:Class="NET.Tools.Demo.StartWin"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="NET Tools - DEMO" Height="237" Width="287" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    
+    <Grid>
+        <Button Margin="12,12,12,0" Name="btnWPF" Height="45" VerticalAlignment="Top" Click="btnWPF_Click">WPF</Button>
+        <Button Margin="12,63,12,0" Name="btnForms" Height="45" VerticalAlignment="Top" Click="btnForms_Click">Forms</Button>
+        <Button Height="45" Margin="12,0,12,12" Name="btnExit" VerticalAlignment="Bottom" Click="btnExit_Click">Exit</Button>
+    </Grid>
+</Window>

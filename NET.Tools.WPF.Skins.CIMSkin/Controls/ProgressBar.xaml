@@ -1,0 +1,63 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ControlTemplate TargetType="{x:Type ProgressBar}" x:Key="HBar">
+        <Grid>
+            <Border BorderThickness="0" CornerRadius="0" x:Name="PART_Track">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#9fa1a2" Offset="0"/>
+                        <GradientStop Color="#03070a" Offset=".5"/>
+                        <GradientStop Color="#010203" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+            <Border BorderThickness="0" CornerRadius="0" x:Name="PART_Indicator" HorizontalAlignment="Left">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#b1cada" Offset="0"/>
+                        <GradientStop Color="#32739d" Offset=".5"/>
+                        <GradientStop Color="#0d1d27" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate TargetType="{x:Type ProgressBar}" x:Key="VBar">
+        <Grid>
+            <Border BorderThickness="0" CornerRadius="0" x:Name="PART_Track">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#9fa1a2" Offset="0"/>
+                        <GradientStop Color="#03070a" Offset=".5"/>
+                        <GradientStop Color="#010203" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+            <Border BorderThickness="0" CornerRadius="0" x:Name="PART_Indicator" VerticalAlignment="Bottom">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#b1cada" Offset="0"/>
+                        <GradientStop Color="#32739d" Offset=".5"/>
+                        <GradientStop Color="#0d1d27" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+        </Grid>
+    </ControlTemplate>
+
+    <!--*********************************************************************-->
+
+    <Style TargetType="{x:Type ProgressBar}">
+        <Style.Triggers>
+            <Trigger Property="Orientation" Value="Horizontal">
+                <Setter Property="Template" Value="{StaticResource HBar}"/>
+            </Trigger>
+            <Trigger Property="Orientation" Value="Vertical">
+                <Setter Property="Template" Value="{StaticResource VBar}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

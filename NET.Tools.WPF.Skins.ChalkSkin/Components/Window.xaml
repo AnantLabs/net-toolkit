@@ -1,0 +1,50 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="NET.Tools.WPF.Skins.CommandManager"
+    x:ClassModifier="internal">
+    
+    <Style x:Key="ChalkWindow" TargetType="{x:Type Window}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Window}">
+                    <Grid>
+                        <Border Margin="0,25,0,0" BorderThickness="10" CornerRadius="5" Background="#285830">
+                            <Border.BorderBrush>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#FF735C33" Offset="0"/>
+                                    <GradientStop Color="#FF3D371D" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.BorderBrush>
+                            <Border BorderThickness="0">
+                                <Border.Background>
+                                    <DrawingBrush Stretch="None" Viewport="0,0,150,100" ViewportUnits="Absolute" TileMode="FlipXY">
+                                        <DrawingBrush.Drawing>
+                                            <GeometryDrawing>
+                                                <GeometryDrawing.Brush>
+                                                    <ImageBrush ImageSource="..\Resources\Images\detail.png"/>
+                                                </GeometryDrawing.Brush>
+                                                <GeometryDrawing.Geometry>
+                                                    <RectangleGeometry Rect="0,0,150,100"/>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                        </DrawingBrush.Drawing>
+                                    </DrawingBrush>
+                                </Border.Background>
+                                <ContentPresenter Margin="5"/>
+                            </Border>
+                        </Border>
+                        <Border Margin="25,0,25,0" Height="50" VerticalAlignment="Top" MouseDown="Border_MouseDown">
+                            <Border.Background>
+                                <ImageBrush ImageSource="..\Resources\Images\select.png"/>
+                            </Border.Background>
+                            <Label Margin="0,3,0,0" HorizontalContentAlignment="Center" FontFamily="..\Resources\Font\#Squeaky Chalk Sound" FontSize="20" Foreground="White">
+                                <Binding Path="Title" RelativeSource="{RelativeSource Mode=TemplatedParent}"/>
+                            </Label>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

@@ -1,0 +1,480 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Color A="#FF" R="#62" G="#77" B="#8A" x:Key="NormalBorderTop"/>
+    <Color A="#FF" R="#29" G="#3E" B="50" x:Key="NormalBorderBottom"/>
+    
+    <Color A="#FF" R="#F9" G="#FB" B="#FC" x:Key="NormalTopBottom"/>
+    <Color A="#FF" R="#A3" G="#B8" B="#CB" x:Key="NormalMain"/>
+    
+    <!--***********************************************************************-->
+    
+    <Style TargetType="{x:Type Thumb}" x:Key="HorizontalSliderThumb">
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect Opacity=".7" BlurRadius="2" ShadowDepth="2"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="MinWidth" Value="12"/>
+        <Setter Property="MinHeight" Value="12"/>
+        <Setter Property="MaxWidth" Value="12"/>
+        <Setter Property="MaxHeight" Value="12"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Grid>
+                        <Border Width="12" Height="12" CornerRadius="6" BorderThickness="1.5">
+                            <Border.BorderBrush>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="{StaticResource NormalBorderTop}" Offset="0" x:Name="BorderTop"/>
+                                    <GradientStop Color="{StaticResource NormalBorderBottom}" Offset="1" x:Name="BorderBottom"/>
+                                </LinearGradientBrush>
+                            </Border.BorderBrush>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="{StaticResource NormalTopBottom}" Offset="0" x:Name="Top"/>
+                                    <GradientStop Color="{StaticResource NormalMain}" Offset=".7" x:Name="Middle"/>
+                                    <GradientStop Color="{StaticResource NormalTopBottom}" Offset="1" x:Name="Bottom"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Thumb.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="BorderTop"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#355066"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="BorderBottom"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#050709"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Top"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#FBFCFD"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Middle"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#B8CCDF"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Bottom"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#FBFCFD"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Thumb.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="BorderTop"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="{StaticResource NormalBorderTop}"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="BorderBottom"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="{StaticResource NormalBorderBottom}"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Top"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="{StaticResource NormalTopBottom}"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Middle"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="{StaticResource NormalMain}"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Bottom"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="{StaticResource NormalTopBottom}"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        
+                        <EventTrigger RoutedEvent="Thumb.PreviewMouseDown">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="BorderTop"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#000000"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="BorderBottom"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#000000"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Top"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#A6BACC"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Middle"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#33628C"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Bottom"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#A6BACC"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Thumb.PreviewMouseUp">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="BorderTop"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#355066"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="BorderBottom"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#050709"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Top"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#FBFCFD"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Middle"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#B8CCDF"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Bottom"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#FBFCFD"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type Thumb}" x:Key="VerticalSliderThumb">
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect Opacity=".7" BlurRadius="2" ShadowDepth="2"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="MinWidth" Value="12"/>
+        <Setter Property="MinHeight" Value="12"/>
+        <Setter Property="MaxWidth" Value="12"/>
+        <Setter Property="MaxHeight" Value="12"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Grid>
+                        <Border Width="12" Height="12" CornerRadius="6" BorderThickness="1.5">
+                            <Border.BorderBrush>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="{StaticResource NormalBorderTop}" Offset="0" x:Name="BorderTop"/>
+                                    <GradientStop Color="{StaticResource NormalBorderBottom}" Offset="1" x:Name="BorderBottom"/>
+                                </LinearGradientBrush>
+                            </Border.BorderBrush>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="{StaticResource NormalTopBottom}" Offset="0" x:Name="Top"/>
+                                    <GradientStop Color="{StaticResource NormalMain}" Offset=".7" x:Name="Middle"/>
+                                    <GradientStop Color="{StaticResource NormalTopBottom}" Offset="1" x:Name="Bottom"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Thumb.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="BorderTop"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#355066"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="BorderBottom"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#050709"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Top"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#FBFCFD"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Middle"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#B8CCDF"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Bottom"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#FBFCFD"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Thumb.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="BorderTop"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="{StaticResource NormalBorderTop}"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="BorderBottom"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="{StaticResource NormalBorderBottom}"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Top"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="{StaticResource NormalTopBottom}"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Middle"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="{StaticResource NormalMain}"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Bottom"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="{StaticResource NormalTopBottom}"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="Thumb.PreviewMouseDown">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="BorderTop"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#000000"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="BorderBottom"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#000000"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Top"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#A6BACC"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Middle"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#33628C"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Bottom"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#A6BACC"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Thumb.PreviewMouseUp">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="BorderTop"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#355066"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="BorderBottom"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#050709"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Top"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#FBFCFD"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Middle"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#B8CCDF"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Bottom"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="#FBFCFD"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type RepeatButton}" x:Key="SliderRepeat">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Border Background="Transparent"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--**************************************************************************-->
+    
+    <ControlTemplate TargetType="{x:Type Slider}" x:Key="HorizontalSlider">
+        <Grid>
+            <TickBar Name="TopTick" SnapsToDevicePixels="True" Placement="Top" Fill="#9DA2AB" Height="2" Visibility="Collapsed" Margin="0,20,0,0"/>
+            <Border Height="5" CornerRadius="2.5" BorderThickness="0,0,0,1" BorderBrush="#EDEEF1">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#91959D" Offset="0"/>
+                        <GradientStop Color="#BBC0CA" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border> 
+            <Track Name="PART_Track">
+                <Track.DecreaseRepeatButton>
+                    <RepeatButton Style="{DynamicResource SliderRepeat}" Command="Slider.DecreaseLarge"/>
+                </Track.DecreaseRepeatButton>
+                <Track.Thumb>
+                    <Thumb Style="{DynamicResource HorizontalSliderThumb}"/>
+                </Track.Thumb>
+                <Track.IncreaseRepeatButton>
+                    <RepeatButton Style="{DynamicResource SliderRepeat}" Command="Slider.IncreaseLarge"/>
+                </Track.IncreaseRepeatButton>
+            </Track>
+            <TickBar Name="BottomTick" SnapsToDevicePixels="True" Placement="Bottom" Fill="#9DA2AB" Height="2" Visibility="Collapsed" Margin="0,-20,0,0"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="TickPlacement" Value="TopLeft">
+                <Setter TargetName="TopTick" Property="Visibility" Value="Visible"/>
+            </Trigger>
+            <Trigger Property="TickPlacement" Value="BottomRight">
+                <Setter TargetName="BottomTick" Property="Visibility" Value="Visible"/>
+            </Trigger>
+            <Trigger Property="TickPlacement" Value="Both">
+                <Setter TargetName="TopTick" Property="Visibility" Value="Visible"/>
+                <Setter TargetName="BottomTick" Property="Visibility" Value="Visible"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate TargetType="{x:Type Slider}" x:Key="VerticalSlider">
+        <Grid>
+            <TickBar Name="LeftTick" SnapsToDevicePixels="True" Placement="Left" Fill="#9DA2AB" Width="2" Visibility="Collapsed" Margin="20,0,0,0"/>
+            <Border Width="5" CornerRadius="2.5" BorderThickness="0,0,1,0" BorderBrush="#EDEEF1">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#91959D" Offset="0"/>
+                        <GradientStop Color="#BBC0CA" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+            <Track Name="PART_Track">
+                <Track.DecreaseRepeatButton>
+                    <RepeatButton Style="{DynamicResource SliderRepeat}" Command="Slider.DecreaseLarge"/>
+                </Track.DecreaseRepeatButton>
+                <Track.Thumb>
+                    <Thumb Style="{DynamicResource VerticalSliderThumb}"/>
+                </Track.Thumb>
+                <Track.IncreaseRepeatButton>
+                    <RepeatButton Style="{DynamicResource SliderRepeat}" Command="Slider.IncreaseLarge"/>
+                </Track.IncreaseRepeatButton>
+            </Track>
+            <TickBar Name="RightTick" SnapsToDevicePixels="True" Placement="Right" Fill="#9DA2AB" Width="2" Visibility="Collapsed" Margin="-20,0,0,0"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="TickPlacement" Value="TopLeft">
+                <Setter TargetName="LeftTick" Property="Visibility" Value="Visible"/>
+            </Trigger>
+            <Trigger Property="TickPlacement" Value="BottomRight">
+                <Setter TargetName="RightTick" Property="Visibility" Value="Visible"/>
+            </Trigger>
+            <Trigger Property="TickPlacement" Value="Both">
+                <Setter TargetName="LeftTick" Property="Visibility" Value="Visible"/>
+                <Setter TargetName="RightTick" Property="Visibility" Value="Visible"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <!--*************************************************************************-->
+    
+    <Style TargetType="{x:Type Slider}">
+        <Style.Triggers>
+            <Trigger Property="Orientation" Value="Horizontal">
+                <Setter Property="Template" Value="{StaticResource HorizontalSlider}"/>
+            </Trigger>
+            <Trigger Property="Orientation" Value="Vertical">
+                <Setter Property="Template" Value="{StaticResource VerticalSlider}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Opacity" Value=".3"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+</ResourceDictionary>

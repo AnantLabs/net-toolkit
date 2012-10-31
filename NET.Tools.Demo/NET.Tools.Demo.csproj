@@ -1,0 +1,499 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{693E450A-D2D8-4723-9DB1-C11E49009545}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NET.Tools</RootNamespace>
+    <AssemblyName>NET.Tools.Demo</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLs\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="AnimationWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CodeComplexEffectsWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ComponentsWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DialogWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DrawablesWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MyEffectsWin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DemoSkinWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SkinWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StartWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StartWPFWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DialogWin.xaml.cs">
+      <DependentUpon>DialogWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DrawablesWin.xaml.cs">
+      <DependentUpon>DrawablesWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyEffectsWin.xaml.cs">
+      <DependentUpon>MyEffectsWin.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnimationWin.xaml.cs">
+      <DependentUpon>AnimationWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CodeComplexEffectsWin.xaml.cs">
+      <DependentUpon>CodeComplexEffectsWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ComponentsWin.xaml.cs">
+      <DependentUpon>ComponentsWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControlsForm.Designer.cs">
+      <DependentUpon>ControlsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogForm.Designer.cs">
+      <DependentUpon>DialogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DrawingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DrawingForm.Designer.cs">
+      <DependentUpon>DrawingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DemoSkinWin.xaml.cs">
+      <DependentUpon>DemoSkinWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InternationalDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InternationalDialog.Designer.cs">
+      <DependentUpon>InternationalDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Needed\Forms\MainWin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Needed\Forms\MainWin.Designer.cs">
+      <DependentUpon>MainWin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Needed\Forms\SplashWin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Needed\Forms\SplashWin.Designer.cs">
+      <DependentUpon>SplashWin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SkinWin.xaml.cs">
+      <DependentUpon>SkinWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartForm.Designer.cs">
+      <DependentUpon>StartForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StartWin.xaml.cs">
+      <DependentUpon>StartWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StartWPFWin.xaml.cs">
+      <DependentUpon>StartWPFWin.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ControlsForm.resx">
+      <DependentUpon>ControlsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogForm.resx">
+      <DependentUpon>DialogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DrawingForm.resx">
+      <DependentUpon>DrawingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InternationalDialog.de-DE.resx">
+      <DependentUpon>InternationalDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InternationalDialog.resx">
+      <DependentUpon>InternationalDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Needed\Forms\MainWin.resx">
+      <DependentUpon>MainWin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Needed\Forms\SplashWin.resx">
+      <DependentUpon>SplashWin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartForm.resx">
+      <DependentUpon>StartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Lighthouse.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NET.Tools.OS.COM\NET.Tools.OS.COM.csproj">
+      <Project>{44DC5F4A-C335-428B-82A3-355250EC55BE}</Project>
+      <Name>NET.Tools.OS.COM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.Engines.Graphics2D\NET.Tools.Engines.Graphics2D.csproj">
+      <Project>{BC59E495-93B2-43CE-BF76-9335FB1FEC2F}</Project>
+      <Name>NET.Tools.Engines.Graphics2D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.Engines.Mathematica\NET.Tools.Engines.Mathematica.csproj">
+      <Project>{19C73DCF-FE43-485C-9622-5FCA1DCFA946}</Project>
+      <Name>NET.Tools.Engines.Mathematica</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.Forms.Controls\NET.Tools.Forms.Controls.csproj">
+      <Project>{0553E847-1E09-4E12-8C6B-86E1E533FBA0}</Project>
+      <Name>NET.Tools.Forms.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.Forms.Dialogs\NET.Tools.Forms.Dialogs.csproj">
+      <Project>{2E199803-3EF7-4209-8F49-AC9A65354888}</Project>
+      <Name>NET.Tools.Forms.Dialogs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.Forms.Tools\NET.Tools.Forms.Tools.csproj">
+      <Project>{50BE0370-034F-4F9D-B767-0BCFA2B8A434}</Project>
+      <Name>NET.Tools.Forms.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.OS\NET.Tools.OS.csproj">
+      <Project>{B7AD41B2-5C5D-415B-8460-78183E216502}</Project>
+      <Name>NET.Tools.OS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.OS.Windows7\NET.Tools.OS.Windows7.csproj">
+      <Project>{898B5081-0E87-4B4E-9A29-209604CA3064}</Project>
+      <Name>NET.Tools.OS.Windows7</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Animations\NET.Tools.WPF.Animations.csproj">
+      <Project>{3332B4FD-0E0D-4D63-A43E-745C00FACC5E}</Project>
+      <Name>NET.Tools.WPF.Animations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Controls\NET.Tools.WPF.Controls.csproj">
+      <Project>{A4C83440-4263-4C64-98A5-C5979814AAC0}</Project>
+      <Name>NET.Tools.WPF.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Dialogs\NET.Tools.WPF.Dialogs.csproj">
+      <Project>{B3C793CA-E6C1-4489-B000-F588646E5BCE}</Project>
+      <Name>NET.Tools.WPF.Dialogs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Effects\NET.Tools.WPF.Effects.csproj">
+      <Project>{44E0216A-98D1-4F49-A16F-55FC43272708}</Project>
+      <Name>NET.Tools.WPF.Effects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Graphics2D\NET.Tools.WPF.Graphics2D.csproj">
+      <Project>{6E6B4C67-3C54-4765-BC2E-DB41E86BEB8B}</Project>
+      <Name>NET.Tools.WPF.Graphics2D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Graphics3D\NET.Tools.WPF.Graphics3D.csproj">
+      <Project>{E031930A-28AF-4D7E-8404-E54545DFD0B4}</Project>
+      <Name>NET.Tools.WPF.Graphics3D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Skins.ArtSkin\NET.Tools.WPF.Skins.ArtSkin.csproj">
+      <Project>{9169571A-790E-4E0B-8C07-4C6005BCB7D2}</Project>
+      <Name>NET.Tools.WPF.Skins.ArtSkin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Skins.BlackSkin\NET.Tools.WPF.Skins.BlackSkin.csproj">
+      <Project>{55C91FA6-9DC0-463A-8E1B-287757B58554}</Project>
+      <Name>NET.Tools.WPF.Skins.BlackSkin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Skins.ChalkSkin\NET.Tools.WPF.Skins.ChalkSkin.csproj">
+      <Project>{80EDDB07-A5AE-4530-A3E8-761AE5B4CD79}</Project>
+      <Name>NET.Tools.WPF.Skins.ChalkSkin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Skins.CIMSkin\NET.Tools.WPF.Skins.CIMSkin.csproj">
+      <Project>{366CA9A6-A1A7-47FF-AC64-69D206664F3E}</Project>
+      <Name>NET.Tools.WPF.Skins.CIMSkin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Skins.NimbusSkin\NET.Tools.WPF.Skins.NimbusSkin.csproj">
+      <Project>{02C7A5D4-262E-49E9-995D-70EBCB38B75E}</Project>
+      <Name>NET.Tools.WPF.Skins.NimbusSkin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Skins.PaperSkin\NET.Tools.WPF.Skins.PaperSkin.csproj">
+      <Project>{0E0E2580-F19C-4370-91BE-0804C19F3956}</Project>
+      <Name>NET.Tools.WPF.Skins.PaperSkin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Skins.PortalSkin\NET.Tools.WPF.Skins.PortalSkin.csproj">
+      <Project>{BA36CE52-DE86-4901-93B8-73D2C994048C}</Project>
+      <Name>NET.Tools.WPF.Skins.PortalSkin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Skins.Sims3Skin\NET.Tools.WPF.Skins.Sims3Skin.csproj">
+      <Project>{1ACE4851-9D07-4DA1-B530-E725A0CD5E5D}</Project>
+      <Name>NET.Tools.WPF.Skins.Sims3Skin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Skins\NET.Tools.WPF.Skins.csproj">
+      <Project>{29B0980A-861E-4C9D-9DF1-05EEB493D34F}</Project>
+      <Name>NET.Tools.WPF.Skins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools.WPF.Tools\NET.Tools.WPF.Tools.csproj">
+      <Project>{55AE2F48-7FE9-40C9-BADE-D1DCDCFDDAE6}</Project>
+      <Name>NET.Tools.WPF.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET.Tools\NET.Tools.csproj">
+      <Project>{EC6EAAA0-F4F1-419C-A9D5-9F2D3EF67120}</Project>
+      <Name>NET.Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Tulips.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Wolken1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\File001.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading51_frame_0001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading51_frame_0002.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading51_frame_0003.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading51_frame_0004.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading51_frame_0005.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading51_frame_0006.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading51_frame_0007.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading51_frame_0008.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading51_frame_0009.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading51_frame_0010.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading51_frame_0011.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading51_frame_0012.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /Y "$(SolutionDir)\DLLs\CARDS.DLL" "$(TargetDir)"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

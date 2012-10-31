@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<log4net>
+
+  <appender name="FileLogger" type="log4net.Appender.RollingFileAppender">
+    <file value="logs\NET.Tools.log"/>
+    <appendToFile value="false"/>
+    <maximumFileSize value="100000KB"/>
+    <maxSizeRollBackups value="0"/>
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date %level %thread %logger - %message%newline"/>
+    </layout>
+  </appender>
+
+	<appender name="ConsoleLogger" type="log4net.Appender.ConsoleAppender">
+		<layout type="log4net.Layout.PatternLayout">
+			<conversionPattern value="%date %level %thread %logger - %message%newline"/>
+		</layout>
+	</appender>
+
+  <logger name="Root">
+    <level value="TRACE"/>
+    <appender-ref ref="FileLogger"/>
+	<appender-ref ref="ConsoleLogger"/>
+  </logger>
+  
+</log4net>

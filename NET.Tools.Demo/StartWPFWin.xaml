@@ -1,0 +1,15 @@
+﻿<Window x:Class="NET.Tools.Demo.StartWPFWin"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="WPF Extreme" Height="458" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Button Height="47" Margin="12,12,0,0" Name="btnOwnEffects" VerticalAlignment="Top" Click="btnEffects_Click" HorizontalAlignment="Left" Width="124">My Effects</Button>
+        <Button Margin="12,65,12,0" Name="btnAnimations" Height="46" VerticalAlignment="Top" Click="btnAnimations_Click">Animations</Button>
+        <Button Margin="12,117,12,0" Name="btnSkins" Click="btnSkins_Click" Height="51" VerticalAlignment="Top">Skins</Button>
+        <Button Height="47" Margin="12,0,12,12" Name="btnExit" VerticalAlignment="Bottom" Click="btnExit_Click">Exit</Button>
+        <Button Height="47" HorizontalAlignment="Right" Margin="0,12,12,0" Name="btnCodeComplexEffects" VerticalAlignment="Top" Width="124" Click="btnCodeComplexEffects_Click">Code Complex Effects</Button>
+        <Button Content="Dialogs" Margin="12,173,12,0" Name="btnDialogs" Click="button1_Click" Height="51" VerticalAlignment="Top" />
+        <Button Height="51" Margin="12,230,12,0" Name="btnComponents" VerticalAlignment="Top" Click="btnComponents_Click">Components</Button>
+        <Button Content="Drawables" Height="51" Margin="12,287,12,0" Name="button1" VerticalAlignment="Top" Click="button1_Click_1" />
+    </Grid>
+</Window>

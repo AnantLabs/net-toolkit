@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<OrderedTest name="DateTime" storage="d:\daten\visual studio 2008\projects\net tools\net tools test\lists\datetime.orderedtest" id="b0c5334d-57d8-4da4-a89d-20a3f51105e8" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Css projectStructure="" iteration="" />
+  <Execution timeOut="2147483647" />
+  <Owners>
+    <Owner name="" />
+  </Owners>
+  <TestLinks>
+    <TestLink id="2a0bce91-535c-e632-8be2-1de3a4b6e354" name="TestDateTimeAddDaysUntilNextDayOfWeek" storage="..\bin\debug\net tools test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="16602c60-1424-b498-20c9-fb042ab0d835" name="TestDateTimeAddDaysUntilNextDayOfWeekEquals" storage="..\bin\debug\net tools test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="6f13569d-43e4-2c17-aa87-2d917eed4bc5" name="TestDateTimeAddDaysUntilPrevDayOfWeek" storage="..\bin\debug\net tools test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="90f3208d-6bc1-0d00-bcc4-7626860961d2" name="TestDateTimeAddDaysUntilPrevDayOfWeekEquals" storage="..\bin\debug\net tools test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="93debcf9-67af-99de-2058-49a7d1ebf9a6" name="TestDateTimeAfter" storage="..\bin\debug\net tools test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="905c8feb-197e-d16b-e1c0-4c493b8f58a4" name="TestDateTimeBefore" storage="..\bin\debug\net tools test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="523c2cd9-592d-7c3d-6129-d61bd724d039" name="TestDateTimeLeap" storage="..\bin\debug\net tools test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+  </TestLinks>
+</OrderedTest>

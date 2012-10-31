@@ -1,0 +1,223 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Color R="#9D" G="#A3" B="#AE" A="#FF" x:Key="TopNormal"/>
+    <Color R="#57" G="#61" B="#74" A="#FF" x:Key="MiddleNormal"/>
+    <Color R="#6C" G="#76" B="#89" A="#FF" x:Key="BottomNormal"/>
+
+    <Color R="#A8" G="#AE" B="#B9" A="#FF" x:Key="TopSelected"/>
+    <Color R="#69" G="#73" B="#68" A="#FF" x:Key="MiddleSelected"/>
+    <Color R="#7F" G="#89" B="#9C" A="#FF" x:Key="BottomSelected"/>
+
+    <Color R="#70" G="#78" B="#88" A="#FF" x:Key="TopPressed"/>
+    <Color R="#38" G="#44" B="#5A" A="#FF" x:Key="MiddlePressed"/>
+    <Color R="#45" G="#50" B="#67" A="#FF" x:Key="BottomPressed"/>
+    
+    <Color R="#DB" G="#DD" B="#E0" A="#FF" x:Key="TopDisabled"/>
+    <Color R="#B7" G="#BB" B="#C3" A="#FF" x:Key="MiddleDisabled"/>
+    <Color R="#BC" G="#C0" B="#C8" A="#FF" x:Key="BottomDisabled"/>
+
+    <!--************************************************************************-->
+
+    <Style TargetType="{x:Type Button}" x:Key="MenuButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border CornerRadius="3" BorderThickness="1" Name="Border">
+                        <Border.BorderBrush>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#00000C" Offset="0"/>
+                                <GradientStop Color="#515A6D" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="{StaticResource TopNormal}" Offset="0" x:Name="Top"/>
+                                <GradientStop Color="{StaticResource MiddleNormal}" Offset=".75" x:Name="Middle"/>
+                                <GradientStop Color="{StaticResource BottomNormal}" Offset="1" x:Name="Bottom"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border Name="Symbol">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="0" Direction="270" Opacity=".7" ShadowDepth="1"/>
+                            </Border.Effect>
+                            <Border.Background>
+                                <DrawingBrush Stretch="None">
+                                    <DrawingBrush.Drawing>
+                                        <DrawingGroup>
+                                            <GeometryDrawing Brush="White">
+                                                <GeometryDrawing.Geometry>
+                                                    <PathGeometry>
+                                                        <PathFigure IsClosed="True" IsFilled="True" StartPoint="9,12">
+                                                            <LineSegment Point="5,8"/>
+                                                            <LineSegment Point="13,8"/>
+                                                        </PathFigure>
+                                                    </PathGeometry>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                        </DrawingGroup>
+                                    </DrawingBrush.Drawing>
+                                </DrawingBrush>
+                            </Border.Background>
+                        </Border>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <BeginStoryboard Name="Enter">
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Top"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="{StaticResource TopSelected}"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Middle"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="{StaticResource MiddleSelected}"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Bottom"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="{StaticResource BottomSelected}"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <BeginStoryboard Name="Leave">
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Top"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="{StaticResource TopNormal}"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Middle"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="{StaticResource MiddleNormal}"/>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="Bottom"
+                                        Storyboard.TargetProperty="Color"
+                                        AutoReverse="False"
+                                        Duration="0:0:0.1"
+                                        To="{StaticResource BottomNormal}"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsPressed" Value="true"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <StopStoryboard BeginStoryboardName="Enter"/>
+                                <StopStoryboard BeginStoryboardName="Leave"/>
+                                <BeginStoryboard Name="Pressed">
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="Top"
+                                            Storyboard.TargetProperty="Color"
+                                            AutoReverse="False"
+                                            Duration="0:0:0.1"
+                                            To="{StaticResource TopPressed}"/>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="Middle"
+                                            Storyboard.TargetProperty="Color"
+                                            AutoReverse="False"
+                                            Duration="0:0:0.1"
+                                            To="{StaticResource MiddlePressed}"/>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="Bottom"
+                                            Storyboard.TargetProperty="Color"
+                                            AutoReverse="False"
+                                            Duration="0:0:0.1"
+                                            To="{StaticResource BottomPressed}"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="Enter"/>
+                                <StopStoryboard BeginStoryboardName="Leave"/>
+                                <BeginStoryboard Name="Released">
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="Top"
+                                            Storyboard.TargetProperty="Color"
+                                            AutoReverse="False"
+                                            Duration="0:0:0.25"
+                                            To="{StaticResource TopSelected}"/>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="Middle"
+                                            Storyboard.TargetProperty="Color"
+                                            AutoReverse="False"
+                                            Duration="0:0:0.25"
+                                            To="{StaticResource MiddleSelected}"/>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="Bottom"
+                                            Storyboard.TargetProperty="Color"
+                                            AutoReverse="False"
+                                            Duration="0:0:0.25"
+                                            To="{StaticResource BottomSelected}"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+                        
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter TargetName="Border" Property="BorderBrush">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="#888D97" Offset="0"/>
+                                        <GradientStop Color="#616670" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="Border" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="{StaticResource TopDisabled}" Offset="0"/>
+                                        <GradientStop Color="{StaticResource MiddleDisabled}" Offset=".75"/>
+                                        <GradientStop Color="{StaticResource BottomDisabled}" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="Symbol" Property="Background">
+                                <Setter.Value>
+                                    <DrawingBrush Stretch="None">
+                                        <DrawingBrush.Drawing>
+                                            <DrawingGroup>
+                                                <GeometryDrawing Brush="#66696F">
+                                                    <GeometryDrawing.Geometry>
+                                                        <PathGeometry>
+                                                            <PathFigure IsClosed="True" IsFilled="True" StartPoint="9,12">
+                                                                <LineSegment Point="5,8"/>
+                                                                <LineSegment Point="13,8"/>
+                                                            </PathFigure>
+                                                        </PathGeometry>
+                                                    </GeometryDrawing.Geometry>
+                                                </GeometryDrawing>
+                                            </DrawingGroup>
+                                        </DrawingBrush.Drawing>
+                                    </DrawingBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Focusable" Value="false"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Margin" Value="0,-21,0,0"/>
+        <Setter Property="Width" Value="18"/>
+        <Setter Property="Height" Value="16"/>
+    </Style>
+
+</ResourceDictionary>

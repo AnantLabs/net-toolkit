@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    x:Class="NET.Tools.WPF.Skins.CommandManager"
+    x:ClassModifier="internal">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Window/Border.xaml"/>
+        <ResourceDictionary Source="Window/Button.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type Window}" x:Key="CIMWindow">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Window}">
+                    <Grid>
+                        <Border Style="{DynamicResource WindowBorder}" Margin="0,6,6,0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50px"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="25px"/>
+                                </Grid.RowDefinitions>
+                                <Border Grid.Row="0" Style="{DynamicResource CaptionBorder}">
+                                    <Label MouseDown="Label_MouseDown" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                                       Foreground="White" FontFamily="../Resources/Fonts/#BD Cartoon Shout" FontSize="15">
+                                        <Binding Path="Title" RelativeSource="{RelativeSource Mode=TemplatedParent}"/>
+                                    </Label>
+                                </Border>
+                                <ContentPresenter Margin="5,15,5,5" Grid.Row="1"/>
+                            </Grid>
+                        </Border>                        
+                        <!-- Buttons -->
+                        <Button Name="CloseButton" Style="{DynamicResource CloseButton}" Click="CloseAction"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="WindowStyle" Value="None"/>
+        <Setter Property="AllowsTransparency" Value="true"/>
+    </Style>
+
+</ResourceDictionary>

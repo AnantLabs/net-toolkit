@@ -1,0 +1,168 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Base/Control.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <DrawingBrush x:Key="MouseOverSelection">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing>
+                    <GeometryDrawing.Pen>
+                        <Pen Brush="#4669B0" EndLineCap="Flat" StartLineCap="Flat" Thickness="15"/>
+                    </GeometryDrawing.Pen>
+                    <GeometryDrawing.Geometry>
+                        <LineGeometry StartPoint="20,50" EndPoint="55,70"/>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+
+                <GeometryDrawing>
+                    <GeometryDrawing.Pen>
+                        <Pen Brush="#4669B0" EndLineCap="Round" StartLineCap="Flat" Thickness="15"/>
+                    </GeometryDrawing.Pen>
+                    <GeometryDrawing.Geometry>
+                        <LineGeometry StartPoint="50,65" EndPoint="100,15"/>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+    
+    <DrawingBrush x:Key="ShineMouseOverSelection">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing>
+                    <GeometryDrawing.Pen>
+                        <Pen Brush="#994669B0" EndLineCap="Flat" StartLineCap="Flat" Thickness="15"/>
+                    </GeometryDrawing.Pen>
+                    <GeometryDrawing.Geometry>
+                        <LineGeometry StartPoint="20,50" EndPoint="55,70"/>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+
+                <GeometryDrawing>
+                    <GeometryDrawing.Pen>
+                        <Pen Brush="#994669B0" EndLineCap="Round" StartLineCap="Flat" Thickness="15"/>
+                    </GeometryDrawing.Pen>
+                    <GeometryDrawing.Geometry>
+                        <LineGeometry StartPoint="50,65" EndPoint="100,15"/>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+    
+    <DrawingBrush x:Key="Selection">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing>
+                    <GeometryDrawing.Pen>
+                        <Pen Brush="Black" EndLineCap="Flat" StartLineCap="Flat" Thickness="15"/>
+                    </GeometryDrawing.Pen>
+                    <GeometryDrawing.Geometry>
+                        <LineGeometry StartPoint="20,50" EndPoint="55,70"/>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+
+                <GeometryDrawing>
+                    <GeometryDrawing.Pen>
+                        <Pen Brush="Black" EndLineCap="Round" StartLineCap="Flat" Thickness="15"/>
+                    </GeometryDrawing.Pen>
+                    <GeometryDrawing.Geometry>
+                        <LineGeometry StartPoint="50,65" EndPoint="100,15"/>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+    
+    <!--***************************************************************************-->
+    <!--***************************************************************************-->
+    <!--***************************************************************************-->
+
+    <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource ControlBase}">
+        <Setter Property="MinWidth" Value="150"/>
+        <Setter Property="MinHeight" Value="30"/>
+        <Setter Property="Foreground" Value="#002266"/>
+        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <StackPanel CanHorizontallyScroll="False" CanVerticallyScroll="False"
+                                FlowDirection="LeftToRight" Background="Transparent" Orientation="Horizontal">
+                        <Border Background="Transparent" BorderThickness="2" BorderBrush="Transparent" Name="OuterBorder" CornerRadius="5">
+                            <Grid>
+                                <Border Margin="3" Height="25" Width="25" Background="White" Name="Border"
+                                    BorderBrush="#87AFC8" BorderThickness="1,2,2,0" CornerRadius="3"
+                                    VerticalAlignment="Center" HorizontalAlignment="Left">
+                                </Border>
+                                <Border Name="Selector" Margin="0" BorderThickness="0" Width="25" Height="25" Visibility="Hidden"/>
+                            </Grid>
+                        </Border>
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,5,0,0" RecognizesAccessKey="True"/>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="Selector" Property="Background" Value="{DynamicResource Selection}"/>
+                            <Setter TargetName="Selector" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                        
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="true"/>
+                                <Condition Property="IsEnabled" Value="true"/>
+                                <Condition Property="IsChecked" Value="true"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="Selector" Property="Background" Value="{DynamicResource MouseOverSelection}"/>
+                                <Setter TargetName="Selector" Property="Visibility" Value="Visible"/>
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="true"/>
+                                <Condition Property="IsEnabled" Value="true"/>
+                                <Condition Property="IsChecked" Value="false"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="Selector" Property="Background" Value="{DynamicResource ShineMouseOverSelection}"/>
+                                <Setter TargetName="Selector" Property="Visibility" Value="Visible"/>
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="Gray"/>
+                            <Setter TargetName="Border" Property="Background" Value="#CEEAF9"/>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="#C4E0F0"/>
+                        </Trigger>
+                        
+                        <EventTrigger RoutedEvent="CheckBox.GotFocus">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="OuterBorder"
+                                        Storyboard.TargetProperty="BorderBrush.Color"
+                                        To="White" AutoReverse="False"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        
+                        <EventTrigger RoutedEvent="CheckBox.LostFocus">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation
+                                        Storyboard.TargetName="OuterBorder"
+                                        Storyboard.TargetProperty="BorderBrush.Color"
+                                        To="Transparent" AutoReverse="False"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

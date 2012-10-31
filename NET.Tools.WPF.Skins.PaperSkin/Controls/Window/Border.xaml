@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Style TargetType="{x:Type Border}" x:Key="WindowBorder">
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="../../Resources/Images/paper.JPG" Stretch="None" TileMode="None"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Margin" Value="0,15,10,10"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="10" Opacity=".7"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

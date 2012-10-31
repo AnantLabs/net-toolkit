@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{44E0216A-98D1-4F49-A16F-55FC43272708}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NET.Tools.WPF</RootNamespace>
+    <AssemblyName>NET.Tools.WPF.Effects</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Release\NET.Tools.WPF.Effects.XML</DocumentationFile>
+    <NoWarn>1591,1587</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>bin\Release\NET.Tools.WPF.Effects.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>1591,1587</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AlphaEffect.cs" />
+    <Compile Include="Base\ChangableEffect.cs" />
+    <Compile Include="Base\ImageEffect.cs" />
+    <Compile Include="Base\PixelShaderEffectBase.cs" />
+    <Compile Include="BlackWhiteEffect.cs" />
+    <Compile Include="BlackWhiteSnowEffect.cs" />
+    <Compile Include="CodeComplex\BandedSwirlEffect.cs" />
+    <Compile Include="CodeComplex\BloomEffect.cs" />
+    <Compile Include="CodeComplex\BrightExtractEffect.cs" />
+    <Compile Include="CodeComplex\ColorKeyAlphaEffect.cs" />
+    <Compile Include="CodeComplex\ColorToneEffect.cs" />
+    <Compile Include="CodeComplex\ContrastAdjustEffect.cs" />
+    <Compile Include="CodeComplex\DirectionalBlurEffect.cs" />
+    <Compile Include="CodeComplex\EmbossedEffect.cs" />
+    <Compile Include="CodeComplex\GloomEffect.cs" />
+    <Compile Include="CodeComplex\GrowablePoissonDiskEffect.cs" />
+    <Compile Include="CodeComplex\InvertColorEffect.cs" />
+    <Compile Include="CodeComplex\LightStreakEffect.cs" />
+    <Compile Include="CodeComplex\MagnifyEffect.cs" />
+    <Compile Include="CodeComplex\MonochromeEffect.cs" />
+    <Compile Include="CodeComplex\PinchEffect.cs" />
+    <Compile Include="CodeComplex\PixelateEffect.cs" />
+    <Compile Include="CodeComplex\RippleEffect.cs" />
+    <Compile Include="CodeComplex\SharpenEffect.cs" />
+    <Compile Include="CodeComplex\SmoothMagnifyEffect.cs" />
+    <Compile Include="CodeComplex\SwirlEffect.cs" />
+    <Compile Include="CodeComplex\ToneMappingEffect.cs" />
+    <Compile Include="CodeComplex\ToonShaderEffect.cs" />
+    <Compile Include="CodeComplex\ZoomBlurEffect.cs" />
+    <Compile Include="ColorSnowEffect.cs" />
+    <Compile Include="DifferenceImageEffect.cs" />
+    <Compile Include="ExclusionImageEffect.cs" />
+    <Compile Include="ImageShiftEffect.cs" />
+    <Compile Include="LightenImageEffect.cs" />
+    <Compile Include="MultiplyImageEffect.cs" />
+    <Compile Include="NegationDifferenceImageEffect.cs" />
+    <Compile Include="OverlayHardlightImageEffect.cs" />
+    <Compile Include="OverlaySoftlightImageEffect.cs" />
+    <Compile Include="SkyColorEffect.cs" />
+    <Compile Include="SkyEffect.cs" />
+    <Compile Include="TransparentImageEffect.cs" />
+    <Compile Include="TransparentColorEffect.cs" />
+    <Compile Include="ColorShiftEffect.cs" />
+    <Compile Include="DarkenImageEffect.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="GrayscaleEffect.cs" />
+    <Compile Include="HDREffect.cs" />
+    <Compile Include="MirrowEffect.cs" />
+    <Compile Include="MotionBlurEffect.cs" />
+    <Compile Include="NegativeEffect.cs" />
+    <Compile Include="PixelEffect.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ReliefEffect.cs" />
+    <Compile Include="WaveEffect.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="CodeComplex\Shader\BandedSwirl.fx" />
+    <Resource Include="CodeComplex\Shader\BandedSwirl.ps" />
+    <None Include="CodeComplex\Shader\Bloom.fx" />
+    <Resource Include="CodeComplex\Shader\Bloom.ps" />
+    <None Include="CodeComplex\Shader\BrightExtract.fx" />
+    <Resource Include="CodeComplex\Shader\BrightExtract.ps" />
+    <None Include="CodeComplex\Shader\ColorKeyAlpha.fx" />
+    <Resource Include="CodeComplex\Shader\ColorKeyAlpha.ps" />
+    <None Include="CodeComplex\Shader\ColorTone.fx" />
+    <Resource Include="CodeComplex\Shader\ColorTone.ps" />
+    <None Include="CodeComplex\Shader\ContrastAdjust.fx" />
+    <Resource Include="CodeComplex\Shader\ContrastAdjust.ps" />
+    <None Include="CodeComplex\Shader\DirectionalBlur.fx" />
+    <Resource Include="CodeComplex\Shader\DirectionalBlur.ps" />
+    <None Include="CodeComplex\Shader\Embossed.fx" />
+    <Resource Include="CodeComplex\Shader\Embossed.ps" />
+    <None Include="CodeComplex\Shader\Gloom.fx" />
+    <Resource Include="CodeComplex\Shader\Gloom.ps" />
+    <None Include="CodeComplex\Shader\GrowablePoissonDisk.fx" />
+    <Resource Include="CodeComplex\Shader\GrowablePoissonDisk.ps" />
+    <None Include="CodeComplex\Shader\InvertColor.fx" />
+    <Resource Include="CodeComplex\Shader\InvertColor.ps" />
+    <None Include="CodeComplex\Shader\LightStreak.fx" />
+    <Resource Include="CodeComplex\Shader\LightStreak.ps" />
+    <None Include="CodeComplex\Shader\Magnify.fx" />
+    <Resource Include="CodeComplex\Shader\Magnify.ps" />
+    <None Include="CodeComplex\Shader\Monochrome.fx" />
+    <Resource Include="CodeComplex\Shader\Monochrome.ps" />
+    <None Include="CodeComplex\Shader\Pinch.fx" />
+    <Resource Include="CodeComplex\Shader\Pinch.ps" />
+    <None Include="CodeComplex\Shader\Pixelate.fx" />
+    <Resource Include="CodeComplex\Shader\Pixelate.ps" />
+    <None Include="CodeComplex\Shader\Ripple.fx" />
+    <Resource Include="CodeComplex\Shader\Ripple.ps" />
+    <None Include="CodeComplex\Shader\Sharpen.fx" />
+    <Resource Include="CodeComplex\Shader\Sharpen.ps" />
+    <None Include="CodeComplex\Shader\SmoothMagnify.fx" />
+    <Resource Include="CodeComplex\Shader\SmoothMagnify.ps" />
+    <None Include="CodeComplex\Shader\Swirl.fx" />
+    <Resource Include="CodeComplex\Shader\Swirl.ps" />
+    <None Include="CodeComplex\Shader\ToneMapping.fx" />
+    <Resource Include="CodeComplex\Shader\ToneMapping.ps" />
+    <None Include="CodeComplex\Shader\ToonShader.fx" />
+    <Resource Include="CodeComplex\Shader\ToonShader.ps" />
+    <None Include="CodeComplex\Shader\ZoomBlur.fx" />
+    <Resource Include="CodeComplex\Shader\ZoomBlur.ps" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Resource Include="Shader\BlackWhiteShader.ps" />
+    <Resource Include="Shader\AlphaShader.ps" />
+    <None Include="Shader\compile.bat" />
+    <None Include="Shader\compiler.bat" />
+    <None Include="Shader\TransparentColorShader.fx" />
+    <Resource Include="Shader\TransparentColorShader.ps" />
+    <None Include="Shader\BlackWhiteShader.fx" />
+    <Resource Include="Shader\ColorShiftShader.ps" />
+    <None Include="Shader\DarkenImageShader.fx" />
+    <Resource Include="Shader\DarkenImageShader.ps" />
+    <None Include="Shader\GrayscaleShader.fx" />
+    <Resource Include="Shader\GrayscaleShader.ps" />
+    <None Include="Shader\ColorShiftShader.fx" />
+    <None Include="Shader\AlphaShader.fx" />
+    <None Include="Shader\MotionBlurShader.fx" />
+    <Resource Include="Shader\MotionBlurShader.ps" />
+    <None Include="Shader\PixelShader.fx" />
+    <Resource Include="Shader\PixelShader.ps" />
+    <None Include="Shader\WaveShader.fx" />
+    <None Include="Shader\ReliefShader.fx" />
+    <None Include="Shader\MirrowShader.fx" />
+    <Resource Include="Shader\MirrowShader.ps" />
+    <None Include="Shader\NegativeShader.fx" />
+    <Resource Include="Shader\HDRShader.ps" />
+    <None Include="Shader\HDRShader.fx" />
+    <Resource Include="Shader\WaveShader.ps" />
+    <Resource Include="Shader\ReliefShader.ps" />
+    <Resource Include="Shader\NegativeShader.ps" />
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CodeComplex\Shader\compile.bat" />
+    <None Include="CodeComplex\Shader\compiler.bat" />
+    <None Include="Shader\fxc.exe" />
+    <None Include="Shader\TransparentImageShader.fx" />
+    <Resource Include="Shader\TransparentImageShader.ps" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CodeComplex\Shader\fxc.exe" />
+    <Resource Include="Shader\MultiplyImageShader.ps" />
+    <Resource Include="Shader\SkyColorShader.ps" />
+    <Resource Include="Shader\SkyShader.ps" />
+    <Resource Include="Shader\BlackWhiteSnowShader.ps" />
+    <None Include="Shader\ColorSnowShader.fx" />
+    <Resource Include="Shader\ColorSnowShader.ps" />
+    <None Include="Shader\DifferenceImageShader.fx" />
+    <Resource Include="Shader\DifferenceImageShader.ps" />
+    <None Include="Shader\ExclusionImageShader.fx" />
+    <Resource Include="Shader\ExclusionImageShader.ps" />
+    <None Include="Shader\BlackWhiteSnowShader.fx" />
+    <None Include="Shader\ImageShiftShader.fx" />
+    <Resource Include="Shader\ImageShiftShader.ps" />
+    <None Include="Shader\LightenImageShader.fx" />
+    <None Include="Shader\MultiplyImageShader.fx" />
+    <None Include="Shader\NegationDifferenceImageShader.fx" />
+    <None Include="Shader\OverlayHardlightImageShader.fx" />
+    <None Include="Shader\OverlaySoftlightImageShader.fx" />
+    <None Include="Shader\SkyColorShader.fx" />
+    <None Include="Shader\SkyShader.fx" />
+    <Resource Include="Shader\OverlaySoftlightImageShader.ps" />
+    <Resource Include="Shader\OverlayHardlightImageShader.ps" />
+    <Resource Include="Shader\NegationDifferenceImageShader.ps" />
+    <Resource Include="Shader\LightenImageShader.ps" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NET.Tools\NET.Tools.csproj">
+      <Project>{EC6EAAA0-F4F1-419C-A9D5-9F2D3EF67120}</Project>
+      <Name>NET.Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+</Project>
