@@ -1,7 +1,7 @@
 ﻿<Window x:Class="NET.Tools.WPF.InputDialogEx"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Title" Height="175" Width="514" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
+    Title="Title" Height="200" Width="514" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
     <Grid>
         <TextBlock Height="40" Margin="58,12,12,0" Name="lblMessage" VerticalAlignment="Top" Text="Message" />
         <TextBox Margin="12,58,12,0" Name="txtInput" Height="23" VerticalAlignment="Top" />

@@ -33,12 +33,14 @@ namespace NET.Tools.WPF
             String message, String title, MessageButtons button, MessageIcons icon,
             ImageSource image, SkinBundle bundle)
         {
-            MessageDialogEx dlg = new MessageDialogEx();
-            dlg.Title = title;
-            dlg.lblMessage.Text = message;
-            dlg.icon = icon;
+            MessageDialogEx dlg = new MessageDialogEx
+                                      {
+                                          Title = title,
+                                          lblMessage = {Text = message},
+                                          icon = icon,
+                                          imgIcon = {Source = MessageIconHelper.GetIcon(icon, bundle)}
+                                      };
 
-            dlg.imgIcon.Source = MessageIconHelper.GetIcon(icon, bundle);
             if (dlg.imgIcon.Source == null)
                 if (image != null)
                     dlg.imgIcon.Source = image;
@@ -47,7 +49,6 @@ namespace NET.Tools.WPF
             {
                 case MessageButtons.OK:
                     dlg.btnOK.Visibility = Visibility.Visible;
-                    dlg.btnOK.Margin = dlg.btnCancel.Margin;
                     break;
                 case MessageButtons.OKCancel:
                     dlg.btnOK.Visibility = Visibility.Visible;
