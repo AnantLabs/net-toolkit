@@ -60,6 +60,8 @@ namespace NET.Tools
                     return Convert.ToString((long)value, 8);
                 case IntegerStringFormatType.ToBinary:
                     return Convert.ToString((long)value, 2);
+                case IntegerStringFormatType.ToRomanNumeral:
+                    return MathUtils.ToRomanNumerals((long)value);
                 default:
                     throw new NotImplementedException();
             }

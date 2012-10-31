@@ -25,6 +25,10 @@ namespace NET.Tools
         /// <summary>
         /// To Binary (e. g. 11111111)
         /// </summary>
-        ToBinary
+        ToBinary,
+        /// <summary>
+        /// To Roman Numeral (e. g. XIV)
+        /// </summary>
+        ToRomanNumeral,
     }
 }
