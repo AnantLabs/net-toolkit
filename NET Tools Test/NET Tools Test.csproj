@@ -103,6 +103,7 @@
     <Compile Include="BytesTest.cs" />
     <Compile Include="CalculatorTest.cs" />
     <Compile Include="DateTimeExtensionsTest.cs" />
+    <Compile Include="DecimalExtensionTest.cs" />
     <Compile Include="DesktopToolsTest.cs" />
     <Compile Include="EHCTest.cs" />
     <Compile Include="ObjectExtensionsTest.cs" />
