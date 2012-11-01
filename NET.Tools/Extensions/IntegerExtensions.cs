@@ -66,6 +66,16 @@ namespace NET.Tools
                     throw new NotImplementedException();
             }
         }
+
+        /// <summary>
+        /// Gets the number of set bits (1)
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int GetSetBits(this uint value)
+        {
+            return value.ToString(IntegerStringFormatType.Binary).GetCountOf('1');
+        }
     }
     /// @}
 }
