@@ -52,33 +52,16 @@ namespace NET.Tools
         {
             switch (type)
             {
-                case IntegerStringFormatType.ToHexBinary:
+                case IntegerStringFormatType.HexBinary:
                     return Convert.ToString(value, 16);
-                case IntegerStringFormatType.ToDecimal:
+                case IntegerStringFormatType.Decimal:
                     return Convert.ToString(value, 10);
-                case IntegerStringFormatType.ToOcted:
+                case IntegerStringFormatType.Octed:
                     return Convert.ToString(value, 8);
-                case IntegerStringFormatType.ToBinary:
+                case IntegerStringFormatType.Binary:
                     return Convert.ToString(value, 2);
-                case IntegerStringFormatType.ToRomanNumeral:
+                case IntegerStringFormatType.RomanNumeral:
                     return MathUtils.ToRomanNumerals(value);
-                default:
-                    throw new NotImplementedException();
-            }
-        }
-
-        public static int FromString(this byte value, String str, IntegerStringFormatType type)
-        {
-            switch (type)
-            {
-                case IntegerStringFormatType.ToHexBinary:
-                    return Convert.ToInt32(str, 16);
-                case IntegerStringFormatType.ToDecimal:
-                    return Convert.ToInt32(str, 10);
-                case IntegerStringFormatType.ToOcted:
-                    return Convert.ToInt32(str, 8);
-                case IntegerStringFormatType.ToBinary:
-                    return Convert.ToInt32(str, 2);
                 default:
                     throw new NotImplementedException();
             }

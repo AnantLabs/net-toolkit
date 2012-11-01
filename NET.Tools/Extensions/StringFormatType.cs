@@ -13,22 +13,22 @@ namespace NET.Tools
         /// <summary>
         /// To Hex-Binary (e. g. 0xFF)
         /// </summary>
-        ToHexBinary,
+        HexBinary,
         /// <summary>
         /// To Decimal (e. g. 255)
         /// </summary>
-        ToDecimal,
+        Decimal,
         /// <summary>
         /// To Octed (e. g. 8888)
         /// </summary>
-        ToOcted,
+        Octed,
         /// <summary>
         /// To Binary (e. g. 11111111)
         /// </summary>
-        ToBinary,
+        Binary,
         /// <summary>
         /// To Roman Numeral (e. g. XIV)
         /// </summary>
-        ToRomanNumeral,
+        RomanNumeral,
     }
 }

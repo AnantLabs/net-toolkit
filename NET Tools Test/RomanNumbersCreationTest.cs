@@ -14,7 +14,7 @@ namespace NET.Tools.Test
         public void TestSimple1()
         {
             long number = 1;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("I", str);
         }
@@ -23,7 +23,7 @@ namespace NET.Tools.Test
         public void TestSimple3()
         {
             long number = 3;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("III", str);
         }
@@ -32,7 +32,7 @@ namespace NET.Tools.Test
         public void TestSimple4()
         {
             long number = 10;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("X", str);
         }
@@ -41,7 +41,7 @@ namespace NET.Tools.Test
         public void TestSimple5()
         {
             long number = 30;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("XXX", str);
         }
@@ -50,7 +50,7 @@ namespace NET.Tools.Test
         public void TestSimple6()
         {
             long number = 100;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("C", str);
         }
@@ -59,7 +59,7 @@ namespace NET.Tools.Test
         public void TestSimple7()
         {
             long number = 300;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("CCC", str);
         }
@@ -68,7 +68,7 @@ namespace NET.Tools.Test
         public void TestSimple8()
         {
             long number = 1000;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("M", str);
         }
@@ -77,7 +77,7 @@ namespace NET.Tools.Test
         public void TestSimple9()
         {
             long number = 3000;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("MMM", str);
         }
@@ -86,7 +86,7 @@ namespace NET.Tools.Test
         public void TestHalf1()
         {
             long number = 5;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("V", str);
         }
@@ -95,7 +95,7 @@ namespace NET.Tools.Test
         public void TestHalf2()
         {
             long number = 50;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("L", str);
         }
@@ -104,7 +104,7 @@ namespace NET.Tools.Test
         public void TestHalf3()
         {
             long number = 500;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("D", str);
         }
@@ -113,7 +113,7 @@ namespace NET.Tools.Test
         public void TestSubtraction1()
         {
             long number = 4;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("IV", str);
         }
@@ -122,7 +122,7 @@ namespace NET.Tools.Test
         public void TestSubtraction2()
         {
             long number = 40;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("XL", str);
         }
@@ -131,7 +131,7 @@ namespace NET.Tools.Test
         public void TestSubtraction3()
         {
             long number = 400;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("CD", str);
         }
@@ -140,7 +140,7 @@ namespace NET.Tools.Test
         public void TestSubtraction4()
         {
             long number = 9;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("IX", str);
         }
@@ -149,7 +149,7 @@ namespace NET.Tools.Test
         public void TestSubtraction5()
         {
             long number = 90;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("XC", str);
         }
@@ -158,7 +158,7 @@ namespace NET.Tools.Test
         public void TestSubtraction6()
         {
             long number = 900;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("CM", str);
         }
@@ -167,7 +167,7 @@ namespace NET.Tools.Test
         public void TestAddition1()
         {
             long number = 6;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("VI", str);
         }
@@ -176,7 +176,7 @@ namespace NET.Tools.Test
         public void TestAddition2()
         {
             long number = 8;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("VIII", str);
         }
@@ -185,7 +185,7 @@ namespace NET.Tools.Test
         public void TestAddition3()
         {
             long number = 60;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("LX", str);
         }
@@ -194,7 +194,7 @@ namespace NET.Tools.Test
         public void TestAddition4()
         {
             long number = 80;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("LXXX", str);
         }
@@ -203,7 +203,7 @@ namespace NET.Tools.Test
         public void TestAddition5()
         {
             long number = 600;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("DC", str);
         }
@@ -212,7 +212,7 @@ namespace NET.Tools.Test
         public void TestAddition6()
         {
             long number = 800;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("DCCC", str);
         }
@@ -221,7 +221,7 @@ namespace NET.Tools.Test
         public void TestComplex1()
         {
             long number = 99;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("XCIX", str);
         }
@@ -230,7 +230,7 @@ namespace NET.Tools.Test
         public void TestComplex2()
         {
             long number = 1984;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("MCMLXXXIV", str);
         }
@@ -239,7 +239,7 @@ namespace NET.Tools.Test
         public void TestComplex3()
         {
             long number = 1493;
-            String str = number.ToString(IntegerStringFormatType.ToRomanNumeral);
+            String str = number.ToString(IntegerStringFormatType.RomanNumeral);
 
             Assert.AreEqual("MCDXCIII", str);
         }
