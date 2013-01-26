@@ -135,6 +135,7 @@
     <Compile Include="DifferenceImageEffect.cs" />
     <Compile Include="ExclusionImageEffect.cs" />
     <Compile Include="ImageShiftEffect.cs" />
+    <Compile Include="ColorKeyEffect.cs" />
     <Compile Include="LightenImageEffect.cs" />
     <Compile Include="MultiplyImageEffect.cs" />
     <Compile Include="NegationDifferenceImageEffect.cs" />
@@ -224,6 +225,8 @@
     </None>
     <Resource Include="Shader\BlackWhiteShader.ps" />
     <Resource Include="Shader\AlphaShader.ps" />
+    <None Include="Shader\ColorKeyShader.fx" />
+    <Resource Include="Shader\ColorKeyShader.ps" />
     <None Include="Shader\compile.bat" />
     <None Include="Shader\compiler.bat" />
     <None Include="Shader\TransparentColorShader.fx" />

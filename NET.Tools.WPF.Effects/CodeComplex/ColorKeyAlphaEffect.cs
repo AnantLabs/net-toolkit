@@ -28,6 +28,13 @@ namespace NET.Tools.WPF.CodeComplex
         /// </summary>
         public static readonly DependencyProperty InputProperty = ShaderEffect.RegisterPixelShaderSamplerProperty("Input", typeof(ColorKeyAlphaEffect), 0);
 
+        public static readonly DependencyProperty LimitProperty =
+            DependencyProperty.Register(
+                   "Limit",
+                   typeof(float),
+                   typeof(ColorShiftEffect),
+                   new UIPropertyMetadata(0.3f, PixelShaderConstantCallback(0)));
+
         #endregion
 
         #region Member Data
@@ -70,6 +77,15 @@ namespace NET.Tools.WPF.CodeComplex
         {
             get { return (Brush)GetValue(InputProperty); }
             set { SetValue(InputProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the limit for alpha
+        /// </summary>
+        public float Limit
+        {
+            get { return (float) GetValue(LimitProperty); }
+            set { SetValue(LimitProperty, value);}
         }
     }
     /// @}
