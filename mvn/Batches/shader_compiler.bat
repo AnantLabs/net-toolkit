@@ -21,6 +21,8 @@ call "%~1\shader_compile.bat" NET.Tools.WPF.Effects\Shader\MotionBlurShader
 if NOT "%ERRORLEVEL%" == "0" ( goto end )
 Call "%~1\shader_compile.bat" NET.Tools.WPF.Effects\Shader\ColorShiftShader
 if NOT "%ERRORLEVEL%" == "0" ( goto end )
+Call "%~1\shader_compile.bat" NET.Tools.WPF.Effects\Shader\ColorKeyShader
+if NOT "%ERRORLEVEL%" == "0" ( goto end )
 call "%~1\shader_compile.bat" NET.Tools.WPF.Effects\Shader\AlphaShader
 if NOT "%ERRORLEVEL%" == "0" ( goto end )
 call "%~1\shader_compile.bat" NET.Tools.WPF.Effects\Shader\PixelShader
