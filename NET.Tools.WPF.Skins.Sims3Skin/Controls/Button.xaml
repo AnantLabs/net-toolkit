@@ -1,0 +1,128 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:wpf="clr-namespace:NET.Tools.WPF;assembly=NET.Tools.WPF.Effects">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Common.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type ButtonBase}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ButtonBase}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="3" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="3" />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="#1A3884" BorderThickness="1" CornerRadius="3" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" x:Name="brdMain">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Offset="0" Color="#80C4FF" />
+                                    <GradientStop Offset="1" Color="#A1D0FF" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                        <Border BorderThickness="0" Background="#50FFFFFF" Grid.Row="0" Grid.Column="1" x:Name="brdTop">
+                            <Border.Effect>
+                                <BlurEffect Radius="3"/>
+                            </Border.Effect>
+                        </Border>
+                        <Border BorderThickness="0" Background="#30000000" Grid.Row="2" Grid.Column="1" x:Name="brdBottom">
+                            <Border.Effect>
+                                <BlurEffect Radius="3"/>
+                            </Border.Effect>
+                        </Border>
+                        <Border BorderThickness="0" Background="#30000000" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" x:Name="brdLeft">
+                            <Border.Effect>
+                                <BlurEffect Radius="3"/>
+                            </Border.Effect>
+                        </Border>
+                        <Border BorderThickness="0" Background="#30000000" Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" x:Name="brdRight">
+                            <Border.Effect>
+                                <BlurEffect Radius="3"/>
+                            </Border.Effect>
+                        </Border>
+                        <Border CornerRadius="3" BorderThickness="0" Background="#50FFFFFF" Opacity="0" x:Name="brdOver" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3"/>
+                        <ContentPresenter Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="brdOver" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.5"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="brdOver" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.5"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="brdMain" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Offset="0" Color="#6181B8" />
+                                        <GradientStop Offset="1" Color="#8EB0EB" />
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="brdTop" Property="Background" Value="#50000000"/>
+                            <Setter TargetName="brdLeft" Property="Background" Value="#30000000"/>
+                            <Setter TargetName="brdRight" Property="Background" Value="#30000000"/>
+                            <Setter TargetName="brdBottom" Property="Background" Value="#80FFFFFF"/>
+                            <Setter Property="Foreground" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <wpf:GrayscaleEffect/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="ToggleButton.IsChecked" Value="True">
+                            <Setter TargetName="brdMain" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Offset="0" Color="#618188" />
+                                        <GradientStop Offset="1" Color="#8EB0B8" />
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="brdTop" Property="Background" Value="#50000000"/>
+                            <Setter TargetName="brdLeft" Property="Background" Value="#30000000"/>
+                            <Setter TargetName="brdRight" Property="Background" Value="#30000000"/>
+                            <Setter TargetName="brdBottom" Property="Background" Value="#80FFFFFF"/>
+                            <Setter Property="Foreground" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="Button.IsDefault" Value="True">
+                            <Setter TargetName="brdMain" Property="BorderThickness" Value="2"/>
+                            <Setter TargetName="brdMain" Property="BorderBrush">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                                        <GradientStop Offset="0.2" Color="#747F80"/>
+                                        <GradientStop Offset="0.8" Color="White"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="{StaticResource brushLabel}"/>
+    </Style>
+    
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type ButtonBase}}"/>
+    <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource {x:Type ButtonBase}}"/>
+
+</ResourceDictionary>

@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Common.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type GroupBox}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type GroupBox}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Vertical" Background="Transparent" Margin="5">
+                            <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Header}" FontWeight="Bold" Margin="3"/>
+                            <Border Background="Transparent" BorderThickness="1" BorderBrush="#4661BF" Height="3" CornerRadius="1"/>
+                        </StackPanel>
+                        <ContentPresenter Margin="5" Grid.Row="1"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="{StaticResource brushLabel}"/>
+    </Style>
+    
+</ResourceDictionary>

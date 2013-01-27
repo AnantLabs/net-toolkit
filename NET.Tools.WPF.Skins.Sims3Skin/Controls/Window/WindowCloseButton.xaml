@@ -1,0 +1,104 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style TargetType="{x:Type Button}" x:Key="WindowCloseButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border BorderThickness="0" Background="Red" CornerRadius="0,0,0,15" UseLayoutRounding="True">
+                        <Border CornerRadius="12" BorderThickness="0" Margin="5" x:Name="brdMain">
+                            <Border.Background>
+                                <RadialGradientBrush RadiusX="0.75" RadiusY="0.75" GradientOrigin="0.6,0.75"
+                                                     Center="0.6,0.75">
+                                    <GradientStop Offset="0" Color="#9AE3E4" />
+                                    <GradientStop Offset="1" Color="#4B6DA8" />
+                                </RadialGradientBrush>
+                            </Border.Background>
+                            <Grid>
+                                <Border CornerRadius="12" BorderThickness="0" Background="#50FFFFFF" Opacity="0" x:Name="brdOver"/>
+                                <Border Margin="5" BorderThickness="0" x:Name="brdCross">
+                                    <Border.Background>
+                                        <DrawingBrush>
+                                            <DrawingBrush.Drawing>
+                                                <GeometryDrawing>
+                                                    <GeometryDrawing.Pen>
+                                                        <Pen Thickness="35" Brush="#00286D" StartLineCap="Round"
+                                                             EndLineCap="Round" />
+                                                    </GeometryDrawing.Pen>
+                                                    <GeometryDrawing.Geometry>
+                                                        <GeometryGroup>
+                                                            <LineGeometry StartPoint="0,0" EndPoint="100,100" />
+                                                            <LineGeometry StartPoint="0,100" EndPoint="100,0" />
+                                                        </GeometryGroup>
+                                                    </GeometryDrawing.Geometry>
+                                                </GeometryDrawing>
+                                            </DrawingBrush.Drawing>
+                                        </DrawingBrush>
+                                    </Border.Background>
+                                    <Border.LayoutTransform>
+                                        <RotateTransform CenterX="10" CenterY="10" Angle="-5" />
+                                    </Border.LayoutTransform>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="brdOver" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.5"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="brdOver" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.5"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="brdMain" Property="Background">
+                                <Setter.Value>
+                                    <RadialGradientBrush RadiusX="0.75" RadiusY="0.75" GradientOrigin="0.6,0.75"
+                                                     Center="0.6,0.75">
+                                        <GradientStop Offset="1" Color="#3D3D88" />
+                                        <GradientStop Offset="0" Color="#87B8D7" />
+                                    </RadialGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="brdCross" Property="Background">
+                                <Setter.Value>
+                                    <DrawingBrush>
+                                        <DrawingBrush.Drawing>
+                                            <GeometryDrawing>
+                                                <GeometryDrawing.Pen>
+                                                    <Pen Thickness="35" Brush="White" StartLineCap="Round"
+                                                             EndLineCap="Round" />
+                                                </GeometryDrawing.Pen>
+                                                <GeometryDrawing.Geometry>
+                                                    <GeometryGroup>
+                                                        <LineGeometry StartPoint="0,0" EndPoint="100,100" />
+                                                        <LineGeometry StartPoint="0,100" EndPoint="100,0" />
+                                                    </GeometryGroup>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                        </DrawingBrush.Drawing>
+                                    </DrawingBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Width" Value="30" />
+        <Setter Property="MinWidth" Value="30" />
+        <Setter Property="MaxWidth" Value="30" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="MinHeight" Value="30" />
+        <Setter Property="MaxHeight" Value="30" />
+        <Setter Property="Focusable" Value="False"/>
+    </Style>
+
+</ResourceDictionary>

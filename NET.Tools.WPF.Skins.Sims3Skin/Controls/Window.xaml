@@ -1,0 +1,66 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:codeComplex="clr-namespace:NET.Tools.WPF.CodeComplex;assembly=NET.Tools.WPF.Effects"
+                    xmlns:wpf="clr-namespace:NET.Tools.WPF;assembly=NET.Tools.WPF.Effects"
+                    x:Class="NET.Tools.WPF.Skins.CommandManager"
+    x:ClassModifier="internal">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Window/WindowButtons.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type Window}" x:Key="Sims3Window">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Window}">
+                    <Border BorderThickness="1" BorderBrush="#032E5B" CornerRadius="15" Margin="0,0,7,0">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Offset="0.1" Color="#C033538A"/>
+                                <GradientStop Offset="0.4" Color="#FF8CD0F8"/>
+                                <GradientStop Offset="0.6" Color="#FF8CD0F8"/>
+                                <GradientStop Offset="0.9" Color="#C033538A"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border Margin="10,5,10,5" BorderThickness="1" BorderBrush="#3D5192" CornerRadius="10" >
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Offset="0.1" Color="#7AA2DE"/>
+                                    <GradientStop Offset="0.4" Color="#94BDF0"/>
+                                    <GradientStop Offset="0.6" Color="#94BDF0"/>
+                                    <GradientStop Offset="0.9" Color="#7AA2DE"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Grid Margin="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Button Style="{StaticResource WindowCloseButton}" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-10,-10,0" Click="CloseClick"/>
+                                <Border Background="#A3E1F7" Width="250" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" CornerRadius="12">
+                                    <Border.Effect>
+                                        <BlurEffect Radius="50"/>
+                                    </Border.Effect>
+                                </Border>
+                                <TextBlock FontSize="25" Grid.Row="0" FontWeight="Bold" TextAlignment="Center" Margin="5" MouseDown="DragDropCaption"
+                                           Text="{Binding Path=Title, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <ContentPresenter Margin="5" Grid.Row="1"/>
+                            </Grid>
+                            <Border.Effect>
+                                <wpf:ColorKeyEffect ColorKey="Red" Tolerance="1"/>
+                            </Border.Effect>
+                        </Border>
+                        <Border.Effect>
+                            <DropShadowEffect Color="#0A236D"/>
+                        </Border.Effect>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="WindowStyle" Value="None"/>
+        <Setter Property="AllowsTransparency" Value="true"/>
+        <Setter Property="Cursor" Value="../Resources/Cursors/NormalSelect.cur"/>
+    </Style>
+
+</ResourceDictionary>
