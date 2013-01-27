@@ -121,6 +121,7 @@
     <Compile Include="MarkupExtensions\CalculateExtension.cs" />
     <Compile Include="MarkupExtensions\LanguageExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Types\CustomDefaultCursors.cs" />
     <Compile Include="Types\Handler.cs" />
     <Compile Include="Types\Styles.cs" />
     <Compile Include="Types\UriCreator.cs" />

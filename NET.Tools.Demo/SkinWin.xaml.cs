@@ -49,7 +49,7 @@ namespace NET.Tools.Demo
                         activeBundle = PaperSkin.SkinBundle;
                         break;
                     case "sims 3":
-                        activeBundle = Sims3Skin.SkinBundle_Random;
+                        activeBundle = Sims3Skin.SkinBundle;
                         break;
                     case "chalk":
                         activeBundle = ChalkSkin.SkinBundle;

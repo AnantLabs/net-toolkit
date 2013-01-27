@@ -2,21 +2,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Styles/Button.xaml"/>
-        <ResourceDictionary Source="Styles/Window.xaml"/>
-        <ResourceDictionary Source="Styles/Grid.xaml"/>
-        <ResourceDictionary Source="Styles/Label.xaml"/>
-        <ResourceDictionary Source="Styles/Border.xaml"/>
-        <ResourceDictionary Source="Styles/Checkbox.xaml"/>
-        <ResourceDictionary Source="Styles/RadioButton.xaml"/>
-        <ResourceDictionary Source="Styles/TextBox.xaml"/>
-        <ResourceDictionary Source="Styles/ScrollBar.xaml"/>
-        <ResourceDictionary Source="Styles/ListBox.xaml"/>
-        <ResourceDictionary Source="Styles/ComboBox.xaml"/>
-        <ResourceDictionary Source="Styles/XItem.xaml"/>
-        <ResourceDictionary Source="Styles/TabPage.xaml"/>
-        <ResourceDictionary Source="Styles/ProgressBar.xaml"/>
-        <ResourceDictionary Source="Styles/GroupBox.xaml"/>
+        <ResourceDictionary Source="Controls/Window.xaml"/>
+        <ResourceDictionary Source="Controls/Label.xaml"/>
+        <ResourceDictionary Source="Controls/Button.xaml"/>
+        <ResourceDictionary Source="Controls/Tooltip.xaml"/>
+        <ResourceDictionary Source="Controls/Groupbox.xaml"/>
+        <ResourceDictionary Source="Controls/CheckBox.xaml"/>
+        <ResourceDictionary Source="Controls/RadioButton.xaml"/>
+        <ResourceDictionary Source="Controls/TextBox.xaml"/>
+        <ResourceDictionary Source="Controls/TabControl.xaml"/>
+        <ResourceDictionary Source="Controls/ComboBox.xaml"/>
+        <ResourceDictionary Source="Controls/ProgressBar.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
 </ResourceDictionary>
