@@ -3,7 +3,8 @@
                     xmlns:wpf="clr-namespace:NET.Tools.WPF;assembly=NET.Tools.WPF.Effects">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Common.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="Common.xaml"/>
+        <ResourceDictionary Source="ListBox.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="ComboButton" TargetType="{x:Type ToggleButton}">
@@ -37,6 +38,9 @@
                                     </DrawingBrush.Drawing>
                                 </DrawingBrush>
                             </Border.Background>
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="-5" BlurRadius="5" Color="White" Opacity="0" x:Name="effGlow"/>
+                            </Border.Effect>
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -54,6 +58,11 @@
                                 </Storyboard>
                             </BeginStoryboard>
                             <BeginStoryboard>
+                                <Storyboard TargetName="effGlow">
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.5" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                            <BeginStoryboard>
                                 <Storyboard TargetName="brdOver">
                                     <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.5" />
                                 </Storyboard>
@@ -63,6 +72,11 @@
                             <BeginStoryboard>
                                 <Storyboard TargetName="brdArrowColor">
                                     <ColorAnimation Storyboard.TargetProperty="Color" To="#002E9E" Duration="0:0:0.5" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                            <BeginStoryboard>
+                                <Storyboard TargetName="effGlow">
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.5" />
                                 </Storyboard>
                             </BeginStoryboard>
                             <BeginStoryboard>
@@ -168,40 +182,6 @@
         <Setter Property="Foreground" Value="{StaticResource brushLabel}" />
     </Style>
 
-    <Style TargetType="{x:Type ComboBoxItem}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ComboBoxItem}">
-                    <Border x:Name="brdMain" BorderThickness="0" Background="Transparent">
-                        <ContentPresenter RecognizesAccessKey="True" Margin="3" />
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsSelected" Value="False" />
-                                <Condition Property="IsMouseOver" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <MultiTrigger.Setters>
-                                <Setter TargetName="brdMain" Property="Background" Value="#805175B7"/>
-                                <Setter Property="Foreground" Value="White"/>
-                            </MultiTrigger.Setters>
-                        </MultiTrigger>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="brdMain" Property="Background" Value="#5175B7"/>
-                            <Setter Property="Foreground" Value="White"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Effect">
-                                <Setter.Value>
-                                    <wpf:GrayscaleEffect/>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Foreground" Value="{StaticResource brushLabel}" />
-    </Style>
+    <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}"/>
 
 </ResourceDictionary>

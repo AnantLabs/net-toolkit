@@ -6,7 +6,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBoxBase}">
-                    <Border Background="White" BorderThickness="0" CornerRadius="5">
+                    <Border Background="White" BorderThickness="0" CornerRadius="5" SnapsToDevicePixels="True">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="2"/>
