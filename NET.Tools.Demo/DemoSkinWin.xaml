@@ -204,6 +204,7 @@
                     <ComboBoxItem>Welt</ComboBoxItem>
                 </ComboBox>
             </ToolBar>
-        </ToolBarTray>   
+        </ToolBarTray>
+        <DockPanel Height="100" HorizontalAlignment="Left" Margin="13,441,0,0" Name="dockPanel1" VerticalAlignment="Top" Width="153" />
     </Grid>
 </Window>

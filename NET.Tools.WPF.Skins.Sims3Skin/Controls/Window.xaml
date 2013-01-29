@@ -37,12 +37,12 @@
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
                                 <Button Style="{StaticResource WindowCloseButton}" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-10,-10,0" Click="CloseClick"/>
-                                <Border Background="#A3E1F7" Width="250" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" CornerRadius="12">
+                                <Border Background="#A3E1F7" Width="250" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" CornerRadius="12" Margin="0,0,20,0">
                                     <Border.Effect>
                                         <BlurEffect Radius="50"/>
                                     </Border.Effect>
                                 </Border>
-                                <TextBlock FontSize="25" Grid.Row="0" FontWeight="Bold" TextAlignment="Center" Margin="5" MouseDown="DragDropCaption"
+                                <TextBlock FontSize="25" Grid.Row="0" FontWeight="Bold" TextAlignment="Center" Margin="5,5,20,5" MouseDown="DragDropCaption"
                                            Text="{Binding Path=Title, RelativeSource={RelativeSource TemplatedParent}}"/>
                                 <ContentPresenter Margin="5" Grid.Row="1"/>
                             </Grid>

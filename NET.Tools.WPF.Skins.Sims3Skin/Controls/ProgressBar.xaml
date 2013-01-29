@@ -2,9 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ControlTemplate TargetType="{x:Type ProgressBar}" x:Key="HProgressBar">
-        <Border BorderThickness="0" Name="PART_Track" Background="#6C6D6F" CornerRadius="15">
-            <Grid>
-                <Border BorderThickness="0" Background="#7AD042" Name="PART_Indicator" HorizontalAlignment="Left" CornerRadius="15"/>
+        <Border BorderThickness="0" Name="PART_Track" Background="#6C6D6F" CornerRadius="15" SnapsToDevicePixels="True">
+            <Grid SnapsToDevicePixels="True">
+                <Border BorderThickness="0" Background="#7AD042" Name="PART_Indicator" HorizontalAlignment="Left" CornerRadius="15" SnapsToDevicePixels="True"/>
                 
                 <Border BorderThickness="2" Background="Transparent" Height="20" VerticalAlignment="Top" CornerRadius="10" Margin="3,0,3,0">
                     <Border.BorderBrush>
