@@ -1,0 +1,327 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <PathGeometry x:Key="Arrow_Up">
+        <PathFigure IsClosed="True" IsFilled="True" StartPoint="45,0">
+            <LineSegment Point="55,0" />
+            <LineSegment Point="100,90" />
+            <LineSegment Point="100,100" />
+            <LineSegment Point="0,100" />
+            <LineSegment Point="0,90" />
+            <LineSegment Point="45,0" />
+        </PathFigure>
+    </PathGeometry>
+
+    <PathGeometry x:Key="Arrow_Down">
+        <PathFigure IsClosed="True" IsFilled="True" StartPoint="45,100">
+            <LineSegment Point="55,100" />
+            <LineSegment Point="100,10" />
+            <LineSegment Point="100,0" />
+            <LineSegment Point="0,0" />
+            <LineSegment Point="0,10" />
+            <LineSegment Point="45,100" />
+        </PathFigure>
+    </PathGeometry>
+
+    <PathGeometry x:Key="Arrow_Left">
+        <PathFigure IsClosed="True" IsFilled="True" StartPoint="0,45">
+            <LineSegment Point="0,55" />
+            <LineSegment Point="90,100" />
+            <LineSegment Point="100,100" />
+            <LineSegment Point="100,0" />
+            <LineSegment Point="90,0" />
+            <LineSegment Point="0,45" />
+        </PathFigure>
+    </PathGeometry>
+
+    <PathGeometry x:Key="Arrow_Right">
+        <PathFigure IsClosed="True" IsFilled="True" StartPoint="100,45">
+            <LineSegment Point="100,55" />
+            <LineSegment Point="10,100" />
+            <LineSegment Point="0,100" />
+            <LineSegment Point="0,0" />
+            <LineSegment Point="10,0" />
+            <LineSegment Point="100,45" />
+        </PathFigure>
+    </PathGeometry>
+
+    <DrawingBrush x:Key="ScbRBDraw_Up">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing Brush="#7AA0E6" Geometry="{StaticResource Arrow_Up}">
+                    <GeometryDrawing.Pen>
+                        <Pen Thickness="7" Brush="#203D80" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                    </GeometryDrawing.Pen>
+                </GeometryDrawing>
+                <GeometryDrawing>
+                    <GeometryDrawing.Pen>
+                        <Pen Thickness="15" StartLineCap="Round" EndLineCap="Round" LineJoin="Round">
+                            <Pen.Brush>
+                                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                                    <GradientStop Offset="0" Color="#20FFFFFF" />
+                                    <GradientStop Offset="1" Color="#50FFFFFF" />
+                                </LinearGradientBrush>
+                            </Pen.Brush>
+                        </Pen>
+                    </GeometryDrawing.Pen>
+                    <GeometryDrawing.Geometry>
+                        <LineGeometry StartPoint="11,85" EndPoint="57,5" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="ScbRBDraw_Up_Over">
+        <DrawingBrush.Drawing>
+                <GeometryDrawing Brush="#50FFFFFF" Geometry="{StaticResource Arrow_Up}"/>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="ScbRBDraw_Down">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing Brush="#7AA0E6" Geometry="{StaticResource Arrow_Down}">
+                    <GeometryDrawing.Pen>
+                        <Pen Thickness="7" Brush="#203D80" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                    </GeometryDrawing.Pen>
+                </GeometryDrawing>
+                <GeometryDrawing>
+                    <GeometryDrawing.Pen>
+                        <Pen Thickness="15" StartLineCap="Round" EndLineCap="Round" LineJoin="Round">
+                            <Pen.Brush>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Offset="0" Color="#20FFFFFF" />
+                                    <GradientStop Offset="1" Color="#50FFFFFF" />
+                                </LinearGradientBrush>
+                            </Pen.Brush>
+                        </Pen>
+                    </GeometryDrawing.Pen>
+                    <GeometryDrawing.Geometry>
+                        <LineGeometry StartPoint="11,5" EndPoint="89,5" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="ScbRBDraw_Down_Over">
+        <DrawingBrush.Drawing>
+            <GeometryDrawing Brush="#50FFFFFF" Geometry="{StaticResource Arrow_Down}"/>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="ScbRBDraw_Left">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing Brush="#7AA0E6" Geometry="{StaticResource Arrow_Left}">
+                    <GeometryDrawing.Pen>
+                        <Pen Thickness="7" Brush="#203D80" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                    </GeometryDrawing.Pen>
+                </GeometryDrawing>
+                <GeometryDrawing>
+                    <GeometryDrawing.Pen>
+                        <Pen Thickness="15" StartLineCap="Round" EndLineCap="Round" LineJoin="Round">
+                            <Pen.Brush>
+                                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                                    <GradientStop Offset="0" Color="#20FFFFFF" />
+                                    <GradientStop Offset="1" Color="#50FFFFFF" />
+                                </LinearGradientBrush>
+                            </Pen.Brush>
+                        </Pen>
+                    </GeometryDrawing.Pen>
+                    <GeometryDrawing.Geometry>
+                        <LineGeometry StartPoint="11,55" EndPoint="89,5" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="ScbRBDraw_Left_Over">
+        <DrawingBrush.Drawing>
+            <GeometryDrawing Brush="#50FFFFFF" Geometry="{StaticResource Arrow_Left}"/>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="ScbRBDraw_Right">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing Brush="#7AA0E6" Geometry="{StaticResource Arrow_Right}">
+                    <GeometryDrawing.Pen>
+                        <Pen Thickness="7" Brush="#203D80" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
+                    </GeometryDrawing.Pen>
+                </GeometryDrawing>
+                <GeometryDrawing>
+                    <GeometryDrawing.Pen>
+                        <Pen Thickness="15" StartLineCap="Round" EndLineCap="Round" LineJoin="Round">
+                            <Pen.Brush>
+                                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                                    <GradientStop Offset="0" Color="#20FFFFFF" />
+                                    <GradientStop Offset="1" Color="#50FFFFFF" />
+                                </LinearGradientBrush>
+                            </Pen.Brush>
+                        </Pen>
+                    </GeometryDrawing.Pen>
+                    <GeometryDrawing.Geometry>
+                        <LineGeometry StartPoint="5,11" EndPoint="5,89" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="ScbRBDraw_Right_Over">
+        <DrawingBrush.Drawing>
+            <GeometryDrawing Brush="#50FFFFFF" Geometry="{StaticResource Arrow_Right}"/>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <Style TargetType="{x:Type RepeatButton}" x:Key="ScbRB_Up">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Grid>
+                        <Border BorderThickness="0" Background="{StaticResource ScbRBDraw_Up}" />
+                        <Border BorderThickness="0" Background="{StaticResource ScbRBDraw_Up_Over}" Opacity="0" x:Name="brdOver"/>
+                        <Border BorderThickness="0" Background="{StaticResource ScbRBDraw_Up_Over}" Visibility="Hidden" x:Name="brdPress"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="RepeatButton.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="brdOver" Storyboard.TargetProperty="Opacity" Duration="0:0:0.5" AutoReverse="False" To="1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="RepeatButton.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="brdOver" Storyboard.TargetProperty="Opacity" Duration="0:0:0.5" AutoReverse="False" To="0"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="brdPress" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Focusable" Value="false" />
+    </Style>
+
+    <Style TargetType="{x:Type RepeatButton}" x:Key="ScbRB_Down">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Grid>
+                        <Border BorderThickness="0" Background="{StaticResource ScbRBDraw_Down}" />
+                        <Border BorderThickness="0" Background="{StaticResource ScbRBDraw_Down_Over}" Opacity="0" x:Name="brdOver"/>
+                        <Border BorderThickness="0" Background="{StaticResource ScbRBDraw_Down_Over}" Visibility="Hidden" x:Name="brdPress"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="RepeatButton.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="brdOver" Storyboard.TargetProperty="Opacity" Duration="0:0:0.5" AutoReverse="False" To="1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="RepeatButton.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="brdOver" Storyboard.TargetProperty="Opacity" Duration="0:0:0.5" AutoReverse="False" To="0"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="brdPress" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Focusable" Value="false" />
+    </Style>
+
+    <Style TargetType="{x:Type RepeatButton}" x:Key="ScbRB_Left">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Grid>
+                        <Border BorderThickness="0" Background="{StaticResource ScbRBDraw_Left}" />
+                        <Border BorderThickness="0" Background="{StaticResource ScbRBDraw_Left_Over}" Opacity="0" x:Name="brdOver"/>
+                        <Border BorderThickness="0" Background="{StaticResource ScbRBDraw_Left_Over}" Visibility="Hidden" x:Name="brdPress"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="RepeatButton.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="brdOver" Storyboard.TargetProperty="Opacity" Duration="0:0:0.5" AutoReverse="False" To="1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="RepeatButton.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="brdOver" Storyboard.TargetProperty="Opacity" Duration="0:0:0.5" AutoReverse="False" To="0"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="brdPress" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Focusable" Value="false" />
+    </Style>
+
+    <Style TargetType="{x:Type RepeatButton}" x:Key="ScbRB_Right">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Grid>
+                        <Border BorderThickness="0" Background="{StaticResource ScbRBDraw_Right}" />
+                        <Border BorderThickness="0" Background="{StaticResource ScbRBDraw_Right_Over}" Opacity="0" x:Name="brdOver"/>
+                        <Border BorderThickness="0" Background="{StaticResource ScbRBDraw_Right_Over}" Visibility="Hidden" x:Name="brdPress"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="RepeatButton.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="brdOver" Storyboard.TargetProperty="Opacity" Duration="0:0:0.5" AutoReverse="False" To="1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="RepeatButton.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="brdOver" Storyboard.TargetProperty="Opacity" Duration="0:0:0.5" AutoReverse="False" To="0"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="brdPress" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Focusable" Value="false" />
+    </Style>
+
+    <Style TargetType="{x:Type RepeatButton}" x:Key="ScbRB_Empty">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Border BorderThickness="0" Background="Transparent" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Focusable" Value="false" />
+    </Style>
+
+</ResourceDictionary>
