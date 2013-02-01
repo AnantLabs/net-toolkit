@@ -16,6 +16,7 @@
         <ResourceDictionary Source="Controls/ListBox.xaml"/>
         <ResourceDictionary Source="Controls/Extended.xaml"/>
         <ResourceDictionary Source="Controls/ScrollBar.xaml"/>
+        <ResourceDictionary Source="Controls/TreeView.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
 </ResourceDictionary>

@@ -92,7 +92,7 @@
                             </EventTrigger>
                         </Button.Triggers>
                     </Button>
-                    <ScrollBar Margin="0,6,27,7" Name="scrollBar1" LargeChange="1" SmallChange="0.1" HorizontalAlignment="Right" Width="18" />
+                    <ScrollBar Margin="0,6,27,7" Name="scrollBar1" HorizontalAlignment="Right" Width="18" />
                     <ScrollBar Height="18" Margin="30,0,51,32" Name="scrollBar2" VerticalAlignment="Bottom" Orientation="Horizontal" />
                     <Slider Height="23" Margin="272,95,51,0" Name="slider1" VerticalAlignment="Top" />
                     <Slider HorizontalAlignment="Left" Margin="196,95,0,56" Name="slider2" Width="23" Orientation="Vertical" />

@@ -3,11 +3,11 @@
                     xmlns:wpf="clr-namespace:NET.Tools.WPF;assembly=NET.Tools.WPF.Effects">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Common.xaml"/>
-        <ResourceDictionary Source="ListBox.xaml"/>
+        <ResourceDictionary Source="Common.xaml" />
+        <ResourceDictionary Source="Extended/ExtendedBorder.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="ComboButton" TargetType="{x:Type ToggleButton}">
+    <Style x:Key="TreeItemButton" TargetType="{x:Type ToggleButton}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -16,7 +16,6 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="20" />
                         </Grid.ColumnDefinitions>
-                        <Border BorderThickness="0" Background="#50FFFFFF" Opacity="0" Grid.ColumnSpan="2" x:Name="brdOver" />
                         <Border Grid.Column="1" BorderThickness="0" Margin="5" x:Name="brdArrow">
                             <Border.Background>
                                 <DrawingBrush>
@@ -39,7 +38,7 @@
                                 </DrawingBrush>
                             </Border.Background>
                             <Border.LayoutTransform>
-                                <RotateTransform CenterX="10" CenterY="10" Angle="0" x:Name="transRot"/>
+                                <RotateTransform CenterX="8" CenterY="8" Angle="-90" x:Name="transRot"/>
                             </Border.LayoutTransform>
                             <Border.Effect>
                                 <DropShadowEffect ShadowDepth="-5" BlurRadius="5" Color="White" Opacity="0" x:Name="effGlow"/>
@@ -51,14 +50,14 @@
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="transRot" Storyboard.TargetProperty="Angle" Duration="0:0:0.25" AutoReverse="False" To="180"/>
+                                        <DoubleAnimation Storyboard.TargetName="transRot" Storyboard.TargetProperty="Angle" Duration="0:0:0.25" AutoReverse="False" To="0"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
                             <Trigger.ExitActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="transRot" Storyboard.TargetProperty="Angle" Duration="0:0:0.25" AutoReverse="False" To="0"/>
+                                        <DoubleAnimation Storyboard.TargetName="transRot" Storyboard.TargetProperty="Angle" Duration="0:0:0.25" AutoReverse="False" To="-90"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
@@ -74,11 +73,6 @@
                                     <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.5" />
                                 </Storyboard>
                             </BeginStoryboard>
-                            <BeginStoryboard>
-                                <Storyboard TargetName="brdOver">
-                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.5" />
-                                </Storyboard>
-                            </BeginStoryboard>
                         </EventTrigger>
                         <EventTrigger RoutedEvent="ToggleButton.MouseLeave">
                             <BeginStoryboard>
@@ -91,11 +85,6 @@
                                     <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.5" />
                                 </Storyboard>
                             </BeginStoryboard>
-                            <BeginStoryboard>
-                                <Storyboard TargetName="brdOver">
-                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.5" />
-                                </Storyboard>
-                            </BeginStoryboard>
                         </EventTrigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Effect">
@@ -110,75 +99,37 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type ComboBox}">
+    <Style TargetType="{x:Type TreeView}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ComboBox}">
-                    <Grid>
-                        <Border BorderThickness="1" BorderBrush="#2B51AD" CornerRadius="5">
-                            <Border.Background>
-                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                    <GradientStop Offset="0" Color="#BDF1FF" />
-                                    <GradientStop Offset="1" Color="#6D8EC6" />
-                                </LinearGradientBrush>
-                            </Border.Background>
-                            <Grid>
-                                <ToggleButton Style="{StaticResource ComboButton}" Focusable="False"
-                                              IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}" />
-                                <ContentPresenter Name="ContentSite" IsHitTestVisible="False"
-                                                  Content="{TemplateBinding SelectionBoxItem}"
-                                                  ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                                                  ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                                  Margin="3" VerticalAlignment="Center" HorizontalAlignment="Left" />
-                                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" IsTabStop="False"
-                                     Background="Transparent" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}"
-                                     x:Name="PART_EditableTextBox">
-                                    <TextBox.Template>
-                                        <ControlTemplate TargetType="{x:Type TextBox}">
-                                            <ScrollViewer x:Name="PART_ContentHost"/>
-                                        </ControlTemplate>
-                                    </TextBox.Template>
-                                </TextBox>
-                            </Grid>
-                            <Border.Effect>
-                                <DropShadowEffect ShadowDepth="3" Opacity=".3" />
-                            </Border.Effect>
-                        </Border>
-                        <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}"
-                               AllowsTransparency="True"
-                               Focusable="False" PopupAnimation="None">
-                            <Grid Name="DropDown" MinWidth="{TemplateBinding ActualWidth}"
-                                  MinHeight="{TemplateBinding MaxDropDownHeight}" Margin="0,0,10,10">
-                                <Grid.Effect>
-                                    <DropShadowEffect ShadowDepth="3" Opacity=".3" />
-                                </Grid.Effect>
-                                <Border BorderThickness="1" BorderBrush="#2B51AD" CornerRadius="5">
-                                    <Border.Background>
-                                        <RadialGradientBrush RadiusX="0.5" RadiusY="0.5" GradientOrigin="0.5,0.5"
-                                                             Center="0.5,0.5">
-                                            <GradientStop Offset="0" Color="#C1EFFF" />
-                                            <GradientStop Offset="1" Color="#9BC7F8" />
-                                        </RadialGradientBrush>
-                                    </Border.Background>
-                                    <ScrollViewer Margin="5">
-                                        <StackPanel IsItemsHost="True" Background="Transparent"
-                                                    KeyboardNavigation.DirectionalNavigation="Contained" />
-                                    </ScrollViewer>
-                                </Border>
-                            </Grid>
-                        </Popup>
-                    </Grid>
+                <ControlTemplate TargetType="{x:Type TreeView}">
+                    <Border Style="{StaticResource Sims3ExtendedBorder}" SnapsToDevicePixels="True">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Border BorderThickness="0" Background="#35000000" Grid.Column="1">
+                                <Border.Effect>
+                                    <BlurEffect Radius="3"/>
+                                </Border.Effect>
+                            </Border>
+                            <Border BorderThickness="0" Background="#25000000" Grid.RowSpan="2">
+                                <Border.Effect>
+                                    <BlurEffect Radius="3"/>
+                                </Border.Effect>
+                            </Border>
+                            <ScrollViewer Margin="5" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                                <StackPanel IsItemsHost="True" Background="Transparent"
+                                            KeyboardNavigation.DirectionalNavigation="Contained" />
+                            </ScrollViewer>
+                        </Grid>
+                    </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="HasItems" Value="false">
-                            <Setter TargetName="DropDown" Property="MinHeight" Value="100"/>
-                        </Trigger>
-                        <Trigger Property="IsGrouping" Value="true">
-                            <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
-                        </Trigger>
-                        <Trigger Property="IsEditable" Value="true">
-                            <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible"/>
-                            <Setter TargetName="ContentSite" Property="Visibility" Value="Hidden"/>
-                        </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Effect">
                                 <Setter.Value>
@@ -190,10 +141,56 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="MinHeight" Value="20"/>
-        <Setter Property="Foreground" Value="{StaticResource brushLabel}" />
     </Style>
 
-    <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}"/>
+    <Style TargetType="{x:Type TreeViewItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TreeViewItem}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <ToggleButton Name="Expander" Style="{StaticResource TreeItemButton}" HorizontalAlignment="Left" Width="16" IsChecked="{Binding Path=IsExpanded,RelativeSource={RelativeSource TemplatedParent}}" ClickMode="Press"/>
+                        <Border Name="brdMain" Margin="21,0,0,0" Background="Transparent" BorderThickness="0">
+                            <ContentPresenter x:Name="PART_Header" ContentSource="Header" HorizontalAlignment="Left" Margin="3"/>
+                        </Border>
+                        <ItemsPresenter Margin="16,0,0,0" Grid.Row="1" Name="Childs"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsExpanded" Value="false">
+                            <Setter TargetName="Childs" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="HasItems" Value="false">
+                            <Setter TargetName="Expander" Property="Visibility" Value="Hidden"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="False" />
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="brdMain" Property="Background" Value="#805175B7" />
+                                <Setter Property="Foreground" Value="White" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="brdMain" Property="Background" Value="#5175B7" />
+                            <Setter Property="Foreground" Value="White" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <wpf:GrayscaleEffect />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="{StaticResource brushLabel}" />
+    </Style>
 
 </ResourceDictionary>
